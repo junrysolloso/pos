@@ -7,10 +7,6 @@
             </div>
             <div class="col-12 col-md-8 h-100 bg-white">
               <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
-                <div class="nav-get-started">
-                  <p>Don't have an account?</p>
-                  <a class="btn get-started-btn" href="register-2.html">GET STARTED</a>
-                </div>
                 <form action="#">
                   <h3 class="mr-auto">Hello! let's get started</h3>
                   <p class="mb-5 mr-auto">Enter your details below.</p>
