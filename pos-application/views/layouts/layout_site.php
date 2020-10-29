@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/typicons/typicons.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/style-main.css">
+    <link rel="shortcut icon" href="<?php echo base_url()?>pos-uploads/dinagat-coders-icon.png" />
 
     <?php echo $_styles; ?>
   </head>

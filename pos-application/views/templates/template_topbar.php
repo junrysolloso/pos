@@ -12,8 +12,8 @@
                 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
                   aria-expanded="false">
                   <div class="wrapper d-flex flex-column">
-                    <span class="profile-text">Addam Smith</span>
-                    <span class="user-designation">Administrator</span>
+                    <span class="profile-text"><?php if( $this->session->userdata( 'user_name' )  ) echo $this->session->userdata( 'user_name' ); ?></span>
+                    <span class="user-designation"><?php if( $this->session->userdata( 'user_rule' )  ) echo $this->session->userdata( 'user_rule' ); ?></span>
                   </div>
                   <div class="display-avatar">AS</div>
                 </a>
@@ -24,11 +24,9 @@
                     <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
                     <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                   </div>
-                  <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary"></i> My
-                    Profile <span class="badge badge-pill badge-danger">1</span></a>
-                  <a class="dropdown-item"><i
-                      class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary"></i> Activity</a>
-                  <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary"></i>Sign Out</a>
+                  <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+                  <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary"></i> Activity</a>
+                  <a href="<?php echo base_url( 'login/signout' ); ?>" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary"></i>Sign Out</a>
                 </div>
               </li>
             </ul>
@@ -39,3 +37,4 @@
         </div>
       </div>
       <div class="content-wrapper container-wrapper-width">
+      
