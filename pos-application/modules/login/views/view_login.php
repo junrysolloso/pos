@@ -7,9 +7,24 @@
             </div>
             <div class="col-12 col-md-8 h-100 bg-white">
               <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
-                <form action="#">
-                  <h3 class="mr-auto">Hello! let's get started</h3>
+                <form action="#" method="post">
+                  <h3 class="mr-auto">Hello! let's get started.</h3>
                   <p class="mb-5 mr-auto">Enter your details below.</p>
+                  
+                  <?php if( validation_errors() ): ?>
+                    <div class="alert alert-fill-danger" role="alert">
+                      <i class="mdi mdi-alert-circle"></i>
+                      <strong>Warning!</strong> All fields is required.
+                    </div>
+                  <?php endif; ?>
+
+                  <?php if( $this->session->tempdata( 'alert' ) ): ?>
+                    <div class="alert alert-fill-<?php echo $this->session->tempdata( 'class' ); ?>" role="alert">
+                      <i class="mdi mdi-alert-circle"></i>
+                      <?php echo $this->session->tempdata( 'alert' ); ?>
+                    </div>
+                  <?php endif; ?>
+
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -17,7 +32,7 @@
                           <i class="mdi mdi-account-outline"></i>
                         </span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Username">
+                      <input type="text" name="user_name" class="form-control" placeholder="Username">
                     </div>
                   </div>
                   <div class="form-group">
@@ -27,11 +42,11 @@
                           <i class="mdi mdi-lock-outline"></i>
                         </span>
                       </div>
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input type="password" name="user_pass" class="form-control" placeholder="Password">
                     </div>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-primary submit-btn">SIGN IN</button>
+                    <button type="submit" class="btn btn-primary submit-btn">LOGIN</button>
                   </div>
                   <div class="wrapper mt-5 text-gray">
                     <p class="footer-text">Copyright © 2020 Dinagat Coders. All rights reserved.</p>
@@ -53,3 +68,4 @@
       </div>
       <!-- page-body-wrapper ends -->
     </div>
+    

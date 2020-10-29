@@ -2,15 +2,51 @@
 
 class Login extends CI_Controller 
 {
+
+	function __construct() {
+		parent::__construct();
+		$this->load->model( 'Model_Login' );
+		$this->load->library( array( 'form_validation', 'session' ) );
+	}
+
 	/**
 	 * Index page for the login page
 	 */
-	public function __construct() {
-		parent::__construct();
-	}
-
 	public function index() {
-		$data['title']  = 'Login';
+		$fields = array(
+			array(
+				'field' => 'user_name',
+				'label' => 'username',
+				'rules'	=> 'required|trim',
+			),
+			array(
+				'field' => 'user_pass',
+				'label' => 'password',
+				'rules'	=> 'required|trim',
+			),
+		);
+
+		$this->form_validation->set_rules( $fields );
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+			if ( $this->form_validation->run() ) {
+				if ( $this->input->post( 'user_name' ) && $this->input->post( 'user_pass' ) ) {
+					$data = array(
+						'username' 	=> $this->input->post( 'user_name' ),
+						'user_pass' => $this->input->post( 'user_pass' ),
+					);
+					if ( $this->Model_Login->user_check( $data ) ) {
+						redirect( 'dashboard' );
+					} else {
+						$this->session->set_tempdata( array(
+							'alert' => 'Sorry! login failed, please try again.',
+							'class' => 'danger',
+						), NULL, 5);
+					}
+				}
+			}
+		}
+
+		$data['title']  = 'Admin Login';
 
 		$this->template->set_master_template( 'layouts/template_site' );
 		$this->template->write( 'title', $data['title'] );
@@ -36,5 +72,5 @@ class Login extends CI_Controller
 
 }
 
-/* End of file Setup.php */
-/* Location: ./application/controllers/Setup.php */
+/* End of file Login.php */
+/* Location: ./application/modules/login/controllers/Login.php */
