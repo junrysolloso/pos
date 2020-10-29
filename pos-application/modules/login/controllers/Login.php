@@ -99,7 +99,7 @@ class Login extends MY_Controller
 
 	/**
 	 * User signout
-	 * Destroys session after user is signout
+	 * Destroys session after signout
 	 */
 	public function signout() {
 		$session_name  = array( 'user_id', 'user_name', 'user_rule' );
