@@ -16,13 +16,22 @@ class Model_Login extends MY_Model
     if ( ! empty( $data ) && $data ) {
       $this->db->select( '*' );
       $this->db->where( $this->_username, $data['username'] );
-      $this->db->where( $this->_username, $data['user_pass'] );
+      $this->db->where( $this->_userpass, md5( $data['user_pass'] ) );
       $query = $this->db->get( $this->_table );
       if( $query ) {
         if ( $query->num_rows() > 0 ) {
-          return true;
-        } else {
-          return false;
+          $data = array(
+            'user_id'=> $query->row()->user_id,
+            'user_name' => $query->row()->username,
+            'user_rule' => $query->row()->user_level,
+          );
+
+          $this->session->set_userdata( $data );
+          if ( $this->session->userdata( 'user_name' ) ) {
+            return true;
+          } else {
+            return false;
+          } 
         }
       }
     }
