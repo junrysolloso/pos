@@ -11,7 +11,7 @@ class Model_Authattempts extends MY_Model
 
   /**
    * Insert login attempts
-   * @param sting $user
+   * @param string $user
    * @return bool
    */
   public function _attempt_insert( $user = '' ) {
@@ -49,7 +49,7 @@ class Model_Authattempts extends MY_Model
    * @param int $user_id - Delete the entry if attempt is successful
    * @return bool
    */
-  public function _attempt_clear( $user_id = 0 ) {
+  public function _attempt_clear() {
     if( $this->db->truncate( $this->_table ) ) {
       return true;
     } else {

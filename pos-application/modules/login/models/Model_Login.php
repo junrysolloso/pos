@@ -27,7 +27,7 @@ class Model_Login extends MY_Model
           );
 
           $this->session->set_userdata( $data );
-          if ( $this->session->userdata( 'user_name' ) ) {
+          if ( $this->session->userdata( 'user_id' ) ) {
             return true;
           } else {
             return false;
