@@ -9974,7 +9974,7 @@ pre {
   .card-weather .card-body {
     background: #ffffff; }
     .card-weather .card-body:first-child {
-      background: url("../images/samples/weather.svg") no-repeat center;
+      background: url("../../pos-uploads/svg/weather.svg") no-repeat center;
       background-size: cover; }
   .card-weather .weather-date-location {
     padding: 0 0 38px; }
@@ -16645,7 +16645,7 @@ body.avgrund-active {
   border-color: #dee2e6; }
 
 .jsgrid .jsgrid-button {
-  background-image: url("../images/sprites/jsgrid-icons.png"); }
+  background-image: url("../../pos-uploads/sprites/jsgrid-icons.png"); }
 
 .jsgrid .jsgrid-grid-header {
   border: 1px solid #dee2e6;
@@ -17763,10 +17763,10 @@ div.tagsinput {
 .auth {
   min-height: 100vh; }
   .auth.auth-bg-1 {
-    background: url("../images/auth/login_1.jpg");
+    background: url("../../pos-uploads/auth/login_1.jpg");
     background-size: cover; }
   .auth.register-bg-1 {
-    background: url("../images/auth/register.jpg") center center no-repeat;
+    background: url("../../pos-uploads/auth/register.jpg") center center no-repeat;
     background-size: cover; }
   .auth.theme-one .auto-form-wrapper {
     background: #fff;
@@ -17971,10 +17971,10 @@ div.tagsinput {
     .auth.theme-two .banner-section .slide-content {
       width: 100%; }
       .auth.theme-two .banner-section .slide-content.bg-1 {
-        background: url("../images/auth/login_2.jpg") no-repeat center center;
+        background: url("../../pos-uploads/auth/login-sidebar.jpg") no-repeat center center;
         background-size: cover; }
       .auth.theme-two .banner-section .slide-content.bg-2 {
-        background: url("../images/auth/register_2.jpg") no-repeat center center;
+        background: url("../../pos-uploads/auth/register_2.jpg") no-repeat center center;
         background-size: cover; }
   .auth.multi-step-login {
     height: 100%;
@@ -18227,7 +18227,7 @@ div.tagsinput {
 
 .profile-page .profile-header {
   width: 100%;
-  background: url("../images/samples/profile_page/profile_header_banner.jpg") no-repeat center center;
+  background: url("../../pos-uploads/samples/profile_page/profile_header_banner.jpg") no-repeat center center;
   background-size: cover;
   padding: 60px 0;
   border-radius: 5px; }
@@ -18399,7 +18399,7 @@ div.tagsinput {
     margin-left: auto; }
 
 body.invoice-page .invoice-banner {
-  background: url("../images/samples/invoice_banner.jpg") no-repeat center center;
+  background: url("../../pos-uploads/samples/invoice_banner.jpg") no-repeat center center;
   background-size: cover;
   width: 100%;
   margin-top: 20px;
@@ -18458,13 +18458,13 @@ body.invoice-page.invoice-2 table {
       height: 140px;
       border-radius: 4px 4px 0 0; }
       .project-list-showcase .project-grid .img-holder.img-bg-1 {
-        background: url("../images/samples/300x300/1.jpg") no-repeat center;
+        background: url("../../pos-uploads/samples/300x300/1.jpg") no-repeat center;
         background-size: cover; }
       .project-list-showcase .project-grid .img-holder.img-bg-2 {
-        background: url("../images/samples/300x300/2.jpg") no-repeat center;
+        background: url("../../pos-uploads/samples/300x300/2.jpg") no-repeat center;
         background-size: cover; }
       .project-list-showcase .project-grid .img-holder.img-bg-3 {
-        background: url("../images/samples/300x300/3.jpg") no-repeat center;
+        background: url("../../pos-uploads/samples/300x300/3.jpg") no-repeat center;
         background-size: cover; }
     .project-list-showcase .project-grid .project-grid-inner {
       border: 1px solid #dee2e6;
