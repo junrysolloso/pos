@@ -15,7 +15,7 @@
           </div>
           <div class="row mt-5">
             <div class="col-12 mt-xl-2">
-              <p class="text-white font-weight-medium text-center">© 2020 Dinagat Coders. All rights reserved.</p>
+              <p class="text-white font-weight-medium text-center">© 2020 Dinagat Coders.</p>
             </div>
           </div>
         </div>
