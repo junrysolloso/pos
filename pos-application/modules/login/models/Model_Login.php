@@ -13,7 +13,7 @@ class Model_Login extends MY_Model
    * @return bool
    */
   public function user_check( $data = [] ) {
-    if ( !empty( $data ) && $data ) {
+    if ( ! empty( $data ) && $data ) {
       $this->db->select( '*' );
       $this->db->where( $this->_username, $data['username'] );
       $this->db->where( $this->_username, $data['user_pass'] );
@@ -31,4 +31,4 @@ class Model_Login extends MY_Model
 }
 
 /* End of file Model_Login.php */
-/* Location: ./application/modules/login/models/Model_Login/Login0.php */
+/* Location: ./application/modules/login/models/Model_Login.php */
