@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CiStarter\\": "application/third_party/Composer/"
+      "CiStarter\\": "pos-application/third_party/Composer/"
     }
   }
 }
