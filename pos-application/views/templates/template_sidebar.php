@@ -46,7 +46,7 @@
           </a>
         </div>
         <div class="nav-item">
-          <a href="sales.php" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="menu-icons mdi mdi-flag-outline"></i><span class="menu-title">Sales</span>
           </a>
         </div>

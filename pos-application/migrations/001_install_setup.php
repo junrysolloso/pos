@@ -8,21 +8,6 @@ class Migration_Install_Setup extends CI_Migration
 	public function up() {
 		$attributes = array( 'ENGINE' => 'MyISAM', 'DEFAULT CHARSET' => 'utf8' );
 		$tables = array(
-			'auth_attempts' => array(
-				"`user_id` varchar(20) NOT NULL",
-				"`attempts` tinyint(1) NOT NULL",
-				"`blocked` datetime NOT NULL",
-			),
-
-			'sessions' => array(
-				"`id` varchar(128) NOT NULL",
-				"`ip_address` varchar(45) NOT NULL",
-				"`timestamp` int(10) unsigned DEFAULT 0 NOT NULL",
-				"`data` blob NOT NULL",
-				"PRIMARY KEY (id)",
-				"KEY `ci_sessions_timestamp` (`timestamp`)",
-			),
-			
 			'category' => array(
 				"`category_id` smallint(6) NOT NULL PRIMARY KEY AUTO_INCREMENT",
   			"`category_name` varchar(25) DEFAULT NULL",
@@ -152,6 +137,22 @@ class Migration_Install_Setup extends CI_Migration
 				"`user_pass` char(32) DEFAULT NULL",
 				"`user_level` varchar(20) DEFAULT NULL",
 				"`user_id` tinyint(4) DEFAULT NULL",
+			),
+
+			'auth_attempts' => array(
+				"`auth_id` smallint(6) NOT NULL PRIMARY KEY AUTO_INCREMENT",
+				"`auth_attempts` tinyint(1) NOT NULL",
+				"`auth_blocked` datetime NOT NULL",
+				"`auth_user` char(10) DEFAULT NULL",
+			),
+
+			'sessions' => array(
+				"`id` varchar(128) NOT NULL",
+				"`ip_address` varchar(45) NOT NULL",
+				"`timestamp` int(10) unsigned DEFAULT 0 NOT NULL",
+				"`data` blob NOT NULL",
+				"PRIMARY KEY (id)",
+				"KEY `ci_sessions_timestamp` (`timestamp`)",
 			),
 		);
 
