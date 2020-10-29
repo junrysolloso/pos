@@ -1,4 +1,4 @@
-# pos-system
+# POS System
 POS System Project 2020
 
 # 
