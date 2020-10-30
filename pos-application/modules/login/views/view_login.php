@@ -49,13 +49,10 @@
                     <button type="submit" class="btn btn-primary submit-btn">LOGIN</button>
                   </div>
                   <div class="wrapper mt-5 text-gray">
-                    <p class="footer-text">Copyright © 2020 Dinagat Coders.</p>
+                    <p class="footer-text">© 2020 POS System</p>
                     <ul class="auth-footer text-gray">
                       <li>
-                        <a href="#">About Us</a>
-                      </li>
-                      <li>
-                        <a href="#">Help &amp; Guide</a>
+                        <a href="#">Created with ❤ by Dinagat Coders</a>
                       </li>
                     </ul>
                   </div>
