@@ -160,6 +160,9 @@ class Migration_Install_Setup extends CI_Migration
 			$this->dbforge->add_field( $fields );
 			$this->dbforge->create_table( $table, TRUE, $attributes );
 		}
+
+		$this->db->simple_query( 'INSERT INTO `tbl_users` (`username`, `user_pass`, `user_level`, `user_id`) VALUES ("admin", "21232f297a57a5a743894a0e4a801fc3", "Administrator", 1)' );
+		$this->db->simple_query( 'INSERT INTO `tbl_userinfo` (`userinfo_id`, `userinfo_name`, `userinfo_address`, `userinfo_nickname`) VALUES (1, "System Admin", "Dinagat Islands", "Admin")' );
 	}
 
 	/**
