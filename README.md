@@ -3,7 +3,7 @@ Point of Sale system project 2020 for Grocery and Pharmacy.
 
 ## Requirements
 Install composer please download <a href="https://cloud.wpuptrends.com/index.php/s/hO5mnNq9zHZpRQS" target="_blank">here</a> if you dont have one.  
-Run this command in the project folder by typing <b>cmd</b> in the search bar.
+Run this command in the project folder by typing <b>cmd</b> in the location bar.
 
 <pre>composer install -d PROJECTPATH</pre>
 
