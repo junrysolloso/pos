@@ -12,7 +12,7 @@
                 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
                   aria-expanded="false">
                   <div class="wrapper d-flex flex-column">
-                    <span class="profile-text"><?php if( $this->session->userdata( 'user_name' )  ) echo $this->session->userdata( 'user_name' ); ?></span>
+                    <span class="profile-text"><?php if( $this->session->userdata( 'userinfo_name' )  ) echo $this->session->userdata( 'userinfo_name' ); ?></span>
                     <span class="user-designation"><?php if( $this->session->userdata( 'user_rule' )  ) echo $this->session->userdata( 'user_rule' ); ?></span>
                   </div>
                   <div class="display-avatar">AS</div>
