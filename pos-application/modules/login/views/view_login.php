@@ -22,9 +22,9 @@
                     <div class="alert alert-fill-<?php echo $this->session->tempdata( 'class' ); ?>" role="alert">
                       <i class="mdi mdi-alert-circle"></i>
                       <?php echo $this->session->tempdata( 'alert' ); ?>
+                      
                     </div>
                   <?php endif; ?>
-
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">

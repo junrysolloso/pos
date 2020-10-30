@@ -23,8 +23,6 @@ class Model_Authattempts extends MY_Model
       );
       if ( $this->db->insert( $this->_table, $data ) ) {
         return true;
-      } else {
-        return false;
       }
     }
   }
@@ -39,9 +37,7 @@ class Model_Authattempts extends MY_Model
     $query = $this->db->get( $this->_table );
     if( $query->num_rows() > 0 ) {
       return intval( $query->row()->id );
-    } else {
-      return 0;
-    }
+    } 
   }
 
   /**
@@ -52,9 +48,7 @@ class Model_Authattempts extends MY_Model
   public function _attempt_clear() {
     if( $this->db->truncate( $this->_table ) ) {
       return true;
-    } else {
-      return false;
-    }
+    } 
   }
 
 }
