@@ -54,3 +54,6 @@ class Model_Log extends MY_Model
   }
 
 }
+
+/* End of file Model_Log.php */
+/* Location: ./application/modules/log/models/Model_Log.php */
