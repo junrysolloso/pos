@@ -66,7 +66,7 @@
           <li><a href="#">About Us</a></li>
           <li><a href="#">Help &amp; Guide</a></li>
         </ul>
-        <p>© 2020 Dinagat Coders</p>
+        <p>© 2020 POS System <br /> Created with ❤ by Dinagat Coders</p>
       </div>
     </div>
     
