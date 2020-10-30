@@ -9,12 +9,12 @@
               <h2 class="display-1 mb-0">DONE</h2>
             </div>
             <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
-              <h4>SETUP SUCCESSFUL!</h4>
+              <h4>SETUP SUCCESSFUL.</h4>
             </div>
           </div>
           <div class="row mt-5">
             <div class="col-12 mt-xl-2">
-              <p class="text-white font-weight-medium text-center">© 2020 Dinagat Coders.</p>
+              <p class="text-white font-weight-medium text-center">© 2020 POS System <br /> Created with ❤ by Dinagat Coders</p>
             </div>
           </div>
         </div>
