@@ -10,4 +10,8 @@ class Log extends MY_Controller
   public function index() {
     $this->load->view( 'view_log' );
   }
+
 }
+
+/* End of file Log.php */
+/* Location: ./application/modules/log/controllers/Log.php */

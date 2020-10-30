@@ -12,7 +12,11 @@ class Setup extends CI_Controller {
 		if ( ! $this->migration->current() ) {
 			show_error( $this->migration->error_string() );
 		} else {
-			echo "Done.";
+			$this->template->set_master_template( 'layouts/layout_site' );
+			$this->template->write( 'title', 'Setup' );
+			$this->template->write( 'body_class', 'setup' );
+			$this->template->write_view( 'content', 'view_setup' );
+			$this->template->render();
 		}
 	}
 
