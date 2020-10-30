@@ -56,6 +56,7 @@ class Migration_Install_Setup extends CI_Migration
 				"`log_date` date DEFAULT NULL",
 				"`log_time` time DEFAULT NULL",
 				"`log_task` varchar(255) DEFAULT NULL",
+				"`user_id` tinyint(4) DEFAULT NULL",
 			),
 
 			'orderdetails' => array(

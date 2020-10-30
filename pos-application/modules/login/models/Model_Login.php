@@ -8,6 +8,10 @@ class Model_Login extends MY_Model
   protected $_username   = 'username';
   protected $_userpass   = 'user_pass';
 
+  function __construct() {
+    $this->load->model( 'log/Model_Log' );
+  }
+
   /**
    * Check user if exist
    * @param array $data - user info
@@ -22,6 +26,7 @@ class Model_Login extends MY_Model
       $query = $this->db->get( $this->_table );
       if( $query ) {
         if ( $query->num_rows() > 0 ) {
+          // Set user data to a session
           $data = array(
             'user_id'       => $query->row()->user_id,
             'userinfo_name' => $query->row()->userinfo_name,
@@ -30,10 +35,10 @@ class Model_Login extends MY_Model
 
           $this->session->set_userdata( $data );
           if ( $this->session->userdata( 'user_id' ) ) {
+            // Record log when logging in
+            $this->Model_Log->log_add( log_lang( 'login' )['in'] );
             return true;
-          } else {
-            return false;
-          } 
+          }
         }
       }
     }

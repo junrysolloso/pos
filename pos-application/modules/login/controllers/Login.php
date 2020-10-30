@@ -102,13 +102,16 @@ class Login extends MY_Controller
 	 * Destroys session after signout
 	 */
 	public function signout() {
-		$session_name  = array( 'user_id', 'user_name', 'user_rule' );
-		foreach ( $session_name as $key ) {
-			unset( $_SESSION[ $key ] ); 
+		// Record log when logging out
+		if ( $this->Model_Log->log_add( log_lang( 'login' )['out'] ) ) {
+			$session_name  = array( 'user_id', 'user_name', 'user_rule' );
+			foreach ( $session_name as $key ) {
+				unset( $_SESSION[ $key ] ); 
+			}
+			if ( session_destroy() ) {
+				redirect( base_url( 'login' ) );
+			} 
 		}
-		if ( session_destroy() ) {
-			redirect( base_url( 'login' ) );
-		} 
 	}
 
 }

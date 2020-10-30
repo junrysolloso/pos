@@ -1,5 +1,4 @@
-
-    <div class="sidebar-menu">
+<div class="sidebar-menu">
       <div class="user-profile-section">
         <div class="profile-tab text-center">
           <img class="img-lg rounded-circle" src="<?php echo base_url(); ?>pos-uploads/avatar.jpg"
@@ -27,12 +26,12 @@
         </div>
         <div class="nav-item">
           <a href="#" class="nav-link">
-            <i class="menu-icons mdi mdi-database"></i><span class="menu-title">Backup</span>
+            <i class="menu-icons mdi mdi-poll"></i><span class="menu-title">Orders</span>
           </a>
         </div>
         <div class="nav-item">
           <a href="#" class="nav-link">
-            <i class="menu-icons mdi mdi-poll"></i><span class="menu-title">Orders</span>
+            <i class="menu-icons mdi mdi-cart-outline"></i><span class="menu-title">Sales</span>
           </a>
         </div>
         <div class="nav-item">
@@ -42,12 +41,12 @@
         </div>
         <div class="nav-item">
           <a href="#" class="nav-link">
-            <i class="menu-icons mdi mdi-monitor-multiple"></i><span class="menu-title">Logs</span>
+            <i class="menu-icons mdi mdi-plus-outline"></i><span class="menu-title">Barrcode</span>
           </a>
         </div>
         <div class="nav-item">
           <a href="#" class="nav-link">
-            <i class="menu-icons mdi mdi-flag-outline"></i><span class="menu-title">Sales</span>
+            <i class="menu-icons mdi mdi-database"></i><span class="menu-title">Backup</span>
           </a>
         </div>
         <div class="nav-item">
@@ -57,14 +56,14 @@
         </div>
         <div class="nav-item">
           <a href="#" class="nav-link">
-            <i class="menu-icons mdi mdi-account-outline"></i><span class="menu-title">Barrcode</span>
+            <i class="menu-icons mdi mdi-file-outline"></i><span class="menu-title">Logs</span>
           </a>
         </div>
       </nav>
 
       <div class="sidebar-footer-bottom">
         <ul>
-          <li><a href="#">Privacy &amp; Policy</a></li>
+          <li><a href="#">About Us</a></li>
           <li><a href="#">Help &amp; Guide</a></li>
         </ul>
         <p>© 2020 Dinagat Coders</p>
