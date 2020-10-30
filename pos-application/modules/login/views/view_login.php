@@ -49,13 +49,13 @@
                     <button type="submit" class="btn btn-primary submit-btn">LOGIN</button>
                   </div>
                   <div class="wrapper mt-5 text-gray">
-                    <p class="footer-text">Copyright © 2020 Dinagat Coders. All rights reserved.</p>
+                    <p class="footer-text">Copyright © 2020 Dinagat Coders.</p>
                     <ul class="auth-footer text-gray">
                       <li>
-                        <a href="#">Terms & Conditions</a>
+                        <a href="#">About Us</a>
                       </li>
                       <li>
-                        <a href="#">Cookie Policy</a>
+                        <a href="#">Help &amp; Guide</a>
                       </li>
                     </ul>
                   </div>
