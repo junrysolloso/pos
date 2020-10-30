@@ -12,7 +12,7 @@ Clone or download this repository.
 
 Create database and add it on /application/config/database.php  
 Make sure to check /application/config/autoload.php and remove "session" in auto-load libraries.  
-Run localhost/pos/setup  
+Visit localhost/pos/setup  
 
 ## Login
 Username: admin  
