@@ -42,6 +42,10 @@
                       <span class="dot-indicator bg-info"></span>
                       <p class="mb-0 ml-2">GROCERY SALES</p>
                     </div>
+                    <div class="d-flex align-items-center m-3">
+                      <span class="dot-indicator bg-warning"></span>
+                      <p class="mb-0 ml-2">BEAUTY PRODUCTS</p>
+                    </div>
                   </div>
                   <canvas class="pt-4 mt-auto chartjs-render-monitor" height="333" id="network-performance-chart"
                     style="display: block; height: 371px; width: 724px;" width="651"></canvas>
