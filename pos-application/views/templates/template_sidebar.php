@@ -56,7 +56,7 @@
         </div>
         <div class="nav-item">
           <a href="#" class="nav-link">
-            <i class="menu-icons mdi mdi-file-outline"></i><span class="menu-title">Logs</span>
+            <i class="menu-icons mdi mdi-file-outline"></i><span class="menu-title">Reports</span>
           </a>
         </div>
       </nav>
