@@ -39,12 +39,13 @@
                             
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                    <label class="input-group-text" for="inputGroupSelect01">Item Category</label>
                   </div>
                     <select class="custom-select" id="inputGroupSelect01">
-                      <option selected>Select Category</option>
+                      <option selected>Select Item Category</option>
                       <option value="1">Pharmacy</option>
                       <option value="2">Grocery</option>
+                      <option value="2">Beauty</option>
                     </select>
                   </div>
 
