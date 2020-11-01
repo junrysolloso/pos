@@ -20,12 +20,26 @@
   <div class="content-area-inner">
     <div class="row">
       <div class="col-md-12 grid-margin">
-        <div class="card">
+        <!-- <div class="card">
           <div class="card-body">
-            <h4 class="card-title">ADD STOCK INVENTORY</h4>
+          
+            <h4 class="card-title">ADD NEW PRODUCT INFORMATION</h4>
                         
               <form action="#" method="post">
 
+              
+
+                <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" name="year" class="form-control" placeholder="ex: 2020" required="">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+              
                 <div class="form-group">
                     <label for="item_title" class="col-form-label-lg">Item Code</label>
                     <input type="text" name="item_id" id="item_id" class="form-control rounded-0" />
@@ -36,22 +50,22 @@
                     <label for="item_title" class="col-form-label-lg">Item Description</label>
                     <input type="text" name="item_description" id="item_description" class="form-control rounded-0" />
                 </div>
-                            
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Item Category</label>
-                  </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                      <option selected>Select Item Category</option>
-                      <option value="1">Pharmacy</option>
-                      <option value="2">Grocery</option>
-                      <option value="2">Beauty</option>
-                    </select>
-                  </div>
+
+                <h4 class="card-title">ADD NEW CATEGORY AND SUB - CATEGORY</h4>      
+                <div class="form-group">
+                    <label for="item_title" class="col-form-label-lg">Item Category</label>
+                    <input type="text" name="item_id" id="item_id" class="form-control rounded-0" />
+
+                    <label for="item_title" class="col-form-label-lg">Item Name</label>
+                    <input type="text" name="item_name" id="item_name" class="form-control rounded-0" />
+
+                    <label for="item_title" class="col-form-label-lg">Item Description</label>
+                    <input type="text" name="item_description" id="item_description" class="form-control rounded-0" />
+                </div>
 
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <label class="input-group-text" for="inputGroupSelect01">Sub - Category</label>
+                      <label class="input-group-text" for="inputGroupSelect01">Item Sub - Category</label>
                     </div>
                     <select class="custom-select" id="inputGroupSelect01">
                       <option selected>Select Category</option>
@@ -81,6 +95,88 @@
 
               </form>
                             
+          </div>
+        </div> -->
+      <div class="card">
+        <div class="card-body">
+                    <h4 class="card-title">New Product Information</h4>
+                    <ul class="nav nav-tabs tab-solid tab-solid-danger" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="tab-5-1" data-toggle="tab" href="#category-5-1" role="tab" aria-controls="category-5-1" aria-selected="true">Category</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="tab-5-2" data-toggle="tab" href="#product_information-5-2" role="tab" aria-controls="product_information-5-2" aria-selected="false">Product Information</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="tab-5-3" data-toggle="tab" href="#unit-5-3" role="tab" aria-controls="unit-5-3" aria-selected="false">Unit Description</a>
+                      </li>
+                    </ul>
+
+                    <div class="tab-content tab-content-solid">
+                      <div class="tab-pane fade show active" id="category-5-1" role="tabpanel" aria-labelledby="tab-5-1">
+                        <div class="row">                        
+                        </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                            <input type="text" name="category_name" class="form-control" placeholder="ex: Pharmacy" />
+                            </div>
+                              <br>
+                            <div class="form-group">
+                              <input type="submit" name="add_category" value="Add Category" id="add_category" class="btn btn-primary rounded-0" />
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="input-group">
+                            <input type="text" name="subcat_name" class="form-control" placeholder="ex: Dairy Products" />
+                            </div>
+                              <br>
+                            <div class="form-group">
+                              <input type="submit" name="add_subcategory" value="Add Sub-Category" id="add_subcategory" class="btn btn-primary rounded-0" />
+                            </div>
+                      </div>
+                      </div>
+                      <div class="tab-pane fade" id="product_information-5-2" role="tabpanel" aria-labelledby="tab-5-2">
+                          <div class="form-group">
+                                <label for="item_title" class="col-form-label-lg">Item Code</label>
+                                <div class="input-group">
+                                  <input type="text" name="item_id" class="form-control" placeholder="" />
+                                </div>
+
+                                <label for="item_title" class="col-form-label-lg">Item Name</label>
+                                <div class="input-group">
+                                  <input type="text" name="item_Name" class="form-control" placeholder="" />
+                                </div>
+
+                                <label for="item_title" class="col-form-label-lg">Item Description</label>
+                                <div class="input-group">
+                                  <input type="text" name="item_description" class="form-control" placeholder="" />
+                                </div>
+
+                                <label for="item_title" class="col-form-label-lg">Crit Limit</label>
+                                <div class="input-group">
+                                  <input type="text" name="item_critlimit" class="form-control" placeholder="" />
+                                </div>
+
+                                  <br>
+                                <div class="form-group">
+                                  <input type="submit" name="add_product" value="Add Product" id="add_product" class="btn btn-primary rounded-0" />
+                                </div>
+                          </div>
+                      </div>
+                      <div class="tab-pane fade" id="unit-5-3" role="tabpanel" aria-labelledby="tab-5-3"> 
+                      <div class="form-group">
+                      <label for="item_title" class="col-form-label-lg">Unit Description</label>
+                        <div class="input-group">
+                            <input type="text" name="unit_desc" class="form-control" placeholder="" />
+                            </div>
+                              <br>
+                            <div class="form-group">
+                              <input type="submit" name="add_unit" value="Add Unit Description" id="add_unit" class="btn btn-primary rounded-0" />
+                            </div>
+                        </div>
+                      </div>
+                    </div>
           </div>
         </div>
       </div>
