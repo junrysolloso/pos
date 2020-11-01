@@ -3,7 +3,7 @@
 class Model_Sales extends MY_Model
 {
 
-  protected $_tbl_sales      = 'tbl_sales';
+  protected $_table          = 'tbl_sales';
   protected $_sales_id       = 'sales_id';
   protected $_cust_id        = 'cust_id';
   protected $_sales_date     = 'sales_date';
@@ -18,12 +18,24 @@ class Model_Sales extends MY_Model
 
   /**
    * Get Sales
-   * @param int $sales_id
-   * @param string $date
+   * @param int $sales_id - optional
+   * @param string $date - optional
    * @return array
    */
   public function sales_get( $sales_id = 0, $date = NULL ) {
     
+  }
+
+  /**
+   * Get overall total sales
+   * @return int $sales_total
+   */
+  public function sales_total_get() {
+    $this->db->select( 'SUM(sales_total) as total' );
+    $query = $this->db->get( $this->_table );
+    if( $query ) {
+      return $query->row()->total;
+    } 
   }
 
 }

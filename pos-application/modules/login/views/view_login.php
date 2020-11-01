@@ -50,10 +50,10 @@
                   style="background-image: linear-gradient(112deg, #2dc9eb, #14d2b8)">LOGIN</button>
               </div>
               <div class="wrapper mt-5 text-gray">
-                <p class="footer-text">© 2020 POS System</p>
+                <p class="footer-text"><?php credits( 'co' ); ?></p>
                 <ul class="auth-footer text-gray">
                   <li>
-                    <a href="#">Created with ❤ by Dinagat Coders</a>
+                    <a href="#"><?php credits( 'cr' ); ?></a>
                   </li>
                 </ul>
               </div>
