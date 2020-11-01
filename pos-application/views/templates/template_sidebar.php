@@ -4,7 +4,7 @@
           <img src="<?php echo base_url(); ?>pos-uploads/logo.png"
             alt="profile image" style="object-fit: cover; width: 140px">
           <h3 class="user-name">JARIPPRE</h3>
-          <p class="account-type">Dashboard</p>
+          <p class="account-type">POINT OF SALES SYSTEM</p>
         </div>
         <div class="user-stats">
           <div class="user-details">
@@ -20,8 +20,8 @@
             <i class="menu-icons mdi mdi-home-outline"></i><span class="menu-title">Dashboard</span>
           </a>
         </div>
-        <div class="nav-item" id="order">
-          <a href="<?php echo base_url(); ?>" class="nav-link">
+        <div class="nav-item" id="orders">
+          <a href="<?php echo base_url(); ?>orders" class="nav-link">
             <i class="menu-icons mdi mdi-poll"></i><span class="menu-title">Orders</span>
           </a>
         </div>

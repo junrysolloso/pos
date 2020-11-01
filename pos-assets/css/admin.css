@@ -1,0 +1,23 @@
+.auth.theme-one .auto-form-wrapper {
+  background: #fff;
+  border-radius: 0;
+  -webkit-box-shadow: 0;
+  padding: 0;
+  box-shadow: 0;
+}
+
+.tab-solid-success .nav-link.active,
+.btn-success.submit-btn {
+  background-image: linear-gradient(112deg, #2dc9eb, #14d2b8);
+}
+
+.tab-solid-success .nav-link,
+.btn-success.submit-btn {
+  padding: 12px 20px !important;
+  border-radius: 4px;
+}
+
+.orders .card,
+.settings .card   {
+  box-shadow: 0 10px 20px 0 rgba(90,113,208,.11) !important;
+}

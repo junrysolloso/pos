@@ -1,210 +1,193 @@
 <div class="content-area">
-    <div class="page-header">
-      <div class="info-section">
-        <div class="d-flex align-items-center mb-2">
-          <h4 class="page-title">Hi, welcome back!</h4>
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="reportSummary" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">Weekly</button>
-            <div class="dropdown-menu" aria-labelledby="reportSummary">
-              <a class="dropdown-item" href="#">Daily</a>
-              <a class="dropdown-item" href="#">Weekly</a>
-              <a class="dropdown-item" href="#">Monthly</a>
-            </div>
-          </div>
-        </div>
-        <p class="mb-3 mb-md-0">Your point of sale management dashboard.</p>
+  <div class="page-header">
+    <div class="info-section">
+      <div class="d-flex align-items-center mb-2">
+        <h4 class="page-title">Hi, welcome back!</h4>
       </div>
-    </div>
-
-    <div class="content-area-inner">
-      <div class="row">
-        <div class="col-md-12 grid-margin">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">WEEKLY SALES REPORT</h4>
-              <div class="row">
-                <div class="col-md-9 d-flex flex-column">
-                  <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                      <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                      <div class=""></div>
-                    </div>
-                  </div>
-                  <div class="wrapper d-flex">
-                    <div class="d-flex align-items-center mr-3">
-                      <span class="dot-indicator bg-success"></span>
-                      <p class="mb-0 ml-2">PHARMACY SALES</p>
-                    </div>
-                    <div class="d-flex align-items-center">
-                      <span class="dot-indicator bg-info"></span>
-                      <p class="mb-0 ml-2">GROCERY SALES</p>
-                    </div>
-                    <div class="d-flex align-items-center m-3">
-                      <span class="dot-indicator bg-warning"></span>
-                      <p class="mb-0 ml-2">BEAUTY PRODUCTS SALES</p>
-                    </div>
-                  </div>
-                  <canvas class="pt-4 mt-auto chartjs-render-monitor" height="400" id="product-sales-chart"
-                    style="display: block; height: 371px; width: 724px;" width="651"></canvas>
-                </div>
-                <div class="col-md-3 pl-4 pr-4 mt-4 mt-md-0">
-                  <div class="wrapper border-bottom mb-5 pb-5">
-                    <div class="d-flex justify-content-between">
-                      <h4 class="font-weight-semibold">120,495</h4>
-                      <div class="wrapper d-flex text-danger font-weight-semibold">
-                        <p>-11.81%</p>
-                        <i class="ml-2 icon-sm mdi mdi-arrow-down-bold-box-outline"></i>
-                      </div>
-                    </div>
-                    <p class="text-muted font-weight-medium">Daily Sales (GROCERY)</p>
-                  </div>
-                  <div class="wrapper border-bottom mb-5 pb-5">
-                    <div class="d-flex justify-content-between">
-                      <h4 class="font-weight-semibold">22,000</h4>
-                      <div class="wrapper d-flex text-success font-weight-semibold">
-                        <p>+12.20%</p>
-                        <i class="ml-2 icon-sm mdi mdi-arrow-up-bold-box-outline"></i>
-                      </div>
-                    </div>
-                    <p class="text-muted font-weight-medium">Daily Sales (PHARMACY)</p>
-                  </div>
-                  <div class="wrapper">
-                    <div class="d-flex justify-content-between">
-                      <h4 class="font-weight-semibold">50,040</h4>
-                      <div class="wrapper d-flex text-success font-weight-semibold">
-                        <p>+12.20%</p>
-                        <i class="ml-2 icon-sm mdi mdi-arrow-up-bold-box-outline"></i>
-                      </div>
-                    </div>
-                    <p class="text-muted font-weight-medium">Daily Sales (BEAUTY)</p>
-                  </div>
-                  <button type="button" class="btn btn-info btn-block mt-4">VIEW DAILY SALES</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-8 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Sales per cashier</h4>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th colspan="2">CASHIER</th>
-                      <th>TIME IN</th>
-                      <th>TOTAL SALES</th>
-                      <th>TIME OUT</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td colspan="2">
-                        <div class="d-flex align-items-center">
-                          <div class="img-ss rounded-circle mr-2"><i class="flag-icon flag-icon-us"></i></div> United
-                          States
-                        </div>
-                      </td>
-                      <td>134 (1.51%)</td>
-                      <td>33.58%</td>
-                      <td>15.47%</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <div class="d-flex align-items-center">
-                          <div class="img-ss rounded-circle mr-2"><i class="flag-icon flag-icon-tr"></i></div> Turkey
-                        </div>
-                      </td>
-                      <td>144 (5.67%) </td>
-                      <td>45.99%</td>
-                      <td>34.70%</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <div class="d-flex align-items-center">
-                          <div class="img-ss rounded-circle mr-2"><i class="flag-icon flag-icon-au"></i></div> Australia
-                        </div>
-                      </td>
-                      <td>114 (6.21%)</td>
-                      <td>23.80%</td>
-                      <td>54.45%</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <div class="d-flex align-items-center">
-                          <div class="img-ss rounded-circle mr-2"><i class="flag-icon flag-icon-br"></i></div> Brazil
-                        </div>
-                      </td>
-                      <td>324 (9.10%)</td>
-                      <td>12.89%</td>
-                      <td>18.89%</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Top products</h4>
-              <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card card-no-shadow border px-2 py-4">
-                    <small class="text-muted mb-0 font-weight-medium">Product 1</small>
-                    <h3 class="font-weight-semibold">3,450</h3>
-                    <div class="progress progress-sm mb-2">
-                      <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-dark font-weight-medium">34.6% avg</small>
-                  </div>
-                </div>
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card card-no-shadow border px-2 py-4">
-                    <small class="text-muted mb-0 font-weight-medium">Product 2</small>
-                    <h3 class="font-weight-semibold">49.4%</h3>
-                    <div class="progress progress-sm mb-2">
-                      <div class="progress-bar bg-danger" role="progressbar" style="width: 49%" aria-valuenow="49"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-dark font-weight-medium">489 avg</small>
-                  </div>
-                </div>
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card card-no-shadow border px-2 py-4">
-                    <small class="text-muted mb-0 font-weight-medium">Product 3</small>
-                    <h3 class="font-weight-semibold">$18,390</h3>
-                    <div class="progress progress-sm mb-2">
-                      <div class="progress-bar bg-warning" role="progressbar" style="width: 49%" aria-valuenow="49"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-dark font-weight-medium">$37,578 avg</small>
-                  </div>
-                </div>
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card card-no-shadow border px-2 py-4">
-                    <small class="text-muted mb-0 font-weight-medium">Product 4</small>
-                    <h3 class="font-weight-semibold">$23,461</h3>
-                    <div class="progress progress-sm mb-2">
-                      <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-dark font-weight-medium">$37,578 avg</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <p class="mb-3 mb-md-0">Your point of sale management dashboard.</p>
     </div>
   </div>
-  
+  <div class="content-area-inner auth theme-one">
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="card auto-form-wrapper rounded">
+          <div class="card-body">
+            <h4 class="card-title">ORDER DETAILS</h4>
+
+            <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#order-history" aria-selected="false">Order  History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#add-order" aria-selected="true">Add Order</a>
+              </li>
+            </ul>
+
+            <div class="tab-content tab-content-solid">
+              <!-- Order History -->
+              <div class="tab-pane  mb-5 fade show active" id="order-history" role="tabpanel">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>CASHIER</th>
+                        <th>TIME IN</th>
+                        <th>TOTAL SALES</th>
+                        <th>TIME OUT</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>134 (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>144 (5.67%) </td>
+                        <td>45.99%</td>
+                        <td>34.70%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>114 (6.21%)</td>
+                        <td>23.80%</td>
+                        <td>54.45%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>324 (9.10%)</td>
+                        <td>12.89%</td>
+                        <td>18.89%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+              <!-- Add Orders -->
+              <div class="tab-pane fade" id="add-order" role="tabpanel">
+                <form action="#" method="post">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="order_date">Order Date</label>
+                        <div class="input-group">
+                          <input type="text" name="order_date" class="form-control" id="order_date" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="total_amount">Total Amount</label>
+                        <div class="input-group">
+                          <input type="text" name="total_amount" class="form-control" id="total_amount" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="code_number">Barcode Number</label>
+                        <div class="input-group">
+                          <input type="text" name="code_number" class="form-control" id="code_number" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="order_category">Category</label>
+                        <div class="input-group">
+                          <select type="text" name="order_category" class="form-control" id="order_category" required>
+                            <option value="">Grocery</option>
+                            <option value="">Pharmacy</option>
+                            <option value="">Beauty</option>
+                          </select>
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="order_unit">Order Unit</label>
+                        <div class="input-group">
+                          <input type="text" name="order_unit" class="form-control" id="order_unit" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="order_quantity">Quantity</label>
+                        <div class="input-group">
+                          <input type="text" name="order_quantity" class="form-control" id="order_quantity" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="price_per_unit">Price Per Unit</label>
+                        <div class="input-group">
+                          <input type="text" name="price_per_unit" class="form-control" id="price_per_unit" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="expiration_date">Exipiration Date</label>
+                        <div class="input-group">
+                          <input type="text" name="expiration_date" class="form-control" id="expiration_date" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="col-12">
+                      <div class="form-group pb-2">
+                        <input type="submit" name="submit_order" value="Save Order Details" class="btn btn-success submit-btn" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>

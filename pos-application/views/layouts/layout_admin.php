@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/style-main.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/style.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/admin.css?v=1.0.01">
+    
 
     <?php echo $_styles; ?>
   </head>
-  <body <?php echo $body_class; ?>>
+  <body class="<?php echo $body_class; ?>">
     <?php echo $content; ?>
 
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/js/vendor.bundle.base.min.js"></script>

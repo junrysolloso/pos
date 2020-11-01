@@ -1,182 +1,353 @@
 <div class="content-area">
-    <div class="page-header">
-      <div class="info-section">
-        <div class="d-flex align-items-center mb-2">
-          <!-- <h4 class="page-title">Hi, welcome back!</h4>
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="reportSummary" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">Weekly</button>
-            <div class="dropdown-menu" aria-labelledby="reportSummary">
-              <a class="dropdown-item" href="#">Daily</a>
-              <a class="dropdown-item" href="#">Weekly</a>
-              <a class="dropdown-item" href="#">Monthly</a>
-            </div>
-          </div> -->
-        </div>
-        <!-- <p class="mb-3 mb-md-0">Your point of sale management dashboard.</p> -->
+  <div class="page-header">
+    <div class="info-section">
+      <div class="d-flex align-items-center mb-2">
+        <h4 class="page-title">Hi, welcome back!</h4>
       </div>
+      <p class="mb-3 mb-md-0">Your point of sale management dashboard.</p>
     </div>
-
-  <div class="content-area-inner">
+  </div>
+  <div class="content-area-inner auth theme-one">
     <div class="row">
       <div class="col-md-12 grid-margin">
-        <!-- <div class="card">
+        <div class="card auto-form-wrapper rounded">
           <div class="card-body">
-          
-            <h4 class="card-title">ADD NEW PRODUCT INFORMATION</h4>
-                        
-              <form action="#" method="post">
+            <h4 class="card-title">SETTING INFORMATION</h4>
 
-              
+            <!-- Tab Menu -->
+            <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#add-item" aria-selected="false">Product Info</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#add-category" aria-selected="true">Category</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#add-unit" aria-selected="false">Unit</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#add-com" aria-selected="false">Company Info</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#view-logs" aria-selected="false">System Logs</a>
+              </li>
+            </ul>
 
-                <div class="form-group">
-                    <div class="input-group">
-                      <input type="text" name="year" class="form-control" placeholder="ex: 2020" required="">
-                      <div class="input-group-append">
-                        <span class="input-group-text">
-                          <i class="mdi mdi-check-circle-outline"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-              
-                <div class="form-group">
-                    <label for="item_title" class="col-form-label-lg">Item Code</label>
-                    <input type="text" name="item_id" id="item_id" class="form-control rounded-0" />
-
-                    <label for="item_title" class="col-form-label-lg">Item Name</label>
-                    <input type="text" name="item_name" id="item_name" class="form-control rounded-0" />
-
-                    <label for="item_title" class="col-form-label-lg">Item Description</label>
-                    <input type="text" name="item_description" id="item_description" class="form-control rounded-0" />
-                </div>
-
-                <h4 class="card-title">ADD NEW CATEGORY AND SUB - CATEGORY</h4>      
-                <div class="form-group">
-                    <label for="item_title" class="col-form-label-lg">Item Category</label>
-                    <input type="text" name="item_id" id="item_id" class="form-control rounded-0" />
-
-                    <label for="item_title" class="col-form-label-lg">Item Name</label>
-                    <input type="text" name="item_name" id="item_name" class="form-control rounded-0" />
-
-                    <label for="item_title" class="col-form-label-lg">Item Description</label>
-                    <input type="text" name="item_description" id="item_description" class="form-control rounded-0" />
-                </div>
-
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="inputGroupSelect01">Item Sub - Category</label>
-                    </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                      <option selected>Select Category</option>
-                      <option value="1">Can Goods</option>
-                      <option value="2">Dairy Products</option>
-                      <option value="2">Other Sub-Category</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="item_price" class="col-form-label-lg">Unit</label>
-                    <select class="custom-select" id="inputGroupSelect01">
-                      <option selected>Select unit</option>
-                      <option value="1">pcs</option>
-                      <option value="2">box</option>
-                    </select>
-
-                    <label for="item_url" class="col-form-label-lg">Quantity</label>
-                    <input type="url" name="item_quantity" id="item_quantity" class="form-control rounded-0" />
-
-                  </div>
-
-                  <div class="form-group">
-                    <input type="submit" name="add" value="Add Product" id="submit" class="btn btn-primary rounded-0" />
-                    <input type="submit" name="edit" value="Update Product" id="submit" class="btn btn-primary rounded-0" />
-                  </div>
-
-              </form>
-                            
-          </div>
-        </div> -->
-      <div class="card">
-        <div class="card-body">
-                    <h4 class="card-title">New Product Information</h4>
-                    <ul class="nav nav-tabs tab-solid tab-solid-danger" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="tab-5-1" data-toggle="tab" href="#category-5-1" role="tab" aria-controls="category-5-1" aria-selected="true">Category</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="tab-5-2" data-toggle="tab" href="#product_information-5-2" role="tab" aria-controls="product_information-5-2" aria-selected="false">Product Information</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="tab-5-3" data-toggle="tab" href="#unit-5-3" role="tab" aria-controls="unit-5-3" aria-selected="false">Unit Description</a>
-                      </li>
-                    </ul>
-
-                    <div class="tab-content tab-content-solid">
-                      <div class="tab-pane fade show active" id="category-5-1" role="tabpanel" aria-labelledby="tab-5-1">
-                        <div class="row">                        
-                        </div>
-                          <div class="form-group">
-                            <div class="input-group">
-                            <input type="text" name="category_name" class="form-control" placeholder="ex: Pharmacy" />
-                            </div>
-                              <br>
-                            <div class="form-group">
-                              <input type="submit" name="add_category" value="Add Category" id="add_category" class="btn btn-primary rounded-0" />
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <div class="input-group">
-                            <input type="text" name="subcat_name" class="form-control" placeholder="ex: Dairy Products" />
-                            </div>
-                              <br>
-                            <div class="form-group">
-                              <input type="submit" name="add_subcategory" value="Add Sub-Category" id="add_subcategory" class="btn btn-primary rounded-0" />
-                            </div>
-                      </div>
-                      </div>
-                      <div class="tab-pane fade" id="product_information-5-2" role="tabpanel" aria-labelledby="tab-5-2">
-                          <div class="form-group">
-                                <label for="item_title" class="col-form-label-lg">Item Code</label>
-                                <div class="input-group">
-                                  <input type="text" name="item_id" class="form-control" placeholder="" />
-                                </div>
-
-                                <label for="item_title" class="col-form-label-lg">Item Name</label>
-                                <div class="input-group">
-                                  <input type="text" name="item_Name" class="form-control" placeholder="" />
-                                </div>
-
-                                <label for="item_title" class="col-form-label-lg">Item Description</label>
-                                <div class="input-group">
-                                  <input type="text" name="item_description" class="form-control" placeholder="" />
-                                </div>
-
-                                <label for="item_title" class="col-form-label-lg">Crit Limit</label>
-                                <div class="input-group">
-                                  <input type="text" name="item_critlimit" class="form-control" placeholder="" />
-                                </div>
-
-                                  <br>
-                                <div class="form-group">
-                                  <input type="submit" name="add_product" value="Add Product" id="add_product" class="btn btn-primary rounded-0" />
-                                </div>
-                          </div>
-                      </div>
-                      <div class="tab-pane fade" id="unit-5-3" role="tabpanel" aria-labelledby="tab-5-3"> 
+            <div class="tab-content tab-content-solid">
+              <!-- Add Product Info -->
+              <div class="tab-pane fade show active" id="add-item" role="tabpanel">
+                <form action="#" method="post">
+                  <div class="row">
+                    <div class="col-12">
                       <div class="form-group">
-                      <label for="item_title" class="col-form-label-lg">Unit Description</label>
+                        <label for="code_number">Bacrcode Number</label>
                         <div class="input-group">
-                            <input type="text" name="unit_desc" class="form-control" placeholder="" />
-                            </div>
-                              <br>
-                            <div class="form-group">
-                              <input type="submit" name="add_unit" value="Add Unit Description" id="add_unit" class="btn btn-primary rounded-0" />
-                            </div>
+                          <input type="text" name="code_number" class="form-control" id="code_number" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="item_name">Product Name</label>
+                        <div class="input-group">
+                          <input type="text" name="item_name" class="form-control" id="item_name" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="item_desc">Product Description</label>
+                        <div class="input-group">
+                          <input type="text" name="item_desc" class="form-control" id="item_desc" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="item_limit">Product Limit</label>
+                        <div class="input-group">
+                          <input type="text" name="item_limit" class="form-control" id="item_limit" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="item_cat">Product Category</label>
+                        <div class="input-group">
+                          <input type="text" name="item_cat" class="form-control" id="item_cat" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="item_subcat">Product Sub-category</label>
+                        <div class="input-group">
+                          <input type="text" name="item_subcat" class="form-control" id="item_subcat" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="item_unit">Order Unit</label>
+                        <div class="input-group">
+                          <input type="text" name="item_unit" class="form-control" id="item_unit" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="selling_unit">Selling Unit</label>
+                        <div class="input-group">
+                          <input type="text" name="selling_unit" class="form-control" id="selling_unit" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="item_equiv">Equivalent</label>
+                        <div class="input-group">
+                          <input type="text" name="item_equiv" class="form-control" id="item_equiv" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="col-12">
+                      <div class="form-group pb-2">
+                        <input type="submit" name="submit_item" value="Save Product Details" class="btn btn-success submit-btn" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Add Category -->
+              <div class="tab-pane fade mb-5" id="add-category" role="tabpanel">
+                <form action="#" method="post">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="add_category">Category</label>
+                        <div class="input-group">
+                          <input type="text" name="add_category" class="form-control" id="add_category" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="sub_category">Sub Category</label>
+                        <div class="input-group">
+                          <input type="text" name="add_category" class="form-control" id="sub_category" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="col-12">
+                      <div class="form-group pb-2">
+                        <input type="submit" name="submit_cat" value="Save Category Details" class="btn btn-success submit-btn" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              
+              <!-- Add Unit -->
+              <div class="tab-pane fade mb-5" id="add-unit" role="tabpanel">
+                <form action="#" method="post">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="unit_long">Long Description</label>
+                        <div class="input-group">
+                          <input type="text" name="unit_long" class="form-control" id="unit_long" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="unit_short">Short Description</label>
+                        <div class="input-group">
+                          <input type="text" name="unit_short" class="form-control" id="unit_short" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="col-12">
+                      <div class="form-group pb-2">
+                        <input type="submit" name="submit_unit" value="Save Unit Details" class="btn btn-success submit-btn" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Company Info -->
+              <div class="tab-pane fade" id="add-com" role="tabpanel">
+                <form action="#" method="post">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="com_name">Company Name</label>
+                        <div class="input-group">
+                          <input type="text" name="com_name" class="form-control" id="com_name" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="com_pro">Company Proprietor</label>
+                        <div class="input-group">
+                          <input type="text" name="com_pro" class="form-control" id="com_pro" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="com_tin">Company TIN Number</label>
+                        <div class="input-group">
+                          <input type="text" name="com_tin" class="form-control" id="com_tin" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="com_add">Company Addess</label>
+                        <div class="input-group">
+                          <input type="text" name="com_add" class="form-control" id="com_add" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="col-12">
+                      <div class="form-group pb-2">
+                        <input type="submit" name="submit_com" value="Save Company Details" class="btn btn-success submit-btn" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- View Logs -->
+              <div class="tab-pane fade mb-5" id="view-logs" role="tabpanel">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>CASHIER</th>
+                        <th>TIME IN</th>
+                        <th>TOTAL SALES</th>
+                        <th>TIME OUT</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>134 (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>144 (5.67%) </td>
+                        <td>45.99%</td>
+                        <td>34.70%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>114 (6.21%)</td>
+                        <td>23.80%</td>
+                        <td>54.45%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>324 (9.10%)</td>
+                        <td>12.89%</td>
+                        <td>18.89%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Settings -->
+      <div class="col-md-12 grid-margin">
+        <div class="card auto-form-wrapper rounded">
+          <div class="card-body">
+            <h4 class="card-title">OTHER SETTINGS</h4>
+           
           </div>
         </div>
       </div>
