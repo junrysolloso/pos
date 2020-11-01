@@ -9,6 +9,8 @@ class Settings extends MY_Controller
     // if ( ! $this->session->userdata( 'user_id' ) ) {
     //   redirect( base_url( 'login' ) );
     // }
+
+    $this->load->model( 'sales/Model_Sales' );
   }
 
 	/**
@@ -24,9 +26,11 @@ class Settings extends MY_Controller
     $this->template->set_master_template( 'layouts/layout_admin' );
     $this->template->write( 'title', $data['title'] );
     $this->template->write( 'body_class', $data['class'] );
+    $data['sales_total'] = $this->Model_Sales->sales_total_get();
 
     $this->template->write_view( 'content', 'templates/template_topbar' );
-    $this->template->write_view( 'content', 'templates/template_sidebar' );
+    $this->template->write_view( 'content', 'templates/template_sidebar', $data );
+    $this->template->write_view( 'content', 'templates/template_chart' );
     $this->template->write_view( 'content', 'view_settings', $data );
     $this->template->write_view( 'content', 'templates/template_footer' );
 

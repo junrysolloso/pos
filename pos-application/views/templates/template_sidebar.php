@@ -46,7 +46,7 @@
           </a>
         </div>
         <div class="nav-item">
-          <a href="<?php echo base_url(); ?>" class="nav-link" id="settings">
+          <a href="<?php echo base_url(); ?>settings" class="nav-link" id="settings">
             <i class="menu-icons mdi mdi-settings"></i><span class="menu-title">Settings</span>
           </a>
         </div>
