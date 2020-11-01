@@ -81,6 +81,13 @@ class Migration_Install_Setup extends CI_Migration
 				"`price_per_unit` decimal(9,2) DEFAULT NULL",
 			),
 
+			'orderdetails_expiry' => array(
+				"`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY",
+				"`orderdetails_id` int(10) NULL",
+				"`expiry_date` date NOT NULL",
+				"`rem_stocks` int(10) NOT NULL",
+			),
+			
 			'orderinventory' => array(
 				"`ordinv_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT",
 				"`orderdetails_id` int(11) DEFAULT NULL",

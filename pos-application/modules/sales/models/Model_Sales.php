@@ -38,6 +38,35 @@ class Model_Sales extends MY_Model
     } 
   }
 
+  /**
+   * Get daily total sales
+   * @param string $category
+   * @return int $sales_total
+   */
+  public function sales_daily_get( $category ) {
+    $this->db->select( 'SUM(sales_total) as total' );
+    
+    switch ( $category ) {
+      case 'pharmacy':
+        
+        break;
+      case 'grocecy':
+      
+      break;
+      case 'beauty':
+      
+      break;
+      default:
+        return false;
+        break;
+    }
+
+    $query = $this->db->get( $this->_table );
+    if( $query ) {
+      return $query->row()->total;
+    } 
+  }
+
 }
 
 /* End of file Model_Sales.php */

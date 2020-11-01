@@ -45,7 +45,7 @@
             <i class="menu-icons mdi mdi-database"></i><span class="menu-title">Backup</span>
           </a>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" id="settings">
           <a href="<?php echo base_url(); ?>settings" class="nav-link" id="settings">
             <i class="menu-icons mdi mdi-settings"></i><span class="menu-title">Settings</span>
           </a>
