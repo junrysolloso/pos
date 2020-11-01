@@ -55,7 +55,7 @@
                   <!-- Grocery Search input -->
                   <div class="col-4">
                     <div class="input-group">
-                      <input type="text" name="grocery_search" class="form-control" id="grocery_search" required />
+                      <input type="text" name="grocery_search" class="form-control" id="grocery_search" required="" />
                     </div>
                   </div>
 
@@ -139,7 +139,7 @@
                   <!-- Pharmacy Search input -->
                   <div class="col-4">
                     <div class="input-group">
-                      <input type="text" name="pharmacy_search" class="form-control" id="pharmacy_search" required />
+                      <input type="text" name="pharmacy_search" class="form-control" id="pharmacy_search" required="" />
                     </div>
                   </div>
 
@@ -224,7 +224,7 @@
                   <!-- Beauty Products Search input -->
                   <div class="col-4">
                     <div class="input-group">
-                      <input type="text" name="beauty_search" class="form-control" id="beauty_search" required />
+                      <input type="text" name="beauty_search" class="form-control" id="beauty_search" required="" />
                     </div>
                   </div>
 
@@ -309,7 +309,7 @@
                   <!-- Beauty Products Search input -->
                   <div class="col-4">
                     <div class="input-group">
-                      <input type="text" name="damage_search" class="form-control" id="damage_search" required />
+                      <input type="text" name="damage_search" class="form-control" id="damage_search" required="" />
                     </div>
                   </div>
 
