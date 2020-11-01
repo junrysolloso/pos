@@ -1,3 +1,22 @@
+<div class="content-area">
+    <div class="page-header">
+      <div class="info-section">
+        <div class="d-flex align-items-center mb-2">
+          <!-- <h4 class="page-title">Hi, welcome back!</h4>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="reportSummary" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Weekly</button>
+            <div class="dropdown-menu" aria-labelledby="reportSummary">
+              <a class="dropdown-item" href="#">Daily</a>
+              <a class="dropdown-item" href="#">Weekly</a>
+              <a class="dropdown-item" href="#">Monthly</a>
+            </div>
+          </div> -->
+        </div>
+        <!-- <p class="mb-3 mb-md-0">Your point of sale management dashboard.</p> -->
+      </div>
+    </div>
+
   <div class="content-area-inner">
     <div class="row">
       <div class="col-md-12 grid-margin">
