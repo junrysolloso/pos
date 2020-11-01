@@ -91,10 +91,14 @@ class Login extends MY_Controller
 	 * Block user if too many attempts
 	 */
 	public function blocked() {
-		$this->template->set_master_template( 'layouts/layout_site' );
-		$this->template->write( 'title', 'Access Blocked' );
-		$this->template->write_view( 'content', 'view_blocked' );
-		$this->template->render();
+		if ( $this->session->userdata( 'user_id' ) ) {
+      redirect( base_url( 'dashboard' ) );
+		} else {
+			$this->template->set_master_template( 'layouts/layout_site' );
+			$this->template->write( 'title', 'Access Blocked' );
+			$this->template->write_view( 'content', 'view_blocked' );
+			$this->template->render();
+		}
 	}
 
 	/**

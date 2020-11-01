@@ -13,7 +13,7 @@
           </div>
           <div class="row mt-5">
             <div class="col-12 mt-xl-2">
-              <p class="text-white font-weight-medium text-center">Contact System Administrator<br />Created with ❤ by Dinagat Coders</p>
+              <p class="text-white font-weight-medium text-center">CONTACT YOUR SYSTEM ADMINISTRATOR<br /><?php credits( 'co' ); ?><br /><?php credits( 'cr' ); ?></p>
             </div>
           </div>
         </div>
