@@ -7,6 +7,7 @@
       <p class="mb-3 mb-md-0">Your point of sale management dashboard.</p>
     </div>
   </div>
+  
   <div class="content-area-inner auth theme-one">
     <div class="row">
       <div class="col-md-12 grid-margin">
@@ -309,7 +310,7 @@
                   <!-- Beauty Products Search input -->
                   <div class="col-4">
                     <div class="input-group">
-                      <input type="text" name="damage_search" class="form-control" id="damage_search" required="" />
+                      <input type="text" name="damage_search" class="form-control" id="damage_search" required />
                     </div>
                   </div>
 

@@ -51,7 +51,7 @@
           </a>
         </div>
         <div class="nav-item">
-          <a href="<?php echo base_url(); ?>" class="nav-link" id="reports">
+          <a href="<?php echo base_url(); ?>reports" class="nav-link" id="reports">
             <i class="menu-icons mdi mdi-file-outline"></i><span class="menu-title">Reports</span>
           </a>
         </div>
