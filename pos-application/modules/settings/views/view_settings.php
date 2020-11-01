@@ -26,6 +26,9 @@
                 <a class="nav-link" data-toggle="tab" href="#add-unit" aria-selected="false">Unit</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#add-dmg" aria-selected="false">Damage Items</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#add-com" aria-selected="false">Company Info</a>
               </li>
               <li class="nav-item">
@@ -154,7 +157,8 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_item" value="Save Product Details" class="btn btn-success submit-btn" />
+                        <input type="submit" name="submit_item" value="Save Product Details"
+                          class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>
@@ -192,13 +196,14 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_cat" value="Save Category Details" class="btn btn-success submit-btn" />
+                        <input type="submit" name="submit_cat" value="Save Category Details"
+                          class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>
                 </form>
               </div>
-              
+
               <!-- Add Unit -->
               <div class="tab-pane fade mb-5" id="add-unit" role="tabpanel">
                 <form action="#" method="post">
@@ -230,7 +235,8 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_unit" value="Save Unit Details" class="btn btn-success submit-btn" />
+                        <input type="submit" name="submit_unit" value="Save Unit Details"
+                          class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>
@@ -290,22 +296,112 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_com" value="Save Company Details" class="btn btn-success submit-btn" />
+                        <input type="submit" name="submit_com" value="Save Company Details"
+                          class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>
                 </form>
               </div>
-              <!-- View Logs -->
+
+              <!-- System Logs -->
               <div class="tab-pane fade mb-5" id="view-logs" role="tabpanel">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table" id="log-table">
                     <thead>
                       <tr>
-                        <th>CASHIER</th>
-                        <th>TIME IN</th>
-                        <th>TOTAL SALES</th>
-                        <th>TIME OUT</th>
+                        <th>USER</th>
+                        <th>DATE</th>
+                        <th>TIME</th>
+                        <th>ACTIVITY</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>134 (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>144 (5.67%) </td>
+                        <td>45.99%</td>
+                        <td>34.70%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>114 (6.21%)</td>
+                        <td>23.80%</td>
+                        <td>54.45%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>324 (9.10%)</td>
+                        <td>12.89%</td>
+                        <td>18.89%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Damage Items -->
+              <div class="tab-pane fade mb-5" id="add-dmg" role="tabpanel">
+                <form action="#" method="post" class="mb-3">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="dmg_code_number">Barcode Number</label>
+                        <div class="input-group">
+                          <input type="text" name="dmg_code_number" class="form-control" id="dmg_code_number" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="item_quan">Item Quantity</label>
+                        <div class="input-group">
+                          <input type="text" name="item_quan" class="form-control" id="item_quan" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="item_rem">Remarks</label>
+                        <div class="input-group">
+                          <input type="text" name="item_rem" class="form-control" id="item_rem" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="col-12">
+                      <div class="form-group pb-2">
+                        <input type="submit" name="submit_dmg" value="Save Damage Item"
+                          class="btn btn-success submit-btn" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="table-responsive">
+                  <table class="table" id="dmg-table">
+                    <thead>
+                      <tr>
+                        <th>BARCODE NUMBER</th>
+                        <th>ITEMS QUANTITY</th>
+                        <th>REMARKS</th>
+                        <th>DATE ADDED</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -342,12 +438,130 @@
         </div>
       </div>
 
-      <!-- Other Settings -->
+      <!-- User settings -->
       <div class="col-md-12 grid-margin">
         <div class="card auto-form-wrapper rounded">
           <div class="card-body">
-            <h4 class="card-title">OTHER SETTINGS</h4>
-           
+            <h4 class="card-title">USER SETTINGS</h4>
+              <form action="#" method="post" class="mb-3">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="user_full">Full Name</label>
+                    <div class="input-group">
+                      <input type="text" name="user_full" class="form-control" id="user_full" required />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="user_add">Address</label>
+                    <div class="input-group">
+                      <input type="text" name="user_add" class="form-control" id="user_add" required />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="user_nick">Nickname</label>
+                    <div class="input-group">
+                      <input type="text" name="user_nick" class="form-control" id="user_nick" required />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="user_name">User Name</label>
+                    <div class="input-group">
+                      <input type="text" name="user_name" class="form-control" id="user_name" required />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="user_pass">Password</label>
+                    <div class="input-group">
+                      <input type="text" name="user_pass" class="form-control" id="user_pass" required />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="user_level">User Level</label>
+                    <div class="input-group">
+                      <input type="text" name="user_level" class="form-control" id="user_level" required />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Button -->
+                <div class="col-12">
+                  <div class="form-group pb-2">
+                    <input type="submit" name="submit_user" value="Save User Details"
+                      class="btn btn-success submit-btn" />
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="table-responsive">
+              <table class="table" id="users-table">
+                <thead>
+                  <tr>
+                    <th>FULL NAME</th>
+                    <th>USER NAME</th>
+                    <th>ADDRESS</th>
+                    <th>USER LEVEL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Allen Sham</td>
+                    <td>134 (1.51%)</td>
+                    <td>33.58%</td>
+                    <td>15.47%</td>
+                  </tr>
+                  <tr>
+                    <td>Allen Sham</td>
+                    <td>144 (5.67%) </td>
+                    <td>45.99%</td>
+                    <td>34.70%</td>
+                  </tr>
+                  <tr>
+                    <td>Allen Sham</td>
+                    <td>114 (6.21%)</td>
+                    <td>23.80%</td>
+                    <td>54.45%</td>
+                  </tr>
+                  <tr>
+                    <td>Allen Sham</td>
+                    <td>324 (9.10%)</td>
+                    <td>12.89%</td>
+                    <td>18.89%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

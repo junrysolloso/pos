@@ -7,8 +7,16 @@
 }
 
 .tab-solid-success .nav-link.active,
-.btn-success.submit-btn {
+.btn-success.submit-btn,
+.pagination .page-item.active .page-link,
+.pagination .page-item:hover .page-link {
+  background: #2dc9eb;
   background-image: linear-gradient(112deg, #2dc9eb, #14d2b8);
+}
+
+.pagination .page-item.active .page-link,
+.pagination .page-item:hover .page-link {
+ border-color: #2dc9eb;
 }
 
 .tab-solid-success .nav-link,
@@ -21,3 +29,4 @@
 .settings .card   {
   box-shadow: 0 10px 20px 0 rgba(90,113,208,.11) !important;
 }
+

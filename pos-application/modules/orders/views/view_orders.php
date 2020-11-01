@@ -27,13 +27,53 @@
               <!-- Order History -->
               <div class="tab-pane  mb-5 fade show active" id="order-history" role="tabpanel">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table" id="history-table">
                     <thead>
                       <tr>
-                        <th>CASHIER</th>
-                        <th>TIME IN</th>
-                        <th>TOTAL SALES</th>
-                        <th>TIME OUT</th>
+                        <th>NO.</th>
+                        <th>ORDER DATE</th>
+                        <th>ORDER TOTAL</th>
+                        <th>NUMBER OF ITEMS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>134 (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>144 (5.67%) </td>
+                        <td>45.99%</td>
+                        <td>34.70%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>114 (6.21%)</td>
+                        <td>23.80%</td>
+                        <td>54.45%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>324 (9.10%)</td>
+                        <td>12.89%</td>
+                        <td>18.89%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Order Items -->
+                <div class="table-responsive mt-5">
+                  <table class="table" id="items-table">
+                    <thead>
+                      <tr>
+                        <th>ITEM NUMBER</th>
+                        <th>ITEM NAME</th>
+                        <th>CATEGORY</th>
+                        <th>REMAINING</th>
                       </tr>
                     </thead>
                     <tbody>

@@ -3,13 +3,13 @@
             <div class="card-body">
               <h4 class="card-title">SALES PER CASHIER</h4>
               <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="cahier-table">
                   <thead>
                     <tr>
                       <th>CASHIER</th>
-                      <th>TIME IN</th>
-                      <th>TOTAL SALES</th>
-                      <th>TIME OUT</th>
+                      <th>ITEM NUMBER</th>
+                      <th>AMOUNT</th>
+                      <th>QUANTITY</th>
                     </tr>
                   </thead>
                   <tbody>
