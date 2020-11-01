@@ -37,7 +37,7 @@
         </div>
         <div class="nav-item" id="barcode">
           <a href="<?php echo base_url(); ?>" class="nav-link">
-            <i class="menu-icons mdi mdi-plus-outline"></i><span class="menu-title">Barrcode</span>
+            <i class="menu-icons mdi mdi-plus-outline"></i><span class="menu-title">Barcode</span>
           </a>
         </div>
         <div class="nav-item" id="backup">
