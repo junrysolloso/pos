@@ -31,7 +31,7 @@
           </a>
         </div>
         <div class="nav-item" id="inventory">
-          <a href="<?php echo base_url(); ?>" class="nav-link">
+          <a href="<?php echo base_url(); ?>inventory" class="nav-link">
             <i class="menu-icons mdi mdi-domain"></i><span class="menu-title">Inventory</span>
           </a>
         </div>

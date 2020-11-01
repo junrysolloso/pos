@@ -43,7 +43,7 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
-                        <label for="code_number">Bacrcode Number</label>
+                        <label for="code_number">Barcode Number</label>
                         <div class="input-group">
                           <input type="text" name="code_number" class="form-control" id="code_number" required />
                           <div class="input-group-append">
