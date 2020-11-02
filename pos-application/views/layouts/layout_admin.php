@@ -36,6 +36,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net-fixedcolumns/dataTables.fixedColumns.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/sweetalert/sweetalert.min.js"></script>
 
     <!-- Additional JS -->
     <?php echo $_scripts; ?>

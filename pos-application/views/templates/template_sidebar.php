@@ -36,12 +36,12 @@
           </a>
         </div>
         <div class="nav-item" id="barcode">
-          <a href="<?php echo base_url(); ?>" class="nav-link">
+          <a href="<?php echo base_url(); ?>barcode" class="nav-link">
             <i class="menu-icons mdi mdi-plus-outline"></i><span class="menu-title">Barcode</span>
           </a>
         </div>
         <div class="nav-item" id="backup">
-          <a href="<?php echo base_url(); ?>" class="nav-link">
+          <a href="<?php echo base_url(); ?>backup" class="nav-link">
             <i class="menu-icons mdi mdi-database"></i><span class="menu-title">Backup</span>
           </a>
         </div>
