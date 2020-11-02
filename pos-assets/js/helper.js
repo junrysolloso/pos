@@ -63,4 +63,19 @@ $(document).ready(function () {
   // Inputmask
   $(":input").inputmask();
 
+  // Show alert
+  showSwal = function(type) {
+    swal({
+      title: 'Congratulations!',
+      text: 'Backup done.',
+      icon: 'success',
+      button: {
+        text: "Ok",
+        value: true,
+        visible: true,
+        className: "btn btn-success"
+      }
+    });
+  }
+
 });
