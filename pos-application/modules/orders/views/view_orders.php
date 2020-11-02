@@ -26,8 +26,25 @@
             <div class="tab-content tab-content-solid">
               <!-- Order History -->
               <div class="tab-pane  mb-4 fade show active" id="order-history" role="tabpanel">
-                <div class="table-responsive">
-                  <table class="table" id="history-table">
+                <!-- Filter -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="text" name="data_search" class="form-control" id="ord-history" placeholder="Search anything from the table..." />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-magnify-plus"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Table -->
+                <div class="table-responsive border-bottom pb-5">
+                  <table class="table" id="ord-histo-table">
                     <thead>
                       <tr>
                         <th>NO.</th>
@@ -66,44 +83,64 @@
                 </div>
 
                 <!-- Order Items -->
-                <div class="table-responsive mt-5">
-                  <table class="table" id="items-table">
-                    <thead>
-                      <tr>
-                        <th>ITEM NUMBER</th>
-                        <th>ITEM NAME</th>
-                        <th>CATEGORY</th>
-                        <th>REMAINING</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="mt-5">
+                  <!-- Filter -->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" name="data_search" class="form-control" id="ord-items" placeholder="Search anything from the table..." />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-magnify-plus"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Table -->
+                  <div class="table-responsive">
+                    <table class="table" id="ord-items-table">
+                      <thead>
+                        <tr>
+                          <th>ITEM NUMBER</th>
+                          <th>ITEM NAME</th>
+                          <th>CATEGORY</th>
+                          <th>REMAINING</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Allen Sham</td>
+                          <td>134 (1.51%)</td>
+                          <td>33.58%</td>
+                          <td>15.47%</td>
+                        </tr>
+                        <tr>
+                          <td>Allen Sham</td>
+                          <td>144 (5.67%) </td>
+                          <td>45.99%</td>
+                          <td>34.70%</td>
+                        </tr>
+                        <tr>
+                          <td>Allen Sham</td>
+                          <td>114 (6.21%)</td>
+                          <td>23.80%</td>
+                          <td>54.45%</td>
+                        </tr>
+                        <tr>
+                          <td>Allen Sham</td>
+                          <td>324 (9.10%)</td>
+                          <td>12.89%</td>
+                          <td>18.89%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+                
               </div>
               
               <!-- Add Orders -->
@@ -224,7 +261,7 @@
                   </div>
                 </form>
                 <div class="table-responsive">
-                  <table class="table" id="history-table">
+                  <table class="table" id="ord-added-table">
                     <thead>
                       <tr>
                         <th>BARCODE NUMBER</th>

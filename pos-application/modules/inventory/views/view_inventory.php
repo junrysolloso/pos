@@ -38,7 +38,7 @@
                   <div class="col-md-9">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="inv_search" class="form-control" id="grocery" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" class="form-control" id="inv-grocery" placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -102,7 +102,7 @@
                   <div class="col-md-9">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="inv_search" class="form-control" id="pharmacy" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" class="form-control" id="inv-pharmacy" placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -167,7 +167,7 @@
                   <div class="col-md-9">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="inv_search" class="form-control" id="beauty" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" class="form-control" id="inv-beauty" placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -232,7 +232,7 @@
                   <div class="col-md-9">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="inv_search" class="form-control" id="damage" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" class="form-control" id="inv-damage" placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>

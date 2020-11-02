@@ -397,7 +397,7 @@
 
               <!-- User Info -->
               <div class="tab-pane fade mb-4 mt-4" id="user-info" role="tabpanel">
-                <form action="#" method="post" class="mb-3">
+                <form action="#" method="post" class="mb-3 border-bottom pb-3">
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
@@ -478,50 +478,87 @@
                     </div>
                   </div>
                 </form>
-                <div class="table-responsive">
-                  <table class="table" id="users-table">
-                    <thead>
-                      <tr>
-                        <th>FULL NAME</th>
-                        <th>USER NAME</th>
-                        <th>ADDRESS</th>
-                        <th>USER LEVEL</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+                <div class="pt-4">
+                  <!-- Filter -->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" name="data_search" class="form-control" id="set-users" placeholder="Search anything from the table..." />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-magnify-plus"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Table -->
+                  <div class="table-responsive">
+                    <table class="table" id="set-users-table">
+                      <thead>
+                        <tr>
+                          <th>FULL NAME</th>
+                          <th>USER NAME</th>
+                          <th>ADDRESS</th>
+                          <th>USER LEVEL</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Allen Sham</td>
+                          <td>134 (1.51%)</td>
+                          <td>33.58%</td>
+                          <td>15.47%</td>
+                        </tr>
+                        <tr>
+                          <td>Allen Sham</td>
+                          <td>144 (5.67%) </td>
+                          <td>45.99%</td>
+                          <td>34.70%</td>
+                        </tr>
+                        <tr>
+                          <td>Allen Sham</td>
+                          <td>114 (6.21%)</td>
+                          <td>23.80%</td>
+                          <td>54.45%</td>
+                        </tr>
+                        <tr>
+                          <td>Allen Sham</td>
+                          <td>324 (9.10%)</td>
+                          <td>12.89%</td>
+                          <td>18.89%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               
               <!-- System Logs -->
               <div class="tab-pane fade mb-4 mt-4" id="view-logs" role="tabpanel">
+                <!-- Filter -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="text" name="data_search" class="form-control" id="set-logss" placeholder="Search anything from the table..." />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-magnify-plus"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Table -->
                 <div class="table-responsive">
-                  <table class="table" id="log-table">
+                  <table class="table" id="set-logss-table">
                     <thead>
                       <tr>
                         <th>USER NAME</th>
