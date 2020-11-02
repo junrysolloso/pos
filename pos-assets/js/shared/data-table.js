@@ -3,7 +3,32 @@
   // Initialize tables
   // Settings Table
   $(function () {
-    $('#dmg-table, #cahier-table, #set-users-table').DataTable({
+    $('#set-damag-table, #cahier-table, #set-users-table').DataTable({
+      "aLengthMenu": [
+        [5, 10, 15, -1],
+        [5, 10, 15, "All"]
+      ],
+      bFilter: true,
+      "iDisplayLength": 10,
+      "bLengthChange": false,
+    });
+  });
+
+  $(function () {
+    $('#set-logss-table').DataTable({
+      "aLengthMenu": [
+        [5, 10, 15, -1],
+        [5, 10, 15, "All"]
+      ],
+      bFilter: true,
+      "iDisplayLength": 30,
+      "bLengthChange": false,
+    });
+  });
+
+  // Dashboard
+  $(function () {
+    $('#das-cahie-table').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
@@ -16,7 +41,7 @@
 
   // Sales Table
   $(function () {
-    $('#pharma-table, #grocs-table, #beauty-table').DataTable({
+    $('#sal-pharma-table, #sal-grocs-table, #sal-beauty-table').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
@@ -40,19 +65,6 @@
     });
   });
 
-  // Logs Table
-  $(function () {
-    $('#set-logss-table').DataTable({
-      "aLengthMenu": [
-        [5, 10, 15, -1],
-        [5, 10, 15, "All"]
-      ],
-      bFilter: true,
-      "iDisplayLength": 30,
-      "bLengthChange": false,
-    });
-  });
-
   // Inventory Table
   $(function () {
     $('#inv-grocs-table, #inv-pharm-table, #inv-beaut-table, #inv-damag-table').DataTable({
@@ -69,6 +81,7 @@
 })(jQuery);
 
 $(document).ready(function () {
+
   // Append search input and print button
   // if ($('.inventory .table-responsive').length) {
   //   $('.dataTables_paginate ul.pagination').prepend('<li><input type="submit" name="inv_print" value="Print Inventory" id="print-btn" class="btn btn-success submit-btn"></li>');

@@ -4,7 +4,7 @@
             <div class="card-body">
               <h4 class="card-title">GROCERY PRODUCTS</h4>
               <div class="table-responsive">
-                <table class="table" id="grocs-table">
+                <table class="table" id="sal-grocs-table">
                   <thead>
                     <tr>
                       <th>ITEM NUMBER</th>
@@ -105,7 +105,7 @@
             <div class="card-body">
               <h4 class="card-title">PHARMACY PRODUCTS</h4>
               <div class="table-responsive">
-                <table class="table" id="pharma-table">
+                <table class="table" id="sal-pharma-table">
                   <thead>
                     <tr>
                       <th>ITEM NUMBER</th>
@@ -206,7 +206,7 @@
             <div class="card-body">
               <h4 class="card-title">BEAUTY PRODUCTS</h4>
               <div class="table-responsive">
-                <table class="table" id="beauty-table">
+                <table class="table" id="sal-beauty-table">
                   <thead>
                     <tr>
                       <th>ITEM NUMBER</th>

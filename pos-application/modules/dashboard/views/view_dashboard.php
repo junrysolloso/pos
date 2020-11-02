@@ -3,7 +3,7 @@
             <div class="card-body">
               <h4 class="card-title">SALES PER CASHIER</h4>
               <div class="table-responsive">
-                <table class="table" id="cahier-table">
+                <table class="table" id="das-cahie-table">
                   <thead>
                     <tr>
                       <th>CASHIER</th>

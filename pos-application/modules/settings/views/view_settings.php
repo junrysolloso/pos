@@ -356,7 +356,7 @@
                   </div>
                 </form>
                 <div class="table-responsive">
-                  <table class="table" id="dmg-table">
+                  <table class="table" id="set-damag-table">
                     <thead>
                       <tr>
                         <th>BARCODE NUMBER</th>
