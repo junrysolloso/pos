@@ -602,14 +602,14 @@
       </div>
 
       <!-- Other settings -->
-      <div class="col-md-12 grid-margin">
+      <!-- <div class="col-md-12 grid-margin">
         <div class="card auto-form-wrapper rounded">
           <div class="card-body">
             <h4 class="card-title">OTHER SETTINGS</h4>
             
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>

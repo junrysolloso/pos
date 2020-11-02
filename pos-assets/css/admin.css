@@ -17,8 +17,14 @@
 
 .tab-solid-success .nav-link,
 .btn-success.submit-btn {
+  padding: 14px 20px !important;
+  border-radius: 5px;
+}
+
+.pagination .page-item.active .page-link,
+.pagination .page-item:hover .page-link,
+.pagination .page-item .page-link{
   padding: 12px 20px !important;
-  border-radius: 4px;
 }
 
 /* Body */
@@ -47,5 +53,9 @@ div.dataTables_wrapper div.dataTables_filter {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
+
+/* .auth.theme-one .auto-form-wrapper .form-group .input-group {
+  height: 26px !important;
+} */
 
 /* Inventory */

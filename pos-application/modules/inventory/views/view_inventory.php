@@ -17,16 +17,16 @@
             <!-- Tabe Menus -->
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#grocery" aria-selected="false">Grocery</a>
+                <a class="nav-link active" data-toggle="tab" href="#grocery" aria-selected="true">Grocery</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#pharmacy" aria-selected="true">Pharmacy</a>
+                <a class="nav-link" data-toggle="tab" href="#pharmacy" aria-selected="false">Pharmacy</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#beauty-products" aria-selected="true">Beauty Products</a>
+                <a class="nav-link" data-toggle="tab" href="#beauty" aria-selected="false">Beauty Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#damage" aria-selected="true">Damage Products</a>
+                <a class="nav-link" data-toggle="tab" href="#damage" aria-selected="false">Damage Products</a>
               </li>
             </ul>
 
@@ -157,11 +157,10 @@
                     </tbody>
                   </table>
                 </div>
-
               </div>
 
               <!--Beauty Products-->
-              <div class="tab-pane  mb-5 fade" id="beauty" role="tabpanel">
+              <div class="tab-pane fade mb-5" id="beauty" role="tabpanel">
                 <!-- Filter -->
                 <div class="row">
                   <div class="col-md-9">
@@ -222,7 +221,6 @@
                     </tbody>
                   </table>
                 </div>
-
               </div>
 
               <!--Damage-->

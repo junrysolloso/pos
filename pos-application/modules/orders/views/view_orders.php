@@ -192,9 +192,9 @@
                         <label for="order_category">Category</label>
                         <div class="input-group">
                           <select type="text" name="order_category" class="form-control" id="order_category" required>
-                            <option value="">Grocery</option>
-                            <option value="">Pharmacy</option>
-                            <option value="">Beauty</option>
+                            <option value="grocery">Grocery</option>
+                            <option value="pharmacy">Pharmacy</option>
+                            <option value="beauty">Beauty</option>
                           </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
