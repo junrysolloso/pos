@@ -84,7 +84,7 @@
                       <div class="form-group">
                         <label for="item_limit">Product Limit</label>
                         <div class="input-group">
-                          <input type="text" name="item_limit" class="form-control" id="item_limit" required />
+                          <input type="number" name="item_limit" class="form-control" id="item_limit" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -120,7 +120,7 @@
                       <div class="form-group">
                         <label for="item_unit">Order Unit</label>
                         <div class="input-group">
-                          <input type="text" name="item_unit" class="form-control" id="item_unit" required />
+                          <input type="number" name="item_unit" class="form-control" id="item_unit" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -134,7 +134,7 @@
                       <div class="form-group">
                         <label for="selling_unit">Selling Unit</label>
                         <div class="input-group">
-                          <input type="text" name="selling_unit" class="form-control" id="selling_unit" required />
+                          <input type="number" name="selling_unit" class="form-control" id="selling_unit" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -148,7 +148,7 @@
                       <div class="form-group">
                         <label for="item_equiv">Equivalent</label>
                         <div class="input-group">
-                          <input type="text" name="item_equiv" class="form-control" id="item_equiv" required />
+                          <input type="number" name="item_equiv" class="form-control" id="item_equiv" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -184,13 +184,13 @@
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="sub_category">Sub Category</label>
+                      <div class="form-group sub-main">
+                        <label for="subcat[]">Sub Category</label>
                         <div class="input-group">
-                          <input type="text" name="add_category" class="form-control" id="sub_category" required />
+                          <input type="text" name="subcat[]" class="form-control" required />
                           <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
+                            <span class="input-group-text sub-add">
+                              <i class="mdi mdi-plus-circle-outline mdi-18px"></i>&nbsp;Add New
                             </span>
                           </div>
                         </div>
@@ -199,8 +199,7 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_cat" value="Save Category Details"
-                          class="btn btn-success submit-btn" />
+                        <input type="submit" name="submit_cat" value="Save Category Details" class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>

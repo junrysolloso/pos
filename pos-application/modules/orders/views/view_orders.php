@@ -151,7 +151,7 @@
                       <div class="form-group">
                         <label for="order_date">Order Date</label>
                         <div class="input-group">
-                          <input type="text" name="order_date" class="form-control" id="order_date" required />
+                          <input type="text" name="order_date" class="form-control" id="order_date" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -165,7 +165,7 @@
                       <div class="form-group">
                         <label for="total_amount">Total Amount</label>
                         <div class="input-group">
-                          <input type="text" name="total_amount" class="form-control" id="total_amount" required />
+                          <input type="number" name="total_amount" class="form-control" id="total_amount" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -207,7 +207,7 @@
                       <div class="form-group">
                         <label for="order_unit">Order Unit</label>
                         <div class="input-group">
-                          <input type="text" name="order_unit" class="form-control" id="order_unit" required />
+                          <input type="number" name="order_unit" class="form-control" id="order_unit" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -219,7 +219,7 @@
                       <div class="form-group">
                         <label for="order_quantity">Quantity</label>
                         <div class="input-group">
-                          <input type="text" name="order_quantity" class="form-control" id="order_quantity" required />
+                          <input type="number" name="order_quantity" class="form-control" id="order_quantity" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -231,7 +231,7 @@
                       <div class="form-group">
                         <label for="price_per_unit">Price Per Unit</label>
                         <div class="input-group">
-                          <input type="text" name="price_per_unit" class="form-control" id="price_per_unit" required />
+                          <input type="number" name="price_per_unit" class="form-control" id="price_per_unit" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -243,7 +243,7 @@
                       <div class="form-group">
                         <label for="expiration_date">Expiration Date</label>
                         <div class="input-group">
-                          <input type="text" name="expiration_date" class="form-control" id="expiration_date" required />
+                          <input type="text" name="expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
