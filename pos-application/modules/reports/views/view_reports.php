@@ -1,214 +1,274 @@
 <div class="content-area">
   <div class="page-header">
     <div class="info-section">
-      <div class="d-flex align-items-center mb-2">
-        <h4 class="page-title">Hi, welcome back!</h4>
-      </div>
-      <p class="mb-3 mb-md-0">Your point of sale management dashboard.</p>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-
-              <!--Revenue Report Pharmacy-->
-              <div class="col-lg-4 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics bg-green-gradient">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <div class="float-left">
-                        <i class="mdi mdi-cube icon-lg"></i>
-                      </div>
-                      <div class="float-right">
-                        <p class="mb-0 text-right text-white">Revenue Pharmacy</p>
-                        <div class="fluid-container">
-                          <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-white">
-                    <i class="mdi mr-1" aria-hidden="true"></i> view details </p>
-                  </div>
-                </div>
-              </div>
-
-              <!--Revenue Report Grocery-->
-              <div class="col-lg-4 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics bg-orange-gradient">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <div class="float-left">
-                        <i class="mdi mdi-cube icon-lg"></i>
-                      </div>
-                      <div class="float-right">
-                        <p class="mb-0 text-right text-white">Revenue Grocery</p>
-                        <div class="fluid-container">
-                          <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-white">
-                    <i class="mdi mr-1" aria-hidden="true"></i> view details </p>
-                  </div>
-                </div>
-              </div>
-
-               <!--Revenue Report Beauty Products-->
-               <div class="col-lg-4 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics bg-blue-gradient">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <div class="float-left">
-                        <i class="mdi mdi-cube icon-lg"></i>
-                      </div>
-                      <div class="float-right">
-                        <p class="mb-0 text-right text-white">Revenue Beauty Products</p>
-                        <div class="fluid-container">
-                          <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-white">
-                      <i class="mdi mr-1" aria-hidden="true"></i> view details </p>
-                  </div>
-                </div>
-              </div>
-
-              <!--Sales Grocery-->
-              <div class="col-lg-4 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics bg-green-gradient">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <div class="float-left">
-                        <i class="mdi mdi-poll-box icon-lg"></i>
-                      </div>
-                      <div class="float-right">
-                        <p class="mb-0 text-right text-white">Sales (Grocery)</p>
-                        <div class="fluid-container">
-                          <h3 class="font-weight-medium text-right mb-0">5693</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-white">
-                    <i class="mdi mr-1" aria-hidden="true"></i> view details </p>
-                  </div>
-                </div>
-              </div>  
-
-              <!--Sales Pharmacy-->
-              <div class="col-lg-4 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics bg-orange-gradient">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <div class="float-left">
-                        <i class="mdi mdi-poll-box icon-lg"></i>
-                      </div>
-                      <div class="float-right">
-                        <p class="mb-0 text-right text-white">Sales (Pharmacy)</p>
-                        <div class="fluid-container">
-                          <h3 class="font-weight-medium text-right mb-0">5693</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-white">
-                    <i class="mdi mr-1" aria-hidden="true"></i> view details </p>
-                  </div>
-                </div>
-              </div>  
-
-              <!--Sales Beauty Products-->
-              <div class="col-lg-4 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics bg-blue-gradient">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <div class="float-left">
-                        <i class="mdi mdi-poll-box icon-lg"></i>
-                      </div>
-                      <div class="float-right">
-                        <p class="mb-0 text-right text-white">Sales (Beauty Products)</p>
-                        <div class="fluid-container">
-                          <h3 class="font-weight-medium text-right mb-0">5693</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-white">
-                    <i class="mdi mr-1" aria-hidden="true"></i> view details </p>
-                  </div>
-                </div>
-              </div>  
-
-              <!--Orders-->
-              <div class="col-lg-4 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics bg-green-gradient">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <div class="float-left">
-                        <i class="mdi mdi-receipt icon-lg"></i>
-                      </div>
-                      <div class="float-right">
-                        <p class="mb-0 text-right text-white">Total Orders</p>
-                        <div class="fluid-container">
-                          <h3 class="font-weight-medium text-right mb-0">3455</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-white">
-                    <i class="mdi mr-1" aria-hidden="true"></i> view details </p>
-                  </div>
-                </div>
-              </div>
-
-              <!--Damages-->
-              <div class="col-lg-4 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics bg-orange-gradient">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <div class="float-left">
-                        <i class="mdi mdi-receipt icon-lg"></i>
-                      </div>
-                      <div class="float-right">
-                        <p class="mb-0 text-right text-white">Damages</p>
-                        <div class="fluid-container">
-                          <h3 class="font-weight-medium text-right mb-0">3455</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-white">
-                    <i class="mdi mr-1" aria-hidden="true"></i> view details </p>
-                  </div>
-                </div>
-              </div>
-
-              <!--Log-->
-              <div class="col-lg-4 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics bg-blue-gradient">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <div class="float-left">
-                        <i class="mdi mdi-receipt icon-lg"></i>
-                      </div>
-                      <div class="float-right">
-                        <p class="mb-0 text-right text-white">Logs</p>
-                        <div class="fluid-container">
-                          <h3 class="font-weight-medium text-right mb-0">3455</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-white">
-                    <i class="mdi mr-1" aria-hidden="true"></i> view details </p>
-                  </div>
-                </div>
-              </div>
-
-    </div>                
-
-
-                <!-- 
-          Dont remove closing tags below. 
-          It is part of the dashboard view.
-         -->
-      </div>
-    </div>
-  </div>
   
+ 
+      <!--Reports Filter-->
+        <div class="card auto-form-wrapper rounded">
+          <div class="card-body">
+            <div class="form-group">
+              View &nbsp;
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select reports
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Grocery</a>
+                <a class="dropdown-item" href="#">Pharmacy</a>
+                <a class="dropdown-item" href="#">Beauty Products</a>
+                <a class="dropdown-item" href="#">Sales</a>
+                <a class="dropdown-item" href="#">Damage Items</a>
+              </div>
+              &nbsp;
+              starting &nbsp;
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Month/Date/Year
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Grocery</a>
+                <a class="dropdown-item" href="#">Pharmacy</a>
+                <a class="dropdown-item" href="#">Beauty Products</a>
+                <a class="dropdown-item" href="#">Sales</a>
+                <a class="dropdown-item" href="#">Damage Items</a>
+              </div>
+              &nbsp;
+              ending &nbsp;
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Month/Date/Year
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Grocery</a>
+                <a class="dropdown-item" href="#">Pharmacy</a>
+                <a class="dropdown-item" href="#">Beauty Products</a>
+                <a class="dropdown-item" href="#">Sales</a>
+                <a class="dropdown-item" href="#">Damage Items</a>
+              </div>
+              &nbsp;
+              sub-category &nbsp;
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                sub-category
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Grocery</a>
+                <a class="dropdown-item" href="#">Pharmacy</a>
+                <a class="dropdown-item" href="#">Beauty Products</a>
+                <a class="dropdown-item" href="#">Sales</a>
+                <a class="dropdown-item" href="#">Damage Items</a>
+              </div>
+              &nbsp;&nbsp;&nbsp;
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+  <div class="content-area-inner auth theme-one">
+    <div class="row">
+      <div class="col-md-12 grid-margin">
+        <div class="card auto-form-wrapper rounded">
+          <div class="card-body">
+            <h4 class="card-title">INVENTORY DETAILS</h4>
+                
+                <form action="#" method="post">
+                  <input type="submit" name="inv_print_grocery" value="Print Report" class="btn btn-success submit-btn btn-block">
+                </form></br>
+           
+            <!-- Tabe Menus -->
+            <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#grocery" aria-selected="true">Grocery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#pharmacy" aria-selected="false">Pharmacy</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#beauty" aria-selected="false">Beauty Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#damage" aria-selected="false">Damage Products</a>
+              </li>
+            </ul>
+
+            <div class="tab-content tab-content-solid">
+              <!-- Grocery -->
+              <div class="tab-pane  mb-5 fade show active" id="grocery" role="tabpanel">
+
+                <!-- Table -->
+                <div class="table-responsive" lnk="Grocery">
+                  <table class="table" id="inv-grocs-table">
+                    <thead>
+                      <tr>
+                        <th>ITEM NUMBER</th>
+                        <th>ITEM NAME</th>
+                        <th>SUB-CATEGORY</th>
+                        <th>REMAINING</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>134 (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>144 (5.67%) </td>
+                        <td>45.99%</td>
+                        <td>34.70%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>114 (6.21%)</td>
+                        <td>23.80%</td>
+                        <td>54.45%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>324 (9.10%)</td>
+                        <td>12.89%</td>
+                        <td>18.89%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Pharmacy -->
+              <div class="tab-pane mb-5 fade" id="pharmacy" role="tabpanel">
+
+                <!-- Table -->
+                <div class="table-responsive" lnk="Pharmacy">
+                  <table class="table" id="inv-pharm-table">
+                    <thead>
+                      <tr>
+                        <th>ITEM NUMBER</th>
+                        <th>ITEM NAME</th>
+                        <th>SUB-CATEGORY</th>
+                        <th>REMAINING</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>134 (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>144 (5.67%) </td>
+                        <td>45.99%</td>
+                        <td>34.70%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>114 (6.21%)</td>
+                        <td>23.80%</td>
+                        <td>54.45%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>324 (9.10%)</td>
+                        <td>12.89%</td>
+                        <td>18.89%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!--Beauty Products-->
+              <div class="tab-pane fade mb-5" id="beauty" role="tabpanel">
+
+
+                <!-- Table -->
+                <div class="table-responsive" lnk="Beauty Products">
+                  <table class="table" id="inv-beaut-table">
+                    <thead>
+                      <tr>
+                        <th>ITEM NUMBER</th>
+                        <th>ITEM NAME</th>
+                        <th>SUB-CATEGORY</th>
+                        <th>REMAINING</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>134 (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>144 (5.67%) </td>
+                        <td>45.99%</td>
+                        <td>34.70%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>114 (6.21%)</td>
+                        <td>23.80%</td>
+                        <td>54.45%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>324 (9.10%)</td>
+                        <td>12.89%</td>
+                        <td>18.89%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!--Damage-->
+              <div class="tab-pane  mb-5 fade" id="damage" role="tabpanel">
+
+                <!-- Table -->
+                <div class="table-responsive" lnk="Damage Items">
+                  <table class="table" id="inv-damag-table">
+                    <thead>
+                      <tr>
+                        <th>ITEM NUMBER</th>
+                        <th>ITEM NAME</th>
+                        <th>SUB-CATEGORY</th>
+                        <th>REMARKS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>134 (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>144 (5.67%) </td>
+                        <td>45.99%</td>
+                        <td>34.70%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>114 (6.21%)</td>
+                        <td>23.80%</td>
+                        <td>54.45%</td>
+                      </tr>
+                      <tr>
+                        <td>Allen Sham</td>
+                        <td>324 (9.10%)</td>
+                        <td>12.89%</td>
+                        <td>18.89%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
