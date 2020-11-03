@@ -3,6 +3,8 @@
 class Model_Barcode extends MY_Model
 {
 
+  private $flag = true;
+
   function __construct() {
     parent:: __construct();
   }
@@ -11,13 +13,17 @@ class Model_Barcode extends MY_Model
    * Generate sample code
    */
   public function _check_code() {
-    $code  = mt_rand( 485480, 9999999 );
+    $code  = '480' . mt_rand( 10000000, 99999999 );
     $this->db->select( 'id' );
     $this->db->where( 'item_id', $code );
     if ( $this->db->get( 'tbl_items' )->num_rows() > 0 ) {
       $this->_check_code();
-    } 
-    return $code;
+      $flag = false;
+    } else {
+      $flag = true;
+    }
+
+    if ( $flag ) return $code;
   }
 }
 

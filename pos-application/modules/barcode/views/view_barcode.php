@@ -17,7 +17,6 @@
               <div class="text-center">
                 <?php echo $barcode; ?>
               </div>
-              <!-- <img src="<?php echo base_url() . 'pos-uploads/barcodes/' . $image_url . '.jpg'; ?>" class="img-fluid img-responsive" /> -->
               <div class="form-group text-center mt-5">
                 <form action="#" method="post">
                   <a href="<?php echo base_url(); ?>barcode" class="btn btn-success submit-btn">Generate Barcode</a>

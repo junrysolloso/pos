@@ -23,7 +23,7 @@ class Barcode extends MY_Controller
     $this->load->model( 'Model_Barcode' );
 
 		// Generate random number
-		$code = $this->Model_Barcode->_check_code();
+    $code = $this->Model_Barcode->_check_code();
     $element = $this->barcode_generate( $code );
     
     // Get DOM children elements
