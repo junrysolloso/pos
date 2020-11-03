@@ -4,7 +4,7 @@
           <img src="<?php echo base_url(); ?>pos-uploads/logo.png"
             alt="profile image" style="object-fit: cover; width: 140px">
           <h3 class="user-name">JARIPPRE</h3>
-          <p class="account-type">Dashboard</p>
+          <p class="account-type">POINT OF SALES SYSTEM</p>
         </div>
         <div class="user-stats">
           <div class="user-details">
@@ -20,8 +20,8 @@
             <i class="menu-icons mdi mdi-home-outline"></i><span class="menu-title">Dashboard</span>
           </a>
         </div>
-        <div class="nav-item" id="order">
-          <a href="<?php echo base_url(); ?>" class="nav-link">
+        <div class="nav-item" id="orders">
+          <a href="<?php echo base_url(); ?>orders" class="nav-link">
             <i class="menu-icons mdi mdi-poll"></i><span class="menu-title">Orders</span>
           </a>
         </div>
@@ -31,27 +31,27 @@
           </a>
         </div>
         <div class="nav-item" id="inventory">
-          <a href="<?php echo base_url(); ?>" class="nav-link">
+          <a href="<?php echo base_url(); ?>inventory" class="nav-link">
             <i class="menu-icons mdi mdi-domain"></i><span class="menu-title">Inventory</span>
           </a>
         </div>
         <div class="nav-item" id="barcode">
-          <a href="<?php echo base_url(); ?>" class="nav-link">
-            <i class="menu-icons mdi mdi-plus-outline"></i><span class="menu-title">Barrcode</span>
+          <a href="<?php echo base_url(); ?>barcode" class="nav-link">
+            <i class="menu-icons mdi mdi-plus-outline"></i><span class="menu-title">Barcode</span>
           </a>
         </div>
         <div class="nav-item" id="backup">
-          <a href="<?php echo base_url(); ?>" class="nav-link">
+          <a href="<?php echo base_url(); ?>backup" class="nav-link">
             <i class="menu-icons mdi mdi-database"></i><span class="menu-title">Backup</span>
           </a>
         </div>
-        <div class="nav-item">
-          <a href="<?php echo base_url(); ?>" class="nav-link" id="settings">
+        <div class="nav-item" id="settings">
+          <a href="<?php echo base_url(); ?>settings" class="nav-link" id="settings">
             <i class="menu-icons mdi mdi-settings"></i><span class="menu-title">Settings</span>
           </a>
         </div>
         <div class="nav-item">
-          <a href="<?php echo base_url(); ?>" class="nav-link" id="reports">
+          <a href="<?php echo base_url(); ?>reports" class="nav-link" id="reports">
             <i class="menu-icons mdi mdi-file-outline"></i><span class="menu-title">Reports</span>
           </a>
         </div>

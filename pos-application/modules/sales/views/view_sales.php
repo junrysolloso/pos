@@ -4,13 +4,12 @@
             <div class="card-body">
               <h4 class="card-title">GROCERY PRODUCTS</h4>
               <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="sal-grocs-table">
                   <thead>
                     <tr>
-                      <th>OR</th>
-                      <th>ITEM</th>
-                      <th>CATEGORY</th>
-                      <th>PCS</th>
+                      <th>ITEM NUMBER</th>
+                      <th>OR NUMBER</th>
+                      <th>QUANTITY</th>
                       <th>TOTAL</th>
                     </tr>
                   </thead>
@@ -19,27 +18,23 @@
                       <td>09090909</td>
                       <td>134 (1.51%)</td>
                       <td>33.58%</td>
-                      <td>15.47%</td>
                       <td>18.89%</td>
                     </tr>
                     <tr>
                       <td>09090909</td>
                       <td>144 (5.67%) </td>
-                      <td>45.99%</td>
                       <td>34.70%</td>
                       <td>18.89%</td>
                     </tr>
                     <tr>
                       <td>09090909</td>
                       <td>114 (6.21%)</td>
-                      <td>23.80%</td>
                       <td>54.45%</td>
                       <td>18.89%</td>
                     </tr>
                     <tr>
                       <td>09090909</td>
                       <td>324 (9.10%)</td>
-                      <td>12.89%</td>
                       <td>18.89%</td>
                       <td>18.89%</td>
                     </tr>
@@ -110,13 +105,12 @@
             <div class="card-body">
               <h4 class="card-title">PHARMACY PRODUCTS</h4>
               <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="sal-pharma-table">
                   <thead>
                     <tr>
-                      <th>OR</th>
-                      <th>ITEM</th>
-                      <th>CATEGORY</th>
-                      <th>PCS</th>
+                      <th>ITEM NUMBER</th>
+                      <th>OR NUMBER</th>
+                      <th>QUANTITY</th>
                       <th>TOTAL</th>
                     </tr>
                   </thead>
@@ -124,28 +118,24 @@
                     <tr>
                       <td>09090909</td>
                       <td>134 (1.51%)</td>
-                      <td>33.58%</td>
                       <td>15.47%</td>
                       <td>18.89%</td>
                     </tr>
                     <tr>
                       <td>09090909</td>
                       <td>144 (5.67%) </td>
-                      <td>45.99%</td>
                       <td>34.70%</td>
                       <td>18.89%</td>
                     </tr>
                     <tr>
                       <td>09090909</td>
                       <td>114 (6.21%)</td>
-                      <td>23.80%</td>
                       <td>54.45%</td>
                       <td>18.89%</td>
                     </tr>
                     <tr>
                       <td>09090909</td>
                       <td>324 (9.10%)</td>
-                      <td>12.89%</td>
                       <td>18.89%</td>
                       <td>18.89%</td>
                     </tr>
@@ -216,13 +206,12 @@
             <div class="card-body">
               <h4 class="card-title">BEAUTY PRODUCTS</h4>
               <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="sal-beauty-table">
                   <thead>
                     <tr>
-                      <th>OR</th>
-                      <th>ITEM</th>
-                      <th>CATEGORY</th>
-                      <th>PCS</th>
+                      <th>ITEM NUMBER</th>
+                      <th>OR NUMBER</th>
+                      <th>QUANTITY</th>
                       <th>TOTAL</th>
                     </tr>
                   </thead>
@@ -232,26 +221,22 @@
                       <td>134 (1.51%)</td>
                       <td>33.58%</td>
                       <td>15.47%</td>
-                      <td>18.89%</td>
                     </tr>
                     <tr>
                       <td>09090909</td>
                       <td>144 (5.67%) </td>
                       <td>45.99%</td>
-                      <td>34.70%</td>
                       <td>18.89%</td>
                     </tr>
                     <tr>
                       <td>09090909</td>
                       <td>114 (6.21%)</td>
                       <td>23.80%</td>
-                      <td>54.45%</td>
                       <td>18.89%</td>
                     </tr>
                     <tr>
                       <td>09090909</td>
                       <td>324 (9.10%)</td>
-                      <td>12.89%</td>
                       <td>18.89%</td>
                       <td>18.89%</td>
                     </tr>

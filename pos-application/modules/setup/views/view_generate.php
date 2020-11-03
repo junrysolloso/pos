@@ -17,7 +17,7 @@
                 <form action="<?php echo base_url(); ?>setup/generate" method="post">
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" name="year" class="form-control" placeholder="ex: 2020" required>
+                      <input type="text" name="year" class="form-control" placeholder="Year" required>
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -27,7 +27,57 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" name="month" class="form-control" placeholder="ex: 09" required>
+                      <input type="text" name="month" class="form-control" placeholder="Month" required>
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" name="prod" class="form-control" placeholder="Product" required>
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" name="desc" class="form-control" placeholder="Desc" required>
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" name="cat" class="form-control" placeholder="Category" required>
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" name="sub" class="form-control" placeholder="Sub Category" required>
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" name="unit" class="form-control" placeholder="Unit" required>
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -38,12 +88,12 @@
                   <div class="form-group d-flex justify-content-center">
                   </div>
                   <div class="form-group pb-2">
-                    <button type="submit" class="btn btn-success submit-btn btn-block">Generate</button>
+                    <button type="submit" class="btn btn-success submit-btn btn-block">GENERATE</button>
                   </div>
                 </form>
                 <form action="<?php echo base_url(); ?>setup/clean" method="post">
                   <div class="form-group pb-2">
-                    <button type="submit" class="btn btn-warning submit-btn btn-block">Clean</button>
+                    <button type="submit" class="btn btn-warning submit-btn btn-block">CLEAN</button>
                   </div>
                 </form>
               </div>

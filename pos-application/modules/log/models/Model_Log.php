@@ -9,6 +9,8 @@ class Model_Log extends MY_Model
   protected $_log_time = 'log_time';
   protected $_log_task = 'log_task';
 
+  protected $_relate_table = 'tbl_users';
+
   /**
    * Log all activity
    * @param string $task
@@ -35,7 +37,8 @@ class Model_Log extends MY_Model
    * @return array $result
    */
   public function log_get( $user_id = 0, $date = NULL ) {
-    $this->db->select( '*' );
+    $this->db->select( 'log_id, username, log_date, log_time, log_task' );
+    $this->db->distinct();
 
     // if user id is supplied
     if ( $user_id ) {
@@ -47,7 +50,9 @@ class Model_Log extends MY_Model
       $this->db->where( $this->_log_date, $date );
     }
 
+    $this->join( $this->_relate_table, 'tbl_users.user_id=tbl_log.user_id' );
     $query = $this->db->get( $this->_table );
+
     if ( $query ) {
       return $query->result();
     }
