@@ -11,12 +11,21 @@ $(document).ready(function () {
     }
   }
 
+  // Remove alert container
+  if( $('div.alert').length ) {
+    setTimeout(function(){
+      $('div.alert').each(function(){
+        $(this).remove();
+      });  
+    }, 3000);
+  }
+
   // Get values from an array input
   // var values = $("input[name='pname[]']").map(function(){return $(this).val();}).get();
 
   // Add sub-category
   $('.sub-add').on('click', function () {
-    $(this).closest('.sub-main').append('<div class="form-group sub-added"><div class="input-group mt-3"><input type="text" name="subcat[]" class="form-control" required /><div class="input-group-append"><span class="input-group-text sub-minus"><i class="mdi mdi-minus-circle-outline mdi-18px"></i>&nbsp;Remove&nbsp;</span></div></div></div>');
+    $(this).closest('.sub-main').append('<div class="form-group sub-added"><div class="input-group mt-3"><input type="text" name="subcat_name[]" class="form-control" required /><div class="input-group-append"><span class="input-group-text sub-minus"><i class="mdi mdi-minus-circle-outline mdi-18px"></i>&nbsp;Remove&nbsp;</span></div></div></div>');
     $('body').delegate('.sub-minus', 'click', function () {
       $(this).closest('.sub-added').remove();
     });

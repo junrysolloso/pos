@@ -84,7 +84,9 @@ class Model_Setup extends MY_Model
                     if( $this->db->truncate( 'tbl_items' ) ) {
                       if( $this->db->truncate( 'tbl_inventory' ) ) {
                         if( $this->db->truncate( 'tbl_category' ) ) {
-                          return true;
+                          if( $this->db->truncate( 'tbl_log' ) ) {
+                            return true;
+                          }
                         }
                       }
                     }

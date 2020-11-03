@@ -78,6 +78,39 @@
     });
   });
 
+  // Category & Sub Table
+  $(function () {
+    $('#cat-table').DataTable({
+      "aLengthMenu": [
+        [5, 10, 15, -1],
+        [5, 10, 15, "All"]
+      ],
+      paging: false,
+      bSort: false,
+      bFilter: false,
+      bInfo: false,
+      "iDisplayLength": 50,
+      "bLengthChange": false,
+    });
+  });
+
+    // Sub-category Table
+    $(function () {
+      $('#cat-sub-table').DataTable({
+        "aLengthMenu": [
+          [5, 10, 15, -1],
+          [5, 10, 15, "All"]
+        ],
+        paging: true,
+        bSort: false,
+        bFilter: false,
+        bInfo: false,
+        "iDisplayLength": 5,
+        "bLengthChange": false,
+      });
+    });
+
+
   // Use DataTable in searching tables
   $('input[name="data_search"]').on('keyup', function () {
     var s_value = $(this).attr('id');

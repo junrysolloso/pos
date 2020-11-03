@@ -40,6 +40,15 @@
             </ul>
 
             <div class="tab-content tab-content-solid">
+              <?php if( $this->session->tempdata('msg') ): ?>
+                <div class="alert <?php echo $this->session->tempdata('class'); ?> alert-dismissible fade show alert-temp" role="alert">
+                  <?php echo $this->session->tempdata('msg'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              <?php endif; ?>
+
               <!-- Add Product Info -->
               <div class="tab-pane fade show active mt-4 mb-1" id="add-item" role="tabpanel">
                 <form action="#" method="post">
@@ -170,7 +179,7 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_item" value="Save Product Details"
+                        <input type="submit" name="submit[]" value="Save Product Details"
                           class="btn btn-success submit-btn" />
                       </div>
                     </div>
@@ -184,9 +193,9 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
-                        <label for="add_category">Category</label>
+                        <label for="category_name">Category</label>
                         <div class="input-group">
-                          <input type="text" name="add_category" class="form-control" id="add_category" required />
+                          <input type="text" name="category_name" class="form-control" id="category_name" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -195,9 +204,9 @@
                         </div>
                       </div>
                       <div class="form-group sub-main">
-                        <label for="subcat[]">Sub Category</label>
+                        <label for="subcat_name[]">Sub Category</label>
                         <div class="input-group">
-                          <input type="text" name="subcat[]" class="form-control" required />
+                          <input type="text" name="subcat_name[]" class="form-control" required />
                           <div class="input-group-append">
                             <span class="input-group-text sub-add">
                               <i class="mdi mdi-plus-circle-outline mdi-18px"></i>&nbsp;Add New
@@ -209,11 +218,53 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_cat" value="Save Category Details" class="btn btn-success submit-btn" />
+                        <input type="submit" name="submit[]" value="Save Category Details" class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>
                 </form>
+                <?php if( $category_all && $subcategory_all ): ?>
+                  <div class="row mt-4">
+                    <div class="col-md-4">
+                      <div class="table-responsive">
+                        <table class="table" id="cat-table">
+                          <thead>
+                            <tr>
+                              <th>CATEGORY</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php
+                              foreach ( $category_all as $row ) {
+                                echo '<tr>';
+                                echo '<td>'. ucfirst( $row->category_name ) .'</td>';
+                                echo '</tr>';
+                              }
+                            ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <table class="table" id="cat-sub-table">
+                        <thead>
+                          <tr>
+                            <th>SUB CATEGORY</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                            foreach ( $subcategory_all as $row ) {
+                              echo '<tr>';
+                              echo '<td>'. ucwords( $row->subcat_name ) .'</td>';
+                              echo '</tr>';
+                            }
+                          ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                <?php endif; ?>
               </div>
 
               <!-- Add Unit -->
@@ -247,7 +298,7 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_unit" value="Save Unit Details"
+                        <input type="submit" name="submit[]" value="Save Unit Details"
                           class="btn btn-success submit-btn" />
                       </div>
                     </div>
@@ -308,7 +359,7 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_com" value="Save Company Details"
+                        <input type="submit" name="submit[]" value="Save Company Details"
                           class="btn btn-success submit-btn" />
                       </div>
                     </div>
@@ -317,7 +368,6 @@
               </div>
 
               <!-- Damage Items -->
-            <?php if( ! empty( $items ) && $items ): ?>
               <div class="tab-pane fade mb-4 mt-4" id="add-dmg" role="tabpanel">
                 <form action="#" method="post" class="mb-3">
                   <div class="row">
@@ -359,14 +409,14 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_dmg" value="Save Damage Item"
+                        <input type="submit" name="submit[]" value="Save Damage Item"
                           class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>
                 </form>
 
-             
+                <?php if( ! empty( $items ) && $items ): ?>
                   <div class="table-responsive">
                     <table class="table" id="set-damag-table">
                       <thead>
@@ -377,20 +427,20 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <?php
-							          foreach ( $items as $row ) {
-                        echo '<tr>';
-                        echo '<td>'. $row->item_id .'</td>';
-                        echo '<td>'. $row->ds_quantity .'</td>';
-                        echo '<td>'. $row->ds_remarks .'</td>';
-                        echo '</tr>';
-                        }
-                      ?>
+                        <?php
+                          foreach ( $items as $row ) {
+                          echo '<tr>';
+                          echo '<td>'. $row->item_id .'</td>';
+                          echo '<td>'. $row->ds_quantity .'</td>';
+                          echo '<td>'. $row->ds_remarks .'</td>';
+                          echo '</tr>';
+                          }
+                        ?>
                       </tbody>
                     </table>
                   </div>
-                </div>
-              <?php endif;?>
+                <?php endif;?>
+              </div>
 
               <!-- User Info -->
               <div class="tab-pane fade mb-4 mt-4" id="user-info" role="tabpanel">
@@ -469,7 +519,7 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_user" value="Save User Details"
+                        <input type="submit" name="submit[]" value="Save User Details"
                           class="btn btn-success submit-btn" />
                       </div>
                     </div>
