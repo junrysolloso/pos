@@ -15,14 +15,25 @@ class Barcode extends MY_Controller
    * Barcode index
    */
   public function index() {
+
+    $html = '';
+
     // Load Model
     $this->load->model( 'sales/Model_Sales' );
     $this->load->model( 'Model_Barcode' );
 
 		// Generate random number
 		$code = $this->Model_Barcode->_check_code();
-    if( $code ) $this->barcode_generate( $code );
+    $element = $this->barcode_generate( $code );
     
+    // Get DOM children elements
+    $children = $element->childNodes;
+    foreach ( $children as $child ) {
+      $html .= $child->ownerDocument->saveXML( $child );
+    }
+
+    $data['barcode'] = $html;
+
     $data['title']       = 'Generate Barcode';
     $data['class']       = 'barcode';
     $data['image_url']   = $code;
@@ -45,21 +56,35 @@ class Barcode extends MY_Controller
    */
 	private function barcode_generate( $code ) {
 		//load library
-		$this->load->library('zend');
-    $this->zend->load('Zend/Barcode');
+		$this->load->library( 'zend' );
+    $this->zend->load( 'Zend/Barcode' );
     
-    // Options
+    // Options UPCA
     $options = array(
       'text'      => $code,
-      'barHeight' => 25,
-      'factor'    => 15,
-      'fontSize'  => 5,
+      'barHeight' => 30,
+      'factor'    => 8,
+      'fontSize'  => 7,
+      'withChecksum' => true,
     );
 
+    // Options UPCE
+    // $options = array(
+    //   'text'      => $code,
+    //   'barHeight' => 20,
+    //   'factor'    => 13,
+    //   'fontSize'  => 6,
+    //   'withChecksum' => true,
+    // );
+
+    // Draw barcode
+    $image = Zend_Barcode::draw( 'upca', 'svg', $options, array() );
+
 		// Save to file
-    $image = Zend_Barcode::draw( 'upce', 'image', $options, array() );
-    $path = imagepng( $image, FCPATH .'pos-uploads/barcodes/'. $code .'.jpg' );
-    return $path;
+    // $image = Zend_Barcode::draw( 'upce', 'image', $options, array() );
+    // $path = imagepng( $image, FCPATH .'pos-uploads/barcodes/'. $code .'.jpg' );
+
+    return $image;
 	}
 
 }

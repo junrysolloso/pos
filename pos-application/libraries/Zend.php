@@ -12,7 +12,7 @@ class Zend
 		ini_get('include_path'). PATH_SEPARATOR. APPPATH. 'libraries');
 	
 		if( $class ) {
-			require_once( string ) $class.'.php'; //fixed CI 3 issue by lilsammy
+			require_once( string ) $class . '.php'; //fixed CI 3 issue by lilsammy
 			log_message( 'debug', "Zend Class $class Loaded" );
 		} else {
 			log_message( 'debug', "Zend Class Initialized" );
@@ -25,7 +25,7 @@ class Zend
 	 */
 	public function load( $class ) {
 
-		require_once( string ) $class.'.php'; //fixed CI 3 issue by lilsammy
+		require_once( string ) $class . '.php'; //fixed CI 3 issue by lilsammy
 		log_message( 'debug', "Zend Class $class Loaded" );
 
 	}

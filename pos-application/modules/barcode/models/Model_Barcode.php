@@ -15,11 +15,11 @@ class Model_Barcode extends MY_Model
     $this->db->select( 'id' );
     $this->db->where( 'item_id', $code );
     if ( $this->db->get( 'tbl_items' )->num_rows() > 0 ) {
-      $this->_generate_code();
+      $this->_check_code();
     } 
     return $code;
   }
 }
 
-/* End of file Model_Backup.php */
-/* Location: ./application/modules/barcode/models/Model_Backup.php */
+/* End of file Model_Barcode.php */
+/* Location: ./application/modules/barcode/models/Model_Barcode.php */
