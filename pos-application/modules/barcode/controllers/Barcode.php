@@ -23,16 +23,16 @@ class Barcode extends MY_Controller
     $this->load->model( 'Model_Barcode' );
 
 		// Generate random number
-    $code = $this->Model_Barcode->_check_code();
+    $code    = $this->Model_Barcode->_check_code();
     $element = $this->barcode_generate( $code );
-    
+  
     // Get DOM children elements
     $children = $element->childNodes;
     foreach ( $children as $child ) {
       $html .= $child->ownerDocument->saveXML( $child );
     }
 
-    $data['barcode'] = $html;
+    $data['barcode']     = $html;
 
     $data['title']       = 'Generate Barcode';
     $data['class']       = 'barcode';
@@ -65,7 +65,7 @@ class Barcode extends MY_Controller
       'barHeight' => 30,
       'factor'    => 8,
       'fontSize'  => 7,
-      'withChecksum' => true,
+      'withChecksum' => false,
     );
 
     // Options UPCE
