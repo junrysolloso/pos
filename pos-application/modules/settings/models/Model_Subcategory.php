@@ -63,7 +63,7 @@ class Model_Subcategory extends MY_Model
       if( $this->db->insert( $this->_table, $data ) ) {
         $this->Model_Log->log_add( log_lang( 'sub_category' )['add'] );
         $this->session->set_tempdata( array(
-          'msg' 	=> 'Sub-category successfully added.',
+          'msg' 	=> 'Data successfully added.',
           'class' => 'alert-success',
         ), NULL, 5 );
       }

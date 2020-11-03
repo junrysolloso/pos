@@ -134,6 +134,7 @@ class Settings extends MY_Controller
 
     $data['title'] = 'Settings';
     $data['class'] = 'settings';
+    $data['logs'] = $this->Model_Log->log_get( 0, NULL );
     $data['sales_total'] = $this->Model_Sales->sales_total_get();
     $data['category_all'] = $this->Model_Category->category_get();
     $data['subcategory_all'] = $this->Model_Subcategory->subcat_get();

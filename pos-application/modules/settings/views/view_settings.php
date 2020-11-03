@@ -608,6 +608,7 @@
                   <table class="table" id="set-logss-table">
                     <thead>
                       <tr>
+                        <th>NO.</th>
                         <th>USER NAME</th>
                         <th>DATE</th>
                         <th>TIME</th>
@@ -615,30 +616,19 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
+                      <?php
+                        $count = 1;
+                        foreach ( $logs as $row ) {
+                          echo '<tr>';
+                          echo '<td>'. $count .'</td>';
+                          echo '<td>'. ucfirst( $row->username ) .'</td>';
+                          echo '<td>'. $row->log_date .'</td>';
+                          echo '<td>'. $row->log_time .'</td>';
+                          echo '<td>'. ucwords( $row->log_task ).'</td>';
+                          echo '</tr>';
+                          $count++;
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>

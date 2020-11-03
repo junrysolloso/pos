@@ -21,7 +21,8 @@
         [5, 10, 15, "All"]
       ],
       bFilter: true,
-      "iDisplayLength": 30,
+      bInfo: false,
+      "iDisplayLength": 15,
       "bLengthChange": false,
     });
   });

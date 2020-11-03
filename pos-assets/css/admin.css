@@ -69,6 +69,10 @@ div.dataTables_wrapper div.dataTables_filter {
   color: #FF627D !important;
 }
 
+.table td {
+  padding: 7px 10px;
+}
+
 /* .auth.theme-one .auto-form-wrapper .form-group .input-group {
   height: 26px !important;
 } */
