@@ -11,11 +11,12 @@ class Settings extends MY_Controller
     //   redirect( base_url( 'login' ) );
     // }
     $this->load->model('Model_Unit');
+    $this->load->model('Model_Damage');
     $this->load->model( 'sales/Model_Sales' );
   }
 
 	/**
-	 * Index page for the dashboard page
+	 * Index page for the settings page
 	 */
   public function index() {
 
@@ -41,6 +42,7 @@ class Settings extends MY_Controller
     $this->template->add_js( 'pos-assets/js/script.js' );
     $this->template->render();
     
+    // Save setting unit information
     if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
       $unit_id = $this->input->post( 'unit_id' ) ? $this->input->post( 'unit_id' ) : NULL;
@@ -60,6 +62,29 @@ class Settings extends MY_Controller
         }
       }
     }
+
+    // Save Setting Damage Reports
+    if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+
+      $ds_id = $this->input->post( 'ds_id' ) ? $this->input->post( 'ds_id' ) : NULL;
+      $data = array (
+        'ds_id'    => $ds_id,
+        'item_id' => $this->input->post( 'item_id' ),
+        'ds_quantity' => $this->input->post( 'ds_quantity' ),
+        'ds_remarks' => $this->input->post( 'ds_remarks' ),
+      
+      );
+      if( $this->input->post( 'submit_dmg' ) && ! empty( $this->input->post( 'submit_dmg' ) ) ) {
+        if ( $this->Model_Damage->item_insert( $data ) ) {
+          unset( $_POST );
+          $this->session->set_tempdata( array(
+            'msg' 	=> 'Damage report successfully added.',
+            'class' => 'alert-success',
+          ), NULL, 5 );
+        }
+      }
+    }
+
   }
 
 }

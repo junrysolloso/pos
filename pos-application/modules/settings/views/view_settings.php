@@ -317,6 +317,7 @@
               </div>
 
               <!-- Damage Items -->
+            <?php if( ! empty( $items ) && $items ): ?>
               <div class="tab-pane fade mb-4 mt-4" id="add-dmg" role="tabpanel">
                 <form action="#" method="post" class="mb-3">
                   <div class="row">
@@ -324,7 +325,7 @@
                       <div class="form-group">
                         <label for="dmg_code_number">Barcode Number</label>
                         <div class="input-group">
-                          <input type="text" name="dmg_code_number" class="form-control" id="dmg_code_number" required />
+                          <input type="text" name="item_id" class="form-control" id="item_id" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -335,7 +336,7 @@
                       <div class="form-group">
                         <label for="item_quan">Item Quantity</label>
                         <div class="input-group">
-                          <input type="text" name="item_quan" class="form-control" id="item_quan" required />
+                          <input type="text" name="ds_quantity" class="form-control" id="ds_quantity" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -346,7 +347,7 @@
                       <div class="form-group">
                         <label for="item_rem">Remarks</label>
                         <div class="input-group">
-                          <input type="text" name="item_rem" class="form-control" id="item_rem" required />
+                          <input type="text" name="ds_remarks" class="form-control" id="ds_remarks" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -364,45 +365,32 @@
                     </div>
                   </div>
                 </form>
-                <div class="table-responsive">
-                  <table class="table" id="set-damag-table">
-                    <thead>
-                      <tr>
-                        <th>BARCODE NUMBER</th>
-                        <th>ITEMS QUANTITY</th>
-                        <th>REMARKS</th>
-                        <th>DATE ADDED</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+             
+                  <div class="table-responsive">
+                    <table class="table" id="set-damag-table">
+                      <thead>
+                        <tr>
+                          <th>BARCODE NUMBER</th>
+                          <th>ITEMS QUANTITY</th>
+                          <th>REMARKS</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+							          foreach ( $items as $row ) {
+                        echo '<tr>';
+                        echo '<td>'. $row->item_id .'</td>';
+                        echo '<td>'. $row->ds_quantity .'</td>';
+                        echo '<td>'. $row->ds_remarks .'</td>';
+                        echo '</tr>';
+                        }
+                      ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
+              <?php endif;?>
 
               <!-- User Info -->
               <div class="tab-pane fade mb-4 mt-4" id="user-info" role="tabpanel">
