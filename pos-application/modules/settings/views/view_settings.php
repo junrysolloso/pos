@@ -17,13 +17,13 @@
             <!-- Tab Menu -->
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#add-item" aria-selected="true">Product Info</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#add-category" aria-selected="false">Category</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#add-unit" aria-selected="false">Unit</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#add-item" aria-selected="true">Product Info</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#add-dmg" aria-selected="false">Damage Items</a>
@@ -120,7 +120,12 @@
                       <div class="form-group">
                         <label for="item_unit">Order Unit</label>
                         <div class="input-group">
-                          <input type="number" name="item_unit" class="form-control" id="item_unit" required />
+                          <select type="text" name="item_unit" class="form-control" id="item_unit" required>
+                            <option value="pcs">pcs</option>
+                            <option value="bottle">bottle</option>
+                            <option value="box">box</option>
+                            <option value="doz">doz</option>
+                          </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -134,7 +139,12 @@
                       <div class="form-group">
                         <label for="selling_unit">Selling Unit</label>
                         <div class="input-group">
-                          <input type="number" name="selling_unit" class="form-control" id="selling_unit" required />
+                          <select type="text" name="selling_unit" class="form-control" id="selling_unit" required>
+                            <option value="pcs">pcs</option>
+                            <option value="bottle">bottle</option>
+                            <option value="box">box</option>
+                            <option value="doz">doz</option>
+                          </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -212,9 +222,9 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
-                        <label for="unit_long">Long Description</label>
+                        <label for="unit_desc">Long Description</label>
                         <div class="input-group">
-                          <input type="text" name="unit_long" class="form-control" id="unit_long" required />
+                          <input type="text" name="unit_desc" class="form-control" id="unit_desc" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -223,9 +233,9 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="unit_short">Short Description</label>
+                        <label for="unit_sh">Short Description</label>
                         <div class="input-group">
-                          <input type="text" name="unit_short" class="form-control" id="unit_short" required />
+                          <input type="text" name="unit_sh" class="form-control" id="unit_sh" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>

@@ -20,15 +20,15 @@
                   <div class="col-md-12">
                     <div class="form-group">
                        View &nbsp;
-                       <select class="custom-select custom-select-sm col-md-3">
-                        <option value="" disabled selected>Select Report</option>
-                        <option value="1">Grocery</option>
-                        <option value="2">Pharmacy</option>
-                        <option value="3">Beauty Products</option>
-                        <option value="4">Damage Products</option>
-                        <option value="5">Sales</option>
-                      </select>
-
+                       
+                          <select type="text" name="order_category" class="form-control col-md-2" id="order_category" required="">
+                            <option value="" disabled selected>Select</option>
+                            <option value="grocery">Grocery</option>
+                            <option value="pharmacy">Pharmacy</option>
+                            <option value="beauty">Beauty Products</option>
+                            <option value="damage">Damage Products</option>
+                            <option value="sales">Sales</option>
+                          </select>
                       &nbsp;
                       
                       starting &nbsp;
@@ -56,7 +56,7 @@
                       </div>
                       &nbsp;
                       sub-category &nbsp;
-                      <select class="custom-select custom-select-sm col-md-2">
+                      <select type="text" name="order_category" class="form-control col-md-2" id="order_category" required="">
                         <option value="" disabled selected>Select Sub-category
                         <option value="2">Pharmacy</option>
                         <option value="3">Beauty Products</option>
@@ -78,9 +78,6 @@
                   </div>
                 </div>
                 </br>
-                <!-- <form action="#" method="post">
-                  <input type="submit" name="inv_print_grocery" value="Print Report" class="btn btn-success submit-btn btn-block">
-                </form></br> -->
            
             <!-- Tabe Menus -->
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">

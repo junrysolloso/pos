@@ -6,10 +6,11 @@ class Settings extends MY_Controller
   function __construct() {
     parent:: __construct(); 
 
+
     // if ( ! $this->session->userdata( 'user_id' ) ) {
     //   redirect( base_url( 'login' ) );
     // }
-
+    $this->load->model('Model_Unit');
     $this->load->model( 'sales/Model_Sales' );
   }
 
@@ -38,7 +39,27 @@ class Settings extends MY_Controller
     $this->template->add_js( 'pos-assets/vendors/chart.js/Chart.min.js' );
     $this->template->add_js( 'pos-assets/js/dashboard.js' );
     $this->template->add_js( 'pos-assets/js/script.js' );
-		$this->template->render();
+    $this->template->render();
+    
+    if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+
+      $unit_id = $this->input->post( 'unit_id' ) ? $this->input->post( 'unit_id' ) : NULL;
+      $data = array (
+        'unit_id'    => $unit_id,
+        'unit_desc' => $this->input->post( 'unit_desc' ),
+        'unit_sh' => $this->input->post( 'unit_sh' ),
+      
+      );
+      if( $this->input->post( 'submit_unit' ) && ! empty( $this->input->post( 'submit_unit' ) ) ) {
+        if ( $this->Model_Unit->item_insert( $data ) ) {
+          unset( $_POST );
+          $this->session->set_tempdata( array(
+            'msg' 	=> 'Unit successfully added.',
+            'class' => 'alert-success',
+          ), NULL, 5 );
+        }
+      }
+    }
   }
 
 }
