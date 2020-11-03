@@ -372,6 +372,17 @@
                 <form action="#" method="post" class="mb-3">
                   <div class="row">
                     <div class="col-12">
+                    <div class="form-group">
+                        <label for="dmg_date">Date Reported</label>
+                        <div class="input-group">
+                          <input type="text" name="dmg_date" class="form-control" id="dmg_date" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                       <div class="form-group">
                         <label for="dmg_code_number">Barcode Number</label>
                         <div class="input-group">
