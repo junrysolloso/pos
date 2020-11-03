@@ -633,8 +633,8 @@
                           echo '<tr>';
                           echo '<td>'. $count .'</td>';
                           echo '<td>'. ucfirst( $row->username ) .'</td>';
-                          echo '<td>'. $row->log_date .'</td>';
-                          echo '<td>'. $row->log_time .'</td>';
+                          echo '<td>'. date_format( date_create( $row->log_date ), 'd M Y' ).'</td>';
+                          echo '<td>'. date_format( date_create( $row->log_time ), 'h:i A' ) .'</td>';
                           echo '<td>'. ucwords( $row->log_task ).'</td>';
                           echo '</tr>';
                           $count++;
