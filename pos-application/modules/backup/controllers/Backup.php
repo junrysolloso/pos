@@ -20,13 +20,11 @@ class Backup extends MY_Controller
     $this->load->dbutil();
     
     // Name of the backup
-    $name_non = 'DBBACKUP_' . strval( date("Y_m_d") .'_@_'. date("h:i:s_A") ) . '.sql';
-    $name_com = 'DBBACKUP_' . strval( date("Y_m_d") .'_@_'. date("h:i:s_A") ) . '.zip';
+    $name_non = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.sql';
+    $name_com = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.zip';
 
     // Configs
     $config = array(
-      'tables'      => array(),
-      'ignore'      => array(),
       'format'      => 'zip',
       'filename'    => $name_non,
       'add_drop'    => TRUE,
@@ -39,12 +37,12 @@ class Backup extends MY_Controller
 
     // Load the file helper and write the file 
     $this->load->helper( 'file' );
-    write_file( 'pos-backup/'. $name_com, $backup );
+    write_file( FCPATH . 'pos-backup/'. $name_com, $backup );
 
     // Load the download helper and send the file to your desktop
     $this->load->helper( 'download' );
     force_download( $name_com, $backup );
-
+    
   }
 
 }

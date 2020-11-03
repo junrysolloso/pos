@@ -12,12 +12,18 @@
       <div class="col-md-12 grid-margin">
         <div class="card auto-form-wrapper rounded">
           <div class="card-body">
-            <h4 class="card-title">BARCODE GENERATOR</h4>
-
-            
+            <div class="mt-5 mb-4 pt-4 pb-4">
+              <h4 class="text-center pb-2">BARCODE GENERATOR</h4>
+              <img src="<?php echo base_url() . 'pos-uploads/barcodes/' . $image_url . '.jpg'; ?>" class="img-fluid img-responsive" />
+              <div class="form-group text-center mt-5">
+                <form action="#" method="post">
+                  <a href="<?php echo base_url(); ?>barcode" class="btn btn-success submit-btn">Generate Barcode</a>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
+  
