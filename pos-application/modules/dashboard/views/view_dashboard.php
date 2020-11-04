@@ -98,10 +98,7 @@
           </div>
         </div>  
 
-        <!-- 
-          Dont remove closing tags below. 
-          It is part of the dashboard view.
-         -->
+        <!-- Dont remove closing tags below. It is part of the dashboard view. -->
       </div>
     </div>
   </div>

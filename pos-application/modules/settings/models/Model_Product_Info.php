@@ -15,7 +15,6 @@ class Model_Product_Info extends MY_Model
     parent:: __construct();
   }
 
-
   /**
    * Add Product Info
    * @param array $data

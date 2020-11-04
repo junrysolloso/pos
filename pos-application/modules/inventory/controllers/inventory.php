@@ -23,7 +23,6 @@ class Inventory extends MY_Controller
 
     $this->template->write_view( 'content', 'templates/template_topbar' );
     $this->template->write_view( 'content', 'templates/template_sidebar', $data );
-    //$this->template->write_view( 'content', 'templates/template_chart' );
     $this->template->write_view( 'content', 'view_inventory', $data );
     $this->template->write_view( 'content', 'templates/template_footer' );
 

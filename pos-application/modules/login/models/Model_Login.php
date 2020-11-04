@@ -9,7 +9,7 @@ class Model_Login extends MY_Model
   protected $_userpass   = 'user_pass';
 
   function __construct() {
-    $this->load->model( 'log/Model_Log' );
+    parent:: __construct();
   }
 
   /**

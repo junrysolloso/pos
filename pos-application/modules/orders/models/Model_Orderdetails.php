@@ -49,24 +49,6 @@ class Model_Orderdetails extends MY_Model
     }
   }
 
-  /**
-   * Update Order Details
-   * @param array $data
-   * @return bool
-   */
-  public function order_details_update( $data = [] ) {
-    
-  }
-
-  /**
-   * Get Order Details
-   * @param int $orderdetails_id
-   * @return array
-   */
-  public function order_details_get( $orderdetails_id = 0 ) {
-    
-  }
-
 }
 
 /* End of file Model_Orderdetails.php */

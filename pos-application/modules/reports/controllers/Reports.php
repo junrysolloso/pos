@@ -5,10 +5,6 @@ class Reports extends MY_Controller
 
   function __construct() {
     parent:: __construct(); 
-
-    
-
-    $this->load->model( 'sales/Model_Sales' );
   }
 
 	/**
@@ -27,7 +23,6 @@ class Reports extends MY_Controller
 
     $this->template->write_view( 'content', 'templates/template_topbar' );
     $this->template->write_view( 'content', 'templates/template_sidebar', $data );
-    //$this->template->write_view( 'content', 'templates/template_chart' );
     $this->template->write_view( 'content', 'view_reports', $data );
     $this->template->write_view( 'content', 'templates/template_footer' );
 
@@ -39,5 +34,5 @@ class Reports extends MY_Controller
 
 }
 
-/* End of file Dashboard.php */
-/* Location: ./application/modules/dashboard/controllers/Dashboard.php */
+/* End of file Reports.php */
+/* Location: ./application/modules/reports/controllers/Reports.php */

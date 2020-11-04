@@ -34,24 +34,6 @@ class Model_Orders extends MY_Model
     }
   }
 
-  /**
-   * Update Orders
-   * @param array $data
-   * @return bool
-   */
-  public function order_update( $data = [] ) {
-    
-  }
-
-  /**
-   * Get Orders
-   * @param int $order_id
-   * @return array $result
-   */
-  public function order_get( $order_id = 0 ) {
-    
-  }
-
 }
 
 /* End of file Model_Orderdetails.php */

@@ -3,16 +3,16 @@
 class Model_Unit extends MY_Model
 {
 
-  protected $_table           = 'tbl_unit';
-  protected $_unit_id         = 'unit_id';
-  protected $_unit_desc       = 'unit_desc';
-  protected $_unit_sh         = 'unit_sh';
+  protected $_table     = 'tbl_unit';
+  protected $_unit_id   = 'unit_id';
+  protected $_unit_desc = 'unit_desc';
+  protected $_unit_sh   = 'unit_sh';
 
   function __construct() {
     parent:: __construct();
   }
 
-    /**
+  /**
    * Add Unit
    * @param string $unit - add only the unit
    * @return bool
