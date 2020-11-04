@@ -33,20 +33,16 @@ class Model_Damage extends MY_Model
   }
 
   /**
-   * Get all items
-   * @return array $result - all items
+   * Get all damage report
+   * @return array $result
    */
-  public function items() {
-    $this->db->select( '*' );
-    $this->db->order_by( $this->_ds_id , 'DESC' );
-    $this->db->from( $this->_table );
-    $query = $this->db->get();
+  public function damage_get() {
+    $query = $this->db->get( $this->_table );
     if( $query ) {
       return $query->result();
-    } else {
-      return false;
     }
   }
+
 }
 
 /* End of file Model_Inventory.php */

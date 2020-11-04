@@ -17,13 +17,13 @@
             <!-- Tab Menu -->
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#add-category" aria-selected="false">Category</a>
+                <a class="nav-link active" data-toggle="tab" href="#add-category" aria-selected="true">Category</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#add-unit" aria-selected="false">Unit</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#add-item" aria-selected="true">Product Info</a>
+                <a class="nav-link" data-toggle="tab" href="#add-item" aria-selected="false">Product Info</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#add-dmg" aria-selected="false">Damage Items</a>
@@ -372,10 +372,11 @@
                 <form action="#" method="post" class="mb-3">
                   <div class="row">
                     <div class="col-12">
-                    <div class="form-group">
-                        <label for="dmg_date">Date Reported</label>
+                      <div class ="row">
+                      <div class="form-group col-4">
+                        <label for="ds_date">Date Reported</label>
                         <div class="input-group">
-                          <input type="text" name="dmg_date" class="form-control" id="dmg_date" required />
+                          <input type="text" name="ds_date" value="<?php echo date("Y-M-d")?>" class="form-control" id="ds_date" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -383,7 +384,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
+                      <div class="form-group col-5">
                         <label for="dmg_code_number">Barcode Number</label>
                         <div class="input-group">
                           <input type="text" name="item_id" class="form-control" id="item_id" required />
@@ -394,7 +395,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
+                      <div class="form-group col-3">
                         <label for="item_quan">Item Quantity</label>
                         <div class="input-group">
                           <input type="text" name="ds_quantity" class="form-control" id="ds_quantity" required />
@@ -404,6 +405,7 @@
                             </span>
                           </div>
                         </div>
+                      </div>
                       </div>
                       <div class="form-group">
                         <label for="item_rem">Remarks</label>
@@ -427,7 +429,7 @@
                   </div>
                 </form>
 
-                <?php if( ! empty( $items ) && $items ): ?>
+                <?php if( $damage_all && $damage_all ): ?>
                   <div class="table-responsive">
                     <table class="table" id="set-damag-table">
                       <thead>
@@ -435,15 +437,17 @@
                           <th>BARCODE NUMBER</th>
                           <th>ITEMS QUANTITY</th>
                           <th>REMARKS</th>
+                          <th>DATE REPORTED</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
-                          foreach ( $items as $row ) {
+                           foreach ( $damage_all as $row ) {
                           echo '<tr>';
                           echo '<td>'. $row->item_id .'</td>';
                           echo '<td>'. $row->ds_quantity .'</td>';
                           echo '<td>'. $row->ds_remarks .'</td>';
+                          echo '<td>'. $row->ds_date .'</td>';
                           echo '</tr>';
                           }
                         ?>

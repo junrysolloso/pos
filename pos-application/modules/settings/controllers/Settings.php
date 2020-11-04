@@ -99,11 +99,14 @@ class Settings extends MY_Controller
           
           // Save Setting Damage Reports
           $ds_id = $this->input->post( 'ds_id' ) ? $this->input->post( 'ds_id' ) : NULL;
+          $ds_date =  $this->input->post( 'ds_date');
+          $createDate = date_create($ds_date);
           $data = array (
             'ds_id'       => $ds_id,
             'item_id'     => $this->input->post( 'item_id' ),
             'ds_quantity' => $this->input->post( 'ds_quantity' ),
             'ds_remarks'  => $this->input->post( 'ds_remarks' ),
+            'ds_date'     => date_format($createDate,"Y-m-d"),
           
           );
 
@@ -138,6 +141,7 @@ class Settings extends MY_Controller
     $data['sales_total'] = $this->Model_Sales->sales_total_get();
     $data['category_all'] = $this->Model_Category->category_get();
     $data['subcategory_all'] = $this->Model_Subcategory->subcat_get();
+    $data['damage_all'] = $this->Model_Damage->damage_get();
 
     /**
      * Load template parts
