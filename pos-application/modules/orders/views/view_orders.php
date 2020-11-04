@@ -198,7 +198,7 @@
                                 <option value="" data-select2-md-id="0">Select</option>
                                 <?php
                                   foreach ( $items_id_all as $row ) {
-                                    echo '<option value="'. $row->item_id .'" data-select2-md-id="'. $row->id .'">'. $row->item_id .'</option>';
+                                    echo '<option value="'. $row->item_id .'" data-select2-md-id="'. $row->id .'">'. ucwords( $row->item_name ) .'</option>';
                                   }
                                 ?>
                               </select>

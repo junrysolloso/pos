@@ -89,6 +89,12 @@ if( ! function_exists( 'log_lang' ) ) {
         'add'     => 'Added Unit',
         'view'    => 'Viewed Unit',
       ),
+      'unit_convert' => array(
+        'delete'  => 'Deleted Convertion',
+        'updated' => 'Updated Convertion',
+        'add'     => 'Added Convertion',
+        'view'    => 'Viewed Convertion',
+      ),
       'user_info' => array(
         'delete'  => 'Deleted User Information',
         'updated' => 'Updated User Information',
@@ -150,6 +156,9 @@ if( ! function_exists( 'log_lang' ) ) {
         break;
       case 'login':
         return $task['login'];
+        break;
+      case 'unit_convert':
+        return $task['unit_convert'];
         break;
       default:
       return $task['default'];

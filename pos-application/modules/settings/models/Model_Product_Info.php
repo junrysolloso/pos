@@ -10,12 +10,9 @@ class Model_Product_Info extends MY_Model
   protected $_item_description  = 'item_description';
   protected $_item_critlimit    = 'item_critlimit';
   protected $_unit_id           = 'unit_id';
-  
-  // protected $_join_tbl_items  = 'tbl_items';
 
   function __construct() {
     parent:: __construct();
-
   }
 
 
@@ -29,11 +26,11 @@ class Model_Product_Info extends MY_Model
       $data = clean_array( $data );
       $item_data = array(
         $this->_item_id    => $data['item_id'],
-        $this->_subcat_id  => $data['subcat_id'],
+        $this->_subcat_id  => intval( $data['subcat_id'] ),
         $this->_item_name  => strtolower( $data['item_name'] ),
         $this->_item_description => strtolower( $data['item_description'] ),
-        $this->_item_critlimit   => $data['item_critlimit'],
-        $this->_unit_id    => $data['unit_id1'],
+        $this->_item_critlimit   => intval( $data['item_critlimit'] ),
+        $this->_unit_id          => intval( $data['unit_id1'] ),
       );
       if ( $this->db->insert( $this->_table, $item_data ) ) {
         $this->Model_Log->log_add( log_lang( 'item' )['add'] );
@@ -51,7 +48,7 @@ class Model_Product_Info extends MY_Model
    * @return array $result
    */
   public function items_id_get() {
-    $this->db->select( 'id, item_id' );
+    $this->db->select( 'id, item_id, item_name' );
     $query = $this->db->get( $this->_table );
     if( $query ) {
       return $query->result();
@@ -60,5 +57,5 @@ class Model_Product_Info extends MY_Model
 
 }
 
-/* End of file Model_Inventory.php */
-/* Location: ./application/modules/inventory/models/Model_Inventory.php */
+/* End of file Model_Product_Info.php */
+/* Location: ./application/modules/settings/models/Model_Product_Info.php */

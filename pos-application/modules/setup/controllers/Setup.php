@@ -66,7 +66,9 @@ class Setup extends CI_Controller {
 	 */
 	public function clean() {
 		if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-			if ( $this->Model_Setup->clean_dummy() ) {
+
+			$table = $this->input->post( 'table_name' );
+			if ( $this->Model_Setup->clean_dummy( $table ) ) {
 				$this->session->set_tempdata( array(
 					'alert' => 'Done cleaning data.',
 					'class' => 'success',
