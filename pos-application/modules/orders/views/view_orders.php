@@ -185,11 +185,11 @@
                           <div class="form-group">
                             <label>Search Barcode Number</label>
                             <div class="input-group">
-                              <select name="select_code" class="form-control select2-md" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                <option value="" data-select2-id="0">Select</option>
+                              <select name="select_code" class="form-control select2-md" data-select2-md-id="1" tabindex="-1" aria-hidden="true">
+                                <option value="" data-select2-md-id="0">Select</option>
                                 <?php
                                   foreach ( $items_id_all as $row ) {
-                                    echo '<option value="'. $row->item_id .'" data-select2-id="'. $row->id .'">'. $row->item_id .'</option>';
+                                    echo '<option value="'. $row->item_id .'" data-select2-md-id="'. $row->id .'">'. $row->item_id .'</option>';
                                   }
                                 ?>
                               </select>
@@ -219,11 +219,11 @@
                       <div class="form-group">
                         <label for="order_category">Category</label>
                         <div class="input-group">
-                          <select name="select_category" class="form-control select2-lg" data-select2-id="2" tabindex="-1" aria-hidden="true">
-                            <option value="" data-select2-id="0">Select</option>
+                          <select name="select_category" class="form-control select2-lg" data-select2-lg-id="1" tabindex="-1" aria-hidden="true">
+                            <option value="" data-select2-lg-id="0">Select</option>
                             <?php
                               foreach ( $categories_all as $row ) {
-                                echo '<option value="'. $row->category_name .'" data-select2-id="'. $row->category_id .'">'. $row->category_name .'</option>';
+                                echo '<option value="'. $row->category_name .'" data-select2-lg-id="'. $row->category_id .'">'. $row->category_name .'</option>';
                               }
                             ?>
                           </select>

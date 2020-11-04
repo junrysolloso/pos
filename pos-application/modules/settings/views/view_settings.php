@@ -229,11 +229,11 @@
                           <div class="form-group">
                             <label for="item_cat">Product Category</label>
                             <div class="input-group">
-                              <select name="item_cat" class="form-control select2-md"  data-select2-id="1" tabindex="-1" aria-hidden="true" required>
-                                <option value="" data-select2-id="0">Select</option>
+                              <select name="item_cat" class="form-control select2-md" id="item_cat" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
+                                <option value="" data-select2-md-id="0">Select</option>
                                 <?php 
                                   foreach ( $category_all as $row ) {
-                                    echo '<option value="'. ucfirst( $row->category_name ) .'" data-select2-id="'. $row->category_id .'">'. ucfirst( $row->category_name ) .'</option>';
+                                    echo '<option value="'. ucfirst( $row->category_name ) .'" data-select2-md-id="'. $row->category_id .'">'. ucfirst( $row->category_name ) .'</option>';
                                   }
                                 ?>
                               </select>
@@ -249,11 +249,11 @@
                         <div class="form-group">
                           <label for="item_subcat">Product Sub-category</label>
                             <div class="input-group">
-                              <select type="text" name="item_subcat" class="form-control select2-md" id="item_subcat" data-select2-id="2" tabindex="-1" aria-hidden="true" required>
-                                <option value="" data-select2-id="0">Select</option>
+                              <select type="text" name="item_subcat" class="form-control select2-md" id="item_subcat" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
+                                <option value="" data-select2-md-id="0">Select</option>
                                 <?php 
                                   foreach ( $subcategory_all as $row ) {
-                                    echo '<option value="'. ucwords( $row->subcat_name ) .'" data-select2-id="'. $row->subcat_id .'">'. ucwords( $row->subcat_name ) .'</option>';
+                                    echo '<option value="'. ucwords( $row->subcat_name ) .'" data-select2-md-id="'. $row->subcat_id .'">'. ucwords( $row->subcat_name ) .'</option>';
                                   }
                                 ?>
                               </select>
@@ -270,11 +270,11 @@
                       <div class="form-group">
                         <label for="item_unit">Order Unit</label>
                         <div class="input-group">
-                          <select type="text" name="item_unit" class="form-control select2-lg" id="item_unit" data-select2-id="3" tabindex="-1" aria-hidden="true" required>
-                            <option value="" data-select2-id="0">Select</option>
+                          <select type="text" name="item_unit" class="form-control select2-lg" id="item_unit" data-select2-lg-id="1" tabindex="-1" aria-hidden="true" required>
+                            <option value="" data-select2-lg-id="0">Select</option>
                             <?php 
                               foreach ( $unit_all as $row ) {
-                                echo '<option value="'. $row->unit_sh .'" data-select2-id="'. $row->unit_id .'">'. $row->unit_sh .'</option>';
+                                echo '<option value="'. $row->unit_sh .'" data-select2-lg-id="'. $row->unit_id .'">'. $row->unit_sh .'</option>';
                               }
                             ?>
                           </select>
@@ -291,11 +291,11 @@
                       <div class="form-group">
                         <label for="selling_unit">Selling Unit</label>
                         <div class="input-group">
-                          <select type="text" name="selling_unit" class="form-control select2-md" id="selling_unit" required>
-                            <option value="" data-select2-id="0">Select</option>
+                          <select name="selling_unit" class="form-control select2-md" id="selling_unit" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
+                            <option value="" data-select2-md-id="0">Select</option>
                             <?php 
                               foreach ( $unit_all as $row ) {
-                                echo '<option value="'. $row->unit_sh .'" data-select2-id="'. $row->unit_id .'">'. $row->unit_sh .'</option>';
+                                echo '<option value="'. ucwords( $row->unit_sh ) .'" data-select2-md-id="'. $row->unit_id .'">'. ucwords( $row->unit_sh ) .'</option>';
                               }
                             ?>
                           </select>
