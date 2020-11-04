@@ -171,6 +171,7 @@
               </div>
 
               <!-- Add Product Info -->
+              <?php if( $category_all && $subcategory_all && $unit_all): ?>
               <div class="tab-pane fade mb-5 mt-4" id="add-item" role="tabpanel">
                 <form action="#" method="post">
                   <div class="row">
@@ -226,7 +227,13 @@
                       <div class="form-group">
                         <label for="item_cat">Product Category</label>
                         <div class="input-group">
-                          <input type="text" name="item_cat" class="form-control" id="item_cat" required />
+                          <select type="text" name="item_cat" class="form-control" id="item_cat" required>
+                            <?php 
+                              foreach ( $category_all as $row ) {
+                                echo '<option value="'. ucfirst( $row->category_name ) .'">'. ucfirst( $row->category_name ) .'</option>';
+                              }
+                            ?>
+                          </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -238,7 +245,13 @@
                       <div class="form-group">
                         <label for="item_subcat">Product Sub-category</label>
                         <div class="input-group">
-                          <input type="text" name="item_subcat" class="form-control" id="item_subcat" required />
+                        <select type="text" name="item_subcat" class="form-control" id="item_subcat" required>
+                            <?php 
+                              foreach ( $subcategory_all as $row ) {
+                                echo '<option value="'. ucwords( $row->subcat_name ) .'">'. ucwords( $row->subcat_name ) .'</option>';
+                              }
+                            ?>
+                          </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -251,10 +264,11 @@
                         <label for="item_unit">Order Unit</label>
                         <div class="input-group">
                           <select type="text" name="item_unit" class="form-control" id="item_unit" required>
-                            <option value="pcs">pcs</option>
-                            <option value="bottle">bottle</option>
-                            <option value="box">box</option>
-                            <option value="doz">doz</option>
+                            <?php 
+                              foreach ( $unit_all as $row ) {
+                                echo '<option value="'. $row->unit_sh .'">'. $row->unit_sh .'</option>';
+                              }
+                            ?>
                           </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
@@ -270,10 +284,11 @@
                         <label for="selling_unit">Selling Unit</label>
                         <div class="input-group">
                           <select type="text" name="selling_unit" class="form-control" id="selling_unit" required>
-                            <option value="pcs">pcs</option>
-                            <option value="bottle">bottle</option>
-                            <option value="box">box</option>
-                            <option value="doz">doz</option>
+                            <?php 
+                              foreach ( $unit_all as $row ) {
+                                echo '<option value="'. $row->unit_sh .'">'. $row->unit_sh .'</option>';
+                              }
+                            ?>
                           </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
@@ -306,6 +321,7 @@
                     </div>
                   </div>
                 </form>
+                <?php endif; ?>
               </div>
 
               <!-- Company Info -->

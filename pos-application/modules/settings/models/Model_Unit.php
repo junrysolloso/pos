@@ -15,23 +15,52 @@ class Model_Unit extends MY_Model
 
   }
 
-  /**
-   * Insert item
-   * @param array $data - array of data to be inserted on database
+    /**
+   * Add Unit
+   * @param string $unit - add only the unit
    * @return bool
    */
-  public function item_insert( $data = [] ) {
-    if( isset( $data ) && ! empty( $data ) ) {
-      $this->_remove_empty_key( $data );
-      if ( $this->db->insert( $this->_table, $data )  ) {
-        return true;
-      } else {
-        return false;
+  public function item_insert( $unit ) {
+
+    $this->db->select( 'unit_id as id' );
+    $this->db->where( $this->_unit_desc, strtolower( $unit['unit_desc'] ) );
+    $query = $this->db->get( $this->_table );
+
+    // Check if the given unit is present
+    // and return the id.
+    if ( $query->num_rows() > 0 ) {
+      $this->session->set_tempdata( array(
+        'msg' 	=> 'Unit already exist.',
+        'class' => 'alert-danger',
+      ), NULL, 5 );
+    } else {
+
+      // Insert the given unit which is not present
+      // in the databse and return the id.
+      $data = array( $this->_unit_desc => strtolower( $unit['unit_desc'] ) );
+      if ( $this->db->insert( $this->_table, $data ) ) {
+        $this->Model_Log->log_add( log_lang( 'unit' )['add'] );
+        $this->session->set_tempdata( array(
+          'msg' 	=> 'Unit successfully added.',
+          'class' => 'alert-success',
+        ), NULL, 5 );
       }
-    } 
+    }
+  }
+
+
+  /**
+   * Get all unit
+   * @return array $result
+   */
+  public function unit_get() {
+    $query = $this->db->get( $this->_table );
+    if( $query ) {
+      return $query->result();
+    }
   }
 
 }
 
-/* End of file Model_Inventory.php */
+/* End of file Model_Unit.php */
 /* Location: ./application/modules/inventory/models/Model_Inventory.php */

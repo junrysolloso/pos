@@ -16,6 +16,12 @@ class Model_Damage extends MY_Model
 
   }
 
+      /**
+   * Add Damage
+   * @param string $damage - add only the damage
+   * @return bool
+   */
+  
   /**
    * Insert item
    * @param array $data - array of data to be inserted on database

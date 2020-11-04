@@ -142,6 +142,7 @@ class Settings extends MY_Controller
     $data['category_all'] = $this->Model_Category->category_get();
     $data['subcategory_all'] = $this->Model_Subcategory->subcat_get();
     $data['damage_all'] = $this->Model_Damage->damage_get();
+    $data['unit_all'] = $this->Model_Unit->unit_get();
 
     /**
      * Load template parts
