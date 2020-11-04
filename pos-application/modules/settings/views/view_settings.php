@@ -40,9 +40,9 @@
             </ul>
 
             <div class="tab-content tab-content-solid">
-              <?php if( $this->session->tempdata('msg') ): ?>
-                <div class="alert <?php echo $this->session->tempdata('class'); ?> alert-dismissible fade show alert-temp" role="alert">
-                  <?php echo $this->session->tempdata('msg'); ?>
+              <?php if( $this->session->tempdata( 'msg' ) ): ?>
+                <div class="alert <?php echo $this->session->tempdata( 'class' ); ?> alert-dismissible fade show alert-temp" role="alert">
+                  <?php echo $this->session->tempdata( 'msg' ); ?>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -171,15 +171,14 @@
               </div>
 
               <!-- Add Product Info -->
-              
               <div class="tab-pane fade mb-5 mt-4" id="add-item" role="tabpanel">
                 <form action="#" method="post">
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
-                        <label for="code_number">Barcode Number</label>
+                        <label for="item_id">Barcode Number</label>
                         <div class="input-group">
-                          <input type="text" name="code_number" class="form-control" id="code_number" data-inputmask="'mask': ['999999-999999']" data-mask="" im-insert="true" required />
+                          <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999999999']" data-mask="" im-insert="true" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -201,9 +200,9 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="item_desc">Product Description</label>
+                        <label for="item_description">Product Description</label>
                         <div class="input-group">
-                          <input type="text" name="item_desc" class="form-control" id="item_desc" required />
+                          <input type="text" name="item_description" class="form-control" id="item_description" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -213,9 +212,9 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="item_limit">Product Limit</label>
+                        <label for="item_critlimit">Product Limit</label>
                         <div class="input-group">
-                          <input type="number" name="item_limit" class="form-control" id="item_limit" required />
+                          <input type="number" name="item_critlimit" class="form-control" id="item_critlimit" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -224,57 +223,33 @@
                         </div>
                       </div>
                       
-                      <div class="row">
-                        <div class="col-6">
-                          <div class="form-group">
-                            <label for="item_cat">Product Category</label>
-                            <div class="input-group">
-                              <select name="item_cat" class="form-control select2-md" id="item_cat" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
-                                <option value="" data-select2-md-id="0">Select</option>
-                                <?php 
-                                  foreach ( $category_all as $row ) {
-                                    echo '<option value="'. ucfirst( $row->category_name ) .'" data-select2-md-id="'. $row->category_id .'">'. ucfirst( $row->category_name ) .'</option>';
-                                  }
-                                ?>
-                              </select>
-                              <div class="input-group-append">
-                                <span class="input-group-text">
-                                  <i class="mdi mdi-check-circle-outline"></i>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-6">
-                        <div class="form-group">
-                          <label for="item_subcat">Product Sub-category</label>
-                            <div class="input-group">
-                              <select type="text" name="item_subcat" class="form-control select2-md" id="item_subcat" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
-                                <option value="" data-select2-md-id="0">Select</option>
-                                <?php 
-                                  foreach ( $subcategory_all as $row ) {
-                                    echo '<option value="'. ucwords( $row->subcat_name ) .'" data-select2-md-id="'. $row->subcat_id .'">'. ucwords( $row->subcat_name ) .'</option>';
-                                  }
-                                ?>
-                              </select>
-                              <div class="input-group-append">
-                                <span class="input-group-text">
-                                  <i class="mdi mdi-check-circle-outline"></i>
-                                </span>
-                              </div>
-                            </div>
+                      <div class="form-group">
+                        <label for="subcat_id">Product Sub Category</label>
+                        <div class="input-group">
+                          <select name="subcat_id" class="form-control select2-lg" id="subcat_id" data-select2-lg-id="1" tabindex="-1" aria-hidden="true" required>
+                            <option value="" data-select2-lg-id="0">Select</option>
+                            <?php 
+                              foreach ( $subcategory_all as $row ) {
+                                echo '<option value="'. $row->subcat_id .'" data-select2-lg-id="'. $row->subcat_id .'">'. ucfirst( $row->subcat_name ) .'</option>';
+                              }
+                            ?>
+                          </select>
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
                           </div>
                         </div>
                       </div>
 
                       <div class="form-group">
-                        <label for="item_unit">Order Unit</label>
+                        <label for="unit_id1">Order Unit</label>
                         <div class="input-group">
-                          <select type="text" name="item_unit" class="form-control select2-lg" id="item_unit" data-select2-lg-id="1" tabindex="-1" aria-hidden="true" required>
+                          <select type="text" name="unit_id1" class="form-control select2-lg" id="unit_id1" data-select2-lg-id="1" tabindex="-1" aria-hidden="true" required>
                             <option value="" data-select2-lg-id="0">Select</option>
                             <?php 
                               foreach ( $unit_all as $row ) {
-                                echo '<option value="'. $row->unit_sh .'" data-select2-lg-id="'. $row->unit_id .'">'. $row->unit_sh .'</option>';
+                                echo '<option value="'. $row->unit_id .'" data-select2-lg-id="'. $row->unit_id .'">'. strtolower( $row->unit_sh ) .'</option>';
                               }
                             ?>
                           </select>
@@ -289,13 +264,13 @@
 
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="selling_unit">Selling Unit</label>
+                        <label for="unit_id2">Selling Unit</label>
                         <div class="input-group">
-                          <select name="selling_unit" class="form-control select2-md" id="selling_unit" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
+                          <select name="unit_id2" class="form-control select2-md" id="unit_id2" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
                             <option value="" data-select2-md-id="0">Select</option>
                             <?php 
                               foreach ( $unit_all as $row ) {
-                                echo '<option value="'. ucwords( $row->unit_sh ) .'" data-select2-md-id="'. $row->unit_id .'">'. ucwords( $row->unit_sh ) .'</option>';
+                                echo '<option value="'. $row->unit_id .'" data-select2-md-id="'. $row->unit_id .'">'. $row->unit_sh .'</option>';
                               }
                             ?>
                           </select>
@@ -310,9 +285,9 @@
 
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="item_equiv">Equivalent</label>
+                        <label for="uc_number">Equivalent</label>
                         <div class="input-group">
-                          <input type="number" name="item_equiv" class="form-control" id="item_equiv" required />
+                          <input type="number" name="uc_number" class="form-control" id="uc_number" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -413,7 +388,7 @@
                       <div class="form-group col-5">
                         <label for="item_id">Barcode Number</label>
                         <div class="input-group">
-                          <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999-999999']" data-mask="" im-insert="true" required />
+                          <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999999999']" data-mask="" im-insert="true" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>

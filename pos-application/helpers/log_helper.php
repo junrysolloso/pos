@@ -60,10 +60,10 @@ if( ! function_exists( 'log_lang' ) ) {
         'view'    => 'Viewed Order Inventory',
       ),
       'orders' => array(
-        'delete'  => 'Deleted Orders',
-        'updated' => 'Updated Orders',
-        'add'     => 'Added Orders',
-        'view'    => 'Viewed Orders',
+        'delete'  => 'Deleted Order',
+        'updated' => 'Updated Order',
+        'add'     => 'Added Order',
+        'view'    => 'Viewed Order',
       ),
       'sales' => array(
         'delete'  => 'Deleted Sales',
@@ -157,3 +157,22 @@ if( ! function_exists( 'log_lang' ) ) {
     }
   }
 }
+
+if( ! function_exists( 'clean_array' ) ) {
+  /**
+   * Clean array
+   * @param array $array - array to be clean
+   * @return array $array
+   */
+  function clean_array( $array ) {
+    if( is_array( $array ) ) {
+      foreach ( $array as $key => $val ) {
+        if ( empty(  $val ) ||  $val == NULL ) {
+          unset( $array[ $key ] );
+        }
+      }
+      return $array;
+    }
+  }
+}
+

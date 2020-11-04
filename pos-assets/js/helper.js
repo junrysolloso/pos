@@ -47,7 +47,7 @@ $(document).ready(function () {
   // Set icon color and size on event change
   function input_icon(obj) {
     obj.each(function () {
-      if (obj.val().length > 1) {
+      if (obj.val().length > 0) {
         obj.closest('.input-group').find('.mdi').removeClass('mdi-close-circle-outline');
         obj.closest('.input-group').find('.input-group-text').removeClass('text-danger');
 
@@ -79,8 +79,6 @@ $(document).ready(function () {
   //Initialize Select2 Elements
   $('.select2-lg').select2({width: '93.6%'});
   $('.select2-md').select2({width: '86.8%'});
-
-
 
   // Show alert
   showSwal = function(type) {

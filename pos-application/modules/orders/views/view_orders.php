@@ -25,6 +25,15 @@
             </ul>
 
             <div class="tab-content tab-content-solid">
+              <?php if( $this->session->tempdata( 'msg' ) ): ?>
+                <div class="alert <?php echo $this->session->tempdata( 'class' ); ?> alert-dismissible fade show alert-temp" role="alert">
+                  <?php echo $this->session->tempdata( 'msg' ); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              <?php endif; ?>
+
               <!-- Order History -->
               <div class="tab-pane  mb-4 fade" id="order-history" role="tabpanel">
                 <!-- Filter -->
@@ -167,9 +176,9 @@
 
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="total_amount">Total Amount</label>
+                        <label for="order_total">Total Amount</label>
                         <div class="input-group">
-                          <input type="number" name="total_amount" class="form-control" id="total_amount" required />
+                          <input type="number" name="order_total" class="form-control" id="order_total" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -183,9 +192,9 @@
                       <div class="row">
                         <div class="col-6">
                           <div class="form-group">
-                            <label>Search Barcode Number</label>
+                            <label for="select_code">Search Barcode Number</label>
                             <div class="input-group">
-                              <select name="select_code" class="form-control select2-md" data-select2-md-id="1" tabindex="-1" aria-hidden="true">
+                              <select name="select_code" id="select_code" class="form-control select2-md" data-select2-md-id="1" tabindex="-1" aria-hidden="true">
                                 <option value="" data-select2-md-id="0">Select</option>
                                 <?php
                                   foreach ( $items_id_all as $row ) {
@@ -205,7 +214,7 @@
                           <div class="form-group">
                             <label for="item_id">Barcode Number</label>
                             <div class="input-group">
-                              <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999-999999']" data-mask="" im-insert="true" required />
+                              <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999999999']" data-mask="" im-insert="true" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -217,13 +226,13 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="order_category">Category</label>
+                        <label for="category_id">Category</label>
                         <div class="input-group">
-                          <select name="select_category" class="form-control select2-lg" data-select2-lg-id="1" tabindex="-1" aria-hidden="true">
+                          <select name="category_id" id="category_id" class="form-control select2-lg" data-select2-lg-id="1" tabindex="-1" aria-hidden="true">
                             <option value="" data-select2-lg-id="0">Select</option>
                             <?php
                               foreach ( $categories_all as $row ) {
-                                echo '<option value="'. $row->category_name .'" data-select2-lg-id="'. $row->category_id .'">'. $row->category_name .'</option>';
+                                echo '<option value="'. $row->category_id .'" data-select2-lg-id="'. $row->category_id .'">'. ucfirst( $row->category_name ) .'</option>';
                               }
                             ?>
                           </select>
@@ -236,9 +245,16 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="order_unit">Order Unit</label>
+                        <label for="unit_id">Order Unit</label>
                         <div class="input-group">
-                          <input type="number" name="order_unit" class="form-control" id="order_unit" required />
+                          <select name="unit_id" id="unit_id" class="form-control select2-lg" data-select2-lg-id="1" tabindex="-1" aria-hidden="true">
+                            <option value="" data-select2-lg-id="0">Select</option>
+                            <?php
+                              foreach ( $unit_all as $row ) {
+                                echo '<option value="'. $row->unit_id .'" data-select2-lg-id="'. $row->unit_id .'">'. ucfirst( $row->unit_desc ) .'</option>';
+                              }
+                            ?>
+                          </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -250,9 +266,9 @@
                       <div class="row">
                         <div class="col-6">
                           <div class="form-group">
-                            <label for="order_quantity">Quantity</label>
+                            <label for="orderdetails_quantity">Quantity</label>
                             <div class="input-group">
-                              <input type="number" name="order_quantity" class="form-control" id="order_quantity"
+                              <input type="number" name="orderdetails_quantity" class="form-control" id="orderdetails_quantity"
                                 required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
@@ -266,8 +282,7 @@
                           <div class="form-group">
                             <label for="price_per_unit">Price Per Unit</label>
                             <div class="input-group">
-                              <input type="number" name="price_per_unit" class="form-control" id="price_per_unit"
-                                required />
+                              <input type="number" name="price_per_unit" class="form-control" id="price_per_unit" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -282,7 +297,7 @@
                         <label for="expiration_date">Expiration Date</label>
                         <div class="input-group">
                           <input type="text" name="expiration_date" class="form-control"
-                            data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required />
+                            data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -294,8 +309,7 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit_order" value="Save Order Details"
-                          class="btn btn-success submit-btn" />
+                        <input type="submit" name="submit_order" value="Save Order Details" class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>

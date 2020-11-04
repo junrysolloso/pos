@@ -15,8 +15,9 @@ class Settings extends MY_Controller
     // Load models
     $this->load->model( 'Model_Unit' );
     $this->load->model( 'Model_Damage' );
-    $this->load->model( 'settings/Model_Category' );
-    $this->load->model( 'settings/Model_Subcategory' );
+    $this->load->model( 'Model_Category' );
+    $this->load->model( 'Model_Subcategory' );
+    $this->load->model( 'Model_Product_Info' );
   }
 
 	/**
@@ -43,8 +44,19 @@ class Settings extends MY_Controller
       // NOTE: id will be use on update only e.g $category_id
       switch ( $post_id ) {
         case 'Save Product Details':
-          
-          // Product info here...
+
+          $data = array(
+            'item_id'          => $this->input->post('item_id'),
+            'item_name'        => $this->input->post('item_name'),
+            'item_description' => $this->input->post('item_description'),
+            'item_critlimit'   => $this->input->post('item_critlimit'),
+            'subcat_id'        => $this->input->post('subcat_id'),
+            'unit_id1'         => $this->input->post('unit_id1'),
+            'unit_id2'         => $this->input->post('unit_id2'),
+            'uc_number'        => $this->input->post('uc_number'),
+          );
+
+          $this->Model_Product_Info->product_add( $data );
 
           break;
         case 'Save Category Details':
@@ -53,13 +65,11 @@ class Settings extends MY_Controller
           $cat_id = $this->input->post( 'category_id' ) ? $this->input->post( 'category_id' ) : NULL;
           $sub_id = $this->input->post( 'subcat_id' ) ? $this->input->post( 'subcat_id' ) : NULL;
 
-          // Category data
           $cat_data = array (
             'category_id'   => $cat_id,
             'category_name' => $this->input->post( 'category_name' ),
           );
           
-          // Sub-category data
           $subcat_id  = $sub_id;
           $subcat_nm  = $this->input->post( 'subcat_name' );
 

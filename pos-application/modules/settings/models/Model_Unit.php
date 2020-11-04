@@ -27,7 +27,6 @@ class Model_Unit extends MY_Model
     $query = $this->db->get( $this->_table );
 
     // Check if the given unit is present
-    // and return the id.
     if ( $query->num_rows() > 0 ) {
       $this->session->set_tempdata( array(
         'msg' 	=> 'Unit already exist.',
@@ -36,14 +35,19 @@ class Model_Unit extends MY_Model
     } else {
 
       // Insert the given unit which is not present
-      // in the databse and return the id.
-      $data = array( $this->_unit_desc => strtolower( $unit['unit_desc'] ) );
+      // in the databse.
+      $data = array( 
+        $this->_unit_desc => strtolower( $unit['unit_desc'] ), 
+        $this->_unit_sh   => strtolower( $unit['unit_sh'] ),
+      );
+
       if ( $this->db->insert( $this->_table, $data ) ) {
         $this->Model_Log->log_add( log_lang( 'unit' )['add'] );
         $this->session->set_tempdata( array(
           'msg' 	=> 'Unit successfully added.',
           'class' => 'alert-success',
         ), NULL, 5 );
+        return true;
       }
     }
   }

@@ -5,11 +5,11 @@ class Model_Product_Info extends MY_Model
 
   protected $_table             = 'tbl_items';
   protected $_item_id           = 'item_id';
-  protected $subcat_id          = 'subcat_id';
-  protected $item_name          = 'item_name';
-  protected $item_description   = 'item_description';
-  protected $item_critlimit     = 'item_critlimit';
-  protected $unit_id            = 'unit_id';
+  protected $_subcat_id         = 'subcat_id';
+  protected $_item_name         = 'item_name';
+  protected $_item_description  = 'item_description';
+  protected $_item_critlimit    = 'item_critlimit';
+  protected $_unit_id           = 'unit_id';
   
   // protected $_join_tbl_items  = 'tbl_items';
 
@@ -18,60 +18,39 @@ class Model_Product_Info extends MY_Model
 
   }
 
-   /**
-   * Add Product Information
-   * @param string $product_info - add only the product_info
+  /**
+   * Add Product Info
+   * @param array $data
    * @return bool
    */
-  /* public function item_insert( $product_info ) {
-
-    $this->db->select( 'item_id as id' );
-    $this->db->where( $this->_item_name, strtolower( $product_info['item_name'] ) );
-    $query = $this->db->get( $this->_table );
-
-    // Check if the given unit is present
-    // and return the id.
-    if ( $query->num_rows() > 0 ) {
-      $this->session->set_tempdata( array(
-        'msg' 	=> 'Product already exist.',
-        'class' => 'alert-danger',
-      ), NULL, 5 );
-    } else { */
-
-      // Insert the given unit which is not present
-      // in the databse and return the id.
-      /* $data = array( $this->_unit_desc => strtolower( $product_info['unit_desc'] ) );
-      if ( $this->db->insert( $this->_table, $data ) ) {
-        $this->Model_Log->log_add( log_lang( 'unit' )['add'] );
+  public function product_add( $data = [] ) {
+    if( is_array( $data ) ) {
+      $data = clean_array( $data );
+      $item_data = array(
+        $this->_item_id    => $data['item_id'],
+        $this->_subcat_id  => $data['subcat_id'],
+        $this->_item_name  => strtolower( $data['item_name'] ),
+        $this->_item_description => strtolower( $data['item_description'] ),
+        $this->_item_critlimit   => $data['item_critlimit'],
+        $this->_unit_id    => $data['unit_id1'],
+      );
+      if ( $this->db->insert( $this->_table, $item_data ) ) {
+        $this->Model_Log->log_add( log_lang( 'item' )['add'] );
         $this->session->set_tempdata( array(
-          'msg' 	=> 'Unit successfully added.',
+          'msg' 	=> 'Item successfully added.',
           'class' => 'alert-success',
         ), NULL, 5 );
+        return true;
       }
     }
-  } */
+  }
 
   /**
-   * Insert item
-   * @param array $data - array of data to be inserted on database
-   * @return bool
-   */
-  /* public function item_insert( $data = [] ) {
-    if( isset( $data ) && ! empty( $data ) ) {
-      $this->_remove_empty_key( $data );
-      if ( $this->db->insert( $this->_table, $data )  ) {
-        return true;
-      } else {
-        return false;
-      }
-    } 
-  } */
-
-  /**
-   * Get all damage report
+   * Get All Item Id
    * @return array $result
    */
-  public function damage_get() {
+  public function items_id_get() {
+    $this->db->select( 'id, item_id' );
     $query = $this->db->get( $this->_table );
     if( $query ) {
       return $query->result();
