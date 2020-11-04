@@ -7,12 +7,9 @@ class Model_Unit extends MY_Model
   protected $_unit_id         = 'unit_id';
   protected $_unit_desc       = 'unit_desc';
   protected $_unit_sh         = 'unit_sh';
-  
-  // protected $_join_tbl_items  = 'tbl_items';
 
   function __construct() {
     parent:: __construct();
-
   }
 
     /**
@@ -67,4 +64,4 @@ class Model_Unit extends MY_Model
 }
 
 /* End of file Model_Unit.php */
-/* Location: ./application/modules/inventory/models/Model_Inventory.php */
+/* Location: ./application/modules/settings/models/Model_Unit.php */

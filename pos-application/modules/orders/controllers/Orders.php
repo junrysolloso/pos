@@ -8,6 +8,7 @@ class Orders extends MY_Controller
 
     $this->load->model( 'Model_Orders' );
     $this->load->model( 'Model_Orderdetails' );
+    $this->load->model( 'Model_Order_Inventory' );
     $this->load->model( 'settings/Model_Unit' );
     $this->load->model( 'settings/Model_Product_Info' );
     $this->load->model( 'settings/Model_Category' );
@@ -44,6 +45,7 @@ class Orders extends MY_Controller
         
         $this->Model_Orders->order_add( $data );
         $this->Model_Orderdetails->order_details_add( $data );
+        $this->Model_Order_Inventory->order_inv_add( $data );
       }
     }
 
@@ -53,6 +55,7 @@ class Orders extends MY_Controller
     $data['items_id_all']   = $this->Model_Product_Info->items_id_get();
     $data['categories_all'] = $this->Model_Category->category_get();
     $data['unit_all']       = $this->Model_Unit->unit_get();
+    $data['order_history']  = $this->Model_Order_Inventory->order_inv_get();
 
      // Load template parts
     $this->template->set_master_template( 'layouts/layout_admin' );

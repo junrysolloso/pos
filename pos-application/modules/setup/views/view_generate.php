@@ -18,7 +18,7 @@
                   <label for="table_name">Select table to truncate.</label>
                   <div class="form-group">
                     <select name="table_name" id="table_name" class="form-control">
-                      <option value="Log">All</option>
+                      <option value="All">All</option>
                       <option value="Unit Convert">Unit Convert</option>
                       <option value="Unit">Unit</option>
                       <option value="Sub Category">Sub Category</option>

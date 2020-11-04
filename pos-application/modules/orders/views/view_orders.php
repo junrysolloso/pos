@@ -16,11 +16,11 @@
 
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#order-history" aria-selected="false">Order
+                <a class="nav-link active" data-toggle="tab" href="#order-history" aria-selected="true">Order
                   History</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#add-order" aria-selected="true">Add Order</a>
+                <a class="nav-link" data-toggle="tab" href="#add-order" aria-selected="false">Add Order</a>
               </li>
             </ul>
 
@@ -35,8 +35,7 @@
               <?php endif; ?>
 
               <!-- Order History -->
-              <div class="tab-pane  mb-4 fade" id="order-history" role="tabpanel">
-                <!-- Filter -->
+              <div class="tab-pane active show mb-4 fade" id="order-history" role="tabpanel">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -52,50 +51,33 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- Table -->
                 <div class="table-responsive border-bottom pb-5">
                   <table class="table" id="ord-histo-table">
                     <thead>
                       <tr>
-                        <th>NO.</th>
+                        <th>ITEM NAME</th>
                         <th>ORDER DATE</th>
                         <th>ORDER TOTAL</th>
                         <th>NUMBER OF ITEMS</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
+                      <?php
+                        foreach ( $order_history as $row ) {
+                          echo '<tr>';
+                          echo '<td>'. ucwords( $row->item_name ) .'</td>';
+                          echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
+                          echo '<td>'. $row->order_total .'</td>';
+                          echo '<td>'. $row->no_of_stocks .'</td>';
+                          echo '</tr>';
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
 
                 <!-- Order Items -->
-                <div class="mt-5">
-                  <!-- Filter -->
+                <!-- <div class="mt-5">
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
@@ -111,8 +93,6 @@
                       </div>
                     </div>
                   </div>
-
-                  <!-- Table -->
                   <div class="table-responsive">
                     <table class="table" id="ord-items-table">
                       <thead>
@@ -151,12 +131,12 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </div> -->
 
               </div>
 
               <!-- Add Orders -->
-              <div class="tab-pane fade active show mt-4 mb-4" id="add-order" role="tabpanel">
+              <div class="tab-pane fade mt-4 mb-4" id="add-order" role="tabpanel">
                 <form action="#" method="post" name="frm_add_order">
                   <div class="row">
                     <div class="col-6">
@@ -313,7 +293,7 @@
                     </div>
                   </div>
                 </form>
-                                  
+
                 <!-- <div class="table-responsive">
                   <table class="table" id="ord-added-table">
                     <thead>

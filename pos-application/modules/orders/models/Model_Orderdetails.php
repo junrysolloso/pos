@@ -25,6 +25,8 @@ class Model_Orderdetails extends MY_Model
   public function order_details_add( $data = [] ) {
     if( is_array( $data ) ) {
 
+      $data = clean_array( $data );
+
       $this->db->select( 'MAX(order_id) as id' );
       $order_id = $this->db->get( $this->_relate_table )->row()->id;
 
@@ -32,8 +34,8 @@ class Model_Orderdetails extends MY_Model
         $this->_order_id => $order_id,
         $this->_item_id  => $data['item_id'],
         $this->_unit_id  => $data['unit_id'],
-        $this->_orderdetails_quantity  => $data['orderdetails_quantity'],
-        $this->_price_per_unit         => $data['price_per_unit'],
+        $this->_orderdetails_quantity => $data['orderdetails_quantity'],
+        $this->_price_per_unit        => $data['price_per_unit'],
       );
 
       if ( $this->db->insert( $this->_table, $orderdetails_data ) ) {

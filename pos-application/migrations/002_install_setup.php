@@ -79,7 +79,7 @@ class Migration_Install_Setup extends CI_Migration
 			),
 
 			'orderdetails' => array(
-				"`oderdetails_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT",
+				"`orderdetails_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT",
 				"`order_id` int(11) DEFAULT NULL",
 				"`item_id` varchar(20) DEFAULT NULL",
 				"`unit_id` tinyint(4) DEFAULT NULL",
