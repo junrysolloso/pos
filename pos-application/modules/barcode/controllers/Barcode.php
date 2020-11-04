@@ -9,6 +9,8 @@ class Barcode extends MY_Controller
     if ( ! $this->session->userdata( 'user_id' ) ) {
       redirect( base_url( 'login' ) );
     }
+
+    $this->load->model( 'Model_Barcode' );
   }
 
   /**
@@ -18,12 +20,9 @@ class Barcode extends MY_Controller
 
     $html = '';
 
-    // Load Model
-    $this->load->model( 'sales/Model_Sales' );
-    $this->load->model( 'Model_Barcode' );
-
 		// Generate random number
     $code    = $this->Model_Barcode->_check_code();
+    echo $code;
     $element = $this->barcode_generate( $code );
   
     // Get DOM children elements

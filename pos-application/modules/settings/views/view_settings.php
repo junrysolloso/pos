@@ -55,7 +55,7 @@
                   <div class="row">
                     <div class="col-12">
                       <div class = "row">
-                        <div class="form-group col-5">
+                        <div class="form-group col-4">
                           <label for="category_name">Category</label>
                           <div class="input-group">
                             <input type="text" name="category_name" class="form-control" id="category_name" required />
@@ -66,7 +66,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="form-group sub-main col-7">
+                        <div class="form-group sub-main col-8">
                           <label for="subcat_name[]">Sub Category</label>
                           <div class="input-group">
                             <input type="text" name="subcat_name[]" class="form-control" required />
@@ -394,7 +394,7 @@
                       <div class="form-group col-4">
                         <label for="ds_date">Date Reported</label>
                         <div class="input-group">
-                          <input type="text" name="ds_date" value="<?php echo date("Y-M-d")?>" class="form-control" id="ds_date"  disabled/>
+                          <input type="text" name="ds_date" value="<?php echo date( "Y-M-d" ); ?>" class="form-control" id="ds_date"  disabled/>
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -655,9 +655,9 @@
                           echo '<tr>';
                           echo '<td>'. $count .'</td>';
                           echo '<td>'. ucfirst( $row->username ) .'</td>';
-                          echo '<td>'. date_format( date_create( $row->log_date ), 'd M Y' ).'</td>';
+                          echo '<td>'. date_format( date_create( $row->log_date ), 'd M Y' ) .'</td>';
                           echo '<td>'. date_format( date_create( $row->log_time ), 'h:i A' ) .'</td>';
-                          echo '<td>'. ucwords( $row->log_task ).'</td>';
+                          echo '<td>'. ucwords( $row->log_task ) .'</td>';
                           echo '</tr>';
                           $count++;
                         }

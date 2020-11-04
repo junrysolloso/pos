@@ -9,8 +9,6 @@ class Dashboard extends MY_Controller
     if ( ! $this->session->userdata( 'user_id' ) ) {
       redirect( base_url( 'login' ) );
     }
-
-    $this->load->model( 'sales/Model_Sales' );
   }
 
 	/**

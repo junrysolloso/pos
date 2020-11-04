@@ -15,7 +15,6 @@ class Settings extends MY_Controller
     // Load models
     $this->load->model( 'Model_Unit' );
     $this->load->model( 'Model_Damage' );
-    $this->load->model( 'sales/Model_Sales' );
     $this->load->model( 'settings/Model_Category' );
     $this->load->model( 'settings/Model_Subcategory' );
   }

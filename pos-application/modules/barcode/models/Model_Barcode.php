@@ -13,7 +13,7 @@ class Model_Barcode extends MY_Model
    * Generate sample code
    */
   public function _check_code() {
-    $code  = '480' . mt_rand( 10000000, 99999999 );
+    $code  = '480427' . mt_rand( 10000, 99999 );
     $this->db->select( 'id' );
     $this->db->where( 'item_id', $code );
     if ( $this->db->get( 'tbl_items' )->num_rows() > 0 ) {

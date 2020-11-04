@@ -17,8 +17,12 @@ $(document).ready(function () {
       $('div.alert').each(function(){
         $(this).remove();
       });  
-    }, 3000);
+    }, 5000);
   }
+
+  $('select[name="select_code"]').on('change', function(){
+    $('input[name="item_id"]').val($(this).val());
+  });
 
   // Get values from an array input
   // var values = $("input[name='pname[]']").map(function(){return $(this).val();}).get();
@@ -71,6 +75,11 @@ $(document).ready(function () {
 
   // Inputmask
   $(":input").inputmask();
+
+  //Initialize Select2 Elements
+  $('.select2').each(function(){
+    $('.select2').select2();
+  });
 
   // Show alert
   showSwal = function(type) {

@@ -69,12 +69,19 @@ div.dataTables_wrapper div.dataTables_filter {
   color: #FF627D !important;
 }
 
+/* Table */
 .table td {
   padding: 7px 10px;
 }
 
+/* Select */
+/* .auth.theme-one .auto-form-wrapper .form-group .input-group .select2-container--default .select2-selection--single {
+  border: 1px solid #cfd5db !important;
+  border-radius: 6px !important;
+} */
+
 /* .auth.theme-one .auto-form-wrapper .form-group .input-group {
-  height: 26px !important;
+  height: 40px !important;
 } */
 
 /* Inventory */
