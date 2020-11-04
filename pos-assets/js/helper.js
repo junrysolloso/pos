@@ -77,9 +77,10 @@ $(document).ready(function () {
   $(":input").inputmask();
 
   //Initialize Select2 Elements
-  $('.select2').each(function(){
-    $('.select2').select2();
-  });
+  $('.select2-lg').select2({width: '93.6%'});
+  $('.select2-md').select2({width: '86.8%'});
+
+
 
   // Show alert
   showSwal = function(type) {

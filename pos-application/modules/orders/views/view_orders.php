@@ -185,7 +185,7 @@
                           <div class="form-group">
                             <label>Search Barcode Number</label>
                             <div class="input-group">
-                              <select name="select_code" class="form-control select2" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                              <select name="select_code" class="form-control select2-md" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                 <option value="" data-select2-id="0">Select</option>
                                 <?php
                                   foreach ( $items_id_all as $row ) {
@@ -219,7 +219,7 @@
                       <div class="form-group">
                         <label for="order_category">Category</label>
                         <div class="input-group">
-                          <select name="select_category" class="form-control select2" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                          <select name="select_category" class="form-control select2-lg" data-select2-id="2" tabindex="-1" aria-hidden="true">
                             <option value="" data-select2-id="0">Select</option>
                             <?php
                               foreach ( $categories_all as $row ) {
