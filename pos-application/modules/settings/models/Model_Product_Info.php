@@ -18,6 +18,7 @@ class Model_Product_Info extends MY_Model
 
   }
 
+
   /**
    * Add Product Info
    * @param array $data

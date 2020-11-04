@@ -157,7 +157,7 @@
 
               <!-- Add Orders -->
               <div class="tab-pane fade active show mt-4 mb-4" id="add-order" role="tabpanel">
-                <form action="#" method="post">
+                <form action="#" method="post" name="frm_add_order">
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
@@ -268,8 +268,7 @@
                           <div class="form-group">
                             <label for="orderdetails_quantity">Quantity</label>
                             <div class="input-group">
-                              <input type="number" name="orderdetails_quantity" class="form-control" id="orderdetails_quantity"
-                                required />
+                              <input type="number" name="orderdetails_quantity" class="form-control" id="orderdetails_quantity" onkeyup="calc()" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -282,7 +281,7 @@
                           <div class="form-group">
                             <label for="price_per_unit">Price Per Unit</label>
                             <div class="input-group">
-                              <input type="number" name="price_per_unit" class="form-control" id="price_per_unit" required />
+                              <input type="number" name="price_per_unit" class="form-control" id="price_per_unit" onkeyup="calc()" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -314,6 +313,18 @@
                     </div>
                   </div>
                 </form>
+
+                <!--Script for total amount calculation-->
+                  <script>
+                    function calc()
+                      {
+                        var elm = document.forms["frm_add_order"];
+
+                        if (elm["orderdetails_quantity"].value != "" && elm["price_per_unit"].value != "")
+                          {elm["order_total"].value = parseInt(elm["orderdetails_quantity"].value) * parseInt(elm["price_per_unit"].value);}
+                      }
+                  </script>
+                  
                 <!-- <div class="table-responsive">
                   <table class="table" id="ord-added-table">
                     <thead>

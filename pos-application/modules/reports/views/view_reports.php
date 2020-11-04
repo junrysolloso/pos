@@ -32,32 +32,19 @@
                   </select>
                   &nbsp;
 
-                  starting &nbsp;
-                  <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Date Picker
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Grocery</a>
-                    <a class="dropdown-item" href="#">Pharmacy</a>
-                    <a class="dropdown-item" href="#">Beauty Products</a>
-                    <a class="dropdown-item" href="#">Sales</a>
-                    <a class="dropdown-item" href="#">Damage Items</a>
+                  for the date &nbsp;
+                  <!-- Date Range Picker -->
+                 <div class="row mb-5 mt-3">
+                      <div class="col-4">
+                      <div id="reportrange" style="cursor: pointer;">
+                        <i class="mdi mdi-calendar"></i>&nbsp;
+                        <span>October 6, 2020 - November 4, 2020</span> <i class="fa fa-caret-down"></i>
+                        <input type="hidden" name="dateRange" id="dateRange" value="October 6, 2020 - November 4, 2020">
+                      </div>
+                     <</div>
                   </div>
                   &nbsp;
-                  ending &nbsp;
-                  <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Date Picker
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Grocery</a>
-                    <a class="dropdown-item" href="#">Pharmacy</a>
-                    <a class="dropdown-item" href="#">Beauty Products</a>
-                    <a class="dropdown-item" href="#">Sales</a>
-                    <a class="dropdown-item" href="#">Damage Items</a>
-                  </div>
-                  &nbsp;
+                  
                   sub-category &nbsp;
                   <select type="text" name="order_category" class="form-control col-md-2" id="order_category"
                     required="">
@@ -85,17 +72,7 @@
             </div>
             </br>
 
-            <!-- Date Range Picker -->
-            <div class="row mb-5 mt-3">
-              <div class="col-12">
-                <div id="reportrange" style="cursor: pointer;">
-                  <i class="mdi mdi-calendar"></i>&nbsp;
-                  <span>October 6, 2020 - November 4, 2020</span> <i class="fa fa-caret-down"></i>
-                  <input type="hidden" name="dateRange" id="dateRange" value="October 6, 2020 - November 4, 2020">
-                </div>
-              </div>
-            </div>
-
+            
             <!-- Tabe Menus -->
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
               <li class="nav-item">
