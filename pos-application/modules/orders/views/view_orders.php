@@ -205,7 +205,7 @@
                           <div class="form-group">
                             <label for="item_id">Barcode Number</label>
                             <div class="input-group">
-                              <input type="text" name="item_id" class="form-control" id="item_id" required />
+                              <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999-999999']" data-mask="" im-insert="true" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
