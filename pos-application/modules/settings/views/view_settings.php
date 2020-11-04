@@ -171,7 +171,7 @@
               </div>
 
               <!-- Add Product Info -->
-              <?php if( $category_all && $subcategory_all && $unit_all): ?>
+              
               <div class="tab-pane fade mb-5 mt-4" id="add-item" role="tabpanel">
                 <form action="#" method="post">
                   <div class="row">
@@ -223,39 +223,46 @@
                           </div>
                         </div>
                       </div>
-
-                      <div class="form-group">
-                        <label for="item_cat">Product Category</label>
-                        <div class="input-group">
-                          <select type="text" name="item_cat" class="form-control" id="item_cat" required>
-                            <?php 
-                              foreach ( $category_all as $row ) {
-                                echo '<option value="'. ucfirst( $row->category_name ) .'">'. ucfirst( $row->category_name ) .'</option>';
-                              }
-                            ?>
-                          </select>
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
+                      
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label for="item_cat">Product Category</label>
+                            <div class="input-group">
+                              <select name="item_cat" class="form-control select2" id="item_cat" required>
+                                <option value="" data-select2-id="0">Select</option>
+                                <?php 
+                                  foreach ( $category_all as $row ) {
+                                    echo '<option value="'. ucfirst( $row->category_name ) .'" data-select2-id="'. $row->category_id .'">'. ucfirst( $row->category_name ) .'</option>';
+                                  }
+                                ?>
+                              </select>
+                              <div class="input-group-append">
+                                <span class="input-group-text">
+                                  <i class="mdi mdi-check-circle-outline"></i>
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="item_subcat">Product Sub-category</label>
-                        <div class="input-group">
-                        <select type="text" name="item_subcat" class="form-control" id="item_subcat" required>
-                            <?php 
-                              foreach ( $subcategory_all as $row ) {
-                                echo '<option value="'. ucwords( $row->subcat_name ) .'">'. ucwords( $row->subcat_name ) .'</option>';
-                              }
-                            ?>
-                          </select>
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
+                        <div class="col-6">
+                        <div class="form-group">
+                          <label for="item_subcat">Product Sub-category</label>
+                            <div class="input-group">
+                            <select type="text" name="item_subcat" class="form-control select2" id="item_subcat" required>
+                              <option value="" data-select2-id="0">Select</option>
+                                <?php 
+                                  foreach ( $subcategory_all as $row ) {
+                                    echo '<option value="'. ucwords( $row->subcat_name ) .'" data-select2-id="'. $row->subcat_id .'">'. ucwords( $row->subcat_name ) .'</option>';
+                                  }
+                                ?>
+                              </select>
+                              <div class="input-group-append">
+                                <span class="input-group-text">
+                                  <i class="mdi mdi-check-circle-outline"></i>
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -321,7 +328,6 @@
                     </div>
                   </div>
                 </form>
-                <?php endif; ?>
               </div>
 
               <!-- Company Info -->

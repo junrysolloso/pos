@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/select2/css/select2.min.css" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/select2-bootstrap4-theme/select2-bootstrap4.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
 
     <!-- Main CSS -->
