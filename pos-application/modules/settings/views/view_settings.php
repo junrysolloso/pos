@@ -376,7 +376,7 @@
                       <div class="form-group col-4">
                         <label for="ds_date">Date Reported</label>
                         <div class="input-group">
-                          <input type="text" name="ds_date" value="<?php echo date("Y-M-d")?>" class="form-control" id="ds_date" required />
+                          <input type="text" name="ds_date" value="<?php echo date("Y-M-d")?>" class="form-control" id="ds_date"  disabled/>
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
