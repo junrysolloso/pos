@@ -10,37 +10,15 @@ class Model_Orderdetails extends MY_Model
   protected $_unit_id               = 'unit_id';
   protected $_orderdetails_quantity = 'orderdetails_quantity';
   protected $_price_per_unit        = 'price_per_unit';
+
+  protected $_relate_table          = 'tbl_orders';
+  protected $_order_date            = 'order_date';
+  protected $_order_total           = 'order_total';
   
   function __construct() {
     parent:: __construct();
   }
 
-  /**
-   * Add Order Details
-   * @param array $data
-   * @return bool
-   */
-  public function order_details_add( $data = [] ) {
-
-  }
-
-  /**
-   * Update Order Details
-   * @param array $data
-   * @return bool
-   */
-  public function order_details_update( $data = [] ) {
-    
-  }
-
-  /**
-   * Get Order Details
-   * @param int $orderdetails_id
-   * @return array
-   */
-  public function order_details_get( $orderdetails_id = 0 ) {
-    
-  }
 
 }
 

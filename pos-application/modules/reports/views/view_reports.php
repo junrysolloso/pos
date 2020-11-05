@@ -17,68 +17,57 @@
 
             <!--Report Filter-->
             <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                       View &nbsp;
-                       
-                          <select type="text" name="order_category" class="form-control col-md-2" id="order_category" required="">
-                            <option value="" disabled selected>Select</option>
-                            <option value="grocery">Grocery</option>
-                            <option value="pharmacy">Pharmacy</option>
-                            <option value="beauty">Beauty Products</option>
-                            <option value="damage">Damage Products</option>
-                            <option value="sales">Sales</option>
-                          </select>
-                      &nbsp;
-                      
-                      starting &nbsp;
-                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Date Picker
-                      </button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Grocery</a>
-                        <a class="dropdown-item" href="#">Pharmacy</a>
-                        <a class="dropdown-item" href="#">Beauty Products</a>
-                        <a class="dropdown-item" href="#">Sales</a>
-                        <a class="dropdown-item" href="#">Damage Items</a>
-                      </div>
-                      &nbsp;
-                      ending &nbsp;
-                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Date Picker
-                      </button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Grocery</a>
-                        <a class="dropdown-item" href="#">Pharmacy</a>
-                        <a class="dropdown-item" href="#">Beauty Products</a>
-                        <a class="dropdown-item" href="#">Sales</a>
-                        <a class="dropdown-item" href="#">Damage Items</a>
-                      </div>
-                      &nbsp;
-                      sub-category &nbsp;
-                      <select type="text" name="order_category" class="form-control col-md-2" id="order_category" required="">
-                        <option value="" disabled selected>Select Sub-category
-                        <option value="2">Pharmacy</option>
-                        <option value="3">Beauty Products</option>
-                        <option value="4">Damage Products</option>
-                        <option value="5">Sales</option>
-                      </select>
-                    </div>
-                  </div>
+              <div class="col-md-12">
+                <div class="form-group">
                   
-                  <div class="col-md-6">
-                    <form action="#" method="post">
-                      <input type="submit" name="rpt_print_item" value="Print By Item" class="btn btn-success submit-btn btn-block">
-                    </form>
-                  </div>
-                  <div class="col-md-6">
-                    <form action="#" method="post">
-                      <input type="submit" name="rpt_print_all" value="Print All" class="btn btn-success submit-btn btn-block">
-                    </form>
+                    View &nbsp;
+                    <select type="text" name="order_category" class="form-control col-md-2" id="order_category"
+                      required="">
+                      <option value="" disabled selected>Select</option>
+                      <option value="grocery">Grocery</option>
+                      <option value="pharmacy">Pharmacy</option>
+                      <option value="beauty">Beauty Products</option>
+                      <option value="damage">Damage Products</option>
+                      <option value="sales">Sales</option>
+                    </select>
+                    &nbsp;
+
+                  for the date &nbsp;
+                  <!-- Date Range Picker -->
+                                      
+                        <i class="mdi mdi-calendar" id="reportrange" style="cursor: pointer;"></i>&nbsp;
+                        <span>October 6, 2020 - November 4, 2020</span> 
+                        <i class="fa fa-caret-down" ></i>
+                        <input type="hidden" name="dateRange" id="dateRange" value="October 6, 2020 - November 4, 2020">
+                  &nbsp;
+                  
+                  sub-category &nbsp;
+                    <select type="text" name="order_category" class="form-control col-md-2" id="order_category" required="">
+                      <option value="" disabled selected>Select Sub-category
+                      <option value="2">Pharmacy</option>
+                      <option value="3">Beauty Products</option>
+                      <option value="4">Damage Products</option>
+                      <option value="5">Sales</option>
+                    </select>
                   </div>
                 </div>
-                </br>
-           
+              
+              <div class="col-md-6">
+                <form action="#" method="post">
+                  <input type="submit" name="rpt_print_item" value="Print By Item"
+                    class="btn btn-success submit-btn btn-block">
+                </form>
+              </div>
+              <div class="col-md-6">
+                <form action="#" method="post">
+                  <input type="submit" name="rpt_print_all" value="Print All"
+                    class="btn btn-success submit-btn btn-block">
+                </form>
+              </div>
+            </div>
+            </br>
+
+            
             <!-- Tabe Menus -->
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
               <li class="nav-item">
@@ -275,7 +264,7 @@
                 </div>
               </div>
 
-            <!--Sales-->
+              <!--Sales-->
               <div class="tab-pane fade mb-5" id="sales_report" role="tabpanel">
                 <!-- Table -->
                 <div class="table-responsive" lnk="Sales">
@@ -323,4 +312,3 @@
       </div>
     </div>
   </div>
-

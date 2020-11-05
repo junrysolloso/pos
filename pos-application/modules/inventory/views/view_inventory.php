@@ -224,6 +224,7 @@
               </div>
 
               <!--Damage-->
+              
               <div class="tab-pane  mb-5 fade" id="damage" role="tabpanel">
                 <!-- Filter -->
                 <div class="row">
@@ -247,44 +248,32 @@
                 </div>
 
                 <!-- Table -->
-                <div class="table-responsive" lnk="Damage Items">
-                  <table class="table" id="inv-damag-table">
-                    <thead>
-                      <tr>
-                        <th>ITEM NUMBER</th>
-                        <th>ITEM NAME</th>
-                        <th>SUB-CATEGORY</th>
-                        <th>REMARKS</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <?php if( $damage_all && $damage_all ): ?>
+                  <div class="table-responsive" lnk="Damage Items">
+                    <table class="table" id="inv-damag-table">
+                      <thead>
+                        <tr>
+                          <th>ITEM NUMBER</th>
+                          <th>QUANTITY</th>
+                          <th>REMARKS</th>
+                          <th>DATE REPORTED</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                           foreach ( $damage_all as $row ) {
+                          echo '<tr>';
+                          echo '<td>'. $row->item_id .'</td>';
+                          echo '<td>'. $row->ds_quantity .'</td>';
+                          echo '<td>'. $row->ds_remarks .'</td>';
+                          echo '<td>'. $row->ds_date .'</td>';
+                          echo '</tr>';
+                          }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                <?php endif; ?>
               </div>
             </div>
           </div>

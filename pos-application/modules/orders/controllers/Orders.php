@@ -6,24 +6,73 @@ class Orders extends MY_Controller
   function __construct() {
     parent:: __construct();
 
-    $this->load->model( 'sales/Model_Sales' );
+    $this->load->model( 'Model_Orders' );
+    $this->load->model( 'Model_Orderdetails' );
+    $this->load->model( 'Model_Order_Inventory' );
+    $this->load->model( 'settings/Model_Unit' );
+    $this->load->model( 'settings/Model_Product_Info' );
+    $this->load->model( 'settings/Model_Category' );
   }
 
+  /**
+   * Index page for orders
+   */
   public function index() {
-    $data['title'] = 'Orders';
-    $data['class'] = 'orders';
 
-    $this->template->write( 'title', $data['title'] );
-    $this->template->write( 'body_class', $data['class'] );
-    $data['sales_total'] = $this->Model_Sales->sales_total_get();
+    $data['order_details']       = '';
+    $data['order_details_total'] = '0.00';
+    $data['order_details_date']  = '';
+
+    if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+      if( $this->input->post( 'submit_order' ) ) {
+
+        $expiration_date = $this->input->post( 'expiry_date' );
+        $order_id        = $this->input->post( 'order_id' );
+
+        $data = array(
+          'item_id'               => $this->input->post( 'item_id' ),
+          'order_date'            => $this->input->post( 'order_date' ),
+          'price_per_unit'        => $this->input->post( 'price_per_unit' ),
+          'orderdetails_quantity' => $this->input->post( 'orderdetails_quantity' ),
+          'inv_item_srp'          => $this->input->post( 'inv_item_srp' ),
+          'expiration_date'       => $this->input->post( 'expiration_date' ), 
+        );
+        
+        $tmp_data = $this->Model_Orders->order_add( $data );
+        if ( is_array( $tmp_data ) ) {
+          $data['order_details']       = $tmp_data[0];
+          $data['order_details_total'] = number_format( $tmp_data[1], 2 );
+          $data['order_details_date']  = date_format( date_create( $tmp_data[2]  ), 'Y-m-d' );
+        }
+      }
+
+      if ( $this->input->post( 'save_orders' ) ) {
+        $this->Model_Orders->order_details_save();
+      }
+    }
+
+    $ord_history = $this->Model_Order_Inventory->order_inv_get();
+
+    $data['title']          = 'Orders';
+    $data['class']          = 'orders';
+    $data['sales_total']    = $this->Model_Sales->sales_total_get();
+    $data['items_id_all']   = $this->Model_Product_Info->items_id_get();
+    $data['categories_all'] = $this->Model_Category->category_get();
+    $data['unit_all']       = $this->Model_Unit->unit_get();
+    $data['order_history']  = $ord_history[0];
+    $data['order_items']    = $ord_history[1];
 
      // Load template parts
     $this->template->set_master_template( 'layouts/layout_admin' );
+    $this->template->write( 'title', $data['title'] );
+    $this->template->write( 'body_class', $data['class'] );
+
     $this->template->write_view( 'content', 'templates/template_topbar' );
     $this->template->write_view( 'content', 'templates/template_sidebar', $data );
     $this->template->write_view( 'content', 'view_orders', $data );
     $this->template->write_view( 'content', 'templates/template_footer' );
     $this->template->render();
+
   }
 
 }

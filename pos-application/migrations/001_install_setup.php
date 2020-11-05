@@ -79,7 +79,7 @@ class Migration_Install_Setup extends CI_Migration
 			),
 
 			'orderdetails' => array(
-				"`oderdetails_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT",
+				"`orderdetails_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT",
 				"`order_id` int(11) DEFAULT NULL",
 				"`item_id` varchar(20) DEFAULT NULL",
 				"`unit_id` tinyint(4) DEFAULT NULL",
@@ -180,6 +180,16 @@ class Migration_Install_Setup extends CI_Migration
 				"`data` blob NOT NULL",
 				"PRIMARY KEY (id)",
 				"KEY `ci_sessions_timestamp` (`timestamp`)",
+			),
+
+			'temp_orderdetails' => array(
+				"`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT",
+				"`tmp_barcode` varchar(20) DEFAULT NULL",
+				"`tmp_date` date DEFAULT NULL",
+				"`tmp_quantity` int(11) DEFAULT NULL",
+				"`tmp_price` decimal(9,2) DEFAULT NULL",
+				"`tmp_srp` decimal(7,2) DEFAULT NULL",
+				"`tmp_expiry` date NOT NULL",
 			),
 		);
 

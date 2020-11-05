@@ -60,10 +60,10 @@ if( ! function_exists( 'log_lang' ) ) {
         'view'    => 'Viewed Order Inventory',
       ),
       'orders' => array(
-        'delete'  => 'Deleted Orders',
-        'updated' => 'Updated Orders',
-        'add'     => 'Added Orders',
-        'view'    => 'Viewed Orders',
+        'delete'  => 'Deleted Order',
+        'updated' => 'Updated Order',
+        'add'     => 'Added Order',
+        'view'    => 'Viewed Order',
       ),
       'sales' => array(
         'delete'  => 'Deleted Sales',
@@ -88,6 +88,12 @@ if( ! function_exists( 'log_lang' ) ) {
         'updated' => 'Updated Unit',
         'add'     => 'Added Unit',
         'view'    => 'Viewed Unit',
+      ),
+      'unit_convert' => array(
+        'delete'  => 'Deleted Convertion',
+        'updated' => 'Updated Convertion',
+        'add'     => 'Added Convertion',
+        'view'    => 'Viewed Convertion',
       ),
       'user_info' => array(
         'delete'  => 'Deleted User Information',
@@ -151,9 +157,31 @@ if( ! function_exists( 'log_lang' ) ) {
       case 'login':
         return $task['login'];
         break;
+      case 'unit_convert':
+        return $task['unit_convert'];
+        break;
       default:
       return $task['default'];
         break;
     }
   }
 }
+
+if( ! function_exists( 'clean_array' ) ) {
+  /**
+   * Clean array
+   * @param array $array - array to be clean
+   * @return array $array
+   */
+  function clean_array( $array ) {
+    if( is_array( $array ) ) {
+      foreach ( $array as $key => $val ) {
+        if ( empty(  $val ) ||  $val == NULL ) {
+          unset( $array[ $key ] );
+        }
+      }
+      return $array;
+    }
+  }
+}
+
