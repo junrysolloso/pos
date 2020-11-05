@@ -172,7 +172,7 @@
                       <div class="row">
                         <div class="col-6">
                           <div class="form-group">
-                            <label for="select_code">Search Barcode Number</label>
+                            <label for="select_code">Search Praduct Name</label>
                             <div class="input-group">
                               <select name="select_code" id="select_code" class="form-control select2-md" data-select2-md-id="1" tabindex="-1" aria-hidden="true">
                                 <option value="" data-select2-md-id="0">Select</option>
