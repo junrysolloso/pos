@@ -14,3 +14,4 @@ docker-compose.yml
 phpdocker
 
 README2.md
+pos-application/config/database.php
