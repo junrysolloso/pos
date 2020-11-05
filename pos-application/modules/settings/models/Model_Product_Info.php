@@ -11,6 +11,11 @@ class Model_Product_Info extends MY_Model
   protected $_item_critlimit    = 'item_critlimit';
   protected $_unit_id           = 'unit_id';
 
+  protected $_relate_category    = 'tbl_category';
+  protected $_relate_ucjunc      = 'tbl_ucjunc';
+  protected $_relate_unitconvert = 'tbl_unitconvert';
+  protected $_relate_subcategory = 'tbl_subcategory';
+
   function __construct() {
     parent:: __construct();
   }
@@ -43,13 +48,17 @@ class Model_Product_Info extends MY_Model
   }
 
   /**
-   * Get All Item Id
-   * @return array $result
+   * Get Items Id
+   * @return array
    */
   public function items_id_get() {
-    $this->db->select( 'id, item_id, item_name' );
+    $this->db->select( 'id, tbl_items.item_id, item_name, category_name, (SELECT unit_sh FROM tbl_unit WHERE unit_id = unit_id1 ) AS order_unit, (SELECT unit_sh FROM tbl_unit WHERE unit_id = unit_id2 ) AS selling_unit' );
+    $this->db->join( $this->_relate_subcategory, 'tbl_subcategory.subcat_id=tbl_items.subcat_id' );
+    $this->db->join( $this->_relate_category, 'tbl_category.category_id=tbl_subcategory.category_id' );
+    $this->db->join( $this->_relate_ucjunc, 'tbl_items.item_id=tbl_ucjunc.item_id' );
+    $this->db->join( $this->_relate_unitconvert, 'tbl_ucjunc.uc_id=tbl_unitconvert.uc_id' );
     $query = $this->db->get( $this->_table );
-    if( $query ) {
+    if ( $query ) {
       return $query->result();
     }
   }

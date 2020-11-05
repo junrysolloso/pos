@@ -181,6 +181,16 @@ class Migration_Install_Setup extends CI_Migration
 				"PRIMARY KEY (id)",
 				"KEY `ci_sessions_timestamp` (`timestamp`)",
 			),
+
+			'temp_orderdetails' => array(
+				"`id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT",
+				"`tmp_barcode` varchar(20) DEFAULT NULL",
+				"`tmp_date` date DEFAULT NULL",
+				"`tmp_quantity` int(11) DEFAULT NULL",
+				"`tmp_price` decimal(9,2) DEFAULT NULL",
+				"`tmp_srp` decimal(7,2) DEFAULT NULL",
+				"`tmp_expiry` date NOT NULL",
+			),
 		);
 
 		foreach ( $tables as $table => $fields ) {

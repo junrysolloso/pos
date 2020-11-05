@@ -42,7 +42,7 @@ class Model_Order_Inventory extends MY_Model
       $ordinv_unit_price = intval( $data['price_per_unit'] ) / intval( $no_of_stocks );
 
       $inv_data = array(
-        $this->_orderdetails_id   => $orderdet_id,
+        $this->_orderdetails_id   => $orderdet_id, 
         $this->_ordinv_unit_price => $ordinv_unit_price,
         $this->_no_of_stocks      => $no_of_stocks,
         $this->_inv_item_srp      => $ordinv_unit_price,

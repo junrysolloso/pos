@@ -19,6 +19,10 @@ class Orders extends MY_Controller
    */
   public function index() {
 
+    $data['oder_details']       = '';
+    $data['oder_details_total'] = '0.00';
+    $data['oder_details_date']  = '';
+
     if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
       if( $this->input->post( 'submit_order' ) && ! empty( $this->input->post( 'submit_order' ) ) ) {
 
@@ -26,26 +30,23 @@ class Orders extends MY_Controller
         $order_id        = $this->input->post( 'order_id' );
 
         $data = array(
-          'order_date'            => $this->input->post( 'order_date' ),
-          'order_total'           => $this->input->post( 'order_total' ),
           'item_id'               => $this->input->post( 'item_id' ),
-          'category_id'           => $this->input->post( 'category_id' ),
-          'unit_id'               => $this->input->post( 'unit_id' ),
-          'orderdetails_quantity' => $this->input->post( 'orderdetails_quantity' ),
+          'order_date'            => $this->input->post( 'order_date' ),
           'price_per_unit'        => $this->input->post( 'price_per_unit' ),
+          'orderdetails_quantity' => $this->input->post( 'orderdetails_quantity' ),
+          'inv_item_srp'          => $this->input->post( 'inv_item_srp' ),
+          'expiration_date'       => $this->input->post( 'expiration_date' ), 
         );
-
-        if( ! empty( $expiration_date ) || 1 ) {
-          array_push( $data, array( 'expiry_date' => $this->input->post( 'expiry_date' ) ) );
-        }
-
-        if( ! empty( $order_id ) && $order_id != 0 ) {
-          array_push( $data, array( 'order_id' => $this->input->post( 'order_id' ) ) );
-        }
         
-        $this->Model_Orders->order_add( $data );
-        $this->Model_Orderdetails->order_details_add( $data );
-        $this->Model_Order_Inventory->order_inv_add( $data );
+        $tmp_data = $this->Model_Orders->order_add( $data );
+        if ( is_array( $tmp_data ) ) {
+          $data['order_details']       = $tmp_data[0];
+          $data['order_details_total'] = number_format( $tmp_data[1], 2 );
+          $data['order_details_date']  = date_format( date_create( $tmp_data[2]  ), 'Y-m-d' );
+        }
+
+        // $this->Model_Orderdetails->order_details_add( $data );
+        // $this->Model_Order_Inventory->order_inv_add( $data );
       }
     }
 

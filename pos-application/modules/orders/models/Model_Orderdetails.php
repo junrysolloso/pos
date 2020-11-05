@@ -30,7 +30,7 @@ class Model_Orderdetails extends MY_Model
       $this->db->select( 'MAX(order_id) as id' );
       $order_id = $this->db->get( $this->_relate_table )->row()->id;
 
-      $orderdetails_data = array(
+      $orderdetails_data = array( 
         $this->_order_id => $order_id,
         $this->_item_id  => $data['item_id'],
         $this->_unit_id  => $data['unit_id'],

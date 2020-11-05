@@ -11,7 +11,15 @@ $(document).ready(function () {
 
   // Set barcode when item name is selected
   $('select[name="select_code"]').on('change', function(){
+
     $('input[name="item_id"]').val($(this).val());
+    $('input[name="category_name"]').val($(this).children(':selected').attr('c-name'));
+    $('input[name="order_unit"]').val($(this).children(':selected').attr('o-unit'));
+    $('input[name="selling_unit"]').val($(this).children(':selected').attr('s-unit'));
+    $('input').each(function(){
+      input_icon($(this));
+    });
+
   });
 
   // Get values from an array input

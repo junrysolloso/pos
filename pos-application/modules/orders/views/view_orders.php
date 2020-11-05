@@ -16,11 +16,11 @@
 
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#order-history" aria-selected="true">Order
+                <a class="nav-link" data-toggle="tab" href="#order-history" aria-selected="false">Order
                   History</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#add-order" aria-selected="false">Add Order</a>
+                <a class="nav-link active" data-toggle="tab" href="#add-order" aria-selected="true">Add Order</a>
               </li>
             </ul>
 
@@ -35,7 +35,7 @@
               <?php endif; ?>
 
               <!-- Order History -->
-              <div class="tab-pane active show mb-4 fade" id="order-history" role="tabpanel">
+              <div class="tab-pane mb-4 fade" id="order-history" role="tabpanel">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -136,14 +136,14 @@
               </div>
 
               <!-- Add Orders -->
-              <div class="tab-pane fade mt-4 mb-4" id="add-order" role="tabpanel">
-                <form action="#" method="post" name="frm_add_order">
+              <div class="tab-pane active fade show mt-4 mb-4" id="add-order" role="tabpanel">
+                <form action="#" method="post" name="frm_add_order" class="pb-3">
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
                         <label for="order_date">Order Date</label>
                         <div class="input-group">
-                          <input type="text" name="order_date" class="form-control" id="order_date"
+                          <input type="text" name="order_date" value="<?php echo $order_details_date; ?>" class="form-control" id="order_date"
                             data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
@@ -158,7 +158,7 @@
                       <div class="form-group">
                         <label for="order_total">Total Amount</label>
                         <div class="input-group">
-                          <input type="number" name="order_total" class="form-control" id="order_total" readonly required />
+                          <input type="text" name="order_total" value="<?php echo $order_details_total; ?>" class="form-control" id="order_total" readonly required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -178,7 +178,7 @@
                                 <option value="" data-select2-md-id="0">Select</option>
                                 <?php
                                   foreach ( $items_id_all as $row ) {
-                                    echo '<option value="'. $row->item_id .'" data-select2-md-id="'. $row->id .'">'. ucwords( $row->item_name ) .'</option>';
+                                    echo '<option value="'. $row->item_id .'" s-unit="'. $row->selling_unit .'" o-unit="'. $row->order_unit .'" c-name="'. ucwords( $row->category_name ) .'" data-select2-md-id="'. $row->id .'">'. ucwords( $row->item_name ) .'</option>';
                                   }
                                 ?>
                               </select>
@@ -194,7 +194,7 @@
                           <div class="form-group">
                             <label for="item_id">Barcode Number</label>
                             <div class="input-group">
-                              <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999999999']" data-mask="" im-insert="true" readonly required />
+                              <input type="text" name="item_id" class="form-control" id="item_id" readonly />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -206,16 +206,9 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="category_id">Category</label>
+                        <label for="category_name">Category</label>
                         <div class="input-group">
-                          <select name="category_id" id="category_id" class="form-control select2-lg" data-select2-lg-id="1" tabindex="-1" aria-hidden="true">
-                            <option value="" data-select2-lg-id="0">Select</option>
-                            <?php
-                              foreach ( $categories_all as $row ) {
-                                echo '<option value="'. $row->category_id .'" data-select2-lg-id="'. $row->category_id .'">'. ucfirst( $row->category_name ) .'</option>';
-                              }
-                            ?>
-                          </select>
+                          <input type="text" name="category_name" class="form-control" id="category_name" readonly />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -223,32 +216,13 @@
                           </div>
                         </div>
                       </div>
-
-                      <div class="form-group">
-                        <label for="unit_id">Order Unit</label>
-                        <div class="input-group">
-                          <select name="unit_id" id="unit_id" class="form-control select2-lg" data-select2-lg-id="1" tabindex="-1" aria-hidden="true">
-                            <option value="" data-select2-lg-id="0">Select</option>
-                            <?php
-                              foreach ( $unit_all as $row ) {
-                                echo '<option value="'. $row->unit_id .'" data-select2-lg-id="'. $row->unit_id .'">'. ucfirst( $row->unit_desc ) .'</option>';
-                              }
-                            ?>
-                          </select>
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
+                      
                       <div class="row">
                         <div class="col-6">
                           <div class="form-group">
-                            <label for="orderdetails_quantity">Quantity</label>
+                            <label for="order_unit">Order Unit</label>
                             <div class="input-group">
-                              <input type="number" name="orderdetails_quantity" class="form-control" id="orderdetails_quantity" onkeyup="calc()" required />
+                              <input type="text" name="order_unit" class="form-control" id="order_unit" readonly />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -261,7 +235,48 @@
                           <div class="form-group">
                             <label for="price_per_unit">Price Per Unit</label>
                             <div class="input-group">
-                              <input type="number" name="price_per_unit" class="form-control" id="price_per_unit" onkeyup="calc()" required />
+                              <input type="number" name="price_per_unit" class="form-control" id="price_per_unit" required />
+                              <div class="input-group-append">
+                                <span class="input-group-text">
+                                  <i class="mdi mdi-check-circle-outline"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                     
+                      <div class="form-group">
+                        <label for="orderdetails_quantity">Quantity</label>
+                        <div class="input-group">
+                          <input type="number" name="orderdetails_quantity" class="form-control" id="orderdetails_quantity" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label for="selling_unit">Selling Unit</label>
+                            <div class="input-group">
+                              <input type="text" name="selling_unit" class="form-control" id="selling_unit" readonly />
+                              <div class="input-group-append">
+                                <span class="input-group-text">
+                                  <i class="mdi mdi-check-circle-outline"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label for="inv_item_srp">Suggested Retail Price (SRP)</label>
+                            <div class="input-group">
+                              <input type="number" name="inv_item_srp" class="form-control" id="inv_item_srp" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -287,56 +302,48 @@
                     </div>
                     <!-- Button -->
                     <div class="col-12">
-                      <div class="form-group pb-2">
-                        <input type="submit" name="submit_order" value="Save Order Details" class="btn btn-success submit-btn" />
+                      <div class="form-group pb-2 pt-2">
+                        <input type="submit" name="submit_order" value="Add Order Details" class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>
                 </form>
-
-                <!-- <div class="table-responsive">
+                                  
+                <div class="table-responsive border-top pt-3">
                   <table class="table" id="ord-added-table">
                     <thead>
                       <tr>
                         <th>BARCODE NUMBER</th>
-                        <th>CATEGORY</th>
-                        <th>ORDER UNIT</th>
+                        <th>ORDER DATE</th>
                         <th>QUANTITY</th>
                         <th>PRICE PER UNIT</th>
+                        <th>SRP</th>
+                        <th>EXPIRATION DATE</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
+                      <?php
+                        if( is_array( $order_details ) ) {
+                          foreach ( $order_details as $row ) {
+                            echo '<tr id="'. $row->id .'">';
+                            echo '<td>'. $row->tmp_barcode .'</td>';
+                            echo '<td>'. $row->tmp_date .'</td>';
+                            echo '<td>'. $row->tmp_quantity .'</td>';
+                            echo '<td>'. $row->tmp_price .'</td>';
+                            echo '<td>'. $row->tmp_srp .'</td>';
+                            echo '<td>'. $row->tmp_expiry .'</td>';
+                            echo '</tr>';
+                          }
+                        }
+                      ?>
                     </tbody>
                   </table>
-                </div> -->
+                </div>
+                <div class="form-group pb-2 pt-2">
+                  <form action="#" method="post">
+                    <input type="submit" name="save_orders" value="Save Order Details" class="btn btn-success submit-btn" />
+                  </form>
+                </div>
               </div>
             </div>
           </div>
