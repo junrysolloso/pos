@@ -47,10 +47,11 @@ class Orders extends MY_Controller
       }
 
       if ( $this->input->post( 'save_orders' ) ) {
-        $this->Model_Orderdetails->order_details_add();
-        $this->Model_Order_Inventory->order_inv_add();
+        $this->Model_Orders->order_details_save();
       }
     }
+
+    $ord_history = $this->Model_Order_Inventory->order_inv_get();
 
     $data['title'] = 'Orders';
     $data['class'] = 'orders';
@@ -58,7 +59,8 @@ class Orders extends MY_Controller
     $data['items_id_all']   = $this->Model_Product_Info->items_id_get();
     $data['categories_all'] = $this->Model_Category->category_get();
     $data['unit_all']       = $this->Model_Unit->unit_get();
-    $data['order_history']  = $this->Model_Order_Inventory->order_inv_get();
+    $data['order_history']  = $ord_history[0];
+    $data['order_items']    = $ord_history[1];
 
      // Load template parts
     $this->template->set_master_template( 'layouts/layout_admin' );

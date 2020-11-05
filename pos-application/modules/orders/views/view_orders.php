@@ -51,13 +51,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive border-bottom pb-5">
                   <table class="table" id="ord-histo-table">
                     <thead>
                       <tr>
                         <th>ORDER DATE</th>
-                        <th>ORDER TOTAL</th>
-                        <th>NUMBER OF ITEMS</th>
+                        <th>ORDER TOTAL AMOUNT</th>
+                        <th>TOTAL NUMBER OF ITEMS</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -65,7 +65,7 @@
                         foreach ( $order_history as $row ) {
                           echo '<tr>';
                           echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
-                          echo '<td>'. $row->order_total .'</td>';
+                          echo '<td>'. '₱ '. $row->order_total .'</td>';
                           echo '<td>'. $row->stocks .'</td>';
                           echo '</tr>';
                         }
@@ -75,7 +75,7 @@
                 </div>
 
                 <!-- Order Items -->
-                <!-- <div class="mt-5">
+                <div class="mt-5">
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
@@ -97,40 +97,23 @@
                         <tr>
                           <th>ITEM NUMBER</th>
                           <th>ITEM NAME</th>
-                          <th>CATEGORY</th>
-                          <th>REMAINING</th>
+                          <th>NUMBER OF STOCKS</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Allen Sham</td>
-                          <td>134 (1.51%)</td>
-                          <td>33.58%</td>
-                          <td>15.47%</td>
-                        </tr>
-                        <tr>
-                          <td>Allen Sham</td>
-                          <td>144 (5.67%) </td>
-                          <td>45.99%</td>
-                          <td>34.70%</td>
-                        </tr>
-                        <tr>
-                          <td>Allen Sham</td>
-                          <td>114 (6.21%)</td>
-                          <td>23.80%</td>
-                          <td>54.45%</td>
-                        </tr>
-                        <tr>
-                          <td>Allen Sham</td>
-                          <td>324 (9.10%)</td>
-                          <td>12.89%</td>
-                          <td>18.89%</td>
-                        </tr>
+                        <?php
+                          foreach ( $order_items as $row ) {
+                            echo '<tr>';
+                            echo '<td>'. $row->barcode .'</td>';
+                            echo '<td>'. ucwords( $row->name ) .'</td>';
+                            echo '<td>'. $row->stocks .'</td>';
+                            echo '</tr>';
+                          }
+                        ?>
                       </tbody>
                     </table>
                   </div>
-                </div> -->
-
+                </div>
               </div>
 
               <!-- Add Orders -->
