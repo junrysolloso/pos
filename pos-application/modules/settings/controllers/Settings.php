@@ -59,10 +59,7 @@ class Settings extends MY_Controller
             'uc_number'        => $this->input->post( 'uc_number' ),
           );
 
-          if ( intval( $data['unit_id1'] ) != intval( $data['unit_id2'] ) ) {
-            $this->Model_Unit_Convert->uc_add( $data );
-          }
-
+          $this->Model_Unit_Convert->uc_add( $data );
           $this->Model_Product_Info->product_add( $data );
 
           break;
