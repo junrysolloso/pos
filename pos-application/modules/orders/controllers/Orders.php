@@ -19,9 +19,9 @@ class Orders extends MY_Controller
    */
   public function index() {
 
-    $data['oder_details']       = '';
-    $data['oder_details_total'] = '0.00';
-    $data['oder_details_date']  = '';
+    $data['order_details']       = '';
+    $data['order_details_total'] = '0.00';
+    $data['order_details_date']  = '';
 
     if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
       if( $this->input->post( 'submit_order' ) && ! empty( $this->input->post( 'submit_order' ) ) ) {
