@@ -19,44 +19,39 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  View &nbsp;
-
-                  <select type="text" name="order_category" class="form-control col-md-2" id="order_category"
-                    required="">
-                    <option value="" disabled selected>Select</option>
-                    <option value="grocery">Grocery</option>
-                    <option value="pharmacy">Pharmacy</option>
-                    <option value="beauty">Beauty Products</option>
-                    <option value="damage">Damage Products</option>
-                    <option value="sales">Sales</option>
-                  </select>
-                  &nbsp;
+                  
+                    View &nbsp;
+                    <select type="text" name="order_category" class="form-control col-md-2" id="order_category"
+                      required="">
+                      <option value="" disabled selected>Select</option>
+                      <option value="grocery">Grocery</option>
+                      <option value="pharmacy">Pharmacy</option>
+                      <option value="beauty">Beauty Products</option>
+                      <option value="damage">Damage Products</option>
+                      <option value="sales">Sales</option>
+                    </select>
+                    &nbsp;
 
                   for the date &nbsp;
                   <!-- Date Range Picker -->
-                 <div class="row mb-5 mt-3">
-                      <div class="col-4">
-                      <div id="reportrange" style="cursor: pointer;">
-                        <i class="mdi mdi-calendar"></i>&nbsp;
-                        <span>October 6, 2020 - November 4, 2020</span> <i class="fa fa-caret-down"></i>
+                                      
+                        <i class="mdi mdi-calendar" id="reportrange" style="cursor: pointer;"></i>&nbsp;
+                        <span>October 6, 2020 - November 4, 2020</span> 
+                        <i class="fa fa-caret-down" ></i>
                         <input type="hidden" name="dateRange" id="dateRange" value="October 6, 2020 - November 4, 2020">
-                      </div>
-                     <</div>
-                  </div>
                   &nbsp;
                   
                   sub-category &nbsp;
-                  <select type="text" name="order_category" class="form-control col-md-2" id="order_category"
-                    required="">
-                    <option value="" disabled selected>Select Sub-category
-                    <option value="2">Pharmacy</option>
-                    <option value="3">Beauty Products</option>
-                    <option value="4">Damage Products</option>
-                    <option value="5">Sales</option>
-                  </select>
+                    <select type="text" name="order_category" class="form-control col-md-2" id="order_category" required="">
+                      <option value="" disabled selected>Select Sub-category
+                      <option value="2">Pharmacy</option>
+                      <option value="3">Beauty Products</option>
+                      <option value="4">Damage Products</option>
+                      <option value="5">Sales</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-
+              
               <div class="col-md-6">
                 <form action="#" method="post">
                   <input type="submit" name="rpt_print_item" value="Print By Item"

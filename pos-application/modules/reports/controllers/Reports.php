@@ -28,7 +28,7 @@ class Reports extends MY_Controller
 
     // Add CSS and JS for this page
     $this->template->add_js( 'pos-assets/vendors/chart.js/Chart.min.js' );
-    $this->template->add_js( 'pos-assets/js/dashboard.js' );
+    $this->template->add_js( 'pos-assets/js/dashboard.js' );   
 		$this->template->render();
   }
 
