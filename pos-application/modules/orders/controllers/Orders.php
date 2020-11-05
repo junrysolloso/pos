@@ -53,8 +53,8 @@ class Orders extends MY_Controller
 
     $ord_history = $this->Model_Order_Inventory->order_inv_get();
 
-    $data['title'] = 'Orders';
-    $data['class'] = 'orders';
+    $data['title']          = 'Orders';
+    $data['class']          = 'orders';
     $data['sales_total']    = $this->Model_Sales->sales_total_get();
     $data['items_id_all']   = $this->Model_Product_Info->items_id_get();
     $data['categories_all'] = $this->Model_Category->category_get();

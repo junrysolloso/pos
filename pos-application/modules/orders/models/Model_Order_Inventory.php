@@ -46,7 +46,6 @@ class Model_Order_Inventory extends MY_Model
     array_push( $order_history, $this->db->get( $this->_table )->result() );
 
     return $order_history;
-
   }
 
 }

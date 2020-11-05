@@ -1,5 +1,6 @@
 $(document).ready(function () {
   
+  var e_unit = 0;
   // Remove alert container
   if( $('div.alert').length ) {
     setTimeout(function(){
@@ -12,14 +13,24 @@ $(document).ready(function () {
   // Set barcode when item name is selected
   $('select[name="select_code"]').on('change', function(){
 
+    e_unit = parseFloat($(this).children(':selected').attr('e-unit'));
+
     $('input[name="item_id"]').val($(this).val());
     $('input[name="category_name"]').val($(this).children(':selected').attr('c-name'));
     $('input[name="order_unit"]').val($(this).children(':selected').attr('o-unit'));
     $('input[name="selling_unit"]').val($(this).children(':selected').attr('s-unit'));
+
     $('input').each(function(){
       input_icon($(this));
     });
+  });
 
+  // Generate suggested SRP
+  $('input[name="price_per_unit"]').on('keyup', function(){
+    if(e_unit != 0) {
+      var suggest = parseFloat($(this).val())/e_unit;
+      $('input[name="inv_item_srp"]').val(suggest.toFixed(2));
+    }
   });
 
   // Get values from an array input
