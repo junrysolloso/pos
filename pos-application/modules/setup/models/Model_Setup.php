@@ -68,39 +68,64 @@ class Model_Setup extends MY_Model
           return true; 
         }
         break;
+      case 'company':
+        if( $this->db->truncate( 'tbl_companyinfo' ) ) { 
+          return true; 
+        }
+        break;
+      case 'damage items':
+        if( $this->db->truncate( 'tbl_damagestocks' ) ) { 
+          return true; 
+        }
+        break;
+      case 'user':
+        if( $this->db->truncate( 'tbl_userinfo' ) ) { 
+          if( $this->db->truncate( 'tbl_users' ) ) { 
+            if ( $this->db->simple_query( 'INSERT INTO `tbl_users` (`username`, `user_pass`, `user_level`, `user_id`) VALUES ("admin", "21232f297a57a5a743894a0e4a801fc3", "administrator", 1)' ) ) {
+              if ( $this->db->simple_query( 'INSERT INTO `tbl_userinfo` (`userinfo_id`, `userinfo_name`, `userinfo_address`, `userinfo_nickname`) VALUES (1, "system admin", "dinagat sslands", "admin")' ) ) {
+                return true;
+              }
+            }
+          }
+        }
+        break;
       case 'log':
         if( $this->db->truncate( 'tbl_log' ) ) { 
           return true; 
         }
         break;
       case 'all':
-        if( $this->db->truncate( 'tbl_unitconvert' ) ) {
-          if( $this->db->truncate( 'tbl_unit' ) ) {
-            if( $this->db->truncate( 'tbl_subcategory' ) ) {
-              if( $this->db->truncate( 'tbl_salesinfo' ) ) {
-                if( $this->db->truncate( 'tbl_sales' ) ) {
-                  if( $this->db->truncate( 'tbl_orders' ) ) {
-                    if( $this->db->truncate( 'tbl_orderinventory' ) ) {
-                      if( $this->db->truncate( 'tbl_orderdetails' ) ) {
-                        if( $this->db->truncate( 'tbl_items' ) ) {
-                          if( $this->db->truncate( 'tbl_inventory' ) ) {
-                            if( $this->db->truncate( 'tbl_category' ) ) {
-                              if( $this->db->truncate( 'tbl_log' ) ) {
-                                if( $this->db->truncate( 'tbl_ucjunc' ) ) {
-                                  return true;
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+
+        $tables =  array ( 
+          'tbl_unitconvert',
+          'tbl_unit',
+          'tbl_subcategory',
+          'tbl_salesinfo',
+          'tbl_sales',
+          'tbl_orders',
+          'tbl_orderinventory',
+          'tbl_orderdetails',
+          'tbl_items',
+          'tbl_inventory',
+          'tbl_category',
+          'tbl_log',
+          'tbl_ucjunc',
+          'tbl_companyinfo',
+          'tbl_userinfo',
+          'tbl_users',
+          'tbl_damagestocks',
+        );
+
+        foreach ( $tables as $table ) {
+          $this->db->truncate( $table );
+        }
+
+        if ( $this->db->simple_query( 'INSERT INTO `tbl_users` (`username`, `user_pass`, `user_level`, `user_id`) VALUES ("admin", "21232f297a57a5a743894a0e4a801fc3", "Administrator", 1)' ) ) {
+          if ( $this->db->simple_query( 'INSERT INTO `tbl_userinfo` (`userinfo_id`, `userinfo_name`, `userinfo_address`, `userinfo_nickname`) VALUES (1, "system admin", "dinagat sslands", "admin")' ) ) {
+            return true;
           }
         }
+
         break;
       default:
         return false;
