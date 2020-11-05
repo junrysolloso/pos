@@ -70,6 +70,7 @@ class Model_Order_Inventory extends MY_Model
     $this->db->join( $this->_relate_items, 'tbl_orderdetails.item_id=tbl_items.item_id' );
     $this->db->join( $this->_relate_ucjunc, 'tbl_items.item_id=tbl_ucjunc.item_id' );
     $this->db->join( $this->_relate_unit, 'tbl_unit.unit_id=tbl_items.unit_id' );
+    $this->db->order_by( 'order_date', 'DESC' );
     $query = $this->db->get( $this->_table );
     if ( $query ) {
       return $query->result();

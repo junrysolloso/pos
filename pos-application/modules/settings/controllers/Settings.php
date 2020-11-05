@@ -14,7 +14,9 @@ class Settings extends MY_Controller
 
     // Load models
     $this->load->model( 'Model_Unit' );
+    $this->load->model( 'Model_User' );
     $this->load->model( 'Model_Damage' );
+    $this->load->model( 'Model_Company' );
     $this->load->model( 'Model_Category' );
     $this->load->model( 'Model_Subcategory' );
     $this->load->model( 'Model_Product_Info' );
@@ -47,20 +49,20 @@ class Settings extends MY_Controller
         case 'Save Product Details':
 
           $data = array(
-            'item_id'          => $this->input->post('item_id'),
-            'item_name'        => $this->input->post('item_name'),
-            'item_description' => $this->input->post('item_description'),
-            'item_critlimit'   => $this->input->post('item_critlimit'),
-            'subcat_id'        => $this->input->post('subcat_id'),
-            'unit_id1'         => $this->input->post('unit_id1'),
-            'unit_id2'         => $this->input->post('unit_id2'),
-            'uc_number'        => $this->input->post('uc_number'),
+            'item_id'          => $this->input->post( 'item_id' ),
+            'item_name'        => $this->input->post( 'item_name' ),
+            'item_description' => $this->input->post( 'item_description' ),
+            'item_critlimit'   => $this->input->post( 'item_critlimit' ),
+            'subcat_id'        => $this->input->post( 'subcat_id' ),
+            'unit_id1'         => $this->input->post( 'unit_id1' ),
+            'unit_id2'         => $this->input->post( 'unit_id2' ),
+            'uc_number'        => $this->input->post( 'uc_number' ),
           );
 
           if ( intval( $data['unit_id1'] ) != intval( $data['unit_id2'] ) ) {
             $this->Model_Unit_Convert->uc_add( $data );
           }
-          
+
           $this->Model_Product_Info->product_add( $data );
 
           break;
@@ -106,7 +108,13 @@ class Settings extends MY_Controller
           break;
         case 'Save Company Details':
           
-          // Company info here...
+          $data = array(
+            'com_name'        => $this->input->post( 'com_name' ),
+            'com_proprietor'  => $this->input->post( 'com_proprietor' ),
+            'com_tin'         => $this->input->post( 'com_tin' ),
+            'com_address'     => $this->input->post( 'com_address' ),
+          );
+          $this->Model_Company->company_info_add( $data );
 
           break;
         case 'Save Damage Item':
@@ -135,7 +143,16 @@ class Settings extends MY_Controller
           break;
         case 'Save User Details':
           
-          // User info here...
+          $data = array(
+            'user_id'           => $this->input->post( 'user_id' ),
+            'username'          => $this->input->post( 'username' ),
+            'user_pass'         => $this->input->post( 'user_pass' ),
+            'user_level'        => $this->input->post( 'user_level' ),
+            'userinfo_name'     => $this->input->post( 'userinfo_name' ),
+            'userinfo_address'  => $this->input->post( 'userinfo_address' ),
+            'userinfo_nickname' => $this->input->post( 'userinfo_nickname' ),
+          );
+          $this->Model_User->user_add( $data );
 
           break;
         default:
@@ -157,6 +174,7 @@ class Settings extends MY_Controller
     $data['subcategory_all'] = $this->Model_Subcategory->subcat_get();
     $data['damage_all'] = $this->Model_Damage->damage_get();
     $data['unit_all'] = $this->Model_Unit->unit_get();
+    $data['user_all'] = $this->Model_User->user_get();
 
     /**
      * Load template parts

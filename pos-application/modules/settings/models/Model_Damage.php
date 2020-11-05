@@ -3,38 +3,27 @@
 class Model_Damage extends MY_Model
 {
 
-  protected $_table           = 'tbl_damagestocks';
-  protected $_ds_id           = 'ds_id';
-  protected $_item_id         = 'item_id';
-  protected $_ds_quantity     = 'ds_quantity';
-  protected $_ds_remarks      = 'ds_remarks';
-  
-  // protected $_join_tbl_items  = 'tbl_items';
+  protected $_table       = 'tbl_damagestocks';
+  protected $_ds_id       = 'ds_id';
+  protected $_item_id     = 'item_id';
+  protected $_ds_quantity = 'ds_quantity';
+  protected $_ds_remarks  = 'ds_remarks';
 
   function __construct() {
     parent:: __construct();
-
   }
 
-      /**
+  /**
    * Add Damage
    * @param string $damage - add only the damage
    * @return bool
    */
-  
-  /**
-   * Insert item
-   * @param array $data - array of data to be inserted on database
-   * @return bool
-   */
   public function item_insert( $data = [] ) {
     if( isset( $data ) && ! empty( $data ) ) {
-      $this->_remove_empty_key( $data );
+      $data = clean_array( $data );
       if ( $this->db->insert( $this->_table, $data )  ) {
         return true;
-      } else {
-        return false;
-      }
+      } 
     } 
   }
 
@@ -51,5 +40,5 @@ class Model_Damage extends MY_Model
 
 }
 
-/* End of file Model_Inventory.php */
-/* Location: ./application/modules/inventory/models/Model_Inventory.php */
+/* End of file Model_Damage.php */
+/* Location: ./application/modules/settings/models/Model_Damage.php */

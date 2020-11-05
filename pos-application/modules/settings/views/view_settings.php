@@ -324,9 +324,9 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="com_pro">Company Proprietor</label>
+                        <label for="com_proprietor">Company Proprietor</label>
                         <div class="input-group">
-                          <input type="text" name="com_pro" class="form-control" id="com_pro" required />
+                          <input type="text" name="com_proprietor" class="form-control" id="com_proprietor" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -346,9 +346,9 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="com_add">Company Addess</label>
+                        <label for="com_address">Company Addess</label>
                         <div class="input-group">
-                          <input type="text" name="com_add" class="form-control" id="com_add" required />
+                          <input type="text" name="com_address" class="form-control" id="com_address" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -377,7 +377,7 @@
                       <div class="form-group col-4">
                         <label for="ds_date">Date Reported</label>
                         <div class="input-group">
-                          <input type="text" name="ds_date" value="<?php echo date( "Y-M-d" ); ?>" class="form-control" id="ds_date"  disabled/>
+                          <input type="text" name="ds_date" value="<?php echo date( "Y-m-d" ); ?>" class="form-control" id="ds_date"  disabled/>
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -464,9 +464,10 @@
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="user_full">Full Name</label>
+                        <label for="userinfo_name">Full Name</label>
                         <div class="input-group">
-                          <input type="text" name="user_full" class="form-control" id="user_full" required />
+                          <input type="hidden" name="user_id" value="" />
+                          <input type="text" name="userinfo_name" class="form-control" id="userinfo_name" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -475,9 +476,9 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="user_add">Address</label>
+                        <label for="userinfo_address">Address</label>
                         <div class="input-group">
-                          <input type="text" name="user_add" class="form-control" id="user_add" required />
+                          <input type="text" name="userinfo_address" class="form-control" id="userinfo_address" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -486,9 +487,9 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="user_nick">Nickname</label>
+                        <label for="userinfo_nickname">Nickname</label>
                         <div class="input-group">
-                          <input type="text" name="user_nick" class="form-control" id="user_nick" required />
+                          <input type="text" name="userinfo_nickname" class="form-control" id="userinfo_nickname" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -499,9 +500,9 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="user_name">User Name</label>
+                        <label for="username">User Name</label>
                         <div class="input-group">
-                          <input type="text" name="user_name" class="form-control" id="user_name" required />
+                          <input type="text" name="username" class="form-control" id="username" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -523,7 +524,11 @@
                       <div class="form-group">
                         <label for="user_level">User Level</label>
                         <div class="input-group">
-                          <input type="text" name="user_level" class="form-control" id="user_level" required />
+                          <select name="user_level" class="form-control select2-md" id="user_level" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
+                            <option value="" data-select2-md-id="0">Select</option>
+                            <option value="Administrator" data-select2-md-id="1">Administrator</option>
+                            <option value="Cashier" data-select2-md-id="2">Cashier</option>
+                          </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -571,30 +576,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Allen Sham</td>
-                          <td>134 (1.51%)</td>
-                          <td>33.58%</td>
-                          <td>15.47%</td>
-                        </tr>
-                        <tr>
-                          <td>Allen Sham</td>
-                          <td>144 (5.67%) </td>
-                          <td>45.99%</td>
-                          <td>34.70%</td>
-                        </tr>
-                        <tr>
-                          <td>Allen Sham</td>
-                          <td>114 (6.21%)</td>
-                          <td>23.80%</td>
-                          <td>54.45%</td>
-                        </tr>
-                        <tr>
-                          <td>Allen Sham</td>
-                          <td>324 (9.10%)</td>
-                          <td>12.89%</td>
-                          <td>18.89%</td>
-                        </tr>
+                        <?php
+                          foreach ( $user_all as $row ) {
+                            echo '<tr>';
+                            echo '<td>'. ucwords( $row->userinfo_name ) .'</td>';
+                            echo '<td>'. ucfirst( $row->username ) .'</td>';
+                            echo '<td>'. ucwords( $row->userinfo_address ) .'</td>';
+                            echo '<td>'. ucfirst( $row->user_level ) .'</td>';
+                            echo '</tr>';
+                          }
+                        ?>
                       </tbody>
                     </table>
                   </div>
@@ -638,7 +629,7 @@
                           echo '<tr>';
                           echo '<td>'. $count .'</td>';
                           echo '<td>'. ucfirst( $row->username ) .'</td>';
-                          echo '<td>'. date_format( date_create( $row->log_date ), 'd M Y' ) .'</td>';
+                          echo '<td>'. date_format( date_create( $row->log_date ), 'F d, Y' ) .'</td>';
                           echo '<td>'. date_format( date_create( $row->log_time ), 'h:i A' ) .'</td>';
                           echo '<td>'. ucwords( $row->log_task ) .'</td>';
                           echo '</tr>';
@@ -653,16 +644,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Other settings -->
-      <!-- <div class="col-md-12 grid-margin">
-        <div class="card auto-form-wrapper rounded">
-          <div class="card-body">
-            <h4 class="card-title">OTHER SETTINGS</h4>
-            
-          </div>
-        </div>
-      </div> -->
 
     </div>
   </div>

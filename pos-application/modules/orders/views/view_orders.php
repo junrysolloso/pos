@@ -158,7 +158,7 @@
                       <div class="form-group">
                         <label for="order_total">Total Amount</label>
                         <div class="input-group">
-                          <input type="number" name="order_total" class="form-control" id="order_total" required />
+                          <input type="number" name="order_total" class="form-control" id="order_total" readonly required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -194,7 +194,7 @@
                           <div class="form-group">
                             <label for="item_id">Barcode Number</label>
                             <div class="input-group">
-                              <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999999999']" data-mask="" im-insert="true" required />
+                              <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999999999']" data-mask="" im-insert="true" readonly required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
