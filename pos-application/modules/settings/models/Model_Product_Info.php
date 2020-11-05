@@ -52,11 +52,11 @@ class Model_Product_Info extends MY_Model
    * @return array
    */
   public function items_id_get() {
-    $this->db->select( 'id, tbl_items.item_id, item_name, category_name, (SELECT unit_sh FROM tbl_unit WHERE unit_id = unit_id1 ) AS order_unit, (SELECT unit_sh FROM tbl_unit WHERE unit_id = unit_id2 ) AS selling_unit' );
-    $this->db->join( $this->_relate_subcategory, 'tbl_subcategory.subcat_id=tbl_items.subcat_id' );
-    $this->db->join( $this->_relate_category, 'tbl_category.category_id=tbl_subcategory.category_id' );
-    $this->db->join( $this->_relate_ucjunc, 'tbl_items.item_id=tbl_ucjunc.item_id' );
-    $this->db->join( $this->_relate_unitconvert, 'tbl_ucjunc.uc_id=tbl_unitconvert.uc_id' );
+    $this->db->select( '`id`, `tbl_items`.`item_id`, `item_name`, `category_name`, (SELECT `unit_sh` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_sh` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
+    $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
+    $this->db->join( $this->_relate_category, '`tbl_category`.`category_id`=`tbl_subcategory`.`category_id`' );
+    $this->db->join( $this->_relate_ucjunc, '`tbl_items`.`item_id`=`tbl_ucjunc`.`item_id`' );
+    $this->db->join( $this->_relate_unitconvert, '`tbl_ucjunc`.`uc_id`=`tbl_unitconvert`.`uc_id`' );
     $query = $this->db->get( $this->_table );
     if ( $query ) {
       return $query->result();

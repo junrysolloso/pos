@@ -51,11 +51,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="table-responsive border-bottom pb-5">
+                <div class="table-responsive">
                   <table class="table" id="ord-histo-table">
                     <thead>
                       <tr>
-                        <th>ITEM NAME</th>
                         <th>ORDER DATE</th>
                         <th>ORDER TOTAL</th>
                         <th>NUMBER OF ITEMS</th>
@@ -65,10 +64,9 @@
                       <?php
                         foreach ( $order_history as $row ) {
                           echo '<tr>';
-                          echo '<td>'. ucwords( $row->item_name ) .'</td>';
                           echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
                           echo '<td>'. $row->order_total .'</td>';
-                          echo '<td>'. $row->no_of_stocks .'</td>';
+                          echo '<td>'. $row->stocks .'</td>';
                           echo '</tr>';
                         }
                       ?>
@@ -308,22 +306,22 @@
                     </div>
                   </div>
                 </form>
-                                  
-                <div class="table-responsive border-top pt-3">
-                  <table class="table" id="ord-added-table">
-                    <thead>
-                      <tr>
-                        <th>BARCODE NUMBER</th>
-                        <th>ORDER DATE</th>
-                        <th>QUANTITY</th>
-                        <th>PRICE PER UNIT</th>
-                        <th>SRP</th>
-                        <th>EXPIRATION DATE</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                        if( is_array( $order_details ) ) {
+                
+                <?php if( is_array( $order_details ) ): ?>
+                  <div class="table-responsive border-top pt-3">
+                    <table class="table" id="ord-added-table">
+                      <thead>
+                        <tr>
+                          <th>BARCODE NUMBER</th>
+                          <th>ORDER DATE</th>
+                          <th>QUANTITY</th>
+                          <th>PRICE PER UNIT</th>
+                          <th>SRP</th>
+                          <th>EXPIRATION DATE</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
                           foreach ( $order_details as $row ) {
                             echo '<tr id="'. $row->id .'">';
                             echo '<td>'. $row->tmp_barcode .'</td>';
@@ -334,16 +332,16 @@
                             echo '<td>'. $row->tmp_expiry .'</td>';
                             echo '</tr>';
                           }
-                        }
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="form-group pb-2 pt-2">
-                  <form action="#" method="post">
-                    <input type="submit" name="save_orders" value="Save Order Details" class="btn btn-success submit-btn" />
-                  </form>
-                </div>
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="form-group pb-2 pt-2">
+                    <form action="#" method="post">
+                      <input type="submit" name="save_orders" value="Save Order Details" class="btn btn-success submit-btn" />
+                    </form>
+                  </div>
+                <?php endif; ?>
               </div>
             </div>
           </div>

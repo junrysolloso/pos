@@ -36,10 +36,10 @@ class Model_Orders extends MY_Model
         $this->db->order_by( 'id', 'DESC' );
         array_push( $order_details, $this->db->get( 'temp_orderdetails' )->result() );
 
-        $this->db->select( 'SUM(tmp_price) AS total' );
+        $this->db->select( 'SUM((`tmp_quantity` * `tmp_price`)) AS total' );
         array_push( $order_details, $this->db->get( 'temp_orderdetails' )->row()->total );
 
-        $this->db->select( 'tmp_date AS date' );
+        $this->db->select( '`tmp_date` AS `date`' );
         $this->db->distinct( 'tmp_date' );
         array_push( $order_details, $this->db->get( 'temp_orderdetails' )->row()->date );
 

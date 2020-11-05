@@ -24,7 +24,7 @@ class Orders extends MY_Controller
     $data['order_details_date']  = '';
 
     if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-      if( $this->input->post( 'submit_order' ) && ! empty( $this->input->post( 'submit_order' ) ) ) {
+      if( $this->input->post( 'submit_order' ) ) {
 
         $expiration_date = $this->input->post( 'expiry_date' );
         $order_id        = $this->input->post( 'order_id' );
@@ -44,9 +44,11 @@ class Orders extends MY_Controller
           $data['order_details_total'] = number_format( $tmp_data[1], 2 );
           $data['order_details_date']  = date_format( date_create( $tmp_data[2]  ), 'Y-m-d' );
         }
+      }
 
-        // $this->Model_Orderdetails->order_details_add( $data );
-        // $this->Model_Order_Inventory->order_inv_add( $data );
+      if ( $this->input->post( 'save_orders' ) ) {
+        $this->Model_Orderdetails->order_details_add();
+        $this->Model_Order_Inventory->order_inv_add();
       }
     }
 
