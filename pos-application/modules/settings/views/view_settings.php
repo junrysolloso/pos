@@ -513,7 +513,7 @@
                       <div class="form-group">
                         <label for="user_pass">Password</label>
                         <div class="input-group">
-                          <input type="text" name="user_pass" class="form-control" id="user_pass" required />
+                          <input type="password" name="user_pass" class="form-control" id="user_pass" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
