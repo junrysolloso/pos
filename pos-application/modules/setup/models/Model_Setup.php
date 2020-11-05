@@ -78,6 +78,11 @@ class Model_Setup extends MY_Model
           return true; 
         }
         break;
+      case 'order details expiry':
+        if( $this->db->truncate( 'tbl_orderdetails_expiry' ) ) { 
+          return true; 
+        }
+        break;
       case 'user':
         if( $this->db->truncate( 'tbl_userinfo' ) ) { 
           if( $this->db->truncate( 'tbl_users' ) ) { 
@@ -114,6 +119,7 @@ class Model_Setup extends MY_Model
           'tbl_userinfo',
           'tbl_users',
           'tbl_damagestocks',
+          'tbl_orderdetails_expiry',
         );
 
         foreach ( $tables as $table ) {

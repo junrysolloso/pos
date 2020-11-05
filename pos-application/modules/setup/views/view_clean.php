@@ -27,6 +27,7 @@
                       <option value="Orders">Orders</option>
                       <option value="Order Inventory">Order Inventory</option>
                       <option value="Order Details">Order Details</option>
+                      <option value="Order Details Expiry">Order Details Expiry</option>
                       <option value="User">User</option>
                       <option value="Damage Items">Damage Items</option>
                       <option value="Items">Items</option>

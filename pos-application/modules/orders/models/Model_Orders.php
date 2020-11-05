@@ -20,8 +20,8 @@ class Model_Orders extends MY_Model
   protected $_no_of_stocks        = 'no_of_stocks';
   protected $_inv_item_srp        = 'inv_item_srp';
 
-  protected $_relate_ucjunc      = 'tbl_ucjunc';
-  protected $_relate_unitconvert = 'tbl_unitconvert';
+  protected $_relate_ucjunc       = 'tbl_ucjunc';
+  protected $_relate_unitconvert  = 'tbl_unitconvert';
 
   function __construct() {
     parent:: __construct();
@@ -75,6 +75,7 @@ class Model_Orders extends MY_Model
     );
 
     if( $this->db->insert( $this->_table, $order_data ) ) {
+      $this->Model_Log->log_add( log_lang( 'order_details' )['add'] );
 
       $this->db->select( 'MAX(`order_id`) as `id`' );
       $order_id = $this->db->get( $this->_table )->row()->id;
@@ -90,7 +91,6 @@ class Model_Orders extends MY_Model
         );
 
         if( $this->db->insert( $this->_relate_orddetails, $orderdetails_data ) ) {
-          $this->Model_Log->log_add( log_lang( 'order_details' )['add'] );
 
           $this->db->select( 'MAX(`orderdetails_id`) AS `id`' );
           $orderdet_id = $this->db->get( $this->_relate_orddetails )->row()->id;
@@ -110,10 +110,18 @@ class Model_Orders extends MY_Model
             $this->_no_of_stocks      => $no_of_stocks,
             $this->_inv_item_srp      => $row->tmp_srp,
           );
+
+          $expiry_data = array(
+            'orderdetails_id' => $orderdet_id, 
+            'expiry_date'     => $row->tmp_expiry,
+            'rem_stocks'      => $no_of_stocks,
+          );
     
-          if ( $this->db->insert( $this->_relate_ordinventory, $inv_data ) ) {
-            $this->Model_Log->log_add( log_lang( 'order_inventory' )['add'] );
-            $flag = true;
+          if( $this->db->insert( $this->_relate_ordinventory, $inv_data ) ) {
+            if( $this->db->insert( 'tbl_orderdetails_expiry', $expiry_data ) ) {
+              $this->Model_Log->log_add( log_lang( 'order_inventory' )['add'] );
+              $flag = true;
+            }
           }
         }
 

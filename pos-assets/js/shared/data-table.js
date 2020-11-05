@@ -3,12 +3,27 @@
   // Initialize tables
   // Settings Table
   $(function () {
-    $('#set-damag-table, #cahier-table, #set-users-table').DataTable({
+    $('#set-damag-table, #cahier-table').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
       ],
       bFilter: true,
+      "iDisplayLength": 10,
+      "bLengthChange": false,
+    });
+  });
+
+  $(function () {
+    $('#set-users-table').DataTable({
+      "aLengthMenu": [
+        [5, 10, 15, -1],
+        [5, 10, 15, "All"]
+      ],
+      paging: false,
+      bSort: true,
+      bFilter: false,
+      bInfo: false,
       "iDisplayLength": 10,
       "bLengthChange": false,
     });
@@ -22,7 +37,7 @@
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 15,
+      "iDisplayLength": 20,
       "bLengthChange": false,
     });
   });
