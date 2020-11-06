@@ -27,7 +27,7 @@ class Model_Order_Inventory extends MY_Model
   public function order_inv_get() {
     $order_history = array();
 
-    $this->db->select( '`order_date`, `order_total`, `orderdetails_quantity` AS `stocks`' );
+    $this->db->select( '`order_date`, `order_total`, SUM(`orderdetails_quantity`) AS `stocks`' );
     $this->db->join( $this->_relate_orddetails, '`tbl_orderdetails`.`orderdetails_id`=`tbl_orderinventory`.`orderdetails_id`' );
     $this->db->join( $this->_relate_orders, '`tbl_orderdetails`.`order_id`=`tbl_orders`.`order_id`' );
     $this->db->join( $this->_relate_items, '`tbl_orderdetails`.`item_id`=`tbl_items`.`item_id`' );

@@ -38,7 +38,7 @@
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 50,
+      "iDisplayLength": 25,
       "bLengthChange": false,
     });
   });
