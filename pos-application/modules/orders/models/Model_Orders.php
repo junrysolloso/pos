@@ -131,7 +131,7 @@ class Model_Orders extends MY_Model
      * Check if Order is successfully inserted on the table.
      */
     if( $this->db->insert( $this->_table, $order_data ) ) {
-      $this->Model_Log->log_add( log_lang( 'order_details' )['add'] ); // Just logging
+      $this->Model_Log->log_add( log_lang( 'orders' )['add'] ); // Just logging
 
       /**
        * Get the MAX Order Id for reference on the other table
@@ -158,6 +158,7 @@ class Model_Orders extends MY_Model
         );
 
         if( $this->db->insert( $this->_relate_orddetails, $orderdetails_data ) ) {
+          $this->Model_Log->log_add( log_lang( 'order_details' )['add'] ); // Just logging
 
           /**
            * Select the MAX id of order details
@@ -251,20 +252,24 @@ class Model_Orders extends MY_Model
            * then perform the update otherwise insert.
            */
           if ( $inv_flag ) {
-            $this->db->where( $this->_item_id, $row->tmp_barcode )->update( $this->_relate_inventory, $inv_item_data );
+            if ( $this->db->where( $this->_item_id, $row->tmp_barcode )->update( $this->_relate_inventory, $inv_item_data ) ) {
+              $this->Model_Log->log_add( log_lang( 'inventory' )['update'] ); // Just logging
+            }
           } else {
-            $this->db->insert( $this->_relate_inventory, $inv_item_data );
+            if ( $this->db->insert( $this->_relate_inventory, $inv_item_data ) ) {
+              $this->Model_Log->log_add( log_lang( 'inventory' )['add'] ); // Just logging
+            }
           }
           
           /**
            * Add item to Order Details Inventory
            */
           if( $this->db->insert( $this->_relate_ordinventory, $inv_data ) ) {
+            $this->Model_Log->log_add( log_lang( 'order_inventory' )['add'] ); // Just logging
             /**
              * Add item to Order Details Expiry
              */
             if( $this->db->insert( 'tbl_orderdetails_expiry', $expiry_data ) ) {
-              $this->Model_Log->log_add( log_lang( 'order_inventory' )['add'] ); // Just logging
               $flag = true;
             }
           }
