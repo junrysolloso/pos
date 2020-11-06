@@ -16,8 +16,7 @@
 
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#order-history" aria-selected="false">Order
-                  History</a>
+                <a class="nav-link" data-toggle="tab" href="#order-history" aria-selected="false">Order History</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#add-order" aria-selected="true">Add Order</a>
@@ -100,9 +99,9 @@
                       <thead>
                         <tr>
                           <th>NO.</th>
-                          <th>ITEM NUMBER</th>
-                          <th>ITEM NAME</th>
                           <th>ORDER DATE</th>
+                          <th>ITEM NUMBER</th>
+                          <th>ITEM NAME</th>                      
                           <th>ITEMS</th>
                         </tr>
                       </thead>
@@ -112,9 +111,9 @@
                           foreach ( $order_items as $row ) {
                             echo '<tr>';
                             echo '<td>'. $count .'</td>';
+                            echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
                             echo '<td>'. $row->barcode .'</td>';
                             echo '<td>'. ucwords( $row->name ) .'</td>';
-                            echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
                             echo '<td>'. $row->stocks .'</td>';
                             echo '</tr>';
                             $count++;
@@ -163,7 +162,7 @@
                       <div class="row">
                         <div class="col-6">
                           <div class="form-group">
-                            <label for="select_code">Search Praduct Name</label>
+                            <label for="select_code">Search Product Name</label>
                             <div class="input-group">
                               <select name="select_code" id="select_code" class="form-control select2-md" data-select2-md-id="1" tabindex="-1" aria-hidden="true">
                                 <option value="" data-select2-md-id="0">Select</option>
@@ -291,7 +290,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2 pt-2">
                         <input type="submit" name="submit_order" value="Add Order" class="btn btn-success submit-btn" />
@@ -338,3 +336,4 @@
 
     </div>
   </div>
+  

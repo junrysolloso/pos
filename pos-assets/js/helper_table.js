@@ -123,7 +123,7 @@
       paging: false,
       bFilter: false,
       bInfo: false,
-      "iDisplayLength": 50,
+      "iDisplayLength": 10,
       "bLengthChange": false,
     });
   });

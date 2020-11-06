@@ -98,7 +98,7 @@ class Model_Orders extends MY_Model
           $this->db->select( '`uc_number` AS `unit`' );
           $this->db->join( $this->_relate_ucjunc, '`tbl_orderdetails`.`item_id`=`tbl_ucjunc`.`item_id`' );
           $this->db->join( $this->_relate_unitconvert, '`tbl_ucjunc`.`uc_id`=`tbl_unitconvert`.`uc_id`' );
-          $this->db->where( '`tbl_orderdetails`.`item_id`', $row->tmp_barcode );
+          $this->db->where( '`tbl_orderdetails`.`item_id`', $row->tmp_barcode )->limit( 1 );
           $unit = $this->db->get( $this->_relate_orddetails )->row()->unit;
     
           $no_of_stocks      = intval( $row->tmp_quantity ) * intval( $unit );

@@ -13,9 +13,7 @@
 
     <!-- Plugins -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/select2/css/select2.min.css" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/style-main.min.css" />
@@ -26,7 +24,6 @@
     
     <!-- Additional CSS -->
     <?php echo $_styles; ?>
-
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_form.js"></script>
   </head>
   <body class="<?php echo $body_class; ?>">
@@ -51,8 +48,8 @@
     <?php echo $_scripts; ?>
 
     <!-- Custom JS -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/shared/data-table.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/script.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_datepicker.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_table.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_action.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_ajax.js"></script>
   </body>

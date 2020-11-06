@@ -33,7 +33,7 @@ class Dashboard extends MY_Controller
 
     // Add CSS and JS for this page
     $this->template->add_js( 'pos-assets/vendors/chart.js/Chart.min.js' );
-    $this->template->add_js( 'pos-assets/js/dashboard.js' );
+    $this->template->add_js( 'pos-assets/js/helper_chart.js' );
 		$this->template->render();
   }
 
