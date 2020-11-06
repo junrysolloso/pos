@@ -44,6 +44,8 @@ $(document).ready(function () {
     });
   });
 
+  $('#ord-added-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div class="form-group mt-4"><form action="#" method="post"><input type="button" name="discard_orders" value="Reset Orders" class="btn btn-danger submit-btn" />&nbsp;&nbsp;<input type="submit" name="save_orders" value="Save Orders" class="btn btn-success submit-btn" /></form></div>');
+
   // Remove sub-category
   $('.sub-minus').on('click', function () {
     $(this).closest('.sub-added').remove();
@@ -90,16 +92,16 @@ $(document).ready(function () {
   $('.select2-md').select2({width: '86.8%'});
 
   // Show alert
-  showSwal = function(type) {
+  showSwal = function(type, title, text, icon, btntext, btnclass) {
     swal({
-      title: 'Congratulations!',
-      text: 'Backup done.',
-      icon: 'success',
+      title: title,
+      text: text,
+      icon: icon,
       button: {
-        text: "Ok",
+        text: btntext,
         value: true,
         visible: true,
-        className: "btn btn-success"
+        className: "btn btn-" + btnclass,
       }
     });
   }

@@ -75,6 +75,18 @@ class Orders extends MY_Controller
 
   }
 
+  /**
+   * Reset temporary table
+   */
+  public function reset_orders() {
+    if( $this->input->get( 'r' ) ) {
+      if( $this->Model_Orders->reset_orders_table() ) {
+        header( 'content-type: application/json' );
+        exit( json_encode( array( 'msg'=>'success' ) ) );
+      }
+    }
+  }
+
 }
 
 /* End of file Orders.php */

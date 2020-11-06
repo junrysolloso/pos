@@ -76,6 +76,7 @@
         [5, 10, 15, "All"]
       ],
       bFilter: true,
+      bInfo: false,
       "iDisplayLength": 7,
       "bLengthChange": false,
     });

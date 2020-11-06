@@ -136,6 +136,15 @@ class Model_Orders extends MY_Model
     }
   }
 
+  /**
+   * Reset Orders Temporary table
+   */
+  public function reset_orders_table() {
+    if( $this->db->truncate( 'tbl_temp_orderdetails' ) ) {
+      return true;
+    }
+  }
+
 }
 
 /* End of file Model_Orderdetails.php */

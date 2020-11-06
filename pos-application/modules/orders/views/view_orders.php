@@ -294,7 +294,7 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2 pt-2">
-                        <input type="submit" name="submit_order" value="Add Order Details" class="btn btn-success submit-btn" />
+                        <input type="submit" name="submit_order" value="Add Order" class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>
@@ -328,11 +328,6 @@
                         ?>
                       </tbody>
                     </table>
-                  </div>
-                  <div class="form-group pb-2 pt-2">
-                    <form action="#" method="post">
-                      <input type="submit" name="save_orders" value="Save Order Details" class="btn btn-success submit-btn" />
-                    </form>
                   </div>
                 <?php endif; ?>
               </div>
