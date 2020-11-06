@@ -19,7 +19,7 @@ class Orders extends MY_Controller
    */
   public function index() {
 
-    $data['order_details']       = array();
+    $data['order_details']       = '';
     $data['order_details_total'] = '0.00';
     $data['order_details_date']  = '';
 

@@ -15,12 +15,14 @@ $(document).ready(function(){
       success: function(data){
         if( data.msg == 'success' ) {
           showSwal('success-message', 'Successful!', 'Orders successfully removed.', 'success', 'Ok', 'success');
+        } else {
+          showSwal('danger-message', 'Error!', 'Nothing to removed.', 'error', 'Ok', 'danger');
         }
       } 
     }).done(function(){
       setTimeout(function(){
         window.location = base_url + 'orders';
-      }, 2500);
+      }, 3000);
     });
   });
 

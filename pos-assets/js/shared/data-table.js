@@ -9,6 +9,7 @@
         [5, 10, 15, "All"]
       ],
       bFilter: true,
+      bInfo: false,
       "iDisplayLength": 10,
       "bLengthChange": false,
     });
@@ -37,7 +38,7 @@
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 20,
+      "iDisplayLength": 50,
       "bLengthChange": false,
     });
   });
@@ -50,6 +51,7 @@
         [5, 10, 15, "All"]
       ],
       bFilter: true,
+      bInfo: false,
       "iDisplayLength": 10,
       "bLengthChange": false,
     });
@@ -63,6 +65,7 @@
         [5, 10, 15, "All"]
       ],
       bFilter: false,
+      bInfo: false,
       "iDisplayLength": 15,
       "bLengthChange": false,
     });
@@ -70,13 +73,27 @@
 
   // Orders Table
   $(function () {
-    $('#ord-histo-table, #ord-items-table, #ord-added-table').DataTable({
+    $('#ord-histo-table, #ord-items-table').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
       ],
       bFilter: true,
       bInfo: false,
+      "iDisplayLength": 7,
+      "bLengthChange": false,
+    });
+  });
+
+  $(function () {
+    $('#ord-added-table').DataTable({
+      "aLengthMenu": [
+        [5, 10, 15, -1],
+        [5, 10, 15, "All"]
+      ],
+      bFilter: true,
+      bInfo: false,
+      paging: false,
       "iDisplayLength": 7,
       "bLengthChange": false,
     });
@@ -90,6 +107,7 @@
         [5, 10, 15, "All"]
       ],
       bFilter: true,
+      bInfo: false,
       "iDisplayLength": 50,
       "bLengthChange": false,
     });
@@ -103,7 +121,6 @@
         [5, 10, 15, "All"]
       ],
       paging: false,
-      bSort: false,
       bFilter: false,
       bInfo: false,
       "iDisplayLength": 50,
@@ -119,7 +136,6 @@
           [5, 10, 15, "All"]
         ],
         paging: true,
-        bSort: false,
         bFilter: false,
         bInfo: false,
         "iDisplayLength": 5,

@@ -300,34 +300,36 @@
                   </div>
                 </form>
                 
-                <div class="table-responsive border-top pt-3">
-                  <table class="table" id="ord-added-table">
-                    <thead>
-                      <tr>
-                        <th>BARCODE NUMBER</th>
-                        <th>ORDER DATE</th>
-                        <th>QUANTITY</th>
-                        <th>PRICE PER UNIT</th>
-                        <th>SRP</th>
-                        <th>EXPIRATION DATE</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                        foreach ( $order_details as $row ) {
-                          echo '<tr id="'. $row->id .'">';
-                          echo '<td>'. $row->tmp_barcode .'</td>';
-                          echo '<td>'. $row->tmp_date .'</td>';
-                          echo '<td>'. $row->tmp_quantity .'</td>';
-                          echo '<td>'. $row->tmp_price .'</td>';
-                          echo '<td>'. $row->tmp_srp .'</td>';
-                          echo '<td>'. $row->tmp_expiry .'</td>';
-                          echo '</tr>';
-                        }
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
+                <?php if( is_array( $order_details ) ): ?>
+                  <div class="table-responsive border-top pt-3">
+                    <table class="table" id="ord-added-table">
+                      <thead>
+                        <tr>
+                          <th>BARCODE NUMBER</th>
+                          <th>ORDER DATE</th>
+                          <th>QUANTITY</th>
+                          <th>PRICE PER UNIT</th>
+                          <th>SRP</th>
+                          <th>EXPIRATION DATE</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                          foreach ( $order_details as $row ) {
+                            echo '<tr id="'. $row->id .'">';
+                            echo '<td>'. $row->tmp_barcode .'</td>';
+                            echo '<td>'. $row->tmp_date .'</td>';
+                            echo '<td>'. $row->tmp_quantity .'</td>';
+                            echo '<td>'. $row->tmp_price .'</td>';
+                            echo '<td>'. $row->tmp_srp .'</td>';
+                            echo '<td>'. $row->tmp_expiry .'</td>';
+                            echo '</tr>';
+                          }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                <?php endif; ?>
               </div>
             </div>
           </div>
