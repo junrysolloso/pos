@@ -253,7 +253,7 @@ class Model_Orders extends MY_Model
            */
           if ( $inv_flag ) {
             if ( $this->db->where( $this->_item_id, $row->tmp_barcode )->update( $this->_relate_inventory, $inv_item_data ) ) {
-              $this->Model_Log->log_add( log_lang( 'inventory' )['update'] ); // Just logging
+              $this->Model_Log->log_add( log_lang( 'inventory' )['updated'] ); // Just logging
             }
           } else {
             if ( $this->db->insert( $this->_relate_inventory, $inv_item_data ) ) {
