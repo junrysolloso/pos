@@ -55,19 +55,23 @@
                   <table class="table" id="ord-histo-table">
                     <thead>
                       <tr>
+                        <th>NO.</th>
                         <th>ORDER DATE</th>
-                        <th>ORDER TOTAL AMOUNT</th>
-                        <th>TOTAL NUMBER OF ITEMS</th>
+                        <th>ORDER AMOUNT</th>
+                        <th>ORDER UNITS</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
+                        $count = 1;
                         foreach ( $order_history as $row ) {
                           echo '<tr>';
+                          echo '<td>'. $count .'</td>';
                           echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
                           echo '<td>'. '₱ '. $row->order_total .'</td>';
                           echo '<td>'. $row->stocks .'</td>';
                           echo '</tr>';
+                          $count++;
                         }
                       ?>
                     </tbody>
@@ -95,19 +99,25 @@
                     <table class="table" id="ord-items-table">
                       <thead>
                         <tr>
+                          <th>NO.</th>
                           <th>ITEM NUMBER</th>
                           <th>ITEM NAME</th>
-                          <th>NUMBER OF STOCKS</th>
+                          <th>ORDER DATE</th>
+                          <th>ITEMS</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
+                          $count = 1;
                           foreach ( $order_items as $row ) {
                             echo '<tr>';
+                            echo '<td>'. $count .'</td>';
                             echo '<td>'. $row->barcode .'</td>';
                             echo '<td>'. ucwords( $row->name ) .'</td>';
+                            echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
                             echo '<td>'. $row->stocks .'</td>';
                             echo '</tr>';
+                            $count++;
                           }
                         ?>
                       </tbody>

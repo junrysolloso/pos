@@ -27,7 +27,7 @@ class Model_Order_Inventory extends MY_Model
   public function order_inv_get() {
     $order_history = array();
 
-    $this->db->select( '`order_date`, `order_total`, `tbl_items.item_name` AS `name`, SUM(`no_of_stocks`) AS `stocks`' );
+    $this->db->select( '`order_date`, `order_total`, `orderdetails_quantity` AS `stocks`' );
     $this->db->join( $this->_relate_orddetails, '`tbl_orderdetails`.`orderdetails_id`=`tbl_orderinventory`.`orderdetails_id`' );
     $this->db->join( $this->_relate_orders, '`tbl_orderdetails`.`order_id`=`tbl_orders`.`order_id`' );
     $this->db->join( $this->_relate_items, '`tbl_orderdetails`.`item_id`=`tbl_items`.`item_id`' );
@@ -41,6 +41,8 @@ class Model_Order_Inventory extends MY_Model
     $this->db->join( $this->_relate_orddetails, '`tbl_orderdetails`.`orderdetails_id`=`tbl_orderinventory`.`orderdetails_id`' );
     $this->db->join( $this->_relate_orders, '`tbl_orderdetails`.`order_id`=`tbl_orders`.`order_id`' );
     $this->db->join( $this->_relate_items, '`tbl_orderdetails`.`item_id`=`tbl_items`.`item_id`' );
+    $this->db->join( $this->_relate_ucjunc, '`tbl_items`.`item_id`=`tbl_ucjunc`.`item_id`' );
+    $this->db->join( $this->_relate_unit, '`tbl_unit`.`unit_id`=`tbl_items`.`unit_id`' );
     $this->db->order_by( '`order_date`', 'DESC' );
 
     array_push( $order_history, $this->db->get( $this->_table )->result() );
