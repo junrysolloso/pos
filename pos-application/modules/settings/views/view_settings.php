@@ -178,7 +178,7 @@
                       <div class="form-group">
                         <label for="item_id">Barcode Number</label>
                         <div class="input-group">
-                          <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999999999']" data-mask="" im-insert="true" required />
+                          <input type="text" name="item_id" class="form-control" id="item_id" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -249,7 +249,7 @@
                             <option value="" data-select2-lg-id="0">Select</option>
                             <?php 
                               foreach ( $unit_all as $row ) {
-                                echo '<option value="'. $row->unit_id .'" data-select2-lg-id="'. $row->unit_id .'">'. strtolower( $row->unit_sh ) .'</option>';
+                                echo '<option value="'. $row->unit_id .'" data-select2-lg-id="'. $row->unit_id .'">'. ucfirst( $row->unit_desc ) .'</option>';
                               }
                             ?>
                           </select>
@@ -270,7 +270,7 @@
                             <option value="" data-select2-md-id="0">Select</option>
                             <?php 
                               foreach ( $unit_all as $row ) {
-                                echo '<option value="'. $row->unit_id .'" data-select2-md-id="'. $row->unit_id .'">'. $row->unit_sh .'</option>';
+                                echo '<option value="'. $row->unit_id .'" data-select2-md-id="'. $row->unit_id .'">'. ucfirst( $row->unit_desc ) .'</option>';
                               }
                             ?>
                           </select>
@@ -388,7 +388,7 @@
                       <div class="form-group col-5">
                         <label for="item_id">Barcode Number</label>
                         <div class="input-group">
-                          <input type="text" name="item_id" class="form-control" id="item_id" data-inputmask="'mask': ['999999999999']" data-mask="" im-insert="true" required />
+                          <input type="text" name="item_id" class="form-control" id="item_id" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -411,7 +411,7 @@
                       <div class="form-group">
                         <label for="item_rem">Remarks</label>
                         <div class="input-group">
-                          <input type="text" name="ds_remarks" class="form-control" id="ds_remarks" required />
+                          <input type="text" name="ds_remarks" class="form-control dmg-remarks" id="ds_remarks" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>

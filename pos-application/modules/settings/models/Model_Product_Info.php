@@ -52,7 +52,7 @@ class Model_Product_Info extends MY_Model
    * @return array
    */
   public function items_id_get() {
-    $this->db->select( '`id`, `tbl_items`.`item_id`, `item_name`, `category_name`, `uc_number` AS `equivalent`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
+    $this->db->select( '`id`, `tbl_items`.`item_id`, `item_name`, `item_description` AS `desc`, `category_name`, `uc_number` AS `equivalent`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
     $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
     $this->db->join( $this->_relate_category, '`tbl_category`.`category_id`=`tbl_subcategory`.`category_id`' );
     $this->db->join( $this->_relate_ucjunc, '`tbl_items`.`item_id`=`tbl_ucjunc`.`item_id`' );

@@ -37,7 +37,7 @@ class Model_Order_Inventory extends MY_Model
 
     array_push( $order_history, $this->db->get( $this->_table )->result() );
 
-    $this->db->select( '`tbl_orderdetails`.`item_id` AS `barcode`, `tbl_items.item_name` AS `name`,`order_date`, `no_of_stocks` AS `stocks`' );
+    $this->db->select( '`tbl_orderdetails`.`item_id` AS `barcode`, `tbl_items.item_name` AS `name`, `item_description` AS `desc`, `order_date`, `no_of_stocks` AS `stocks`' );
     $this->db->join( $this->_relate_orddetails, '`tbl_orderdetails`.`orderdetails_id`=`tbl_orderinventory`.`orderdetails_id`' );
     $this->db->join( $this->_relate_orders, '`tbl_orderdetails`.`order_id`=`tbl_orders`.`order_id`' );
     $this->db->join( $this->_relate_items, '`tbl_orderdetails`.`item_id`=`tbl_items`.`item_id`' );
