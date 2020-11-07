@@ -2,38 +2,69 @@
   'use strict';
   
   $(function () {
+    var base_url = $('#base_url').val();
     var successColor = getComputedStyle(document.body).getPropertyValue('--success');
     var warningColor = getComputedStyle(document.body).getPropertyValue('--warning');
     var infoColor = getComputedStyle(document.body).getPropertyValue('--info');
 
+    var lineChartCanvas = $("#product-sales-chart").get(0).getContext("2d");
+    var gradientStrokeFill_1 = lineChartCanvas.createLinearGradient(0, 0, 0, 460);
+    gradientStrokeFill_1.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+    gradientStrokeFill_1.addColorStop(0, 'rgba(102, 78, 235, 0.2)');
+
+    var gradientStrokeFill_2 = lineChartCanvas.createLinearGradient(0, 0, 0, 430);
+    gradientStrokeFill_2.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+    gradientStrokeFill_2.addColorStop(0, '#14c671');
+
+    var gradientStrokeFill_3 = lineChartCanvas.createLinearGradient(0, 0, 0, 400);
+    gradientStrokeFill_3.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+    gradientStrokeFill_3.addColorStop(0, '#ffaf00');
+
+    $('#weekly').on('click', function(){
+      chart_data( 7, 'WEEKLY' );
+    });
+
+    $('#monthly').on('click', function(){
+      chart_data( 30, 'MONTHLY' );
+    });
+
     if ($('#product-sales-chart').length) {
-      var lineChartCanvas = $("#product-sales-chart").get(0).getContext("2d");
-      var gradientStrokeFill_1 = lineChartCanvas.createLinearGradient(0, 0, 0, 460);
-      gradientStrokeFill_1.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-      gradientStrokeFill_1.addColorStop(0, 'rgba(102, 78, 235, 0.2)');
-      var gradientStrokeFill_2 = lineChartCanvas.createLinearGradient(0, 0, 0, 430);
-      gradientStrokeFill_2.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-      gradientStrokeFill_2.addColorStop(0, '#14c671');
-      var gradientStrokeFill_3 = lineChartCanvas.createLinearGradient(0, 0, 0, 400);
-      gradientStrokeFill_3.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-      gradientStrokeFill_3.addColorStop(0, '#ffaf00');
+      chart_data( 7, 'WEEKLY' );
+    }
+
+    function chart_data(limit, label) {
+      $.ajax({
+        type: 'GET',
+        url: base_url + 'dashboard/sales?limit=' + parseInt( limit ),
+        dataType: 'json',
+        error: function(jqXHR){
+          console.log(jqXHR.responseText);
+        },
+        success: function(data){
+          $('#fLabel').text(label)
+          populate_chart(data);
+        } 
+      });
+    }
+
+    function populate_chart(data) {
       var areaData = {
-        labels: ["Jan 1", "Jan 7", "Jan 14", "Jan 21", "Jan 28", "Feb 4", "Feb 11", "Feb 18"],
+        labels: data.labels,
         datasets: [{
-          label: 'TCP Reset Packets',
-          data: [60, 75, 65, 130, 130, 145, 110, 145, 155, 149, 170],
+          label: 'Sales ₱',
+          data: data.gTotal,
           borderColor: infoColor,
           backgroundColor: gradientStrokeFill_1,
           borderWidth: 2
         }, {
-          label: 'TCP FIN Packets',
-          data: [0, 25, 20, 40, 70, 52, 49, 90, 70, 94, 110, 135],
+          label: 'Sales ₱',
+          data: data.pTotal,
           borderColor: successColor,
           backgroundColor: gradientStrokeFill_2,
           borderWidth: 2
         }, {
-          label: 'TCP Out Packets',
-          data: [40, 45, 60, 50, 76, 70, 60, 99, 75, 96, 130, 205],
+          label: 'Sales ₱',
+          data: data.bTotal,
           borderColor: warningColor,
           backgroundColor: gradientStrokeFill_3,
           borderWidth: 2
@@ -78,9 +109,9 @@
           }],
           yAxes: [{
             ticks: {
-              max: 200,
+              max: 20000,
               min: 0,
-              stepSize: 50,
+              stepSize: 2000,
               fontColor: "#858585",
               beginAtZero: false
             },

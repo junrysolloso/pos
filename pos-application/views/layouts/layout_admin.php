@@ -24,14 +24,14 @@
     
     <!-- Additional CSS -->
     <?php echo $_styles; ?>
+
+    <!-- Required JS -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/js/vendor.bundle.base.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_form.js"></script>
   </head>
   <body class="<?php echo $body_class; ?>">
     <input type="hidden" id="base_url" value="<?php echo base_url(); ?>" />
     <?php echo $content; ?>
-
-    <!-- Required JS -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/js/vendor.bundle.base.min.js"></script>
 
     <!-- Plugins JS -->
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_nav.js"></script>

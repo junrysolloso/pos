@@ -3,18 +3,22 @@
 class Model_Product_Info extends MY_Model
 {
 
-  protected $_table             = 'tbl_items';
-  protected $_item_id           = 'item_id';
-  protected $_subcat_id         = 'subcat_id';
-  protected $_item_name         = 'item_name';
-  protected $_item_description  = 'item_description';
-  protected $_item_critlimit    = 'item_critlimit';
-  protected $_unit_id           = 'unit_id';
+  protected $_table              = 'tbl_items';
+  protected $_item_id            = 'item_id';
+  protected $_subcat_id          = 'subcat_id';
+  protected $_item_name          = 'item_name';
+  protected $_item_description   = 'item_description';
+  protected $_item_critlimit     = 'item_critlimit';
+  protected $_unit_id            = 'unit_id';
 
   protected $_relate_category    = 'tbl_category';
   protected $_relate_ucjunc      = 'tbl_ucjunc';
   protected $_relate_unitconvert = 'tbl_unitconvert';
   protected $_relate_subcategory = 'tbl_subcategory';
+  protected $_relate_salesinfo    = 'tbl_salesinfo';
+
+  protected $_relate_inventory   = 'tbl_inventory';
+  protected $_category_name      = 'category_name';
 
   function __construct() {
     parent:: __construct();
@@ -57,6 +61,39 @@ class Model_Product_Info extends MY_Model
     $this->db->join( $this->_relate_category, '`tbl_category`.`category_id`=`tbl_subcategory`.`category_id`' );
     $this->db->join( $this->_relate_ucjunc, '`tbl_items`.`item_id`=`tbl_ucjunc`.`item_id`' );
     $this->db->join( $this->_relate_unitconvert, '`tbl_ucjunc`.`uc_id`=`tbl_unitconvert`.`uc_id`' );
+    $query = $this->db->get( $this->_table );
+    if ( $query ) {
+      return $query->result();
+    }
+  }
+
+  /**
+   * Almost out of stocks products
+   */
+  public function almost_out() {
+
+    $this->db->select( '`id`, `item_name`, `inv_rem_stocks`, `item_critlimit`' );
+    $this->db->where( '`inv_rem_stocks` < `item_critlimit`' );
+    $this->db->join( $this->_relate_inventory, '`tbl_items`.`item_id`=`tbl_inventory`.`item_id`' )->limit( 6 );
+    $query = $this->db->get( $this->_table );
+    if ( $query ) {
+      return $query->result();
+    }
+  }
+
+  
+  /**
+   * Almost out of stocks products
+   */
+  public function top_products( $category ) {
+
+    $this->db->select( '`salesinfo_id`, `item_name`, COUNT(`tbl_salesinfo`.`item_id`) AS `count`' );
+    $this->db->where( $this->_category_name, $category );
+
+    $this->db->join( $this->_relate_salesinfo, '`tbl_items`.`item_id`=`tbl_salesinfo`.`item_id`' );
+    $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
+    $this->db->join( $this->_relate_category, '`tbl_subcategory`.`category_id`=`tbl_category`.`category_id`' );
+    $this->db->group_by( '`tbl_salesinfo`.`item_id`' );
     $query = $this->db->get( $this->_table );
     if ( $query ) {
       return $query->result();

@@ -178,7 +178,7 @@
                       <div class="form-group">
                         <label for="item_id">Barcode Number</label>
                         <div class="input-group">
-                          <input type="text" name="item_id" class="form-control" id="item_id" required />
+                          <input type="number" name="item_id" class="form-control" id="item_id" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>

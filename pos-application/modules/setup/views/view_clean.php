@@ -40,6 +40,11 @@
                     <button type="submit" class="btn btn-danger submit-btn btn-block">TRUNCATE TABLE</button>
                   </div>
                 </form>
+                <form action="<?php echo base_url(); ?>setup/generate" method="post">
+                  <div class="form-group pb-2">
+                    <input name="generate" type="submit" value="Generate Sales Data" class="btn btn-primary submit-btn btn-block" />
+                  </div>
+                </form>
               </div>
             </div>
           </div>

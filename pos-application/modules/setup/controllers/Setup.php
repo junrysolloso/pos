@@ -51,6 +51,33 @@ class Setup extends CI_Controller {
 		$this->template->render();
 	}
 
+	/**
+	 * Generate dummy sales data
+	 */
+	public function generate() {
+
+		if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+
+			$table = $this->input->post( 'generate' );
+			if ( $this->Model_Setup->generate_sales( $table ) ) { 
+				$this->session->set_tempdata( array(
+					'alert' => 'Done generating sales data.',
+					'class' => 'success',
+				), NULL, 5 );
+			} else {
+				$this->session->set_tempdata( array(
+					'alert' => 'Error executing command.',
+					'class' => 'danger',
+				), NULL, 5 );
+			}
+		}
+
+		$this->template->set_master_template( 'layouts/layout_site' );
+		$this->template->write( 'title', 'Setup' );
+		$this->template->write( 'body_class', 'setup' );
+		$this->template->write_view( 'content', 'view_clean' );
+		$this->template->render();
+	}
 }
 
 /* End of file Setup.php */

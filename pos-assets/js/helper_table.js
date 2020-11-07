@@ -52,7 +52,7 @@
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 10,
+      "iDisplayLength": 5,
       "bLengthChange": false,
     });
   });
@@ -66,7 +66,7 @@
       ],
       bFilter: false,
       bInfo: false,
-      "iDisplayLength": 15,
+      "iDisplayLength": 5,
       "bLengthChange": false,
     });
   });

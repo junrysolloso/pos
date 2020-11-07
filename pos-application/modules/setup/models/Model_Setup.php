@@ -8,6 +8,35 @@ class Model_Setup extends MY_Model
   }
 
   /**
+   * Generate dummy data
+   */
+  public function generate_sales() {
+    $flag = false;
+    
+    $s = DateTime::createFromFormat('d-m-Y H:i:s', '01-11-2020 00:00:00');
+    $e = DateTime::createFromFormat('d-m-Y H:i:s', '10-11-2020 00:00:00');
+
+    $items_id = $this->db->select( '`id`, `item_id`' )->get( 'tbl_items' )->result();
+    foreach ( $items_id as $row ) {
+      
+      $total = mt_rand( 50, 1000 );
+      $or    = mt_rand( 100000, 999999 );
+      $int   = mt_rand( $s->getTimestamp(), $e->getTimestamp() );
+      $date  = strval( date( 'Y-m-d', $int ) );
+
+      if ( $this->db->simple_query('INSERT INTO `tbl_sales`(`cust_id`, `sales_date`, `sales_total`, `sales_or`, `sales_tellerid`, `sales_discount`) VALUES ("1", "'.$date.'", "'.$total.'", "'.$or.'", "1", "0")') ) {
+        $sales_id = $this->db->select('MAX(`sales_id`) AS `id`')->get('tbl_sales')->row()->id;
+        if ( $this->db->simple_query('INSERT INTO `tbl_salesinfo`(`sales_id`, `item_id`, `unit_price`, `no_of_items`) VALUES ('.$sales_id.', '.$row->item_id.', 50, 2)') ) {
+          $flag = true;
+        }
+      }
+    }
+    if ( $flag ) {
+      return true;
+    }
+  }
+
+  /**
    * Cleanup table data
    */
   public function clean_dummy( $table ) {
