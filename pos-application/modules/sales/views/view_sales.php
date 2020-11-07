@@ -75,7 +75,7 @@
                   </thead>
                   <tbody>
                     <?php
-                      if( $sales_grocery ) {
+                      if( $sales_pharmacy ) {
                         $count = 1;
                         foreach ( $sales_pharmacy as $row ){
                           echo '<tr>';
@@ -135,7 +135,7 @@
                   </thead>
                   <tbody>
                     <?php
-                      if( $sales_grocery ) {
+                      if( $sales_beauty ) {
                         $count = 1;
                         foreach ( $sales_beauty as $row ){
                           echo '<tr>';

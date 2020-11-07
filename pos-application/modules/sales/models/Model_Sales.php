@@ -47,7 +47,7 @@ class Model_Sales extends MY_Model
     /**
      * Data to return
      */
-    $this->db->select('`tbl_salesinfo`.item_id` AS `barcode`, `tbl_items`.item_name` AS `name`, `sales_or`, `sales_total`, `no_of_items`, `unit_desc`');
+    $this->db->select('`tbl_salesinfo`.item_id` AS `barcode`, `tbl_items`.item_name` AS `name`, `sales_or`, (`no_of_items` * `unit_price`) AS `sales_total`, `no_of_items`, `unit_desc`');
 
     /**
      * Query parameters
