@@ -72,7 +72,7 @@ class Model_Product_Info extends MY_Model
    */
   public function almost_out() {
 
-    $this->db->select( '`id`, `item_name`, `inv_rem_stocks`, `item_critlimit`' );
+    $this->db->select( '`item_name`, `inv_rem_stocks`, `item_critlimit`' );
     $this->db->where( '`inv_rem_stocks` < `item_critlimit`' );
     $this->db->join( $this->_relate_inventory, '`tbl_items`.`item_id`=`tbl_inventory`.`item_id`' )->limit( 6 );
     $query = $this->db->get( $this->_table );

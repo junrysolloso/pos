@@ -70,7 +70,7 @@
                           echo'<td>'. $count .'</td>';
                           echo'<td>'. $row->barcode .'</td>';
                           echo'<td>'.ucwords( $row->name.' '. $row->item_des ) .'</td>';
-                          echo'<td>'. $row->remaining.'</td>';
+                          echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
                           echo'</tr>';
                           $count++;
                         }
@@ -119,7 +119,7 @@
                           echo'<td>'. $count .'</td>';
                           echo'<td>'. $row->barcode .'</td>';
                           echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
-                          echo'<td>'. $row->remaining.'</td>';
+                          echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
                           echo'</tr>';
                           $count++;
                         }
@@ -168,7 +168,7 @@
                           echo'<td>'. $count .'</td>';
                           echo'<td>'. $row->barcode .'</td>';
                           echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
-                          echo'<td>'. $row->remaining.'</td>';
+                          echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
                           echo'</tr>';
                           $count++;
                         }
