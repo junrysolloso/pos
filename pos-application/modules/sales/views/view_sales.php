@@ -15,15 +15,17 @@
                   </thead>
                   <tbody>
                     <?php
-                      $count = 1;
-                      foreach ( $sales_grocery as $row ){
-                        echo '<tr>';
-                        echo '<td>'. ucwords( $row->name ) .'</td>';
-                        echo '<td>'. $row->sales_or .'</td>';
-                        echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
-                        echo '<td>₱ '. $row->sales_total .'</td>';
-                        echo '</tr>';
-                        $count++;
+                      if( $sales_grocery ) {
+                        $count = 1;
+                        foreach ( $sales_grocery as $row ){
+                          echo '<tr>';
+                          echo '<td>'. ucwords( $row->name ) .'</td>';
+                          echo '<td>'. $row->sales_or .'</td>';
+                          echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
+                          echo '<td>₱ '. $row->sales_total .'</td>';
+                          echo '</tr>';
+                          $count++;
+                        }
                       }
                     ?>
                   </tbody>
@@ -73,15 +75,17 @@
                   </thead>
                   <tbody>
                     <?php
-                      $count = 1;
-                      foreach ( $sales_pharmacy as $row ){
-                        echo '<tr>';
-                        echo '<td>'. ucwords( $row->name ) .'</td>';
-                        echo '<td>'. $row->sales_or .'</td>';
-                        echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
-                        echo '<td>₱ '. $row->sales_total .'</td>';
-                        echo '</tr>';
-                        $count++;
+                      if( $sales_grocery ) {
+                        $count = 1;
+                        foreach ( $sales_pharmacy as $row ){
+                          echo '<tr>';
+                          echo '<td>'. ucwords( $row->name ) .'</td>';
+                          echo '<td>'. $row->sales_or .'</td>';
+                          echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
+                          echo '<td>₱ '. $row->sales_total .'</td>';
+                          echo '</tr>';
+                          $count++;
+                        }
                       }
                     ?>
                   </tbody>
@@ -131,15 +135,17 @@
                   </thead>
                   <tbody>
                     <?php
-                      $count = 1;
-                      foreach ( $sales_beauty as $row ){
-                        echo '<tr>';
-                        echo '<td>'. ucwords( $row->name ) .'</td>';
-                        echo '<td>'. $row->sales_or .'</td>';
-                        echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
-                        echo '<td>₱ '. $row->sales_total .'</td>';
-                        echo '</tr>';
-                        $count++;
+                      if( $sales_grocery ) {
+                        $count = 1;
+                        foreach ( $sales_beauty as $row ){
+                          echo '<tr>';
+                          echo '<td>'. ucwords( $row->name ) .'</td>';
+                          echo '<td>'. $row->sales_or .'</td>';
+                          echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
+                          echo '<td>₱ '. $row->sales_total .'</td>';
+                          echo '</tr>';
+                          $count++;
+                        }
                       }
                     ?>
                   </tbody>

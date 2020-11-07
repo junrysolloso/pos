@@ -14,15 +14,17 @@
                   </thead>
                   <tbody>
                     <?php
-                      $count = 1;
-                      foreach ( $today_sales as $row ){
-                        echo '<tr>';
-                        echo '<td>'. $count .'</td>';
-                        echo '<td>'. ucwords( $row->item_name .' '. $row->desc ) .'</td>';
-                        echo '<td>₱ '. number_format( $row->sales_total, 2 ) .'</td>';
-                        echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
-                        echo '</tr>';
-                        $count++;
+                      if( $today_sales ) {
+                        $count = 1;
+                        foreach ( $today_sales as $row ){
+                          echo '<tr>';
+                          echo '<td>'. $count .'</td>';
+                          echo '<td>'. ucwords( $row->item_name .' '. $row->desc ) .'</td>';
+                          echo '<td>₱ '. number_format( $row->sales_total, 2 ) .'</td>';
+                          echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
+                          echo '</tr>';
+                          $count++;
+                        }
                       }
                     ?>
                   </tbody>
