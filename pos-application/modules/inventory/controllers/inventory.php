@@ -18,6 +18,7 @@ class Inventory extends MY_Controller
    
     $this->load->model( 'Model_Inv_Damage' );
     $this->load->model( 'Model_Inventory' );
+    $this->load->model( 'Model_Inv_Items' );
     
     //$this->load->model( 'Model_Product_Info' );
    
@@ -173,9 +174,11 @@ class Inventory extends MY_Controller
     //$data['sales_total'] = $this->Model_Sales->sales_total_get();
     $this->load->model( 'Model_Inv_Damage' );
     $this->load->model( 'Model_Inv_Items' );
+    //$this->load->model( 'settings/Model_Product_Info' );
 
     $data['damage_all'] = $this->Model_Inv_Damage->damage_get();
     $data['item_all'] = $this->Model_Inv_Items->inv_items_get();
+    //$data['items_id_all']   = $this->Model_Product_Info->items_id_get();
 
   
     /**

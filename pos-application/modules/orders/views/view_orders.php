@@ -39,8 +39,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="data_search" class="form-control" id="ord-history"
-                          placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" class="form-control" id="ord-history" placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -83,8 +82,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" name="data_search" class="form-control" id="ord-items"
-                            placeholder="Search anything from the table..." />
+                          <input type="text" name="data_search" class="form-control" id="ord-items"placeholder="Search anything from the table..." />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-magnify-plus"></i>
