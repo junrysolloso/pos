@@ -3,17 +3,19 @@
 class Model_Inv_Items extends MY_Model
 {
 
-  protected $_table             = 'tbl_items';
-  protected $_item_id           = 'item_id';
-  protected $subcat_id          = 'subcat_id';
-  protected $item_name          = 'item_name';
-  protected $item_description   = 'item_description';
-  protected $item_critlimit     = 'item_critlimit';
-  protected $unit_id            = 'unit_id';
+  protected $_table               = 'tbl_items';
+  protected $_item_id             = 'item_id';
+  protected $subcat_id            = 'subcat_id';
+  protected $item_name            = 'item_name';
+  protected $item_description     = 'item_description';
+  protected $item_critlimit       = 'item_critlimit';
+  protected $unit_id              = 'unit_id';
 
-  protected $relate_category      = 'tbl_category';
-  protected $relate_inventory     = 'tbl_inventory';
-  protected $relate_subcategory   = 'tbl_subcategory';
+  protected $_relate_category     = 'tbl_category';
+  protected $_relate_inventory    = 'tbl_inventory';
+  protected $_relate_subcategory  = 'tbl_subcategory';
+
+  protected $_category_name       = 'category_name';
 
   function __construct() {
     parent:: __construct();
@@ -23,12 +25,13 @@ class Model_Inv_Items extends MY_Model
    * Get all damage report
    * @return array $result
    */
-  public function inv_items_get() {
+  public function inv_items_get( $category ) {
 
     $this->db->select('`tbl_items`.`item_id` AS `barcode` , `tbl_items`.`item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, `tbl_inventory`.`inv_rem_stocks` AS  `remaining`');
-    $this->db->join($this->relate_inventory, '`tbl_items`.`item_id` = `tbl_inventory`.`item_id`');
-    //$this->db->join($this->relate_subcategory, '`tbl_items`.`item_id` = `tbl_inventory`.`item_id`');
-    //$this->db->order_by( '`ds_date`', 'DESC' );
+    $this->db->where( $this->_category_name, $category );
+    $this->db->join($this->_relate_inventory, '`tbl_items`.`item_id` = `tbl_inventory`.`item_id`');
+    $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
+    $this->db->join( $this->_relate_category, '`tbl_subcategory`.`category_id`=`tbl_category`.`category_id`' );
 
     $query = $this->db->get( $this->_table );
     if( $query ) {

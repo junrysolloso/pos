@@ -33,13 +33,11 @@
             <div class="tab-content tab-content-solid">
               <!-- Grocery -->
               <div class="tab-pane  mb-5 fade show active" id="grocery" role="tabpanel">
-                <!-- Filter -->
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
                       <div class="input-group">
-                            <input type="text" name="data_search_grocery" class="form-control" id="inv-grocery" 
-                            placeholder="Search anything from the table..." />                        
+                        <input type="text" name="data_search" class="form-control" id="inv-grocery" placeholder="Search anything from the table..." />                        
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -54,12 +52,8 @@
                     </form>
                   </div>
                 </div>
-
-                <!-- Table -->
-                
-                <?php if ( $item_all && $item_all) : ?>
                 <div class="table-responsive" lnk="Pharmacy">
-                  <table class="table" id="inv-pharm-table">
+                  <table class="table" id="inv-grocs-table">
                     <thead>
                       <tr>
                         <th>NO</th>
@@ -69,27 +63,25 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    $count=1;
-                    foreach ( $item_all as $row){
-                      echo '<tr>';
-                        echo'<td>'. $count .'</td>';
-                        echo'<td>'. $row->barcode .'</td>';
-                        echo'<td>'. $row->name.' '. $row->item_des .'</td>';
-                        echo'<td>'. $row->remaining.'</td>';
-                      echo'</tr>';
-                      $count++;
-                      }
-                    ?>
+                      <?php
+                        $count=1;
+                        foreach ( $inv_grocery as $row ) {
+                          echo '<tr>';
+                          echo'<td>'. $count .'</td>';
+                          echo'<td>'. $row->barcode .'</td>';
+                          echo'<td>'.ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                          echo'<td>'. $row->remaining.'</td>';
+                          echo'</tr>';
+                          $count++;
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
-                <?php endif ?>
               </div>
 
               <!-- Pharmacy -->
               <div class="tab-pane mb-5 fade" id="pharmacy" role="tabpanel">
-                <!-- Filter -->
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
@@ -109,9 +101,6 @@
                     </form>
                   </div>
                 </div>
-
-                <!-- Table -->
-                <?php if ( $item_all && $item_all) : ?>
                 <div class="table-responsive" lnk="Pharmacy">
                   <table class="table" id="inv-pharm-table">
                     <thead>
@@ -123,27 +112,25 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    $count=1;
-                    foreach ( $item_all as $row){
-                      echo '<tr>';
-                        echo'<td>'. $count .'</td>';
-                        echo'<td>'. $row->barcode .'</td>';
-                        echo'<td>'. $row->name.' '. $row->item_des .'</td>';
-                        echo'<td>'. $row->remaining.'</td>';
-                      echo'</tr>';
-                      $count++;
-                      }
-                    ?>
+                      <?php
+                        $count=1;
+                        foreach ( $inv_pharmacy as $row){
+                          echo '<tr>';
+                          echo'<td>'. $count .'</td>';
+                          echo'<td>'. $row->barcode .'</td>';
+                          echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                          echo'<td>'. $row->remaining.'</td>';
+                          echo'</tr>';
+                          $count++;
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
-                <?php endif ?>
               </div>
 
               <!--Beauty Products-->
               <div class="tab-pane fade mb-5" id="beauty" role="tabpanel">
-                <!-- Filter -->
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
@@ -163,11 +150,8 @@
                     </form>
                   </div>
                 </div>
-
-                <!-- Table -->
-                <?php if ( $item_all && $item_all) : ?>
                 <div class="table-responsive" lnk="Pharmacy">
-                  <table class="table" id="inv-pharm-table">
+                  <table class="table" id="inv-beaut-table">
                     <thead>
                       <tr>
                         <th>NO</th>
@@ -177,28 +161,25 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    $count=1;
-                    foreach ( $item_all as $row){
-                      echo '<tr>';
-                        echo'<td>'. $count .'</td>';
-                        echo'<td>'. $row->barcode .'</td>';
-                        echo'<td>'. $row->name.' '. $row->item_des .'</td>';
-                        echo'<td>'. $row->remaining.'</td>';
-                      echo'</tr>';
-                      $count++;
-                      }
-                    ?>
+                      <?php
+                        $count=1;
+                        foreach ( $inv_beauty as $row){
+                          echo '<tr>';
+                          echo'<td>'. $count .'</td>';
+                          echo'<td>'. $row->barcode .'</td>';
+                          echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                          echo'<td>'. $row->remaining.'</td>';
+                          echo'</tr>';
+                          $count++;
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
-                <?php endif ?>
               </div>
 
               <!--Damage-->
-              
               <div class="tab-pane  mb-5 fade" id="damage" role="tabpanel">
-                <!-- Filter -->
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
@@ -218,25 +199,22 @@
                     </form>
                   </div>
                 </div>
-
-                <!-- Table -->
-                <?php if( $damage_all && $damage_all ): ?>
-                  <div class="table-responsive" lnk="Damage Items">
-                    <table class="table" id="inv-damag-table">
-                      <thead>
-                        <tr>
-                          <th>NO</th>
-                          <th>BARCODE</th>
-                          <th>ITEM NAME</th>
-                          <th>QUANTITY</th>
-                          <th>REMARKS</th>
-                          <th>DATE REPORTED</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        $count=1;
-                           foreach ( $damage_all as $row ) {
+                <div class="table-responsive" lnk="Damage Items">
+                  <table class="table" id="inv-damag-table">
+                    <thead>
+                      <tr>
+                        <th>NO</th>
+                        <th>BARCODE</th>
+                        <th>ITEM NAME</th>
+                        <th>QUANTITY</th>
+                        <th>REMARKS</th>
+                        <th>DATE REPORTED</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $count=1;
+                        foreach ( $damage_all as $row ) {
                           echo '<tr>';
                           echo '<td>'. $count .'</td>';
                           echo '<td>'. $row->item_id .'</td>';
@@ -246,12 +224,11 @@
                           echo '<td>'. $row->ds_date .'</td>';
                           echo '</tr>';
                           $count++;
-                          }
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
-                <?php endif; ?>
+                        }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
