@@ -21,8 +21,7 @@
                 <div class="form-group">
                   
                     View &nbsp;
-                    <select type="text" name="order_category" class="form-control col-md-2" id="order_category"
-                      required="">
+                    <select type="text" name="order_category" class="form-control col-md-2" id="order_category" required="">
                       <option value="" disabled selected>Select</option>
                       <option value="grocery">Grocery</option>
                       <option value="pharmacy">Pharmacy</option>
@@ -44,10 +43,11 @@
                   sub-category &nbsp;
                     <select type="text" name="order_category" class="form-control col-md-2" id="order_category" required="">
                       <option value="" disabled selected>Select Sub-category
-                      <option value="2">Pharmacy</option>
-                      <option value="3">Beauty Products</option>
-                      <option value="4">Damage Products</option>
-                      <option value="5">Sales</option>
+                      <option value="2" >Grocery</option>
+                      <option value="2" >Pharmacy</option>
+                      <option value="3" >Beauty Products</option>
+                      <option value="4" >Damage Products</option>
+                      <option value="5" >Sales</option>
                     </select>
                   </div>
                 </div>
@@ -90,7 +90,7 @@
             <div class="tab-content tab-content-solid">
               <!-- Grocery -->
               <div class="tab-pane  mb-5 fade show active" id="grocery" role="tabpanel">
-
+              <h4>Grocery</h4>
                 <!-- Table -->
                 <div class="table-responsive" lnk="Grocery">
                   <table class="table" id="inv-grocs-table">
@@ -134,7 +134,7 @@
 
               <!-- Pharmacy -->
               <div class="tab-pane mb-5 fade" id="pharmacy" role="tabpanel">
-
+              <h4>Pharmacy</h4>
                 <!-- Table -->
                 <div class="table-responsive" lnk="Pharmacy">
                   <table class="table" id="inv-pharm-table">
