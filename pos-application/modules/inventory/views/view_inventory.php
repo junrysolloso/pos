@@ -56,26 +56,34 @@
 
                 <!-- Table -->
                 
-                <div class="table-responsive" lnk="Grocery">
-                  <table class="table" id="inv-grocs-table">
+                <?php if ( $item_all && $item_all) : ?>
+                <div class="table-responsive" lnk="Pharmacy">
+                  <table class="table" id="inv-pharm-table">
                     <thead>
                       <tr>
+                        <th>NO</th>
                         <th>ITEM NUMBER</th>
                         <th>ITEM NAME</th>
-                        <th>SUB-CATEGORY</th>
                         <th>REMAINING</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
+                    <?php
+                    $count=1;
+                    foreach ( $item_all as $row){
+                      echo '<tr>';
+                        echo'<td>'. $count .'</td>';
+                        echo'<td>'. $row->barcode .'</td>';
+                        echo'<td>'. $row->name.' '. $row->item_des .'</td>';
+                        echo'<td>'. $row->remaining.'</td>';
+                      echo'</tr>';
+                      $count++;
+                      }
+                    ?>
                     </tbody>
                   </table>
                 </div>
+                <?php endif ?>
               </div>
 
               <!-- Pharmacy -->
@@ -102,44 +110,34 @@
                 </div>
 
                 <!-- Table -->
+                <?php if ( $item_all && $item_all) : ?>
                 <div class="table-responsive" lnk="Pharmacy">
                   <table class="table" id="inv-pharm-table">
                     <thead>
                       <tr>
+                        <th>NO</th>
                         <th>ITEM NUMBER</th>
                         <th>ITEM NAME</th>
-                        <th>SUB-CATEGORY</th>
                         <th>REMAINING</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
+                    <?php
+                    $count=1;
+                    foreach ( $item_all as $row){
+                      echo '<tr>';
+                        echo'<td>'. $count .'</td>';
+                        echo'<td>'. $row->barcode .'</td>';
+                        echo'<td>'. $row->name.' '. $row->item_des .'</td>';
+                        echo'<td>'. $row->remaining.'</td>';
+                      echo'</tr>';
+                      $count++;
+                      }
+                    ?>
                     </tbody>
                   </table>
                 </div>
+                <?php endif ?>
               </div>
 
               <!--Beauty Products-->
@@ -166,44 +164,34 @@
                 </div>
 
                 <!-- Table -->
-                <div class="table-responsive" lnk="Beauty Products">
-                  <table class="table" id="inv-beaut-table">
+                <?php if ( $item_all && $item_all) : ?>
+                <div class="table-responsive" lnk="Pharmacy">
+                  <table class="table" id="inv-pharm-table">
                     <thead>
                       <tr>
+                        <th>NO</th>
                         <th>ITEM NUMBER</th>
                         <th>ITEM NAME</th>
-                        <th>SUB-CATEGORY</th>
                         <th>REMAINING</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
+                    <?php
+                    $count=1;
+                    foreach ( $item_all as $row){
+                      echo '<tr>';
+                        echo'<td>'. $count .'</td>';
+                        echo'<td>'. $row->barcode .'</td>';
+                        echo'<td>'. $row->name.' '. $row->item_des .'</td>';
+                        echo'<td>'. $row->remaining.'</td>';
+                      echo'</tr>';
+                      $count++;
+                      }
+                    ?>
                     </tbody>
                   </table>
                 </div>
+                <?php endif ?>
               </div>
 
               <!--Damage-->
@@ -236,6 +224,7 @@
                     <table class="table" id="inv-damag-table">
                       <thead>
                         <tr>
+                          <th>NO</th>
                           <th>BARCODE</th>
                           <th>ITEM NAME</th>
                           <th>QUANTITY</th>
@@ -245,14 +234,17 @@
                       </thead>
                       <tbody>
                         <?php
+                        $count=1;
                            foreach ( $damage_all as $row ) {
                           echo '<tr>';
+                          echo '<td>'. $count .'</td>';
                           echo '<td>'. $row->item_id .'</td>';
-                          echo '<td>'. $row->name .'</td>';
+                          echo '<td>'. $row->name.'</td>';
                           echo '<td>'. $row->ds_quantity .'</td>';
                           echo '<td>'. $row->ds_remarks .'</td>';
                           echo '<td>'. $row->ds_date .'</td>';
                           echo '</tr>';
+                          $count++;
                           }
                         ?>
                       </tbody>
