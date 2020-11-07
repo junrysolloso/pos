@@ -14,8 +14,8 @@ class Model_Inv_Items extends MY_Model
   protected $_relate_category     = 'tbl_category';
   protected $_relate_inventory    = 'tbl_inventory';
   protected $_relate_subcategory  = 'tbl_subcategory';
-  protected $_relate_ucjunc      = 'tbl_ucjunc';
-  protected $_relate_unitconvert = 'tbl_unitconvert';
+  protected $_relate_ucjunc       = 'tbl_ucjunc';
+  protected $_relate_unitconvert  = 'tbl_unitconvert';
   protected $_relate_unit         = 'tbl_unit';
 
   protected $_category_name       = 'category_name';
@@ -25,7 +25,7 @@ class Model_Inv_Items extends MY_Model
   }
 
     /**
-   * Get all damage report
+   * Get Inventory reports
    * @return array $result
    */
   public function inv_items_get( $category ) {

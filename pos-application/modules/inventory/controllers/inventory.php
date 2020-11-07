@@ -21,9 +21,9 @@ class Inventory extends MY_Controller
 	 */
   public function index() {
 
-    $data['title'] = 'Inventory';
-    $data['class'] = 'inventory';
-    $data['sales_total'] = $this->Model_Sales->sales_total_get();
+    $data['title']        = 'Inventory';
+    $data['class']        = 'inventory';
+    $data['sales_total']  = $this->Model_Sales->sales_total_get();
 
     $data['damage_all']   = $this->Model_Inv_Damage->damage_get();
     $data['inv_grocery']  = $this->Model_Inv_Items->inv_items_get( 'grocery' );
@@ -37,9 +37,9 @@ class Inventory extends MY_Controller
     $this->template->write( 'title', $data['title'] );
     $this->template->write( 'body_class', $data['class'] );
     
-    $this->template->write_view( 'content', 'templates/template_topbar' );
-    $this->template->write_view( 'content', 'templates/template_sidebar', $data );
-    $this->template->write_view( 'content', 'view_inventory', $data );
+    $this->template->write_view( 'content', 'templates/template_topbar', $data );
+    $this->template->write_view( 'content', 'templates/template_sidebar' );
+    $this->template->write_view( 'content', 'view_inventory' );
     $this->template->write_view( 'content', 'templates/template_footer' );
     $this->template->render();
   }
