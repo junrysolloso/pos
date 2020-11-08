@@ -108,7 +108,7 @@ class Model_Dashboard extends MY_Model
     /**
      * Data to return
      */
-    $this->db->select('`item_name`, `item_description` AS `desc`, (`unit_price` * `no_of_items`) AS `sales_total`, `no_of_items`, `unit_desc`');
+    $this->db->select('`item_name`, `item_description` AS `desc`, ((`unit_price` * `no_of_items`) - `sales_discount`) AS `sales_total`, `no_of_items`, `unit_desc`');
 
     /**
      * Query parameters
@@ -146,18 +146,17 @@ class Model_Dashboard extends MY_Model
    */
   public function daily_sales_query( $category, $date ) {
 
-    if( ! empty( $category ) && ! empty( $date ) ) {
+    if( ! empty( $category ) && ! empty( $date ) ) { 
       /**
        * Data to return
        */
-      $this->db->select('SUM(`no_of_items` * `unit_price`) AS `total`');
+      $this->db->select('(SUM(`no_of_items` * `unit_price`) - `sales_discount`) AS `total`');
 
       /**
        * Query parameters
        */
       $this->db->where( $this->_category_name, $category );
       $this->db->where( $this->_sales_date, $date );
-      //$this->db->group_by( $this->_category_name );
 
       /**
        * Join all required tables

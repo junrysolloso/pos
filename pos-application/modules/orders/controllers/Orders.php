@@ -71,9 +71,9 @@ class Orders extends MY_Controller
     $this->template->write( 'title', $data['title'] );
     $this->template->write( 'body_class', $data['class'] );
 
-    $this->template->write_view( 'content', 'templates/template_topbar' );
-    $this->template->write_view( 'content', 'templates/template_sidebar', $data );
-    $this->template->write_view( 'content', 'view_orders', $data );
+    $this->template->write_view( 'content', 'templates/template_topbar', $data );
+    $this->template->write_view( 'content', 'templates/template_sidebar' );
+    $this->template->write_view( 'content', 'view_orders' );
     $this->template->write_view( 'content', 'templates/template_footer' );
     $this->template->render();
 

@@ -35,6 +35,7 @@
     <?php echo $content; ?>
 
     <!-- Plugins JS -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_loader.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_nav.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net/jquery.dataTables.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
@@ -53,6 +54,5 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_table.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_action.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_ajax.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_loader.js"></script>
   </body>
 </html> 
