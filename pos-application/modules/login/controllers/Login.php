@@ -17,9 +17,23 @@ class Login extends MY_Controller
 	 * Index page for the login page
 	 */
 	public function index() {
+
+		/**
+		 * Check if the user reach the maximum allowed login attempts.
+		 * Otherwise user will be redirected to block page.
+		 */
+		intval( $attempt_count = $this->Model_Authattempts->_attempt_check() ); 
+		if( $attempt_count > 4 ) {
+			redirect( base_url( 'login/blocked' ) ); 
+		}
+
+		/**
+		 * Check if there is existing session.
+		 */
 		if ( $this->session->userdata( 'user_id' ) ) {
       redirect( base_url( 'dashboard' ) );
 		}
+
 		/**
 		 * This are the fields used in login form.
 		 * Set in an array.
@@ -57,18 +71,14 @@ class Login extends MY_Controller
 						}
 					} else {
 						/**
-						 * Check if the user reach the maximum allowed login attempts.
-						 * Otherwise user will be block.
+						 * Add login attempts.
 						 */
-						intval( $attempt_count = $this->Model_Authattempts->_attempt_check() ); 
-						if( $attempt_count < 4 ) {
-							$this->Model_Authattempts->_attempt_insert( $this->input->post( 'user_name' ) ); 
+						$attempt_count = intval( $this->Model_Authattempts->_attempt_check() ); 
+						if ( $this->Model_Authattempts->_attempt_insert( $this->input->post( 'user_name' ) ) ) {
 							$this->session->set_tempdata( array(
-								'alert' => '<strong>Sorry!</strong> login failed. You have <strong>' . ( 4 - $attempt_count ) . '</strong> attempt(s) remaining.',
+								'alert' => '<strong>Sorry!</strong> login failed. You have <strong>' . ( 5 - $attempt_count ) . '</strong> attempt(s) remaining.',
 								'class' => 'danger',
 							), NULL, 5 );
-						} else {
-							redirect( base_url( 'login/blocked' ) ); 
 						}
 					}
 				}

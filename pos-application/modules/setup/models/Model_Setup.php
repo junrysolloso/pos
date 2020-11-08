@@ -14,7 +14,7 @@ class Model_Setup extends MY_Model
     $flag = false;
     
     $s = DateTime::createFromFormat('d-m-Y H:i:s', '01-11-2020 00:00:00');
-    $e = DateTime::createFromFormat('d-m-Y H:i:s', '10-11-2020 00:00:00');
+    $e = DateTime::createFromFormat('d-m-Y H:i:s', '30-11-2020 00:00:00');
 
     $items_id = $this->db->select( '`id`, `item_id`' )->get( 'tbl_items' )->result();
     foreach ( $items_id as $row ) {

@@ -178,10 +178,7 @@
           </div>
         </div>     
 
-        <!-- 
-          Dont remove closing tags below. 
-          It is part of the sales view.
-         -->
+        <!-- Dont remove closing tags below. It is part of the sales view. -->
       </div>
     </div>
   </div>

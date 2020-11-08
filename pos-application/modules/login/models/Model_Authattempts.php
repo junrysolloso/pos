@@ -19,7 +19,7 @@ class Model_Authattempts extends MY_Model
       $data = array(
         $this->_user     => $user,
         $this->_attempts => ( $this->_attempt_check() + 1 ),
-        $this->_blocked  => date('y-m-d h:m:s'),
+        $this->_blocked  => date('Y-m-d h:i:s'),
       );
       if ( $this->db->insert( $this->_table, $data ) ) {
         return true;

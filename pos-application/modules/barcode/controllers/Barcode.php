@@ -20,7 +20,7 @@ class Barcode extends MY_Controller
 
     $html = '';
 
-		// Generate random number
+		// Generate barcode number
     $code    = $this->Model_Barcode->_check_code();
     $element = $this->barcode_generate( $code );
   
@@ -31,10 +31,8 @@ class Barcode extends MY_Controller
     }
 
     $data['barcode']     = $html;
-
     $data['title']       = 'Generate Barcode';
     $data['class']       = 'barcode';
-    $data['image_url']   = $code;
     $data['sales_total'] = $this->Model_Sales->sales_total_get();
 
     // Load template parts
@@ -57,26 +55,17 @@ class Barcode extends MY_Controller
 		$this->load->library( 'zend' );
     $this->zend->load( 'Zend/Barcode' );
     
-    // Options UPCA
+    // Options EAN13
     $options = array(
-      'text'      => $code,
-      'barHeight' => 30,
-      'factor'    => 8,
-      'fontSize'  => 7,
-      'withChecksum' => false,
+      'text'         => $code,
+      'barHeight'    => 30,
+      'factor'       => 8,
+      'fontSize'     => 7,
+      'withChecksum' => true,
     );
 
-    // Options UPCE
-    // $options = array(
-    //   'text'      => $code,
-    //   'barHeight' => 20,
-    //   'factor'    => 13,
-    //   'fontSize'  => 6,
-    //   'withChecksum' => true,
-    // );
-
     // Draw barcode
-    $image = Zend_Barcode::draw( 'upca', 'svg', $options, array() );
+    $image = Zend_Barcode::draw( 'ean13', 'svg', $options, array() );
 
 		// Save to file
     // $image = Zend_Barcode::draw( 'upce', 'image', $options, array() );

@@ -3,27 +3,27 @@
 class Model_Barcode extends MY_Model
 {
 
-  private $flag = true;
-
   function __construct() {
     parent:: __construct();
   }
 
   /**
-   * Generate sample code
+   * Generate barcode code
    */
   public function _check_code() {
-    $code  = '480427' . mt_rand( 10000, 99999 );
+    $code  = '480427' . mt_rand( 100000, 999999 );
     $this->db->select( 'id' );
     $this->db->where( 'item_id', $code );
+
+    /**
+     * Check barcode if already exist
+     * in the database.
+     */
     if ( $this->db->get( 'tbl_items' )->num_rows() > 0 ) {
       $this->_check_code();
-      $flag = false;
-    } else {
-      $flag = true;
     }
 
-    if ( $flag ) return $code;
+    return $code;
   }
 }
 
