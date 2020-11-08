@@ -23,7 +23,7 @@ class Login extends MY_Controller
 		 * Otherwise user will be redirected to block page.
 		 */
 		intval( $attempt_count = $this->Model_Authattempts->_attempt_check() ); 
-		if( $attempt_count > 4 ) {
+		if( $attempt_count > 3 ) {
 			redirect( base_url( 'login/blocked' ) ); 
 		}
 
@@ -76,7 +76,7 @@ class Login extends MY_Controller
 						$attempt_count = intval( $this->Model_Authattempts->_attempt_check() ); 
 						if ( $this->Model_Authattempts->_attempt_insert( $this->input->post( 'user_name' ) ) ) {
 							$this->session->set_tempdata( array(
-								'alert' => '<strong>Sorry!</strong> login failed. You have <strong>' . ( 5 - $attempt_count ) . '</strong> attempt(s) remaining.',
+								'alert' => '<strong>Sorry!</strong> login failed. You have <strong>' . ( 4 - $attempt_count ) . '</strong> attempt(s) remaining.',
 								'class' => 'danger',
 							), NULL, 5 );
 						}
