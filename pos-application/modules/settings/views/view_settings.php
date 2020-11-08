@@ -87,40 +87,20 @@
                     </div>
                   </div>
                 </form>
-                <?php if( $category_all && $subcategory_all ): ?>
-                  <div class="row mt-4">
-                    <div class="col-md-4">
-                      <div class="table-responsive">
-                        <table class="table" id="cat-table">
-                          <thead>
-                            <tr>
-                              <th>CATEGORY</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                              foreach ( $category_all as $row ) {
-                                echo '<tr>';
-                                echo '<td>'. ucfirst( $row->category_name ) .'</td>';
-                                echo '</tr>';
-                              }
-                            ?>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <div class="col-md-8">
-                      <table class="table" id="cat-sub-table">
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <div class="table-responsive">
+                      <table class="table" id="cat-table">
                         <thead>
                           <tr>
-                            <th>SUB CATEGORY</th>
+                            <th>CATEGORY</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php
-                            foreach ( $subcategory_all as $row ) {
+                            foreach ( $category_all as $row ) {
                               echo '<tr>';
-                              echo '<td>'. ucwords( $row->subcat_name ) .'</td>';
+                              echo '<td>'. ucfirst( $row->category_name ) .'</td>';
                               echo '</tr>';
                             }
                           ?>
@@ -128,7 +108,25 @@
                       </table>
                     </div>
                   </div>
-                <?php endif; ?>
+                  <div class="col-md-8">
+                    <table class="table" id="cat-sub-table">
+                      <thead>
+                        <tr>
+                          <th>SUB CATEGORY</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                          foreach ( $subcategory_all as $row ) {
+                            echo '<tr>';
+                            echo '<td>'. ucwords( $row->subcat_name ) .'</td>';
+                            echo '</tr>';
+                          }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
 
               <!-- Add Unit -->
@@ -178,7 +176,7 @@
                       <div class="form-group">
                         <label for="item_id">Barcode Number</label>
                         <div class="input-group">
-                          <input type="number" name="item_id" onmouseover="this.focus();" class="form-control" id="item_id" required />
+                          <input type="text" name="item_id" onmouseover="this.focus();" class="form-control" id="item_id" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -388,7 +386,7 @@
                       <div class="form-group col-5">
                         <label for="dmg_item_id">Barcode Number</label>
                         <div class="input-group">
-                          <input type="text" name="dmg_item_id" class="form-control" id="dmg_item_id" required />
+                          <input type="text" name="dmg_item_id" onmouseover="this.focus();" class="form-control" id="dmg_item_id" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -429,33 +427,30 @@
                     </div>
                   </div>
                 </form>
-
-                <?php if( $damage_all && $damage_all ): ?>
-                  <div class="table-responsive">
-                    <table class="table" id="set-damag-table">
-                      <thead>
-                        <tr>
-                          <th>BARCODE NUMBER</th>
-                          <th>ITEMS QUANTITY</th>
-                          <th>REMARKS</th>
-                          <th>DATE REPORTED</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                           foreach ( $damage_all as $row ) {
-                          echo '<tr>';
-                          echo '<td>'. $row->item_id .'</td>';
-                          echo '<td>'. $row->ds_quantity .'</td>';
-                          echo '<td>'. $row->ds_remarks .'</td>';
-                          echo '<td>'. $row->ds_date .'</td>';
-                          echo '</tr>';
-                          }
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
-                <?php endif;?>
+                <div class="table-responsive">
+                  <table class="table" id="set-damag-table">
+                    <thead>
+                      <tr>
+                        <th>BARCODE NUMBER</th>
+                        <th>ITEMS QUANTITY</th>
+                        <th>REMARKS</th>
+                        <th>DATE REPORTED</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                          foreach ( $damage_all as $row ) {
+                        echo '<tr>';
+                        echo '<td>'. $row->item_id .'</td>';
+                        echo '<td>'. $row->ds_quantity .'</td>';
+                        echo '<td>'. $row->ds_remarks .'</td>';
+                        echo '<td>'. $row->ds_date .'</td>';
+                        echo '</tr>';
+                        }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <!-- User Info -->
@@ -548,7 +543,6 @@
                 </form>
 
                 <div class="pt-4">
-                  <!-- Filter -->
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
@@ -563,8 +557,6 @@
                       </div>
                     </div>
                   </div>
-
-                  <!-- Table -->
                   <div class="table-responsive">
                     <table class="table" id="set-users-table">
                       <thead>
@@ -594,7 +586,6 @@
               
               <!-- System Logs -->
               <div class="tab-pane fade mb-4 mt-4" id="view-logs" role="tabpanel">
-                <!-- Filter -->
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -609,8 +600,6 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- Table -->
                 <div class="table-responsive">
                   <table class="table" id="set-logss-table">
                     <thead>

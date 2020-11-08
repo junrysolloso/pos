@@ -50,11 +50,20 @@ class Dashboard extends MY_Controller
    */
   public function sales() {
 
+    /**
+     * Set variables to empty arrays to be used if
+     * any array is empty to avoid errors in the graph.
+     */
+    $daily['labels'] = array();
+    $daily['gTotal'] = array();
+    $daily['pTotal'] = array();
+    $daily['bTotal'] = array();
+
     if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
       if ( isset( $_GET['limit'] ) ) {
         /**
          * Get daily sales and passing parameter
-         * limit of 7
+         * limit of $limit
          */
         $data = $this->Model_Dashboard->daily_sales( intval( $this->input->get( 'limit' ) ) );
         
@@ -62,12 +71,21 @@ class Dashboard extends MY_Controller
          * Pass all the data to new array
          * Which will be converted into json format
          */
-        $daily = array(
-          'labels'  => array_reverse( $data[0] ),
-          'gTotal'  => array_reverse( $data[1]['grocery'] ),
-          'pTotal'  => array_reverse( $data[1]['pharmacy'] ),
-          'bTotal'  => array_reverse( $data[1]['beauty'] ),
-        );
+        if( array_key_exists( 0, $data ) ) {
+          $daily['labels']  = array_reverse( $data[0] );
+        }
+
+        if( array_key_exists( 1, $data[1] ) ) {
+          $daily['gTotal'] = array_reverse( $data[1][1] );
+        }
+
+        if( array_key_exists( 2, $data[1] ) ) {
+          $daily['pTotal'] = array_reverse( $data[1][2] );
+        }
+
+        if( array_key_exists( 3, $data[1] ) ) {
+          $daily['bTotal'] = array_reverse( $data[1][3] );
+        }
 
         /**
          * content-type: application/json tells the server

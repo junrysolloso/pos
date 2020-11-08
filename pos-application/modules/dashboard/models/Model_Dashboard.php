@@ -43,7 +43,7 @@ class Model_Dashboard extends MY_Model
       /**
        * Get all the categories
        */
-      $categories = $this->db->select( $this->_category_name )->get( $this->_relate_category )->result();
+      $categories = $this->db->select( '`category_id` AS `id`, `category_name`' )->get( $this->_relate_category )->result();
 
       /**
        * Date reference
@@ -60,7 +60,7 @@ class Model_Dashboard extends MY_Model
          * Assign an array variable to a 
          * specific category.
          */
-        $sales_total[$row->category_name] = array();
+        $sales_total[ $row->id ] = array();
     
         for( $i=0; $i < $limit; $i++ ) { 
 
@@ -83,7 +83,7 @@ class Model_Dashboard extends MY_Model
           /**
            * Push the sum to the array
            */
-          array_push( $sales_total[$row->category_name], $sum );
+          array_push( $sales_total[ $row->id ], $sum );
 
           /**
            * Prevent the day from push when every category is loop

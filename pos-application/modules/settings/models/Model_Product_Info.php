@@ -15,7 +15,7 @@ class Model_Product_Info extends MY_Model
   protected $_relate_ucjunc      = 'tbl_ucjunc';
   protected $_relate_unitconvert = 'tbl_unitconvert';
   protected $_relate_subcategory = 'tbl_subcategory';
-  protected $_relate_salesinfo    = 'tbl_salesinfo';
+  protected $_relate_salesinfo   = 'tbl_salesinfo';
 
   protected $_relate_inventory   = 'tbl_inventory';
   protected $_category_name      = 'category_name';
@@ -33,9 +33,9 @@ class Model_Product_Info extends MY_Model
     if( is_array( $data ) ) {
       $data = clean_array( $data );
       $item_data = array(
-        $this->_item_id    => $data['item_id'],
-        $this->_subcat_id  => intval( $data['subcat_id'] ),
-        $this->_item_name  => strtolower( $data['item_name'] ),
+        $this->_item_id          => $data['item_id'],
+        $this->_subcat_id        => intval( $data['subcat_id'] ),
+        $this->_item_name        => strtolower( $data['item_name'] ),
         $this->_item_description => strtolower( $data['item_description'] ),
         $this->_item_critlimit   => intval( $data['item_critlimit'] ),
         $this->_unit_id          => intval( $data['unit_id1'] ),
@@ -74,13 +74,13 @@ class Model_Product_Info extends MY_Model
 
     $this->db->select( '`item_name`, `inv_rem_stocks`, `item_critlimit`' );
     $this->db->where( '`inv_rem_stocks` < `item_critlimit`' );
-    $this->db->join( $this->_relate_inventory, '`tbl_items`.`item_id`=`tbl_inventory`.`item_id`' )->limit( 6 );
+    $this->db->join( $this->_relate_inventory, '`tbl_items`.`item_id`=`tbl_inventory`.`item_id`' );
+    $this->db->order_by( 'inv_rem_stocks', 'ASC' )->limit( 4 );
     $query = $this->db->get( $this->_table );
     if ( $query ) {
       return $query->result();
     }
   }
-
   
   /**
    * Almost out of stocks products
@@ -88,7 +88,7 @@ class Model_Product_Info extends MY_Model
   public function top_products( $category ) {
 
     $this->db->select( '`salesinfo_id`, `item_name`, COUNT(`tbl_salesinfo`.`item_id`) AS `count`' );
-    $this->db->where( $this->_category_name, $category );
+    $this->db->where( $this->_category_name, $category )->order_by( '`count`', 'DESC' )->limit( 4 );
 
     $this->db->join( $this->_relate_salesinfo, '`tbl_items`.`item_id`=`tbl_salesinfo`.`item_id`' );
     $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );

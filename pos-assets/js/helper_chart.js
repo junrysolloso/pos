@@ -109,9 +109,9 @@
           }],
           yAxes: [{
             ticks: {
-              max: 20000,
+              max: 10000,
               min: 0,
-              stepSize: 2000,
+              stepSize: 1000,
               fontColor: "#858585",
               beginAtZero: false
             },
