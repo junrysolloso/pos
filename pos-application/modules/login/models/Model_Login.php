@@ -29,8 +29,8 @@ class Model_Login extends MY_Model
           // Set user data to a session
           $data = array(
             'user_id'       => $query->row()->user_id,
-            'userinfo_name' => $query->row()->userinfo_name,
-            'user_rule'     => $query->row()->user_level,
+            'userinfo_name' => ucwords( $query->row()->userinfo_name ),
+            'user_rule'     => ucwords( $query->row()->user_level ),
           );
 
           $this->session->set_userdata( $data );
