@@ -30,6 +30,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_form.js"></script>
   </head>
   <body class="<?php echo $body_class; ?>">
+    <div id="c-overlay" style="bacground: #fff; height: 100vh;"></div>
     <input type="hidden" id="base_url" value="<?php echo base_url(); ?>" />
     <?php echo $content; ?>
 
@@ -52,5 +53,6 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_table.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_action.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_ajax.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_loader.js"></script>
   </body>
 </html> 

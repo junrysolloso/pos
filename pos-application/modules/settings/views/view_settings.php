@@ -386,9 +386,9 @@
                         </div>
                       </div>
                       <div class="form-group col-5">
-                        <label for="item_id">Barcode Number</label>
+                        <label for="dmg_item_id">Barcode Number</label>
                         <div class="input-group">
-                          <input type="text" name="item_id" class="form-control" id="item_id" required />
+                          <input type="text" name="dmg_item_id" class="form-control" id="dmg_item_id" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>

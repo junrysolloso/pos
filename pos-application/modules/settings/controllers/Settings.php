@@ -120,7 +120,7 @@ class Settings extends MY_Controller
           $createDate = date_create($ds_date);
           $data = array (
             'ds_id'       => $ds_id,
-            'item_id'     => $this->input->post( 'item_id' ),
+            'item_id'     => $this->input->post( 'dmg_item_id' ),
             'ds_quantity' => $this->input->post( 'ds_quantity' ),
             'ds_remarks'  => $this->input->post( 'ds_remarks' ),
             'ds_date'     => date_format($createDate,"Y-m-d"),
