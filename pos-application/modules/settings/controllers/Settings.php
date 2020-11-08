@@ -6,11 +6,9 @@ class Settings extends MY_Controller
   function __construct() {
     parent:: __construct(); 
 
-    // Check if the is already login
-    // otherwise redirect the user to login page.
-    // if ( ! $this->session->userdata( 'user_id' ) ) {
-    //   redirect( base_url( 'login' ) );
-    // }
+    if ( ! $this->session->userdata( 'user_id' ) ) {
+      redirect( base_url( 'login' ) );
+    }
 
     // Load models
     $this->load->model( 'Model_Unit' );

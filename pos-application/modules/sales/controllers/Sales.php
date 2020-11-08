@@ -9,6 +9,7 @@ class Sales extends MY_Controller
     if ( ! $this->session->userdata( 'user_id' ) ) {
       redirect( base_url( 'login' ) );
     }
+    
     $this->load->model( 'dashboard/Model_Dashboard' );
     $this->load->model( 'settings/Model_Product_Info' );
   }

@@ -6,6 +6,10 @@ class Orders extends MY_Controller
   function __construct() {
     parent:: __construct();
 
+    if ( ! $this->session->userdata( 'user_id' ) ) {
+      redirect( base_url( 'login' ) );
+    }
+    
     $this->load->model( 'Model_Orders' );
     $this->load->model( 'Model_Orderdetails' );
     $this->load->model( 'Model_Order_Inventory' );
