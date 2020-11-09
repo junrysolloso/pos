@@ -295,10 +295,18 @@
                       </div>
                     </div>
                     <!-- Button -->
-                    <div class="col-12">
-                      <div class="form-group pb-2">
-                        <input type="submit" name="submit[]" value="Save Product Details"
-                          class="btn btn-success submit-btn" />
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group pb-2">
+                          <input type="submit" name="submit[]" value="Save Product Details"
+                            class="btn btn-success submit-btn" />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group pb-2">
+                          <input type="submit" name="update[]" value="Update Product Details"
+                            class="btn btn-success submit-btn" />
+                        </div>
                       </div>
                     </div>
                   </div>
