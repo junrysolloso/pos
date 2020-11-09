@@ -125,7 +125,7 @@
 
               <!-- Add Orders -->
               <div class="tab-pane active fade show mt-4 mb-4" id="add-order" role="tabpanel">
-                <form action="#" method="post" name="frm_add_order" class="pb-3">
+                <form action="#" method="post" id="formAddOrder" name="frm_add_order" class="pb-3">
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
@@ -223,7 +223,7 @@
                           <div class="form-group">
                             <label for="price_per_unit">Price Per Unit</label>
                             <div class="input-group">
-                              <input type="number" name="price_per_unit" class="form-control" id="price_per_unit" required />
+                              <input type="decimal" name="price_per_unit" class="form-control" id="price_per_unit" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -264,7 +264,7 @@
                           <div class="form-group">
                             <label for="inv_item_srp">Suggested Retail Price (SRP)</label>
                             <div class="input-group">
-                              <input type="number" name="inv_item_srp" class="form-control" id="inv_item_srp" required />
+                              <input type="decimal" name="inv_item_srp" class="form-control" id="inv_item_srp" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>

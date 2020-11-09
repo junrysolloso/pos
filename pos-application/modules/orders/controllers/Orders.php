@@ -75,6 +75,7 @@ class Orders extends MY_Controller
     $this->template->write_view( 'content', 'templates/template_sidebar' );
     $this->template->write_view( 'content', 'view_orders' );
     $this->template->write_view( 'content', 'templates/template_footer' );
+    $this->template->add_js( 'pos-assets/js/pages/page_order.js' );
     $this->template->render();
 
   }

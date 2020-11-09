@@ -14,6 +14,7 @@
     <!-- Plugins -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/select2/css/select2.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/jquery-toast-plugin/jquery.toast.min.css" />
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/style-main.min.css" />
@@ -37,6 +38,7 @@
     <!-- Plugins JS -->
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_loader.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_nav.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_form_validation.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net/jquery.dataTables.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/inputmask/jquery.inputmask.bundle.min.js"></script>
@@ -45,6 +47,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/daterangepicker/moment.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/jquery-toast-plugin/jquery.toast.min.js"></script>
 
     <!-- Additional JS -->
     <?php echo $_scripts; ?>
