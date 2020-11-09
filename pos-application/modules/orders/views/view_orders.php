@@ -39,7 +39,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="ord-history" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" class="form-control" id="ord-history" placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -82,7 +82,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="ord-items"placeholder="Search anything from the table..." />
+                          <input type="text" name="data_search" class="form-control" id="ord-items"placeholder="Search anything from the table..." />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-magnify-plus"></i>
@@ -125,13 +125,13 @@
 
               <!-- Add Orders -->
               <div class="tab-pane active fade show mt-4 mb-4" id="add-order" role="tabpanel">
-                <form action="#" method="post" id="formAddOrder" name="frm_add_order" class="pb-3">
+                <form action="#" method="post" name="frm_add_order" class="pb-3">
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
                         <label for="order_date">Order Date</label>
                         <div class="input-group">
-                          <input type="text" name="order_date" value="<?php echo $order_details_date; ?>" onmouseover="this.focus();" class="form-control" id="order_date"
+                          <input type="text" name="order_date" value="<?php echo $order_details_date; ?>" class="form-control" id="order_date"
                             data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
@@ -278,7 +278,8 @@
                       <div class="form-group">
                         <label for="expiration_date">Expiration Date</label>
                         <div class="input-group">
-                          <input type="text" name="expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" />
+                          <input type="text" name="expiration_date" class="form-control"
+                            data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -307,7 +308,18 @@
                       </tr>
                     </thead>
                     <tbody>
-                      
+                      <?php
+                        foreach ( $order_details as $row ) {
+                          echo '<tr id="'. $row->id .'">';
+                          echo '<td>'. $row->tmp_barcode .'</td>';
+                          echo '<td>'. $row->tmp_date .'</td>';
+                          echo '<td>'. $row->tmp_quantity .'</td>';
+                          echo '<td>'. $row->tmp_price .'</td>';
+                          echo '<td>'. $row->tmp_srp .'</td>';
+                          echo '<td>'. $row->tmp_expiry .'</td>';
+                          echo '</tr>';
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
