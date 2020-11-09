@@ -101,14 +101,14 @@
 
   // Inventory Table
   $(function () {
-    $('#inv-grocs-table, #inv-pharm-table, #inv-beaut-table, #inv-damag-table').DataTable({
+    $('#inv-grocs-table, #inv-pharm-table, #inv-beaut-table, #inv-damag-table, #view-prod-table').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 50,
+      "iDisplayLength": 30,
       "bLengthChange": false,
     });
   });
@@ -161,7 +161,7 @@
         $('#inv-beaut-table').DataTable().search($(this).val()).draw();
         break;
 
-        // Orders
+      // Orders
       case 'ord-history':
         $('#ord-histo-table').DataTable().search($(this).val()).draw();
         break;
@@ -169,12 +169,17 @@
         $('#ord-items-table').DataTable().search($(this).val()).draw();
         break;
 
-        // Settings
+      // Settings
       case 'set-users':
         $('#set-users-table').DataTable().search($(this).val()).draw();
         break;
       case 'set-logss':
         $('#set-logss-table').DataTable().search($(this).val()).draw();
+        break;
+
+      // View Products
+      case 'view-products':
+        $('#view-prod-table').DataTable().search($(this).val()).draw();
         break;
       default:
         console.log('Error seaching data!');

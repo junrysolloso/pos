@@ -53,7 +53,7 @@
 
               <!-- Add Category -->
               <div class="tab-pane fade show active mt-4 mb-1" id="add-category" role="tabpanel">
-                <form action="#" method="post">
+                <form action="#" method="post" id="add_cat_form">
                   <div class="row">
                     <div class="col-12">
                       <div class="row">
@@ -99,15 +99,7 @@
                             <th>CATEGORY</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <?php
-                            foreach ( $category_all as $row ) {
-                              echo '<tr>';
-                              echo '<td>'. ucfirst( $row->category_name ) .'</td>';
-                              echo '</tr>';
-                            }
-                          ?>
-                        </tbody>
+                        <tbody></tbody>
                       </table>
                     </div>
                   </div>
@@ -118,15 +110,7 @@
                           <th>SUB CATEGORY</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <?php
-                          foreach ( $subcategory_all as $row ) {
-                            echo '<tr>';
-                            echo '<td>'. ucwords( $row->subcat_name ) .'</td>';
-                            echo '</tr>';
-                          }
-                        ?>
-                      </tbody>
+                      <tbody></tbody>
                     </table>
                   </div>
                 </div>
@@ -172,7 +156,7 @@
               </div>
 
               <!-- Add Product Info -->
-              <div class="tab-pane fade mb-5 mt-4" id="add-item" role="tabpanel">
+              <div class="tab-pane fade mb-3 mt-4" id="add-item" role="tabpanel">
                 <form action="#" method="post">
                   <div class="row">
                     <div class="col-12">
@@ -304,21 +288,20 @@
                       </div>
                     </div>
                     <!-- Button -->
-                    <div class="col-6">
+                    <div class="col-6 pt-3">
                       <div class="row">
-                        <div class="col-6">
+                        <div class="col-5">
                           <div class="form-group">
                             <input type="submit" name="submit[]" value="Save Product Details" class="btn btn-success submit-btn" />
                           </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-5">
                           <div class="form-group">
-                            <input type="button" name="view_product" data-target="#view_product" value="View Product Details" class="btn btn-success submit-btn" data-toggle="modal" />
+                            <input type="button" name="view_product" data-target="#view_product" value="View Products" class="btn btn-success submit-btn" data-toggle="modal" />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-6"></div>
                   </div>
                 </form>
               </div>
@@ -682,7 +665,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="inv-beauty" placeholder="Search anything from the table..." />
+                  <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="view-products" placeholder="Search anything from the table..." />
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i class="mdi mdi-magnify-plus"></i>
@@ -693,7 +676,7 @@
             </div>
           </div>
           <div class="table-responsive" lnk="">
-            <table class="table" id="">
+            <table class="table" id="view-prod-table">
               <thead>
                 <tr>
                   <th>NO</th>
@@ -707,13 +690,14 @@
               <tbody>
                 <?php
                   $count=1;
-                    foreach ( $view_products as $row){
+                    foreach ( $view_products as $row ){
                       echo '<tr>';
                       echo'<td>'. $count .'</td>';
                       echo'<td>'. $row->barcode .'</td>';
                       echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
                       echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
                       echo'<td>'. $row->srp .'</td>';
+                      echo'<td><i class="mdi mdi-square-edit-outline mdi-18px"></i>&nbsp;&nbsp;<i class="mdi mdi-trash-can mdi-18px"></i></td>';
                       echo'</tr>';
                       $count++;
                     } 
