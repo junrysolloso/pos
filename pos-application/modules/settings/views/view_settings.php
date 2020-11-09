@@ -313,7 +313,7 @@
                         </div>
                         <div class="col-5">
                           <div class="form-group">
-                            <input type="button" name="view_product" data-target="#view_product" value="View Products" class="btn btn-success submit-btn" data-toggle="modal" />
+                            <input type="button" name="view_product" data-target="#view_product" value="View Products" class="btn btn-danger submit-btn" data-toggle="modal" />
                           </div>
                         </div>
                       </div>
@@ -674,7 +674,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">PRODUCT DETAILS</h4>
-          <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="mdi mdi-close mdi-18px"></i></button>
         </div>
         <div class="modal-body auto-form-wrapper">
           <div class="row">
