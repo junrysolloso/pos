@@ -99,7 +99,15 @@
                             <th>CATEGORY</th>
                           </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                          <?php
+                            foreach ( $category_all as $row ) {
+                              echo '<tr>';
+                              echo '<td>'. ucfirst( $row->category_name ) .'</td>';
+                              echo '</tr>';
+                            }
+                          ?>
+                        </tbody>
                       </table>
                     </div>
                   </div>
@@ -110,7 +118,15 @@
                           <th>SUB CATEGORY</th>
                         </tr>
                       </thead>
-                      <tbody></tbody>
+                      <tbody>
+                        <?php
+                          foreach ( $subcategory_all as $row ) {
+                            echo '<tr>';
+                            echo '<td>'. ucwords( $row->subcat_name ) .'</td>';
+                            echo '</tr>';
+                          }
+                        ?>
+                      </tbody>
                     </table>
                   </div>
                 </div>

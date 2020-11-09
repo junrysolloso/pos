@@ -100,7 +100,7 @@
                           <th>ORDER DATE</th>
                           <th>ITEM NUMBER</th>
                           <th>ITEM NAME</th>                      
-                          <th>ITEMS</th>
+                          <th>QUANTITY</th>
                         </tr>
                       </thead>
                       <tbody>
