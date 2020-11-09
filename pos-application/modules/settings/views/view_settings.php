@@ -41,12 +41,14 @@
 
             <div class="tab-content tab-content-solid">
               <?php if( $this->session->tempdata( 'msg' ) ): ?>
-                <div class="alert <?php echo $this->session->tempdata( 'class' ); ?> alert-dismissible fade show alert-temp" role="alert">
-                  <?php echo $this->session->tempdata( 'msg' ); ?>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
+              <div
+                class="alert <?php echo $this->session->tempdata( 'class' ); ?> alert-dismissible fade show alert-temp"
+                role="alert">
+                <?php echo $this->session->tempdata( 'msg' ); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
               <?php endif; ?>
 
               <!-- Add Category -->
@@ -54,7 +56,7 @@
                 <form action="#" method="post">
                   <div class="row">
                     <div class="col-12">
-                      <div class = "row">
+                      <div class="row">
                         <div class="form-group col-4">
                           <label for="category_name">Category</label>
                           <div class="input-group">
@@ -82,7 +84,8 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit[]" value="Save Category Details" class="btn btn-success submit-btn" />
+                        <input type="submit" name="submit[]" value="Save Category Details"
+                          class="btn btn-success submit-btn" />
                       </div>
                     </div>
                   </div>
@@ -176,7 +179,8 @@
                       <div class="form-group">
                         <label for="item_id">Barcode Number</label>
                         <div class="input-group">
-                          <input type="text" name="item_id" onmouseover="this.focus();" class="form-control" id="item_id" required />
+                          <input type="text" name="item_id" onmouseover="this.focus();" class="form-control"
+                            id="item_id" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -200,7 +204,8 @@
                       <div class="form-group">
                         <label for="item_description">Product Description</label>
                         <div class="input-group">
-                          <input type="text" name="item_description" class="form-control" id="item_description" required />
+                          <input type="text" name="item_description" class="form-control" id="item_description"
+                            required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -212,7 +217,8 @@
                       <div class="form-group">
                         <label for="item_critlimit">Product Limit</label>
                         <div class="input-group">
-                          <input type="number" name="item_critlimit" class="form-control" id="item_critlimit" required />
+                          <input type="number" name="item_critlimit" class="form-control" id="item_critlimit"
+                            required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -220,11 +226,12 @@
                           </div>
                         </div>
                       </div>
-                      
+
                       <div class="form-group">
                         <label for="subcat_id">Product Sub Category</label>
                         <div class="input-group">
-                          <select name="subcat_id" class="form-control select2-lg" id="subcat_id" data-select2-lg-id="1" tabindex="-1" aria-hidden="true" required>
+                          <select name="subcat_id" class="form-control select2-lg" id="subcat_id" data-select2-lg-id="1"
+                            tabindex="-1" aria-hidden="true" required>
                             <option value="" data-select2-lg-id="0">Select</option>
                             <?php 
                               foreach ( $subcategory_all as $row ) {
@@ -243,7 +250,8 @@
                       <div class="form-group">
                         <label for="unit_id1">Order Unit</label>
                         <div class="input-group">
-                          <select type="text" name="unit_id1" class="form-control select2-lg" id="unit_id1" data-select2-lg-id="1" tabindex="-1" aria-hidden="true" required>
+                          <select type="text" name="unit_id1" class="form-control select2-lg" id="unit_id1"
+                            data-select2-lg-id="1" tabindex="-1" aria-hidden="true" required>
                             <option value="" data-select2-lg-id="0">Select</option>
                             <?php 
                               foreach ( $unit_all as $row ) {
@@ -264,7 +272,8 @@
                       <div class="form-group">
                         <label for="unit_id2">Selling Unit</label>
                         <div class="input-group">
-                          <select name="unit_id2" class="form-control select2-md" id="unit_id2" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
+                          <select name="unit_id2" class="form-control select2-md" id="unit_id2" data-select2-md-id="1"
+                            tabindex="-1" aria-hidden="true" required>
                             <option value="" data-select2-md-id="0">Select</option>
                             <?php 
                               foreach ( $unit_all as $row ) {
@@ -295,91 +304,23 @@
                       </div>
                     </div>
                     <!-- Button -->
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="form-group pb-2">
-                          <input type="submit" name="submit[]" value="Save Product Details"
-                            class="btn btn-success submit-btn" />
+                    <div class="col-6">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <input type="submit" name="submit[]" value="Save Product Details" class="btn btn-success submit-btn" />
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="form-group pb-2">
-                          <input type="button" name="view_product" data-target="#view_product" value="View Product Details"
-                            class="btn btn-success submit-btn" data-toggle="modal" />
+                        <div class="col-6">
+                          <div class="form-group">
+                            <input type="button" name="view_product" data-target="#view_product" value="View Product Details" class="btn btn-success submit-btn" data-toggle="modal" />
+                          </div>
                         </div>
                       </div>
                     </div>
+                    <div class="col-6"></div>
                   </div>
                 </form>
-
-                <!-- View Product Info-->
-                <style>
-                  @media screen and (min-width: 676px) {
-                      .modal-dialog {
-                        max-width: 800px; /* New width for default modal */
-                      }
-                  }
-              </style>
-                <div id="view_product" class="modal fade" role="dialog">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
-                        <h4 class="modal-title">PRODUCT DETAILS</h4>
-                      </div>
-                      <div class="modal-body">
-                        <div class="row">
-                          <div class="col-md-9">
-                            <div class="form-group">
-                              <div class="input-group">
-                                <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="inv-beauty" placeholder="Search anything from the table..." />
-                                <div class="input-group-append">
-                                  <span class="input-group-text">
-                                    <i class="mdi mdi-magnify-plus"></i>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-3">
-                          </div>
-                        </div>
-                        <div class="table-responsive" lnk="">
-                          <table class="table" id="">
-                            <thead>
-                              <tr>
-                                <th>NO</th>
-                                <th>BARCODE</th>
-                                <th>PRODUCT NAME</th>
-                                <th>REMAINING</th>
-                                <th>SRP</th>
-                                <th>ACTION</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                              $count=1;
-                                foreach ( $view_products as $row){
-                                  echo '<tr>';
-                                  echo'<td>'. $count .'</td>';
-                                  echo'<td>'. $row->barcode .'</td>';
-                                  echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
-                                  echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
-                                  echo'<td>'. $row->srp .'</td>';
-                                  echo'</tr>';
-                                  $count++;
-                                } 
-                              ?> 
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-
-                      </div>
-                      
-                    </div>
-                  </div>
-                </div>
               </div>
 
               <!-- Company Info -->
@@ -448,45 +389,48 @@
                 <form action="#" method="post" class="mb-3">
                   <div class="row">
                     <div class="col-12">
-                      <div class ="row">
-                      <div class="form-group col-4">
-                        <label for="ds_date">Date Reported</label>
-                        <div class="input-group">
-                          <input type="text" name="ds_date" value="<?php echo date( "Y-m-d" ); ?>" class="form-control" id="ds_date"  disabled/>
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
+                      <div class="row">
+                        <div class="form-group col-4">
+                          <label for="ds_date">Date Reported</label>
+                          <div class="input-group">
+                            <input type="text" name="ds_date" value="<?php echo date( "Y-m-d" ); ?>"
+                              class="form-control" id="ds_date" disabled />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="form-group col-5">
-                        <label for="dmg_item_id">Barcode Number</label>
-                        <div class="input-group">
-                          <input type="text" name="dmg_item_id" onmouseover="this.focus();" class="form-control" id="dmg_item_id" required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
+                        <div class="form-group col-5">
+                          <label for="dmg_item_id">Barcode Number</label>
+                          <div class="input-group">
+                            <input type="text" name="dmg_item_id" onmouseover="this.focus();" class="form-control"
+                              id="dmg_item_id" required />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="form-group col-3">
-                        <label for="item_quan">Item Quantity</label>
-                        <div class="input-group">
-                          <input type="text" name="ds_quantity" class="form-control" id="ds_quantity" required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
+                        <div class="form-group col-3">
+                          <label for="item_quan">Item Quantity</label>
+                          <div class="input-group">
+                            <input type="text" name="ds_quantity" class="form-control" id="ds_quantity" required />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
                           </div>
                         </div>
-                      </div>
                       </div>
                       <div class="form-group">
                         <label for="item_rem">Remarks</label>
                         <div class="input-group">
-                          <input type="text" name="ds_remarks" class="form-control dmg-remarks" id="ds_remarks" required />
+                          <input type="text" name="ds_remarks" class="form-control dmg-remarks" id="ds_remarks"
+                            required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -517,7 +461,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <?php
+                      <?php
                       $count=1;
                         foreach ( $damage_all as $row ) {
                           echo '<tr>';
@@ -556,7 +500,8 @@
                       <div class="form-group">
                         <label for="userinfo_address">Address</label>
                         <div class="input-group">
-                          <input type="text" name="userinfo_address" class="form-control" id="userinfo_address" required />
+                          <input type="text" name="userinfo_address" class="form-control" id="userinfo_address"
+                            required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -567,7 +512,8 @@
                       <div class="form-group">
                         <label for="userinfo_nickname">Nickname</label>
                         <div class="input-group">
-                          <input type="text" name="userinfo_nickname" class="form-control" id="userinfo_nickname" required />
+                          <input type="text" name="userinfo_nickname" class="form-control" id="userinfo_nickname"
+                            required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -602,7 +548,8 @@
                       <div class="form-group">
                         <label for="user_level">User Level</label>
                         <div class="input-group">
-                          <select name="user_level" class="form-control select2-md" id="user_level" data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
+                          <select name="user_level" class="form-control select2-md" id="user_level"
+                            data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
                             <option value="" data-select2-md-id="0">Select</option>
                             <option value="Administrator" data-select2-md-id="1">Administrator</option>
                             <option value="Cashier" data-select2-md-id="2">Cashier</option>
@@ -630,7 +577,8 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" name="data_search" class="form-control" id="set-users" placeholder="Search anything from the table..." />
+                          <input type="text" name="data_search" class="form-control" id="set-users"
+                            placeholder="Search anything from the table..." />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-magnify-plus"></i>
@@ -666,14 +614,15 @@
                   </div>
                 </div>
               </div>
-              
+
               <!-- System Logs -->
               <div class="tab-pane fade mb-4 mt-4" id="view-logs" role="tabpanel">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="data_search" class="form-control" id="set-logss" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" class="form-control" id="set-logss"
+                          placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -719,3 +668,61 @@
 
     </div>
   </div>
+
+  <!-- View Product Info-->
+  <div id="view_product" class="modal fade auth theme-one" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">PRODUCT DETAILS</h4>
+          <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+        </div>
+        <div class="modal-body auto-form-wrapper">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="inv-beauty" placeholder="Search anything from the table..." />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="mdi mdi-magnify-plus"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive" lnk="">
+            <table class="table" id="">
+              <thead>
+                <tr>
+                  <th>NO</th>
+                  <th>BARCODE</th>
+                  <th>PRODUCT NAME</th>
+                  <th>REMAINING</th>
+                  <th>SRP</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                  $count=1;
+                    foreach ( $view_products as $row){
+                      echo '<tr>';
+                      echo'<td>'. $count .'</td>';
+                      echo'<td>'. $row->barcode .'</td>';
+                      echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                      echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
+                      echo'<td>'. $row->srp .'</td>';
+                      echo'</tr>';
+                      $count++;
+                    } 
+                  ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
