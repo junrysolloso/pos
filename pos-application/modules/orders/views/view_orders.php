@@ -125,7 +125,7 @@
 
               <!-- Add Orders -->
               <div class="tab-pane active fade show mt-4 mb-4" id="add-order" role="tabpanel">
-                <form action="#" method="post" name="frm_add_order" class="pb-3">
+                <form action="#" method="post" id="form_add_order" name="frm_add_order" class="pb-3">
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
@@ -223,7 +223,7 @@
                           <div class="form-group">
                             <label for="price_per_unit">Price Per Unit</label>
                             <div class="input-group">
-                              <input type="decimal" name="price_per_unit" class="form-control" id="price_per_unit" required />
+                              <input type="number" step="0.01" name="price_per_unit" class="form-control" id="price_per_unit" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -237,7 +237,7 @@
                       <div class="form-group">
                         <label for="orderdetails_quantity">Quantity</label>
                         <div class="input-group">
-                          <input type="number" name="orderdetails_quantity" class="form-control" id="orderdetails_quantity" required />
+                          <input type="number" name="orderdetails_quantity" min="1" class="form-control" id="orderdetails_quantity" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -264,7 +264,7 @@
                           <div class="form-group">
                             <label for="inv_item_srp">Suggested Retail Price (SRP)</label>
                             <div class="input-group">
-                              <input type="decimal" name="inv_item_srp" class="form-control" id="inv_item_srp" required />
+                              <input type="number" step="0.01" name="inv_item_srp" class="form-control" id="inv_item_srp" required />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -278,8 +278,7 @@
                       <div class="form-group">
                         <label for="expiration_date">Expiration Date</label>
                         <div class="input-group">
-                          <input type="text" name="expiration_date" class="form-control"
-                            data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" />
+                          <input type="text" name="expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -307,20 +306,7 @@
                         <th>EXPIRATION DATE</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <?php
-                        foreach ( $order_details as $row ) {
-                          echo '<tr id="'. $row->id .'">';
-                          echo '<td>'. $row->tmp_barcode .'</td>';
-                          echo '<td>'. $row->tmp_date .'</td>';
-                          echo '<td>'. $row->tmp_quantity .'</td>';
-                          echo '<td>'. $row->tmp_price .'</td>';
-                          echo '<td>'. $row->tmp_srp .'</td>';
-                          echo '<td>'. $row->tmp_expiry .'</td>';
-                          echo '</tr>';
-                        }
-                      ?>
-                    </tbody>
+                    <tbody></tbody>
                   </table>
                 </div>
               </div>

@@ -38,6 +38,7 @@
     <!-- Plugins JS -->
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_loader.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_nav.js"></script>
+
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_form_validation.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net/jquery.dataTables.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
@@ -48,14 +49,14 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/daterangepicker/moment.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/daterangepicker/daterangepicker.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/jquery-toast-plugin/jquery.toast.min.js"></script>
-
-    <!-- Additional JS -->
-    <?php echo $_scripts; ?>
+    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_toast.js"></script>
 
     <!-- Custom JS -->
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_datepicker.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_table.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_action.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_ajax.js"></script>
+
+    <!-- Additional JS -->
+    <?php echo $_scripts; ?>
   </body>
 </html> 

@@ -28,7 +28,7 @@ class Orders extends MY_Controller
     $data['order_details_date']  = '';
 
     if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-      if( $this->input->post( 'submit_order' ) ) {
+      if( $this->input->post( 'item_id' ) ) {
 
         $expiration_date = $this->input->post( 'expiry_date' );
         $order_id        = $this->input->post( 'order_id' );
@@ -44,14 +44,22 @@ class Orders extends MY_Controller
         
         $tmp_data = $this->Model_Orders->order_add( $data );
         if ( is_array( $tmp_data ) ) {
-          $data['order_details']       = $tmp_data[0];
-          $data['order_details_total'] = number_format( $tmp_data[1], 2 );
-          $data['order_details_date']  = date_format( date_create( $tmp_data[2]  ), 'Y-m-d' );
+          /**
+           * Return json data
+           */
+          header('content-type: application/json');
+          exit( json_encode( $tmp_data ) );
         }
       }
 
       if ( $this->input->post( 'save_orders' ) ) {
-        $this->Model_Orders->order_details_save();
+        if ( $this->Model_Orders->order_details_save() ) {
+          /**
+           * Return json data
+           */
+          header( 'content-type: application/json' );
+          exit( json_encode( array( 'msg' => 'success' ) ) );
+        }
       }
     }
 
@@ -84,10 +92,13 @@ class Orders extends MY_Controller
    * Reset temporary table
    */
   public function reset_orders() {
-    if( $this->input->get( 'r' ) ) {
+    if( $this->input->post( 'reset_orders' ) ) {
       if( $this->Model_Orders->reset_orders_table() ) {
+        /**
+         * Return json data
+         */
         header( 'content-type: application/json' );
-        exit( json_encode( array( 'msg'=>'success' ) ) );
+        exit( json_encode( array( 'msg' => 'success' ) ) );
       }
     }
   }

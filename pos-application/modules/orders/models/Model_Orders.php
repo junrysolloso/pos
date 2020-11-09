@@ -281,10 +281,7 @@ class Model_Orders extends MY_Model
          */
         if( $flag ) {
           $this->db->truncate( 'tbl_temp_orderdetails' );
-          $this->session->set_tempdata( array(
-            'msg' 	=> 'Orders successfully saved.',
-            'class' => 'alert-success',
-          ), NULL, 5 );
+          return true;
         }
       }
     }

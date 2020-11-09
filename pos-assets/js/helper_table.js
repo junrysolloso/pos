@@ -1,5 +1,5 @@
 (function ($) {
-
+  'use strict';
   // Initialize tables
   // Settings Table
   $(function () {
@@ -143,7 +143,6 @@
       });
     });
 
-
   // Use DataTable in searching tables
   $('input[name="data_search"]').on('keyup', function () {
     var s_value = $(this).attr('id');
@@ -182,5 +181,4 @@
         break;
     }
   });
-
 })(jQuery);
