@@ -19,6 +19,8 @@ class Settings extends MY_Controller
     $this->load->model( 'Model_Subcategory' );
     $this->load->model( 'Model_Product_Info' );
     $this->load->model( 'Model_Unit_Convert' );
+    $this->load->model( 'Model_View_Products' );
+    
   }
 
 	/**
@@ -170,6 +172,7 @@ class Settings extends MY_Controller
     $data['damage_all'] = $this->Model_Damage->damage_get();
     $data['unit_all'] = $this->Model_Unit->unit_get();
     $data['user_all'] = $this->Model_User->user_get();
+    $data['view_products'] = $this->Model_View_Products->view_products();
 
     /**
      * Load template parts

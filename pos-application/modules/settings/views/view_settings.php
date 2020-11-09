@@ -304,13 +304,82 @@
                       </div>
                       <div class="col-6">
                         <div class="form-group pb-2">
-                          <input type="submit" name="update[]" value="Update Product Details"
-                            class="btn btn-success submit-btn" />
+                          <input type="button" name="view_product" data-target="#view_product" value="View Product Details"
+                            class="btn btn-success submit-btn" data-toggle="modal" />
                         </div>
                       </div>
                     </div>
                   </div>
                 </form>
+
+                <!-- View Product Info-->
+                <style>
+                  @media screen and (min-width: 676px) {
+                      .modal-dialog {
+                        max-width: 800px; /* New width for default modal */
+                      }
+                  }
+              </style>
+                <div id="view_product" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+                        <h4 class="modal-title">PRODUCT DETAILS</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <div class="input-group">
+                                <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="inv-beauty" placeholder="Search anything from the table..." />
+                                <div class="input-group-append">
+                                  <span class="input-group-text">
+                                    <i class="mdi mdi-magnify-plus"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                          </div>
+                        </div>
+                        <div class="table-responsive" lnk="">
+                          <table class="table" id="">
+                            <thead>
+                              <tr>
+                                <th>NO</th>
+                                <th>BARCODE</th>
+                                <th>PRODUCT NAME</th>
+                                <th>REMAINING</th>
+                                <th>SRP</th>
+                                <th>ACTION</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              $count=1;
+                                foreach ( $view_products as $row){
+                                  echo '<tr>';
+                                  echo'<td>'. $count .'</td>';
+                                  echo'<td>'. $row->barcode .'</td>';
+                                  echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                                  echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
+                                  echo'<td>'. $row->srp .'</td>';
+                                  echo'</tr>';
+                                  $count++;
+                                } 
+                              ?> 
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- Company Info -->

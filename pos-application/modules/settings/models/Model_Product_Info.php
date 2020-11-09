@@ -68,6 +68,22 @@ class Model_Product_Info extends MY_Model
   }
 
   /**
+   * Update Items
+   * @return array
+   */
+  public function update_items() {
+    $this->db->select( '`id`');
+    $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
+    $this->db->join( $this->_relate_category, '`tbl_category`.`category_id`=`tbl_subcategory`.`category_id`' );
+    $this->db->join( $this->_relate_ucjunc, '`tbl_items`.`item_id`=`tbl_ucjunc`.`item_id`' );
+    $this->db->join( $this->_relate_unitconvert, '`tbl_ucjunc`.`uc_id`=`tbl_unitconvert`.`uc_id`' );
+    $query = $this->db->get( $this->_table );
+    if ( $query ) {
+      return $query->result();
+    }
+  }
+
+  /**
    * Almost out of stocks products
    */
   public function almost_out() {
