@@ -431,21 +431,27 @@
                   <table class="table" id="set-damag-table">
                     <thead>
                       <tr>
-                        <th>BARCODE NUMBER</th>
-                        <th>ITEMS QUANTITY</th>
+                        <th>NO</th>
+                        <th>BARCODE</th>
+                        <th>PRODUCT NAME</th>
+                        <th>QUANTITY</th>
                         <th>REMARKS</th>
                         <th>DATE REPORTED</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php
-                          foreach ( $damage_all as $row ) {
-                        echo '<tr>';
-                        echo '<td>'. $row->item_id .'</td>';
-                        echo '<td>'. $row->ds_quantity .'</td>';
-                        echo '<td>'. $row->ds_remarks .'</td>';
-                        echo '<td>'. $row->ds_date .'</td>';
-                        echo '</tr>';
+                    <?php
+                      $count=1;
+                        foreach ( $damage_all as $row ) {
+                          echo '<tr>';
+                          echo '<td>'. $count .'</td>';
+                          echo '<td>'. $row->item_id .'</td>';
+                          echo '<td>'. $row->name.'</td>';
+                          echo '<td>'. $row->ds_quantity .'</td>';
+                          echo '<td>'. $row->ds_remarks .'</td>';
+                          echo '<td>'. $row->ds_date .'</td>';
+                          echo '</tr>';
+                          $count++;
                         }
                       ?>
                     </tbody>

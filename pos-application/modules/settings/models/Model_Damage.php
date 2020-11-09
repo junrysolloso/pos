@@ -9,6 +9,8 @@ class Model_Damage extends MY_Model
   protected $_ds_quantity = 'ds_quantity';
   protected $_ds_remarks  = 'ds_remarks';
 
+  protected $relate_items = 'tbl_items';
+
   function __construct() {
     parent:: __construct();
   }
@@ -32,6 +34,11 @@ class Model_Damage extends MY_Model
    * @return array $result
    */
   public function damage_get() {
+
+    $this->db->select('`tbl_items`.`item_name` AS `name`, `tbl_damagestocks`.`item_id`,`tbl_damagestocks`.`ds_quantity`,`tbl_damagestocks`.`ds_remarks`,`tbl_damagestocks`.`ds_date`');
+    $this->db->join($this->relate_items, '`tbl_items`.`item_id` = `tbl_damagestocks`.`item_id`');
+    $this->db->order_by( '`ds_date`', 'DESC' );
+
     $query = $this->db->get( $this->_table );
     if( $query ) {
       return $query->result();
