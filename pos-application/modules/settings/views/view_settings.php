@@ -762,14 +762,16 @@
           <div class="card auto-form-wrapper rounded pt-4">
             <div class="card-body">
               <h4 class="card-title">EDIT ORDER DETAILS</h4>
+              <?php if( ! empty( $view_products ) && $view_products ): ?>
+              <?php foreach($view_products as $row): ?>
               <form action="#" method="post" id="form_edit_products" class="pb-3">
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
                       <label for="edit_item_id">Product Name</label>
                       <div class="input-group">
-                        <input type="hidden" name="edit_id" value="">
-                        <input type="text" name="edit_item_id" class="form-control" id="edit_item_id" readonly="">
+                        <input type="hidden" name="edit_id" value="<?php echo $row->id; ?> ">
+                        <input type="text" name="edit_item_id" value="<?php echo $row->name; ?>" class="form-control" id="edit_item_id">
                         <div class="input-group-append">
                           <span class="input-group-text text-success">
                             <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -779,9 +781,21 @@
                     </div>
                 
                     <div class="form-group">
+                      <label for="edit_category_name">Description</label>
+                      <div class="input-group">
+                        <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" value="<?php echo $row->item_des; ?>">
+                        <div class="input-group-append">
+                          <span class="input-group-text text-success">
+                            <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
                       <label for="edit_category_name">Category</label>
                       <div class="input-group">
-                        <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" readonly="">
+                        <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" value="<?php echo $row->c_name; ?>">
                         <div class="input-group-append">
                           <span class="input-group-text text-success">
                             <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -795,7 +809,7 @@
                         <div class="form-group">
                           <label for="edit_order_unit">Order Unit</label>
                           <div class="input-group">
-                            <input type="text" name="edit_order_unit" class="form-control" id="edit_order_unit" readonly="">
+                            <input type="text" name="edit_order_unit" class="form-control" id="edit_order_unit" value="<?php echo $row->unit_desc; ?>" readonly="">
                             <div class="input-group-append">
                               <span class="input-group-text text-success">
                                 <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -808,7 +822,7 @@
                         <div class="form-group">
                           <label for="edit_price_per_unit">Price Per Unit</label>
                           <div class="input-group">
-                            <input type="number" step="0.01" name="edit_price_per_unit" class="form-control" id="edit_price_per_unit" required="" u-equiv="12">
+                            <input type="number" step="0.01" name="edit_price_per_unit" class="form-control" id="edit_price_per_unit" >
                             <div class="input-group-append">
                               <span class="input-group-text text-success">
                                 <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -822,7 +836,7 @@
                     <div class="form-group">
                       <label for="edit_orderdetails_quantity">Quantity</label>
                       <div class="input-group">
-                        <input type="number" name="edit_orderdetails_quantity" min="1" class="form-control" id="edit_orderdetails_quantity" required="">
+                        <input type="number" name="edit_orderdetails_quantity" min="1" class="form-control" id="edit_orderdetails_quantity" value="<?php echo $row->qty; ?>">
                         <div class="input-group-append">
                           <span class="input-group-text text-success">
                             <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -849,7 +863,7 @@
                         <div class="form-group">
                           <label for="edit_inv_item_srp">Suggested Retail Price (SRP)</label>
                           <div class="input-group">
-                            <input type="number" step="0.01" name="edit_inv_item_srp" class="form-control" id="edit_inv_item_srp" required="">
+                            <input type="number" step="0.01" name="edit_inv_item_srp" class="form-control" id="edit_inv_item_srp" value="<?php echo $row->srp; ?>" required="">
                             <div class="input-group-append">
                               <span class="input-group-text text-success">
                                 <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -881,6 +895,8 @@
                   </div>
                 </div>
               </form>
+              <?php endforeach;?>
+              <?php endif;?>
             </div>
           </div>
         </div>
