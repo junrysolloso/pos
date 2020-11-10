@@ -81,14 +81,6 @@
         showWarningToast( 'Sorry! order table is empty.' );
       }
 
-      // Generate suggested SRP
-      $('input[name="price_per_unit"]').on('keyup', function(){
-        if(e_unit != 0) {
-          var suggest = parseFloat($(this).val())/e_unit;
-          $('input[name="inv_item_srp"]').val(suggest.toFixed(2));
-        }
-      });
-
     });
 
     /**

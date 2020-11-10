@@ -24,11 +24,6 @@ class Orders extends MY_Controller
   public function index() {
 
     /**
-     * Reset temporary table
-     */
-    $this->Model_Orders->reset_orders_table();
-
-    /**
      * Order details variables
      */
     $data['order_details']       = array();
@@ -70,6 +65,11 @@ class Orders extends MY_Controller
         }
       }
     }
+
+    /**
+     * Reset temporary table
+     */
+    $this->Model_Orders->reset_orders_table();
 
     $ord_history = $this->Model_Order_Inventory->order_inv_get();
 
