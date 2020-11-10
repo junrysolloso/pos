@@ -236,13 +236,6 @@
         $('#view_order_items').modal('show');
       })
 
-      /**
-       * Added orders
-       */
-      $('body').delegate('.btn-edit', 'click', function () {
-        assign_values($(this));
-      });
-
     });
 
   });
@@ -364,7 +357,7 @@
       result.push(item.tmp_price);
       result.push(item.tmp_srp);
       result.push(item.tmp_expiry);
-      result.push('<a id="'+ item.id +'" p-name="'+ capitalize( item.item_name ) + ' ' + capitalize( item.item_description ) +'" c-name="'+ capitalize( item.category_name ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.tmp_quantity +'" p-price="'+ item.tmp_price +'"  s-price="'+ item.tmp_srp +'" t-date="'+ item.tmp_date +'" t-expire="'+ item.tmp_expiry +'" u-equiv="'+ item.equivalent +'" data-target="#view_order" class="btn btn-edit" data-toggle="modal"><i class="mdi mdi-pencil-box-outline mdi-18px"></i> Edit</a>');
+      result.push('<a id="'+ item.id +'" p-name="'+ capitalize( item.item_name ) + ' ' + capitalize( item.item_description ) +'" c-name="'+ capitalize( item.category_name ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.tmp_quantity +'" p-price="'+ item.tmp_price +'"  s-price="'+ item.tmp_srp +'" t-date="'+ item.tmp_date +'" t-expire="'+ item.tmp_expiry +'" u-equiv="'+ item.equivalent +'" data-target="#view_order" class="btn btn-edit" data-toggle="modal"><i class="mdi mdi-pencil-outline mdi-18px"></i> Edit</a>');
 
       return result;
     });
@@ -374,6 +367,14 @@
      */
     table.rows.add(result);
     table.draw();
+
+    /**
+     * Added orders
+     */
+    $('body').delegate('.btn-edit', 'click', function () {
+      assign_values($(this));
+    });
+
   }
 
   /**

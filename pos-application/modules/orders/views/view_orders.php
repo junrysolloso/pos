@@ -67,7 +67,7 @@
                           echo '<td>'. $count .'</td>';
                           echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
                           echo '<td>'. '₱ '. $row->order_total .'</td>';
-                          echo '<td><a o-id="'. $row->order_id .'" class="btn btn-edit view-order-items"><i class="mdi mdi-eye mdi-18px"></i> View</a></td>';
+                          echo '<td><a o-id="'. $row->order_id .'" class="btn btn-edit view-order-items"><i class="mdi mdi-eye-check-outline mdi-18px"></i> View</a></td>';
                           echo '</tr>';
                           $count++;
                         }

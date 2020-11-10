@@ -32,7 +32,7 @@
 
             <div class="tab-content tab-content-solid">
               <!-- Grocery -->
-              <div class="tab-pane  mb-5 fade show active" id="grocery" role="tabpanel">
+              <div class="tab-pane fade show active" id="grocery" role="tabpanel">
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
@@ -81,7 +81,7 @@
               </div>
 
               <!-- Pharmacy -->
-              <div class="tab-pane mb-5 fade" id="pharmacy" role="tabpanel">
+              <div class="tab-pane fade" id="pharmacy" role="tabpanel">
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
@@ -130,7 +130,7 @@
               </div>
 
               <!--Beauty Products-->
-              <div class="tab-pane fade mb-5" id="beauty" role="tabpanel">
+              <div class="tab-pane fade" id="beauty" role="tabpanel">
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
@@ -179,7 +179,7 @@
               </div>
 
               <!--Damage-->
-              <div class="tab-pane  mb-5 fade" id="damage" role="tabpanel">
+              <div class="tab-pane fade" id="damage" role="tabpanel">
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
