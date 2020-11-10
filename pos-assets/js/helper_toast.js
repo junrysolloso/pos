@@ -10,7 +10,7 @@ showSuccessToast = function(msg) {
     icon: 'success',
     loaderBg: '#f96868',
     position: 'bottom-right',
-    hideAfter: 5000,
+    hideAfter: 3000,
     allowToastClose: false,
   })
 };
@@ -24,7 +24,7 @@ showWarningToast = function(msg) {
     icon: 'warning',
     loaderBg: '#57c7d4',
     position: 'bottom-right',
-    hideAfter: 5000,
+    hideAfter: 3000,
     allowToastClose: false,
   })
 };
@@ -38,7 +38,7 @@ showErrorToast = function(msg) {
     icon: 'error',
     loaderBg: '#f2a654',
     position: 'bottom-right',
-    hideAfter: 5000,
+    hideAfter: 3000,
     allowToastClose: false,
   })
 };
@@ -52,7 +52,7 @@ showInfoToast = function(msg) {
     icon: 'info',
     loaderBg: '#46c35f',
     position: 'bottom-right',
-    hideAfter: 5000,
+    hideAfter: 3000,
     allowToastClose: false,
   })
 };
