@@ -34,7 +34,7 @@
               <?php endif; ?>
 
               <!-- Order History -->
-              <div class="tab-pane mb-4 fade" id="order-history" role="tabpanel">
+              <div class="tab-pane fade" id="order-history" role="tabpanel">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -49,14 +49,14 @@
                     </div>
                   </div>
                 </div>
-                <div class="table-responsive border-bottom pb-5">
+                <div class="table-responsive">
                   <table class="table" id="ord-histo-table">
                     <thead>
                       <tr>
                         <th>NO.</th>
                         <th>ORDER DATE</th>
                         <th>ORDER AMOUNT</th>
-                        <th>ORDER UNITS</th>
+                        <th>ORDER DETAILS</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -67,7 +67,7 @@
                           echo '<td>'. $count .'</td>';
                           echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
                           echo '<td>'. '₱ '. $row->order_total .'</td>';
-                          echo '<td>'. $row->stocks .'</td>';
+                          echo '<td><a o-id="'. $row->order_id .'" class="btn btn-edit view-order-items"><i class="mdi mdi-eye mdi-18px"></i> View</a></td>';
                           echo '</tr>';
                           $count++;
                         }
@@ -75,56 +75,10 @@
                     </tbody>
                   </table>
                 </div>
-
-                <!-- Order Items -->
-                <div class="mt-5">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <div class="input-group">
-                          <input type="text" name="data_search" class="form-control" id="ord-items"placeholder="Search anything from the table..." />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-magnify-plus"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="table-responsive">
-                    <table class="table" id="ord-items-table">
-                      <thead>
-                        <tr>
-                          <th>NO.</th>
-                          <th>ORDER DATE</th>
-                          <th>ITEM NUMBER</th>
-                          <th>ITEM NAME</th>                      
-                          <th>QUANTITY</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                          $count = 1;
-                          foreach ( $order_items as $row ) {
-                            echo '<tr>';
-                            echo '<td>'. $count .'</td>';
-                            echo '<td>'. date_format( date_create( $row->order_date ), 'F d, Y' ) .'</td>';
-                            echo '<td>'. $row->barcode .'</td>';
-                            echo '<td>'. ucwords( $row->name ) .' '. ucwords( $row->desc ) .'</td>';
-                            echo '<td>'. $row->stocks .'</td>';
-                            echo '</tr>';
-                            $count++;
-                          }
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
               </div>
 
               <!-- Add Orders -->
-              <div class="tab-pane active fade show mt-4 mb-4" id="add-order" role="tabpanel">
+              <div class="tab-pane active fade show mt-4" id="add-order" role="tabpanel">
                 <form action="#" method="post" id="form_add_order" name="frm_add_order" class="pb-3">
                   <div class="row">
                     <div class="col-6">
@@ -319,15 +273,15 @@
     </div>
   </div>
 
-  <!-- View Order Info-->
+  <!-- View Order Info Modal-->
   <div id="view_order" class="modal fade auth theme-one" role="dialog">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-body">
-          <div class="card auto-form-wrapper rounded pt-4">
+          <div class="card auto-form-wrapper rounded">
             <div class="card-body">
               <h4 class="card-title">EDIT ORDER DETAILS</h4>
-              <form action="#" method="post" id="form_edit_order" class="pb-3">
+              <form action="#" method="post" id="form_edit_order">
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
@@ -437,12 +391,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12">
-                    <div class="form-group pt-2">
-                      <input type="submit" name="save_edit_order" value="Update Order" class="btn btn-success submit-btn" />
-                        &nbsp;&nbsp;
-                      <input type="button" name="close_edit_order" value="close" class="btn btn-danger submit-btn" data-dismiss="modal" />
-                    </div>
+                  <div class="col-12 mt-2">
+                    <input type="button" name="close_edit_order" value="Cancel" class="btn btn-danger submit-btn" data-dismiss="modal" />
+                      &nbsp;&nbsp;
+                    <input type="submit" name="save_edit_order" value="Update Order" class="btn btn-success submit-btn" />
                   </div>
                 </div>
               </form>
@@ -453,3 +405,45 @@
     </div>
   </div>
   
+  <!-- View Order Info Modal-->
+  <div id="view_order_items" class="modal fade auth theme-one" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="card auto-form-wrapper rounded">
+            <div class="card-body">
+              <h4 class="card-title">ORDERED ITEMS</h4>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" name="data_search" class="form-control" id="ord-items"placeholder="Search anything from the table..." />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-magnify-plus"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table" id="ord-items-table">
+                  <thead>
+                    <tr>
+                      <th>NO.</th>
+                      <th>ORDER DATE</th>
+                      <th>ITEM NUMBER</th>
+                      <th>ITEM NAME</th>                      
+                      <th>QUANTITY</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

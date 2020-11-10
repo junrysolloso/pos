@@ -61,6 +61,7 @@ class Model_Category extends MY_Model
   public function category_get() {
     $query = $this->db->get( $this->_table );
     if( $query ) {
+      $this->Model_Log->log_add( log_lang( 'category' )['view'] );
       return $query->result();
     }
   }
@@ -74,6 +75,7 @@ class Model_Category extends MY_Model
     if( is_array( $data ) && ! empty( $data ) ) {
       $this->db->where( $this->_cat_id, $data['category_id'] );
       if( $this->db->update( $this->_table, $data ) ) {
+        $this->Model_Log->log_add( log_lang( 'category' )['updated'] );
         return true;
       }
     }

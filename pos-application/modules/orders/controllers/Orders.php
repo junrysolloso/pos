@@ -71,16 +71,13 @@ class Orders extends MY_Controller
      */
     $this->Model_Orders->reset_orders_table();
 
-    $ord_history = $this->Model_Order_Inventory->order_inv_get();
-
     $data['title']          = 'Orders';
     $data['class']          = 'orders';
     $data['sales_total']    = $this->Model_Sales->sales_total_get();
     $data['items_id_all']   = $this->Model_Product_Info->items_id_get();
     $data['categories_all'] = $this->Model_Category->category_get();
     $data['unit_all']       = $this->Model_Unit->unit_get();
-    $data['order_history']  = $ord_history[0];
-    $data['order_items']    = $ord_history[1];
+    $data['order_history']  = $this->Model_Order_Inventory->orders_get();
 
      // Load template parts
     $this->template->set_master_template( 'layouts/layout_admin' );
@@ -137,7 +134,25 @@ class Orders extends MY_Controller
       }
     }
   }
+  
+  /**
+   * Get order items
+   */
+  public function order_items() {
+    if( $this->input->post( 'id' ) ) {
 
+      $this->load->model( 'Model_Orders_Temp' );
+
+      $result = $this->Model_Order_Inventory->order_items_get( $this->input->post( 'id' ) );
+      if( is_array( $result ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( $result ) );
+      }
+    }
+  }
 
 }
 

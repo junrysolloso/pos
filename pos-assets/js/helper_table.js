@@ -80,7 +80,7 @@
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 5,
+      "iDisplayLength": 15,
       "bLengthChange": false,
     });
   });
@@ -94,7 +94,7 @@
       bFilter: true,
       bInfo: false,
       paging: false,
-      "iDisplayLength": 10,
+      "iDisplayLength": 20,
       "bLengthChange": false,
     });
   });

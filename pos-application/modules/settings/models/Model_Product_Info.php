@@ -63,6 +63,7 @@ class Model_Product_Info extends MY_Model
     $this->db->join( $this->_relate_unitconvert, '`tbl_ucjunc`.`uc_id`=`tbl_unitconvert`.`uc_id`' );
     $query = $this->db->get( $this->_table );
     if ( $query ) {
+      $this->Model_Log->log_add( log_lang( 'item' )['view'] );
       return $query->result();
     }
   }

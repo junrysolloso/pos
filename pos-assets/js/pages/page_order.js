@@ -8,7 +8,8 @@
     /**
      * Prepend buttons
      */
-    $('#ord-added-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div class="form-group mt-4" id="btn-orders" style="display: none;"><form action="#" method="post"><input type="button" name="discard_orders" value="Reset Orders" class="btn btn-danger submit-btn" />&nbsp;&nbsp;<input type="button" name="save_orders" value="Save Orders" class="btn btn-success submit-btn" /></form></div>');
+    $('#ord-added-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div class="mt-2" id="btn-orders" style="display: none;"><form action="#" method="post"><input type="button" name="discard_orders" value="Reset Orders" class="btn btn-danger submit-btn" />&nbsp;&nbsp;<input type="button" name="save_orders" value="Save Orders" class="btn btn-success submit-btn" /></form></div>');
+    $('#ord-items-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div id="btn-orders"><input type="button" value="Close" class="btn btn-danger submit-btn" data-dismiss="modal" style="margin-bottom: -60px;" /></div>');
 
     /**
      * Generate suggested SRP
@@ -146,7 +147,7 @@
              */
             setTimeout(function(){
               window.location.reload();
-            }, 3000);
+            }, 1500);
           } else {
             showWarningToast( 'Request successfully executed but with errors.' );
           }
@@ -204,6 +205,46 @@
       
     });
 
+    /**
+     * View items
+     */
+    $('.view-order-items').on('click', function(){
+      var url = baseUrl + 'orders/order-items';
+      var data = {
+        id: $(this).attr('o-id'),
+      }
+
+      data_sender(data, url, 'items');
+      $('#view_order_items').modal('show');
+    });
+
+    /**
+     * Delegat event
+     */
+    $('.paginate_button').on('click', function(){
+
+      /**
+       * Order items
+       */
+      $('body').delegate('.view-order-items', 'click', function(){
+        var url = baseUrl + 'orders/order-items';
+        var data = {
+          id: $(this).attr('o-id'),
+        }
+  
+        data_sender(data, url, 'items');
+        $('#view_order_items').modal('show');
+      })
+
+      /**
+       * Added orders
+       */
+      $('body').delegate('.btn-edit', 'click', function () {
+        assign_values($(this));
+      });
+
+    });
+
   });
 
   /**
@@ -234,36 +275,62 @@
             showSuccessToast('Order successfully updated.');
             break;
           default:
-            showSuccessToast('Process successfully executed.');
+            showSuccessToast('Process successful.');
             break;
         }
       },
     }).done(function(data){
-      /**
-       * Populate table
-       */
-      data_show($('#ord-added-table').DataTable(), data[0]);
 
       /**
        * Reset form inputs
        */
       switch (action) {
         case 'add':
+
+          /**
+           * Populate table
+           */
+          data_show($('#ord-added-table').DataTable(), data[0]);
+
           $('#form_add_order').trigger('reset');
+
+          /**
+           * Add value to date and total input
+           */
+          $('input[name="order_total"]').val(data[1]);
+          $('input[name="order_date"]').val(data[2]);
+
           break;
         case 'update':
+          
+          /**
+           * Populate table
+           */
+          data_show($('#ord-added-table').DataTable(), data[0]);
+
           $('#form_edit_order').trigger('reset');
+
+          /**
+           * Add value to date and total input
+           */
+          $('input[name="order_total"]').val(data[1]);
+          $('input[name="order_date"]').val(data[2]);
+
+          break;
+        case 'items':
+
+          /**
+           * Populate table
+           */
+          items_show($('#ord-items-table').DataTable(), data);
+
           break;
         default:
+
           showWarningToast('Cannot reset form.');
+
           break;
       }
-
-      /**
-       * Add value to date and total input
-       */
-      $('input[name="order_total"]').val(data[1]);
-      $('input[name="order_date"]').val(data[2]);
 
       /**
        * Reset input icon status
@@ -307,20 +374,46 @@
      */
     table.rows.add(result);
     table.draw();
+  }
+
+  /**
+   * Map items data
+   * 
+   * @param {table} table 
+   * @param {json} data 
+   */
+  function items_show(table, data) {
+    table.clear();
+    var count = 1;
+    var result = data.map(function (item) {
+      var result = [];
+      
+      /**
+       * Map json value
+       */
+      result.push( count );
+      result.push( item.order_date );
+      result.push( item.barcode );
+      result.push( capitalize( item.name ) + ' ' + capitalize( item.desc ) );
+      result.push( item.stocks );
+
+      count++;
+
+      return result;
+    });
 
     /**
-     * Delegate edit button
+     * Add to table
      */
-    $('body').delegate('.btn-edit', 'click', function () {
-      assign_values($(this));
-    });
+    table.rows.add(result);
+    table.draw();
   }
 
   /**
    * Get object values and assign to edit inputs
    * @param {object} obj 
    */
-  function assign_values(obj) {
+  function assign_values( obj ) {
 
     /**
      * Get values from object attribute
