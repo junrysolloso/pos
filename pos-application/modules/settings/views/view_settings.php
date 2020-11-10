@@ -907,7 +907,7 @@
                         echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
                         echo'<td>'. $row->srp .'</td>';
                         //echo'<td><i class="mdi mdi-square-edit-outline mdi-18px"></i>&nbsp;&nbsp;<i class="mdi mdi-trash-can mdi-18px"></i></td>';
-                        echo '<td><a href="'. base_url() .'settings/?iu='. $row->barcode .'" class="text-left">Update</a>&nbsp;<a href="'. base_url() .'settings/?id='. $row->barcode .'" class="text-left">| Delete</a></td>';
+                        echo '<td><a href="'. base_url() .'settings/?iu='. $row->id .'" class="text-left">Update</a>&nbsp;<a href="'. base_url() .'settings/?id='. $row->barcode .'" class="text-left">| Delete</a></td>';
                         echo'</tr>';
                         $count++;
                       } 
