@@ -77,11 +77,17 @@ $(document).ready(function () {
    * User edit
    */
   $('.user-edit').on( 'click', function(){
+    
     $('input[name="userinfo_id"]').val( $(this).attr('id') );
     $('input[name="userinfo_name"]').val( $(this).attr('f-name') );
     $('input[name="userinfo_nickname"]').val( $(this).attr('n-name') );
     $('input[name="username"]').val( $(this).attr('u-name') );
     $('input[name="userinfo_address"]').val( $(this).attr('address') );
+
+    $('input').each(function(){
+      input_icon($(this));
+    });
+
   } );
 
   $('#user-submit').on( 'mouseover', function(){
