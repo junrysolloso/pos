@@ -130,6 +130,15 @@
       }
     });
 
+    /**
+     * Submit order update
+     */
+    $('#form_edit_order').submit(function(event){
+      event.preventDefault();
+      
+      console.log('sdfsd');
+    });
+
   });
 
   /**
@@ -198,7 +207,7 @@
       result.push(item.tmp_price);
       result.push(item.tmp_srp);
       result.push(item.tmp_expiry);
-      result.push('<i class="mdi mdi-square-edit-outline mdi-18px btn-edit"></i>');
+      result.push('<a id="'+ item.id +'" p-name="'+ capitalize( item.item_name ) + ' ' + capitalize( item.item_description ) +'" c-name="'+ capitalize( item.category_name ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.tmp_quantity +'" p-price="'+ item.tmp_price +'"  s-price="'+ item.tmp_srp +'" t-date="'+ item.tmp_date +'" t-expire="'+ item.tmp_expiry +'" data-target="#view_order" class="btn btn-edit" data-toggle="modal"><i class="mdi mdi-pencil-box-outline mdi-18px"></i> Edit</a>');
 
       return result;
     });
@@ -207,7 +216,40 @@
      * Add to table
      */
     table.rows.add(result);
-    table.draw()
+    table.draw();
+
+    /**
+     * Delegate edit button
+     */
+    $('body').delegate('.btn-edit', 'click', function () {
+      assign_values($(this));
+    });
+  }
+
+  /**
+   * Get object values and assign to edit inputs
+   * @param {object} obj 
+   */
+  function assign_values(obj) {
+
+    /**
+     * Get values from object attribute
+     */
+    $('input[name="edit_id"]').val(obj.attr('id'));
+    $('input[name="edit_item_id"]').val(obj.attr('p-name'));
+    $('input[name="edit_category_name"]').val(obj.attr('c-name'));
+    $('input[name="edit_order_unit"]').val(obj.attr('o-unit'));
+    $('input[name="edit_price_per_unit"]').val(obj.attr('p-price'));
+    $('input[name="edit_orderdetails_quantity"]').val(obj.attr('t-quan'));
+    $('input[name="edit_selling_unit"]').val(obj.attr('s-unit'));
+    $('input[name="edit_inv_item_srp"]').val(obj.attr('s-price'));
+    $('input[name="edit_expiration_date"]').val(obj.attr('t-expire'));
+
+    /**
+     * Reset input icons
+     */
+    input_icon_reset();
+
   }
 
 })(jQuery);

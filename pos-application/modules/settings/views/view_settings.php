@@ -859,7 +859,6 @@
   </div>
 
   <!-- View Product Info-->
-  
   <div id="view_product" class="modal fade auth theme-one" role="dialog">
     <div class="modal-dialog modal-md">
       <div class="modal-content">

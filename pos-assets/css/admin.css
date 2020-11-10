@@ -28,6 +28,10 @@
   border-radius: 5px;
 }
 
+.submit-btn {
+  cursor: pointer !important;
+}
+
 .pagination .page-item.active .page-link,
 .pagination .page-item:hover .page-link,
 .pagination .page-item .page-link{
@@ -90,6 +94,15 @@ div.dataTables_wrapper div.dataTables_filter {
 }
 
 /* Modal*/
+
+.modal .modal-dialog .modal-content {
+  background: transparent !important;
+}
+
+.modal-content {
+  border: 0px !important;
+}
+
 @media (min-width: 576px)  {
   .modal-dialog {
     max-width: 45vw; 

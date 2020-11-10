@@ -50,6 +50,8 @@ class Model_Orders extends MY_Model
   protected $_inv_rem_stocks        = 'inv_rem_stocks';
 
   protected $_relate_items          = 'tbl_items';
+  protected $_relate_category       = 'tbl_category';
+  protected $_relate_subcategory    = 'tbl_subcategory';
 
   function __construct() {
     parent:: __construct();
@@ -82,9 +84,15 @@ class Model_Orders extends MY_Model
        * then @return $order_details
        */
       if ( $this->db->insert( 'temp_orderdetails', $order_data ) ) {
-        $this->db->select( '`tbl_temp_orderdetails`.`id` AS `id`, `item_name`, `item_description`, `tmp_barcode`, `tmp_date`, `tmp_quantity`, `tmp_price`, `tmp_srp`, `tmp_expiry`' );
+
+        $this->db->select( '`tbl_temp_orderdetails`.`id` AS `id`, `item_name`, `item_description`, `tmp_barcode`, `tmp_date`, `tmp_quantity`, `tmp_price`, `tmp_srp`, `tmp_expiry`, `category_name`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
         $this->db->join( $this->_relate_items, '`tbl_items`.`item_id`=`tbl_temp_orderdetails`.`tmp_barcode`' );
+        $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
+        $this->db->join( $this->_relate_category, '`tbl_category`.`category_id`=`tbl_subcategory`.`category_id`' );
+        $this->db->join( $this->_relate_ucjunc, '`tbl_items`.`item_id`=`tbl_ucjunc`.`item_id`' );
+        $this->db->join( $this->_relate_unitconvert, '`tbl_ucjunc`.`uc_id`=`tbl_unitconvert`.`uc_id`' );
         $this->db->order_by( 'id', 'DESC' );
+        
         /**
          * All data from the temporary table
          * And add the value to @var $order_details array

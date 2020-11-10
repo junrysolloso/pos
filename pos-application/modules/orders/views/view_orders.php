@@ -318,4 +318,138 @@
 
     </div>
   </div>
+
+  <!-- View Order Info-->
+  <div id="view_order" class="modal fade auth theme-one" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="card auto-form-wrapper rounded pt-4">
+            <div class="card-body">
+              <h4 class="card-title">EDIT ORDER DETAILS</h4>
+              <form action="#" method="post" id="form_edit_order" class="pb-3">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="edit_item_id">Product Name</label>
+                      <div class="input-group">
+                        <input type="hidden" name="edit_id">
+                        <input type="text" name="edit_item_id" class="form-control" id="edit_item_id" readonly />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="edit_category_name">Category</label>
+                      <div class="input-group">
+                        <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" readonly />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="edit_order_unit">Order Unit</label>
+                          <div class="input-group">
+                            <input type="text" name="edit_order_unit" class="form-control" id="edit_order_unit" readonly />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="edit_price_per_unit">Price Per Unit</label>
+                          <div class="input-group">
+                            <input type="number" step="0.01" name="edit_price_per_unit" class="form-control" id="edit_price_per_unit" required />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="edit_orderdetails_quantity">Quantity</label>
+                      <div class="input-group">
+                        <input type="number" name="edit_orderdetails_quantity" min="1" class="form-control" id="edit_orderdetails_quantity" required />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="edit_selling_unit">Selling Unit</label>
+                          <div class="input-group">
+                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" readonly />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="edit_inv_item_srp">Suggested Retail Price (SRP)</label>
+                          <div class="input-group">
+                            <input type="number" step="0.01" name="edit_inv_item_srp" class="form-control" id="edit_inv_item_srp" required />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="edit_expiration_date">Expiration Date</label>
+                      <div class="input-group">
+                        <input type="text" name="edit_expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group pt-2">
+                      <input type="submit" name="save_edit_order" value="Update Order" class="btn btn-success submit-btn" />
+                        &nbsp;&nbsp;
+                      <input type="button" name="close_edit_order" value="close" class="btn btn-danger submit-btn" data-dismiss="modal" />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   
