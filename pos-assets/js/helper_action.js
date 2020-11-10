@@ -32,9 +32,10 @@ $(document).ready(function () {
 
   // Generate suggested SRP
   $('input[name="price_per_unit"]').on('keyup', function(){
-    if(e_unit != 0) {
-      var suggest = parseFloat($(this).val())/e_unit;
-      $('input[name="inv_item_srp"]').val(suggest.toFixed(2));
+    if( $(this).val().length >= 1 && e_unit != 0 ) {
+      var t_value = parseFloat($(this).val());
+      var suggest = t_value / e_unit;
+      $('input[name="inv_item_srp"]').val( suggest.toFixed( 2 ) );
     }
   });
 

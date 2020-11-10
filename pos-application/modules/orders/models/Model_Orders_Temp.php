@@ -45,7 +45,7 @@ class Model_Orders_Temp extends MY_Model
         /**
          * Get all temporary order details
          */
-        $this->db->select( '`tbl_temp_orderdetails`.`id` AS `id`, `item_name`, `item_description`, `tmp_barcode`, `tmp_date`, `tmp_quantity`, `tmp_price`, `tmp_srp`, `tmp_expiry`, `category_name`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
+        $this->db->select( '`tbl_temp_orderdetails`.`id` AS `id`, `item_name`, `item_description`, `tmp_barcode`, `tmp_date`, `tmp_quantity`, `tmp_price`, `tmp_srp`, `tmp_expiry`, `category_name`, `uc_number` AS `equivalent`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
         $this->db->join( $this->_relate_items, '`tbl_items`.`item_id`=`tbl_temp_orderdetails`.`tmp_barcode`' );
         $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
         $this->db->join( $this->_relate_category, '`tbl_category`.`category_id`=`tbl_subcategory`.`category_id`' );

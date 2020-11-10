@@ -11,6 +11,20 @@
     $('#ord-added-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div class="form-group mt-4" id="btn-orders" style="display: none;"><form action="#" method="post"><input type="button" name="discard_orders" value="Reset Orders" class="btn btn-danger submit-btn" />&nbsp;&nbsp;<input type="button" name="save_orders" value="Save Orders" class="btn btn-success submit-btn" /></form></div>');
 
     /**
+     * Generate suggested SRP
+     */
+    $('input[name="edit_price_per_unit"]').on('keyup', function(){
+      var u_equiv = parseInt( $(this).attr('u-equiv') );
+
+      if ( $(this).val().length >= 1 && u_equiv != 0 ) {
+        var t_value = parseFloat( $(this).val() );
+        var suggest = t_value / u_equiv;
+
+        $('input[name="edit_inv_item_srp"]').val(suggest.toFixed(2));
+      }
+    });
+
+    /**
      * Add order
      */
     $('#form_add_order').submit(function(event){
@@ -164,17 +178,28 @@
     
       }
 
-      if( data_checker(data) ) {
+      /**
+       * Check if SRP is greater than the default value
+       */
+      var srp     = parseFloat($('input[name="edit_inv_item_srp"]').val());
+      var e_unit  = parseFloat($('input[name="edit_price_per_unit"]').attr('u-equiv'));
+      var def     = parseFloat($('input[name="edit_price_per_unit"]').val())/e_unit;
+      if( srp <= def.toFixed(2) ) {
+        showWarningToast( 'SRP must be greater than ₱' + srp );
+      } else {
 
-        /**
-         * Send data to the server
-         */
-        data_sender( data, url, 'update' );
+        if( data_checker(data) ) {
 
-        /**
-         * Hide the modal
-         */
-        $('#view_order').modal('hide');
+          /**
+           * Send data to the server
+           */
+          data_sender( data, url, 'update' );
+
+          /**
+           * Hide the modal
+           */
+          $('#view_order').modal('hide');
+        }
       }
       
     });
@@ -272,7 +297,7 @@
       result.push(item.tmp_price);
       result.push(item.tmp_srp);
       result.push(item.tmp_expiry);
-      result.push('<a id="'+ item.id +'" p-name="'+ capitalize( item.item_name ) + ' ' + capitalize( item.item_description ) +'" c-name="'+ capitalize( item.category_name ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.tmp_quantity +'" p-price="'+ item.tmp_price +'"  s-price="'+ item.tmp_srp +'" t-date="'+ item.tmp_date +'" t-expire="'+ item.tmp_expiry +'" data-target="#view_order" class="btn btn-edit" data-toggle="modal"><i class="mdi mdi-pencil-box-outline mdi-18px"></i> Edit</a>');
+      result.push('<a id="'+ item.id +'" p-name="'+ capitalize( item.item_name ) + ' ' + capitalize( item.item_description ) +'" c-name="'+ capitalize( item.category_name ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.tmp_quantity +'" p-price="'+ item.tmp_price +'"  s-price="'+ item.tmp_srp +'" t-date="'+ item.tmp_date +'" t-expire="'+ item.tmp_expiry +'" u-equiv="'+ item.equivalent +'" data-target="#view_order" class="btn btn-edit" data-toggle="modal"><i class="mdi mdi-pencil-box-outline mdi-18px"></i> Edit</a>');
 
       return result;
     });
@@ -304,6 +329,9 @@
     $('input[name="edit_item_id"]').val(obj.attr('p-name'));
     $('input[name="edit_category_name"]').val(obj.attr('c-name'));
     $('input[name="edit_order_unit"]').val(obj.attr('o-unit'));
+    
+    $('input[name="edit_price_per_unit"]').attr('u-equiv', obj.attr('u-equiv'));
+
     $('input[name="edit_price_per_unit"]').val(obj.attr('p-price'));
     $('input[name="edit_orderdetails_quantity"]').val(obj.attr('t-quan'));
     $('input[name="edit_selling_unit"]').val(obj.attr('s-unit'));
