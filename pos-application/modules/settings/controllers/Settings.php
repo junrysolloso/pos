@@ -6,7 +6,7 @@ class Settings extends MY_Controller
   function __construct() {
     parent:: __construct(); 
 
-    if ( ! $this->session->userdata( 'user_id' ) ) {
+    if ( $this->session->userdata( 'user_rule' ) != 'administrator' ) {
       redirect( base_url( 'login' ) );
     }
 
@@ -106,6 +106,7 @@ class Settings extends MY_Controller
         case 'Save Company Details':
           
           $data = array(
+            'com_id'          => $this->input->post( 'com_id' ),
             'com_name'        => $this->input->post( 'com_name' ),
             'com_proprietor'  => $this->input->post( 'com_proprietor' ),
             'com_tin'         => $this->input->post( 'com_tin' ),
@@ -141,7 +142,7 @@ class Settings extends MY_Controller
         case 'Save User Details':
           
           $data = array(
-            'user_id'           => $this->input->post( 'user_id' ),
+            'userinfo_id'       => $this->input->post( 'userinfo_id' ),
             'username'          => $this->input->post( 'username' ),
             'user_pass'         => $this->input->post( 'user_pass' ),
             'user_level'        => $this->input->post( 'user_level' ),
@@ -163,16 +164,17 @@ class Settings extends MY_Controller
       }
     }
 
-    $data['title'] = 'Settings';
-    $data['class'] = 'settings';
-    $data['logs'] = $this->Model_Log->log_get( 0, NULL );
-    $data['sales_total'] = $this->Model_Sales->sales_total_get();
-    $data['category_all'] = $this->Model_Category->category_get();
-    $data['subcategory_all'] = $this->Model_Subcategory->subcat_get();
-    $data['damage_all'] = $this->Model_Damage->damage_get();
-    $data['unit_all'] = $this->Model_Unit->unit_get();
-    $data['user_all'] = $this->Model_User->user_get();
-    $data['view_products'] = $this->Model_View_Products->view_products();
+    $data['title']            = 'Settings';
+    $data['class']            = 'settings';
+    $data['logs']             = $this->Model_Log->log_get( 0, NULL );
+    $data['sales_total']      = $this->Model_Sales->sales_total_get();
+    $data['category_all']     = $this->Model_Category->category_get();
+    $data['subcategory_all']  = $this->Model_Subcategory->subcat_get();
+    $data['damage_all']       = $this->Model_Damage->damage_get();
+    $data['unit_all']         = $this->Model_Unit->unit_get();
+    $data['user_all']         = $this->Model_User->user_get();
+    $data['view_products']    = $this->Model_View_Products->view_products();
+    $data['com_info']         = $this->Model_Company->com_info_get();
 
     /**
      * Load template parts

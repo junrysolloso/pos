@@ -169,6 +169,26 @@
                     </div>
                   </div>
                 </form>
+                <div class="table-responsive">
+                  <table class="table" id="unit-table">
+                    <thead>
+                      <tr>
+                        <th>UNIT NAME</th>
+                        <th>SHORT NAME</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                        foreach ( $unit_all as $row ) {
+                          echo '<tr>';
+                          echo '<td>'. ucwords( $row->unit_desc ) .'</td>';
+                          echo '<td>'. ucfirst( $row->unit_sh ) . '</td>';
+                          echo '</tr>';
+                        }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <!-- Add Product Info -->
@@ -330,7 +350,8 @@
                       <div class="form-group">
                         <label for="com_name">Company Name</label>
                         <div class="input-group">
-                          <input type="text" name="com_name" class="form-control" id="com_name" required />
+                          <input type="hidden" name="com_id" value="<?php ! empty( $com_info ) ? print( $com_info[0]->com_id ) : NULL; ?>" >
+                          <input type="text" name="com_name" value="<?php ! empty( $com_info ) ? print( strtoupper( $com_info[0]->com_name ) ) : NULL; ?>" class="form-control" id="com_name" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -341,7 +362,7 @@
                       <div class="form-group">
                         <label for="com_proprietor">Company Proprietor</label>
                         <div class="input-group">
-                          <input type="text" name="com_proprietor" class="form-control" id="com_proprietor" required />
+                          <input type="text" name="com_proprietor" value="<?php ! empty( $com_info ) ? print( strtoupper( $com_info[0]->com_proprietor ) ) : NULL; ?>" class="form-control" id="com_proprietor" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -352,7 +373,7 @@
                       <div class="form-group">
                         <label for="com_tin">Company TIN Number</label>
                         <div class="input-group">
-                          <input type="text" name="com_tin" class="form-control" id="com_tin" required />
+                          <input type="text" name="com_tin" value="<?php ! empty( $com_info ) ? print( $com_info[0]->com_tin ) : NULL; ?>" class="form-control" id="com_tin" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -363,7 +384,7 @@
                       <div class="form-group">
                         <label for="com_address">Company Addess</label>
                         <div class="input-group">
-                          <input type="text" name="com_address" class="form-control" id="com_address" required />
+                          <input type="text" name="com_address" value="<?php ! empty( $com_info ) ? print( strtoupper( $com_info[0]->com_address ) ) : NULL; ?>" class="form-control" id="com_address" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -487,7 +508,7 @@
                       <div class="form-group">
                         <label for="userinfo_name">Full Name</label>
                         <div class="input-group">
-                          <input type="hidden" name="user_id" value="" />
+                          <input type="hidden" name="userinfo_id" />
                           <input type="text" name="userinfo_name" class="form-control" id="userinfo_name" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
@@ -545,13 +566,25 @@
                         </div>
                       </div>
                       <div class="form-group">
+                        <label for="con_pass">Confirm Password</label>
+                        <div class="input-group">
+                          <input type="password" name="con_pass" class="form-control" id="con_pass" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
                         <label for="user_level">User Level</label>
                         <div class="input-group">
-                          <select name="user_level" class="form-control select2-md" id="user_level"
-                            data-select2-md-id="1" tabindex="-1" aria-hidden="true" required>
-                            <option value="" data-select2-md-id="0">Select</option>
-                            <option value="Administrator" data-select2-md-id="1">Administrator</option>
-                            <option value="Cashier" data-select2-md-id="2">Cashier</option>
+                          <select name="user_level" class="form-control select2-lg" id="user_level" data-select2-lg-id="1" tabindex="-1" aria-hidden="true" required>
+                            <option value="" data-select2-lg-id="0">Select</option>
+                            <option value="Administrator" data-select2-lg-id="1">Administrator</option>
+                            <option value="Cashier" data-select2-lg-id="2">Cashier</option>
                           </select>
                           <div class="input-group-append">
                             <span class="input-group-text">
@@ -564,7 +597,7 @@
                     <!-- Button -->
                     <div class="col-12">
                       <div class="form-group pb-2">
-                        <input type="submit" name="submit[]" value="Save User Details"
+                        <input type="submit" name="submit[]" id="user-submit" value="Save User Details"
                           class="btn btn-success submit-btn" />
                       </div>
                     </div>
@@ -576,8 +609,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" name="data_search" class="form-control" id="set-users"
-                            placeholder="Search anything from the table..." />
+                          <input type="text" name="data_search" class="form-control" id="set-users" placeholder="Search anything from the table..." />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-magnify-plus"></i>
@@ -595,6 +627,7 @@
                           <th>USER NAME</th>
                           <th>ADDRESS</th>
                           <th>USER LEVEL</th>
+                          <th>ACTION</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -605,6 +638,8 @@
                             echo '<td>'. ucfirst( $row->username ) .'</td>';
                             echo '<td>'. ucwords( $row->userinfo_address ) .'</td>';
                             echo '<td>'. ucfirst( $row->user_level ) .'</td>';
+                            if ( $row->userinfo_id == 1 ) { $status = ''; } else { $status = '<i class="mdi mdi-square-edit-outline mdi-18px btn-edit"></i>'; }
+                            echo '<td><a id="'. $row->userinfo_id .'" f-name="'. ucwords( $row->userinfo_name ) .'" address="'. ucwords( $row->userinfo_address ) .'" n-name="'. ucwords( $row->userinfo_nickname ) .'" u-name="'. ucwords( $row->username ) .'" class="user-edit">'. $status .'</a></td>';
                             echo '</tr>';
                           }
                         ?>

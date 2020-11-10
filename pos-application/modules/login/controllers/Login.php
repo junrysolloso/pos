@@ -28,9 +28,16 @@ class Login extends MY_Controller
 		}
 
 		/**
+		 * Add attempts if someone trying to login without administrator level
+		 */
+		if ( $this->session->userdata( 'user_rule' ) != 'administrator' ) {
+			$this->Model_Authattempts->_attempt_insert( $this->session->userdata( 'user_id' ) );
+		}
+
+		/**
 		 * Check if there is existing session.
 		 */
-		if ( $this->session->userdata( 'user_id' ) ) {
+		if ( $this->session->userdata( 'user_rule' ) && $this->session->userdata( 'user_rule' ) == 'administrator' ) {
       redirect( base_url( 'dashboard' ) );
 		}
 
@@ -66,9 +73,7 @@ class Login extends MY_Controller
 					 * Check if user data exist in the databse
 					 */
 					if ( $this->Model_Login->user_check( $data ) ) {
-						if ( $this->Model_Authattempts->_attempt_clear() ) {
-							redirect( base_url( 'dashboard' ) );
-						}
+						redirect( base_url( 'dashboard' ) );
 					} else {
 						/**
 						 * Add login attempts.

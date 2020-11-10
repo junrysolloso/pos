@@ -72,4 +72,28 @@ $(document).ready(function () {
   $('.select2-lg').select2({width: '93.6%'});
   $('.select2-md').select2({width: '86.8%'});
 
+
+  /**
+   * User edit
+   */
+  $('.user-edit').on( 'click', function(){
+    $('input[name="userinfo_id"]').val( $(this).attr('id') );
+    $('input[name="userinfo_name"]').val( $(this).attr('f-name') );
+    $('input[name="userinfo_nickname"]').val( $(this).attr('n-name') );
+    $('input[name="username"]').val( $(this).attr('u-name') );
+    $('input[name="userinfo_address"]').val( $(this).attr('address') );
+  } );
+
+  $('#user-submit').on( 'mouseover', function(){
+    var f_pass = $('input[name="user_pass"]').val();
+    var s_pass = $('input[name="con_pass"]').val();
+
+    if ( f_pass != "" && s_pass != "" ) {
+      if ( f_pass != s_pass ) {
+        showWarningToast( 'Password does not match.' );
+        $('input[name="con_pass"]').val("");
+      }
+    }
+  });
+
 });

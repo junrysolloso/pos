@@ -5,9 +5,9 @@ class Setup extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		if ( ! $this->session->userdata( 'user_id' ) ) {
+    if ( $this->session->userdata( 'user_rule' ) != 'administrator' ) {
       redirect( base_url( 'login' ) );
-		}
+    }
 		
 		$this->load->model( 'Model_Setup' );
 	}

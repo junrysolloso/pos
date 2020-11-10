@@ -115,7 +115,7 @@
 
   // Category & Sub Table
   $(function () {
-    $('#cat-table').DataTable({
+    $('#cat-table, #unit-table').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]

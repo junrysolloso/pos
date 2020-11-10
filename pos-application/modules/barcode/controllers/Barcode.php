@@ -6,7 +6,7 @@ class Barcode extends MY_Controller
   function __construct() {
     parent:: __construct(); 
 
-    if ( ! $this->session->userdata( 'user_id' ) ) {
+    if ( $this->session->userdata( 'user_rule' ) != 'administrator' ) {
       redirect( base_url( 'login' ) );
     }
 

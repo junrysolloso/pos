@@ -25,44 +25,71 @@ class Model_User extends MY_Model
    */
   public function user_add( $data = [] ) {
     if( is_array( $data ) ) {
-      $data = clean_array( $data );
 
-      $this->db->select( 'user_id as id' );
-      $this->db->where( $this->_username, strtolower( $data['username'] ) );
-      $query = $this->db->get( $this->_table );
-  
-      // Check if already exist
-      if ( $query->num_rows() > 0 ) {
-        $this->session->set_tempdata( array(
-          'msg' 	=> 'User already exist.',
-          'class' => 'alert-danger',
-        ), NULL, 5 );
-      } else {
-        
-        $userinfo_data = array(
-          $this->_userinfo_name     => strtolower( $data['userinfo_name'] ),
-          $this->_userinfo_address  => strtolower( $data['userinfo_address'] ),
-          $this->_userinfo_nickname => strtolower( $data['userinfo_nickname'] ),
-        );
-  
-        if( $this->db->insert( $this->_relate_table, $userinfo_data ) ) {
-          $this->db->select( 'MAX(userinfo_id) as id' );
-          $user_id = $this->db->get( $this->_relate_table )->row()->id;
-  
+      $userinfo_data = array(
+        $this->_userinfo_name     => strtolower( $data['userinfo_name'] ),
+        $this->_userinfo_address  => strtolower( $data['userinfo_address'] ),
+        $this->_userinfo_nickname => strtolower( $data['userinfo_nickname'] ),
+      );
+
+      if ( ! empty( $data['userinfo_id'] ) ) {
+        $this->db->where( 'userinfo_id', $data['userinfo_id'] );
+        if ( $this->db->update( $this->_relate_table, $userinfo_data ) ) {
+          /**
+           * Update user login details
+           */
           $user_data = array(
             $this->_username   => strtolower( $data['username'] ),
             $this->_user_pass  => md5( $data['user_pass'] ),
             $this->_user_level => strtolower( $data['user_level'] ),
-            $this->_user_id    => $user_id,
           );
-    
-          if ( $this->db->insert( $this->_table, $user_data ) ) {
-            $this->Model_Log->log_add( log_lang( 'user_info' )['add'] );
+
+          $user_data = clean_array( $user_data );
+
+          $this->db->where( $this->_user_id, $data['userinfo_id'] );
+          if ( $this->db->update( $this->_table, $user_data ) ) {
+            $this->Model_Log->log_add( log_lang( 'user_info' )['updated'] );
             $this->session->set_tempdata( array(
-              'msg' 	=> 'User successfully added.',
+              'msg' 	=> 'User successfully updated.',
               'class' => 'alert-success',
             ), NULL, 5 );
             return true;
+          }
+        }
+      } else {
+        /**
+         * Check if the using exist
+         */
+        $this->db->select( 'user_id as id' );
+        $this->db->where( $this->_username, strtolower( $data['username'] ) );
+        $query = $this->db->get( $this->_table );
+    
+        if ( $query->num_rows() > 0 ) {
+          $this->session->set_tempdata( array(
+            'msg' 	=> 'User already exist.',
+            'class' => 'alert-danger',
+          ), NULL, 5 );
+        } else {
+          
+          if( $this->db->insert( $this->_relate_table, $userinfo_data ) ) {
+            $this->db->select( 'MAX(userinfo_id) as id' );
+            $user_id = $this->db->get( $this->_relate_table )->row()->id;
+    
+            $user_data = array(
+              $this->_username   => strtolower( $data['username'] ),
+              $this->_user_pass  => md5( $data['user_pass'] ),
+              $this->_user_level => strtolower( $data['user_level'] ),
+              $this->_user_id    => $user_id,
+            );
+      
+            if ( $this->db->insert( $this->_table, $user_data ) ) {
+              $this->Model_Log->log_add( log_lang( 'user_info' )['add'] );
+              $this->session->set_tempdata( array(
+                'msg' 	=> 'User successfully added.',
+                'class' => 'alert-success',
+              ), NULL, 5 );
+              return true;
+            }
           }
         }
       }
