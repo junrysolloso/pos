@@ -52,8 +52,8 @@
               <?php endif; ?>
 
               <!-- Add Category -->
-              <div class="tab-pane fade show active mt-4 mb-1" id="add-category" role="tabpanel">
-                <form action="#" method="post" id="add_cat_form">
+              <div class="tab-pane fade show active mt-4" id="add-category" role="tabpanel">
+                <form action="#" method="post" id="add_cat_form" class="border-bottom pb-5">
                   <div class="row">
                     <div class="col-12">
                       <div class="row">
@@ -82,15 +82,12 @@
                       </div>
                     </div>
                     <!-- Button -->
-                    <div class="col-12">
-                      <div class="form-group pb-2">
-                        <input type="submit" name="submit[]" value="Save Category Details"
-                          class="btn btn-success submit-btn" />
-                      </div>
+                    <div class="col-12 pt-2">
+                      <input type="submit" name="submit[]" value="Save Category Details"class="btn btn-success submit-btn" />
                     </div>
                   </div>
                 </form>
-                <div class="row mt-4">
+                <div class="row pt-4">
                   <div class="col-md-4">
                     <div class="table-responsive">
                       <table class="table" id="cat-table">
@@ -133,8 +130,8 @@
               </div>
 
               <!-- Add Unit -->
-              <div class="tab-pane fade mb-5 mt-4" id="add-unit" role="tabpanel">
-                <form action="#" method="post">
+              <div class="tab-pane fade mt-4" id="add-unit" role="tabpanel">
+                <form action="#" method="post" class="border-bottom pb-5">
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
@@ -161,15 +158,12 @@
                       </div>
                     </div>
                     <!-- Button -->
-                    <div class="col-12">
-                      <div class="form-group pb-2">
-                        <input type="submit" name="submit[]" value="Save Unit Details"
-                          class="btn btn-success submit-btn" />
-                      </div>
+                    <div class="col-12  pt-2">
+                      <input type="submit" name="submit[]" value="Save Unit Details" class="btn btn-success submit-btn" />
                     </div>
                   </div>
                 </form>
-                <div class="table-responsive">
+                <div class="table-responsive pt-4">
                   <table class="table" id="unit-table">
                     <thead>
                       <tr>
@@ -192,7 +186,7 @@
               </div>
 
               <!-- Add Product Info -->
-              <div class="tab-pane fade mb-3 mt-4" id="add-item" role="tabpanel">
+              <div class="tab-pane fade mt-4" id="add-item" role="tabpanel">
                 <form action="#" method="post">
                   <div class="row">
                     <div class="col-12">
@@ -324,13 +318,12 @@
                       </div>
                     </div>
                     <!-- Button -->
-                    <div class="col-6 pt-3">
+                    <div class="col-6 pt-2">
                       <div class="row">
                         <div class="col-5">
-                          <div class="form-group">
-                            <input type="submit" name="submit[]" value="Save Product Details" class="btn btn-success submit-btn" />
-                          </div>
+                          <input type="submit" name="submit[]" value="Save Product Details" class="btn btn-success submit-btn" />
                         </div>
+<<<<<<< Updated upstream
                         <!-- <div class="col-5">
                           <div class="form-group">
                             <input type="button" name="view_product" data-target="#view_product" value="View Products" class="btn btn-danger submit-btn" data-toggle="modal" />
@@ -339,6 +332,60 @@
                       </div>
                     </div>
                   </div>
+=======
+                        <div class="col-5">
+                          <input type="button" name="view_product" data-target="#view_product" value="View Products" class="btn btn-danger submit-btn" data-toggle="modal" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <?php if( ! empty( $view_products ) && $view_products ): ?>
+                <?php foreach ( $view_products as $row ): ?>
+                  <div class="tab-pane fade mt-4" id="add-item" role="tabpanel">
+                <form action="#" method="post">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="item_id">Barcode Number</label>
+                        <div class="input-group">
+                          <input type="text" name="item_id" value="<?php echo $row->barcode; ?>" onmouseover="this.focus();" class="form-control"
+                            id="item_id" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="item_name">Product Name</label>
+                        <div class="input-group">
+                          <input type="text" name="item_name" value="<?php echo $row->name; ?>" class="form-control" id="item_name" required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="item_description">Product Description</label>
+                        <div class="input-group">
+                          <input type="text" name="item_description" value="<?php echo $row->item_des; ?>" class="form-control" id="item_description"
+                            required />
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="mdi mdi-check-circle-outline"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+>>>>>>> Stashed changes
 
                   <!--Edit Product Details-->
                   <?php if( ! empty( $view_products ) && $view_products ): ?>
@@ -394,7 +441,7 @@
               </div>
 
               <!-- Company Info -->
-              <div class="tab-pane fade mb-1 mt-4" id="add-com" role="tabpanel">
+              <div class="tab-pane fade mt-4" id="add-com" role="tabpanel">
                 <form action="#" method="post">
                   <div class="row">
                     <div class="col-12">
@@ -445,18 +492,15 @@
                       </div>
                     </div>
                     <!-- Button -->
-                    <div class="col-12">
-                      <div class="form-group pb-2">
-                        <input type="submit" name="submit[]" value="Save Company Details"
-                          class="btn btn-success submit-btn" />
-                      </div>
+                    <div class="col-12 pt-2">
+                      <input type="submit" name="submit[]" value="Save Company Details" class="btn btn-success submit-btn" />
                     </div>
                   </div>
                 </form>
               </div>
 
               <!-- Damage Items -->
-              <div class="tab-pane fade mb-4 mt-4" id="add-dmg" role="tabpanel">
+              <div class="tab-pane fade mt-4" id="add-dmg" role="tabpanel">
                 <form action="#" method="post" class="mb-3">
                   <div class="row">
                     <div class="col-12">
@@ -511,11 +555,8 @@
                       </div>
                     </div>
                     <!-- Button -->
-                    <div class="col-12">
-                      <div class="form-group pb-2">
-                        <input type="submit" name="submit[]" value="Save Damage Item"
-                          class="btn btn-success submit-btn" />
-                      </div>
+                    <div class="col-12 pt-2">
+                      <input type="submit" name="submit[]" value="Save Damage Item" class="btn btn-success submit-btn" />
                     </div>
                   </div>
                 </form>
@@ -552,8 +593,8 @@
               </div>
 
               <!-- User Info -->
-              <div class="tab-pane fade mb-4 mt-4" id="user-info" role="tabpanel">
-                <form action="#" method="post" class="mb-3 border-bottom pb-3">
+              <div class="tab-pane fade mt-4" id="user-info" role="tabpanel">
+                <form action="#" method="post" class="border-bottom pb-5">
                   <div class="row">
                     <div class="col-6">
                       <div class="form-group">
@@ -646,16 +687,13 @@
                       </div>
                     </div>
                     <!-- Button -->
-                    <div class="col-12">
-                      <div class="form-group pb-2">
-                        <input type="submit" name="submit[]" id="user-submit" value="Save User Details"
-                          class="btn btn-success submit-btn" />
-                      </div>
+                    <div class="col-12 pt-2">
+                      <input type="submit" name="submit[]" id="user-submit" value="Save User Details"class="btn btn-success submit-btn" />
                     </div>
                   </div>
                 </form>
 
-                <div class="pt-4">
+                <div class="pt-5">
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
@@ -701,7 +739,7 @@
               </div>
 
               <!-- System Logs -->
-              <div class="tab-pane fade mb-4 mt-4" id="view-logs" role="tabpanel">
+              <div class="tab-pane fade mt-4" id="view-logs" role="tabpanel">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
