@@ -331,171 +331,67 @@
                             <input type="submit" name="submit[]" value="Save Product Details" class="btn btn-success submit-btn" />
                           </div>
                         </div>
-                        <div class="col-5">
+                        <!-- <div class="col-5">
                           <div class="form-group">
                             <input type="button" name="view_product" data-target="#view_product" value="View Products" class="btn btn-danger submit-btn" data-toggle="modal" />
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>
-                </form>
-              </div>
 
-              <?php if( ! empty( $view_products ) && $view_products ): ?>
-                <?php foreach ( $view_products as $row ): ?>
-                  <div class="tab-pane fade mb-3 mt-4" id="add-item" role="tabpanel">
-                <form action="#" method="post">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="form-group">
-                        <label for="item_id">Barcode Number</label>
-                        <div class="input-group">
-                          <input type="text" name="item_id" value="<?php echo $row->barcode; ?>" onmouseover="this.focus();" class="form-control"
-                            id="item_id" required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="item_name">Product Name</label>
-                        <div class="input-group">
-                          <input type="text" name="item_name" value="<?php echo $row->name; ?>" class="form-control" id="item_name" required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="item_description">Product Description</label>
-                        <div class="input-group">
-                          <input type="text" name="item_description" value="<?php echo $row->item_des; ?>" class="form-control" id="item_description"
-                            required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="item_critlimit">Product Limit</label>
-                        <div class="input-group">
-                          <input type="number" name="item_critlimit" value="<?php echo $row->critlimit; ?>" class="form-control" id="item_critlimit"
-                            required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="subcat_id">Product Sub Category</label>
-                        <div class="input-group">
-                          <select name="subcat_id" value="<?php echo $row->category_id; ?>" class="form-control select2-lg" id="subcat_id" data-select2-lg-id="1"
-                            tabindex="-1" aria-hidden="true" required>
-                            <option value="" data-select2-lg-id="0">Select</option>
-                            <?php 
-                              foreach ( $subcategory_all as $row ) {
-                                echo '<option value="'. $row->subcat_id .'" data-select2-lg-id="'. $row->subcat_id .'">'. ucfirst( $row->subcat_name ) .'</option>';
-                              }
-                            ?>
-                          </select>
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="unit_id1">Order Unit</label>
-                        <div class="input-group">
-                          <select type="text" name="unit_id1" value="<?php echo $row->unit_id; ?>" class="form-control select2-lg" id="unit_id1"
-                            data-select2-lg-id="1" tabindex="-1" aria-hidden="true" required>
-                            <option value="" data-select2-lg-id="0">Select</option>
-                            <?php 
-                              foreach ( $unit_all as $row ) {
-                                echo '<option value="'. $row->unit_id .'" data-select2-lg-id="'. $row->unit_id .'">'. ucfirst( $row->unit_desc ) .'</option>';
-                              }
-                            ?>
-                          </select>
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-6">
-                      <div class="form-group">
-                        <label for="unit_id2">Selling Unit</label>
-                        <div class="input-group">
-                          <select name="unit_id2" value="<?php echo $row->unit_id; ?>" class="form-control select2-md" id="unit_id2" data-select2-md-id="1"
-                            tabindex="-1" aria-hidden="true" required>
-                            <option value="" data-select2-md-id="0">Select</option>
-                            <?php 
-                              foreach ( $unit_all as $row ) {
-                                echo '<option value="'. $row->unit_id .'" data-select2-md-id="'. $row->unit_id .'">'. ucfirst( $row->unit_desc ) .'</option>';
-                              }
-                            ?>
-                          </select>
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-6">
-                      <div class="form-group">
-                        <label for="uc_number">Equivalent</label>
-                        <div class="input-group">
-                          <input type="number" name="uc_number" class="form-control" id="uc_number" required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Button -->
-                    <div class="col-6 pt-3">
+                  <!--Edit Product Details-->
+                  <?php if( ! empty( $view_products ) && $view_products ): ?>
+                    <div class="modal-body auto-form-wrapper">
                       <div class="row">
-                        <div class="col-5">
+                        <div class="col-md-12">
                           <div class="form-group">
-                            <input type="submit" name="submit[]" value="Save Product Details" class="btn btn-success submit-btn" />
-                          </div>
-                        </div>
-                        <div class="col-5">
-                          <div class="form-group">
-                            <input type="button" name="update" data-target="" value="Update Products" class="btn btn-danger submit-btn" data-toggle="modal" />
+                            <div class="input-group">
+                              <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="view-products" placeholder="Search anything from the table..." />
+                              <div class="input-group-append">
+                                <span class="input-group-text">
+                                  <i class="mdi mdi-magnify-plus"></i>
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <div class="table-responsive" lnk="add-item">
+                        <table class="table" id="view-prod-table">
+                          <thead>
+                            <tr>
+                              <th>NO</th>
+                              <th>BARCODE</th>
+                              <th>PRODUCT NAME</th>
+                              <th>REMAINING</th>
+                              <th>SRP</th>
+                              <th>ACTION</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php
+                              $count=1;
+                              foreach ( $view_products as $row ){
+                                echo '<tr>';
+                                echo'<td>'. $count .'</td>';
+                                echo'<td>'. $row->barcode .'</td>';
+                                echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                                echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
+                                echo'<td>'. $row->srp .'</td>';
+                                echo'<td><a data-target="#form_edit_products" data-toggle="modal" class="btn-btn-edit"><i class="mdi mdi-square-edit-outline mdi-18px"></i></td>';
+                                // echo '<td><a href="'">Update</a>';
+                                echo'</tr>';
+                                $count++;
+                              } 
+                              ?>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-                  </div>
+                  <?php endif;?>
                 </form>
               </div>
-                
-                <?php endforeach; ?>
-	            <?php endif; ?>
 
               <!-- Company Info -->
               <div class="tab-pane fade mb-1 mt-4" id="add-com" role="tabpanel">
@@ -858,64 +754,136 @@
     </div>
   </div>
 
-  <!-- View Product Info-->
-  <div id="view_product" class="modal fade auth theme-one" role="dialog">
+  <!--Update Product Information-->
+  <div id="form_edit_products" class="modal fade auth theme-one" role="dialog">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">PRODUCT DETAILS</h4>
-          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="mdi mdi-close mdi-18px"></i></button>
-        </div>
+        <div class="modal-body">
+          <div class="card auto-form-wrapper rounded pt-4">
+            <div class="card-body">
+              <h4 class="card-title">EDIT ORDER DETAILS</h4>
+              <form action="#" method="post" id="form_edit_products" class="pb-3">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="edit_item_id">Product Name</label>
+                      <div class="input-group">
+                        <input type="hidden" name="edit_id" value="">
+                        <input type="text" name="edit_item_id" class="form-control" id="edit_item_id" readonly="">
+                        <div class="input-group-append">
+                          <span class="input-group-text text-success">
+                            <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="edit_category_name">Category</label>
+                      <div class="input-group">
+                        <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" readonly="">
+                        <div class="input-group-append">
+                          <span class="input-group-text text-success">
+                            <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="edit_order_unit">Order Unit</label>
+                          <div class="input-group">
+                            <input type="text" name="edit_order_unit" class="form-control" id="edit_order_unit" readonly="">
+                            <div class="input-group-append">
+                              <span class="input-group-text text-success">
+                                <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="edit_price_per_unit">Price Per Unit</label>
+                          <div class="input-group">
+                            <input type="number" step="0.01" name="edit_price_per_unit" class="form-control" id="edit_price_per_unit" required="" u-equiv="12">
+                            <div class="input-group-append">
+                              <span class="input-group-text text-success">
+                                <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="edit_orderdetails_quantity">Quantity</label>
+                      <div class="input-group">
+                        <input type="number" name="edit_orderdetails_quantity" min="1" class="form-control" id="edit_orderdetails_quantity" required="">
+                        <div class="input-group-append">
+                          <span class="input-group-text text-success">
+                            <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
 
-        <?php if( ! empty( $view_products ) && $view_products ): ?>
-          <div class="modal-body auto-form-wrapper">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <div class="input-group">
-                    <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="view-products" placeholder="Search anything from the table..." />
-                    <div class="input-group-append">
-                      <span class="input-group-text">
-                        <i class="mdi mdi-magnify-plus"></i>
-                      </span>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="edit_selling_unit">Selling Unit</label>
+                          <div class="input-group">
+                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" readonly="">
+                            <div class="input-group-append">
+                              <span class="input-group-text text-success">
+                                <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="edit_inv_item_srp">Suggested Retail Price (SRP)</label>
+                          <div class="input-group">
+                            <input type="number" step="0.01" name="edit_inv_item_srp" class="form-control" id="edit_inv_item_srp" required="">
+                            <div class="input-group-append">
+                              <span class="input-group-text text-success">
+                                <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="edit_expiration_date">Expiration Date</label>
+                      <div class="input-group">
+                        <input type="text" name="edit_expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required="" im-insert="false">
+                        <div class="input-group-append">
+                          <span class="input-group-text text-success">
+                            <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group pt-2">
+                      <input type="submit" name="save_edit_order" value="Update Product" class="btn btn-success submit-btn">
+                        &nbsp;&nbsp;
+                      <input type="button" name="close_edit_order" value="Close" class="btn btn-danger submit-btn" data-dismiss="modal">
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="table-responsive" lnk="add-item">
-              <table class="table" id="view-prod-table">
-                <thead>
-                  <tr>
-                    <th>NO</th>
-                    <th>BARCODE</th>
-                    <th>PRODUCT NAME</th>
-                    <th>REMAINING</th>
-                    <th>SRP</th>
-                    <th>ACTION</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                    $count=1;
-                     foreach ( $view_products as $row ){
-                       echo '<tr>';
-                       echo'<td>'. $count .'</td>';
-                       echo'<td>'. $row->barcode .'</td>';
-                       echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
-                       echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
-                       echo'<td>'. $row->srp .'</td>';
-                        //echo'<td><i class="mdi mdi-square-edit-outline mdi-18px"></i>&nbsp;&nbsp;<i class="mdi mdi-trash-can mdi-18px"></i></td>';
-                       echo '<td><a lnk="" href="'. base_url() .'settings/?iu='. $row->id .'" class="text-left">Update</a>';
-                       echo'</tr>';
-                       $count++;
-                     } 
-                    ?>
-                </tbody>
-              </table>
+              </form>
             </div>
           </div>
-        <?php endif;?>
+        </div>
       </div>
     </div>
   </div>

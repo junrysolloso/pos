@@ -20,6 +20,8 @@ class Settings extends MY_Controller
     $this->load->model( 'Model_Product_Info' );
     $this->load->model( 'Model_Unit_Convert' );
     $this->load->model( 'Model_View_Products' );
+    $this->load->model( 'orders/Model_Orders_Temp' );
+      
     
   }
 
