@@ -44,6 +44,23 @@ class Model_View_Products extends MY_Model
     }
   }
 
+  /**
+   * Updated item
+   * @param int $id - id of the item to be updated
+   * @return bool
+   */
+  public function item_update( $data = [] ) {
+    if( isset( $data ) && ! empty( $data ) && is_array( $data ) ) {
+      $this->_remove_empty_key( $data );
+      $this->db->where( $this->_id, $data['item_id'] );
+      if ( $this->db->update( $this->_table, $data ) ) {
+        return true;
+      } else {
+        return false;
+      }
+    } 
+  }
+
 }
 
 /* End of file Model_Damage.php */

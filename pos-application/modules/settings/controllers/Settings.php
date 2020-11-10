@@ -161,6 +161,16 @@ class Settings extends MY_Controller
           ), NULL, 5 );
 
           break;
+
+          if( $this->input->post( 'update' ) && ! empty( $this->input->post( 'update' ) ) ) {
+            if ( $this->Model_View_Products->item_update( $data ) ) {
+              unset( $_POST );
+              $this->session->set_tempdata( array(
+                'msg' 	=> 'Product successfully updated.',
+                'class' => 'alert-success',
+              ), NULL, 5 );
+            }
+          }
       }
     }
 
