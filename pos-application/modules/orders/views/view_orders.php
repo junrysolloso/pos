@@ -298,12 +298,13 @@
                   <table class="table" id="ord-added-table">
                     <thead>
                       <tr>
-                        <th>BARCODE NUMBER</th>
+                        <th>PRODUCT NAME</th>
                         <th>ORDER DATE</th>
                         <th>QUANTITY</th>
                         <th>PRICE PER UNIT</th>
                         <th>SRP</th>
                         <th>EXPIRATION DATE</th>
+                        <th>ACTION</th>
                       </tr>
                     </thead>
                     <tbody></tbody>

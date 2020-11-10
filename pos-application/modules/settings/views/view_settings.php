@@ -884,7 +884,7 @@
                 </div>
               </div>
             </div>
-            <div class="table-responsive" lnk="">
+            <div class="table-responsive" lnk="add-item">
               <table class="table" id="view-prod-table">
                 <thead>
                   <tr>
@@ -899,18 +899,18 @@
                 <tbody>
                   <?php
                     $count=1;
-                      foreach ( $view_products as $row ){
-                        echo '<tr>';
-                        echo'<td>'. $count .'</td>';
-                        echo'<td>'. $row->barcode .'</td>';
-                        echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
-                        echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
-                        echo'<td>'. $row->srp .'</td>';
+                     foreach ( $view_products as $row ){
+                       echo '<tr>';
+                       echo'<td>'. $count .'</td>';
+                       echo'<td>'. $row->barcode .'</td>';
+                       echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                       echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
+                       echo'<td>'. $row->srp .'</td>';
                         //echo'<td><i class="mdi mdi-square-edit-outline mdi-18px"></i>&nbsp;&nbsp;<i class="mdi mdi-trash-can mdi-18px"></i></td>';
-                        echo '<td><a href="'. base_url() .'settings/?iu='. $row->id .'" class="text-left">Update</a>&nbsp;<a href="'. base_url() .'settings/?id='. $row->barcode .'" class="text-left">| Delete</a></td>';
-                        echo'</tr>';
-                        $count++;
-                      } 
+                       echo '<td><a lnk="" href="'. base_url() .'settings/?iu='. $row->id .'" class="text-left">Update</a>';
+                       echo'</tr>';
+                       $count++;
+                     } 
                     ?>
                 </tbody>
               </table>
