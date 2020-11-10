@@ -30,7 +30,7 @@ class Model_View_Products extends MY_Model
    */
   public function view_products() {
 
-    $this->db->select('`tbl_items`.`item_id` AS `barcode` , `tbl_items`.`item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, `tbl_inventory`.`inv_rem_stocks` AS  `remaining`, `unit_desc`, `tbl_inventory`.`inv_item_srp` AS `srp`');
+    $this->db->select(' `id`,`tbl_items`.`item_id` AS `barcode` , `tbl_items`.`item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, `tbl_inventory`.`inv_rem_stocks` AS  `remaining`, `unit_desc`, `tbl_inventory`.`inv_item_srp` AS `srp`, `tbl_items`.`item_critlimit` AS `critlimit` ');
     $this->db->join( $this->_relate_inventory, '`tbl_items`.`item_id` = `tbl_inventory`.`item_id`');
     $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
     $this->db->join( $this->_relate_category, '`tbl_subcategory`.`category_id`=`tbl_category`.`category_id`' );
