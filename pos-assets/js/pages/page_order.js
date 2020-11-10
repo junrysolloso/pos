@@ -23,14 +23,23 @@
         inv_item_srp          : $('input[name="inv_item_srp"]').val(),
         expiration_date       : $('input[name="expiration_date"]').val(),
       }
-      
-      /**
-       * Check and save temporary orders
-       */
-      if(data_checker(data)) {
-        data_sender(data, url);
-      }
 
+      /**
+       * Check if SRP is greater than the default value
+       */
+      var srp     = parseFloat($('input[name="inv_item_srp"]').val());
+      var e_unit  = parseFloat($('select[name="select_code"]').children(':selected').attr('e-unit'));
+      var def     = parseFloat($('input[name="price_per_unit"]').val())/e_unit;
+      if( srp <= def.toFixed(2) ) {
+        showWarningToast( 'SRP must be greater than ₱' + srp );
+      } else {
+        /**
+         * Check and save temporary orders
+         */
+        if(data_checker(data)) {
+          data_sender(data, url);
+        }
+      }
     });
 
     /**
@@ -71,6 +80,15 @@
       } else {
         showWarningToast( 'Sorry! order table is empty.' );
       }
+
+      // Generate suggested SRP
+      $('input[name="price_per_unit"]').on('keyup', function(){
+        if(e_unit != 0) {
+          var suggest = parseFloat($(this).val())/e_unit;
+          $('input[name="inv_item_srp"]').val(suggest.toFixed(2));
+        }
+      });
+
     });
 
     /**
@@ -188,6 +206,7 @@
       result.push(item.tmp_price);
       result.push(item.tmp_srp);
       result.push(item.tmp_expiry);
+      result.push('<i class="mdi mdi-square-edit-outline mdi-18px btn-edit"></i>');
 
       return result;
     });

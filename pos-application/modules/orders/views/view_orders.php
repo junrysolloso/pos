@@ -278,7 +278,7 @@
                       <div class="form-group">
                         <label for="expiration_date">Expiration Date</label>
                         <div class="input-group">
-                          <input type="text" name="expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" />
+                          <input type="text" name="expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>

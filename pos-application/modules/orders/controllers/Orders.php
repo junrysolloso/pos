@@ -23,6 +23,14 @@ class Orders extends MY_Controller
    */
   public function index() {
 
+    /**
+     * Reset temporary table
+     */
+    $this->Model_Orders->reset_orders_table();
+
+    /**
+     * Order details variables
+     */
     $data['order_details']       = array();
     $data['order_details_total'] = '0.00';
     $data['order_details_date']  = '';
