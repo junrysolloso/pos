@@ -52,7 +52,7 @@
           success: function(){
             showSuccessToast('Orders reset successfully.');
           } 
-        }).done(function(){
+        }).done(function(data){
           if ( data.msg == 'success' ) {
             /**
              * Clear table
@@ -104,6 +104,13 @@
              */
             $('#form_add_order').trigger('reset');
             input_icon_reset();
+
+            /**
+             * Reload page after 3 seconds
+             */
+            setTimeout(function(){
+              window.location.reload();
+            }, 3000);
           } else {
             showWarningToast( 'Request successfully executed but with errors.' );
           }
@@ -130,8 +137,9 @@
       async   : true,
       data    : data,
       dataType: 'json',
-      error: function() {
+      error: function(responseText) {
         showErrorToast('Error processing request.');
+        console.log(responseText);
       },
       success: function(){
         showSuccessToast('Order successfully added.');
@@ -174,7 +182,7 @@
       /**
        * Map json value
        */
-      result.push(item.tmp_barcode);
+      result.push(capitalize( item.item_name ) + ' ' + capitalize( item.item_description ) );
       result.push(item.tmp_date);
       result.push(item.tmp_quantity);
       result.push(item.tmp_price);

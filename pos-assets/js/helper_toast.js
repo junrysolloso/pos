@@ -111,3 +111,16 @@ function input_icon(obj) {
     }
   });
 }
+
+/**
+ * Capitalize First letter of the words
+ * @param {string} str 
+ * @param {bool} lower 
+ */
+const capitalize = (str, lower = false) => (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, match => match.toUpperCase()); 
+
+/**
+ * Remove whitespace inside letters
+ * @param {string} str 
+ */
+const trim_whitespace = (str) => str.replace(/\s/g,''); 

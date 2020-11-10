@@ -155,7 +155,7 @@ class Model_Setup extends MY_Model
           $this->db->truncate( $table );
         }
 
-        if ( $this->db->simple_query( 'INSERT INTO `tbl_users` (`username`, `user_pass`, `user_level`, `user_id`) VALUES ("admin", "21232f297a57a5a743894a0e4a801fc3", "Administrator", 1)' ) ) {
+        if ( $this->db->simple_query( 'INSERT INTO `tbl_users` (`username`, `user_pass`, `user_level`, `user_id`) VALUES ("admin", "21232f297a57a5a743894a0e4a801fc3", "administrator", 1)' ) ) {
           if ( $this->db->simple_query( 'INSERT INTO `tbl_userinfo` (`userinfo_id`, `userinfo_name`, `userinfo_address`, `userinfo_nickname`) VALUES (1, "system admin", "dinagat sslands", "admin")' ) ) {
             return true;
           }

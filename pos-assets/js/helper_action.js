@@ -25,6 +25,11 @@ $(document).ready(function () {
     });
   });
 
+  // Remove whitespace
+  $('input[name="item_id"]').on('mouseleave', function(){
+    $(this).val( trim_whitespace($(this).val()) );
+  });
+
   // Generate suggested SRP
   $('input[name="price_per_unit"]').on('keyup', function(){
     if(e_unit != 0) {
@@ -77,7 +82,7 @@ $(document).ready(function () {
    * User edit
    */
   $('.user-edit').on( 'click', function(){
-    
+
     $('input[name="userinfo_id"]').val( $(this).attr('id') );
     $('input[name="userinfo_name"]').val( $(this).attr('f-name') );
     $('input[name="userinfo_nickname"]').val( $(this).attr('n-name') );
