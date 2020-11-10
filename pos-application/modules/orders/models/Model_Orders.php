@@ -274,15 +274,14 @@ class Model_Orders extends MY_Model
             }
           }
         }
-
-        /**
-         * After ForEach is done looping and inserting the data
-         * Clean the temporary table
-         */
-        if( $flag ) {
-          $this->db->truncate( 'tbl_temp_orderdetails' );
-          return true;
-        }
+      }
+      /**
+       * After ForEach is done looping and inserting the data
+       * Clean the temporary table
+       */
+      if( $flag ) {
+        $this->db->truncate( 'tbl_temp_orderdetails' );
+        return true;
       }
     }
   }
