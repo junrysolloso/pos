@@ -50,11 +50,11 @@
             <i class="menu-icons mdi mdi-settings"></i><span class="menu-title">Settings</span>
           </a>
         </div>
-        <div class="nav-item">
+        <!-- <div class="nav-item">
           <a href="<?php echo base_url(); ?>reports" class="nav-link" id="reports">
             <i class="menu-icons mdi mdi-file-outline"></i><span class="menu-title">Reports</span>
           </a>
-        </div>
+        </div> -->
       </nav>
 
       <div class="sidebar-footer-bottom">

@@ -21,18 +21,19 @@ class Sales extends MY_Controller
 
     $data['title']          = 'Sales';
     $data['class']          = 'sales';
+    
     $data['sales_total']    = $this->Model_Sales->sales_total_get();
     $data['daily_grocery']  = $this->Model_Dashboard->daily_sales_query( 'grocery', date( 'Y-m-d' ) );
     $data['daily_pharmacy'] = $this->Model_Dashboard->daily_sales_query( 'pharmacy', date( 'Y-m-d' ) );
-    $data['daily_beauty']   = $this->Model_Dashboard->daily_sales_query( 'beauty', date( 'Y-m-d' ) );
+    $data['daily_beauty']   = $this->Model_Dashboard->daily_sales_query( 'beauty products', date( 'Y-m-d' ) );
 
     $data['sales_grocery']  = $this->Model_Sales->sales_get( 'grocery' );
     $data['sales_pharmacy'] = $this->Model_Sales->sales_get( 'pharmacy' );
-    $data['sales_beauty']   = $this->Model_Sales->sales_get( 'beauty' );
+    $data['sales_beauty']   = $this->Model_Sales->sales_get( 'beauty products' );
 
     $data['top_grocery']    = $this->Model_Product_Info->top_products( 'grocery' );
     $data['top_pharmacy']   = $this->Model_Product_Info->top_products( 'pharmacy' );
-    $data['top_beauty']     = $this->Model_Product_Info->top_products( 'beauty' );
+    $data['top_beauty']     = $this->Model_Product_Info->top_products( 'beauty products' );
 
     // Load template parts
     $this->template->set_master_template( 'layouts/layout_admin' );

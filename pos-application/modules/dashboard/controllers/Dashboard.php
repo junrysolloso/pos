@@ -25,7 +25,7 @@ class Dashboard extends MY_Controller
     $data['today_sales']    = $this->Model_Dashboard->today_sales();
     $data['daily_grocery']  = $this->Model_Dashboard->daily_sales_query( 'grocery', date( 'Y-m-d' ) );
     $data['daily_pharmacy'] = $this->Model_Dashboard->daily_sales_query( 'pharmacy', date( 'Y-m-d' ) );
-    $data['daily_beauty']   = $this->Model_Dashboard->daily_sales_query( 'beauty', date( 'Y-m-d' ) );
+    $data['daily_beauty']   = $this->Model_Dashboard->daily_sales_query( 'beauty products', date( 'Y-m-d' ) );
     $data['almost_out']     = $this->Model_Product_Info->almost_out();
     
     // Load template parts

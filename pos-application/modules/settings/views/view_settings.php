@@ -331,58 +331,58 @@
                       </div>
                     </div>
                   </div>
+                </form>
 
-                  <!--Edit Product Details-->
-                  <?php if( ! empty( $view_products ) && $view_products ): ?>
-                    <div class="modal-body auto-form-wrapper">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <div class="input-group">
-                              <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="view-products" placeholder="Search anything from the table..." />
-                              <div class="input-group-append">
-                                <span class="input-group-text">
-                                  <i class="mdi mdi-magnify-plus"></i>
-                                </span>
-                              </div>
+                <!--Edit Product Details-->
+                <?php if( ! empty( $view_products ) && $view_products ): ?>
+                  <div class="pt-5">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="view-products" placeholder="Search anything from the table..." />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-magnify-plus"></i>
+                              </span>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="table-responsive" lnk="add-item">
-                        <table class="table" id="view-prod-table">
-                          <thead>
-                            <tr>
-                              <th>NO</th>
-                              <th>BARCODE</th>
-                              <th>PRODUCT NAME</th>
-                              <th>REMAINING</th>
-                              <th>SRP</th>
-                              <th>ACTION</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                              $count=1;
-                              foreach ( $view_products as $row ){
-                                echo '<tr>';
-                                echo'<td>'. $count .'</td>';
-                                echo'<td>'. $row->barcode .'</td>';
-                                echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
-                                echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
-                                echo'<td>'. $row->srp .'</td>';
-                                echo'<td><a data-target="#form_edit_products" data-toggle="modal" class="btn-btn-edit"><i class="mdi mdi-square-edit-outline mdi-18px"></i></td>';
-                                // echo '<td><a href="'">Update</a>';
-                                echo'</tr>';
-                                $count++;
-                              } 
-                              ?>
-                          </tbody>
-                        </table>
-                      </div>
                     </div>
-                  <?php endif;?>
-                </form>
+                    <div class="table-responsive" lnk="add-item">
+                      <table class="table" id="view-prod-table">
+                        <thead>
+                          <tr>
+                            <th>NO</th>
+                            <th>BARCODE</th>
+                            <th>PRODUCT NAME</th>
+                            <th>REMAINING</th>
+                            <th>SRP</th>
+                            <th>ACTION</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                            $count=1;
+                            foreach ( $view_products as $row ){
+                              echo '<tr>';
+                              echo'<td>'. $count .'</td>';
+                              echo'<td>'. $row->barcode .'</td>';
+                              echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                              echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
+                              echo'<td>'. $row->srp .'</td>';
+                              echo'<td><a data-target="#form_edit_products" data-toggle="modal" class="btn-btn-edit"><i class="mdi mdi-square-edit-outline mdi-18px"></i></td>';
+                              // echo '<td><a href="'">Update</a>';
+                              echo'</tr>';
+                              $count++;
+                            } 
+                            ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                <?php endif;?>
               </div>
 
               <!-- Company Info -->
@@ -519,7 +519,7 @@
                     </thead>
                     <tbody>
                       <?php
-                      $count=1;
+                        $count=1;
                         foreach ( $damage_all as $row ) {
                           echo '<tr>';
                           echo '<td>'. $count .'</td>';

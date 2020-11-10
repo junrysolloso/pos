@@ -28,7 +28,7 @@ class Inventory extends MY_Controller
     $data['damage_all']   = $this->Model_Inv_Damage->damage_get();
     $data['inv_grocery']  = $this->Model_Inv_Items->inv_items_get( 'grocery' );
     $data['inv_pharmacy'] = $this->Model_Inv_Items->inv_items_get( 'pharmacy' );
-    $data['inv_beauty']   = $this->Model_Inv_Items->inv_items_get( 'beauty' );
+    $data['inv_beauty']   = $this->Model_Inv_Items->inv_items_get( 'beauty products' );
 
     /**
      * Load template parts

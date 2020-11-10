@@ -293,6 +293,11 @@
           $('input[name="order_total"]').val(data[1]);
           $('input[name="order_date"]').val(data[2]);
 
+          /**
+           * Show orders button
+           */
+          $('#btn-orders').fadeIn('slow');
+
           break;
         case 'update':
           
@@ -308,6 +313,11 @@
            */
           $('input[name="order_total"]').val(data[1]);
           $('input[name="order_date"]').val(data[2]);
+
+          /**
+           * Show orders button
+           */
+          $('#btn-orders').fadeIn('slow');
 
           break;
         case 'items':
@@ -330,10 +340,6 @@
        */
       input_icon_reset();
 
-      /**
-       * Show orders button
-       */
-      $('#btn-orders').fadeIn('slow');
     });
   }
 

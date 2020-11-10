@@ -138,6 +138,7 @@
         paging: true,
         bFilter: false,
         bInfo: false,
+        paging: false,
         "iDisplayLength": 5,
         "bLengthChange": false,
       });
