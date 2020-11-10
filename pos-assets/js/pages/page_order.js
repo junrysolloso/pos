@@ -5,6 +5,14 @@
     var baseUrl = $('#base_url').val();
     var table   = $('#ord-added-table').DataTable();
 
+    /**
+     * Prepend buttons
+     */
+    $('#ord-added-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div class="form-group mt-4" id="btn-orders" style="display: none;"><form action="#" method="post"><input type="button" name="discard_orders" value="Reset Orders" class="btn btn-danger submit-btn" />&nbsp;&nbsp;<input type="button" name="save_orders" value="Save Orders" class="btn btn-success submit-btn" /></form></div>');
+
+    /**
+     * Add order
+     */
     $('#form_add_order').submit(function(event){
       /**
        * Prevent the form being submitted
@@ -37,7 +45,7 @@
          * Check and save temporary orders
          */
         if(data_checker(data)) {
-          data_sender(data, url);
+          data_sender(data, url, 'add');
         }
       }
     });
@@ -81,6 +89,10 @@
         showWarningToast( 'Sorry! order table is empty.' );
       }
 
+      /**
+       * Show orders button
+       */
+      $('#btn-orders').fadeOut('slow');
     });
 
     /**
@@ -128,6 +140,11 @@
       } else {
         showWarningToast( 'Sorry! order table is empty.' );
       }
+
+      /**
+       * Show orders button
+       */
+      $('#btn-orders').fadeOut('slow');
     });
 
     /**
@@ -135,8 +152,31 @@
      */
     $('#form_edit_order').submit(function(event){
       event.preventDefault();
+
+      var url  = baseUrl + 'orders/update-order'
+      var data = {
+
+        id          : $('input[name="edit_id"]').val(),
+        tmp_quantity: $('input[name="edit_orderdetails_quantity"]').val(),
+        tmp_price   : $('input[name="edit_price_per_unit"]').val(),
+        tmp_srp     : $('input[name="edit_inv_item_srp"]').val(),
+        tmp_expiry  : $('input[name="edit_expiration_date"]').val(),
+    
+      }
+
+      if( data_checker(data) ) {
+
+        /**
+         * Send data to the server
+         */
+        data_sender( data, url, 'update' );
+
+        /**
+         * Hide the modal
+         */
+        $('#view_order').modal('hide');
+      }
       
-      console.log('sdfsd');
     });
 
   });
@@ -149,7 +189,7 @@
    * @param {Array} data 
    * @param {string} url 
    */
-  function data_sender(data, url) {
+  function data_sender(data, url, action) {
     $.ajax({
       type    : 'POST',
       url     : url,
@@ -161,7 +201,17 @@
         console.log(responseText);
       },
       success: function(){
-        showSuccessToast('Order successfully added.');
+        switch (action) {
+          case 'add':
+            showSuccessToast('Order successfully added.');
+            break;
+          case 'update':
+            showSuccessToast('Order successfully updated.');
+            break;
+          default:
+            showSuccessToast('Process successfully executed.');
+            break;
+        }
       },
     }).done(function(data){
       /**
@@ -172,7 +222,17 @@
       /**
        * Reset form inputs
        */
-      $('#form_add_order').trigger('reset');
+      switch (action) {
+        case 'add':
+          $('#form_add_order').trigger('reset');
+          break;
+        case 'update':
+          $('#form_edit_order').trigger('reset');
+          break;
+        default:
+          showWarningToast('Cannot reset form.');
+          break;
+      }
 
       /**
        * Add value to date and total input
@@ -184,6 +244,11 @@
        * Reset input icon status
        */
       input_icon_reset();
+
+      /**
+       * Show orders button
+       */
+      $('#btn-orders').fadeIn('slow');
     });
   }
 

@@ -49,8 +49,6 @@ $(document).ready(function () {
     });
   });
 
-  $('#ord-added-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div class="form-group mt-4"><form action="#" method="post"><input type="button" name="discard_orders" value="Reset Orders" class="btn btn-danger submit-btn" />&nbsp;&nbsp;<input type="button" name="save_orders" value="Save Orders" class="btn btn-success submit-btn" /></form></div>');
-
   // Remove sub-category
   $('.sub-minus').on('click', function () {
     $(this).closest('.sub-added').remove();

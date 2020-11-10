@@ -111,6 +111,34 @@ class Orders extends MY_Controller
     }
   }
 
+  /**
+   * Update temporary table
+   */
+  public function update_order() {
+    if( $this->input->post( 'id' ) ) {
+
+      $this->load->model( 'Model_Orders_Temp' );
+
+      $data = array( 
+        'id'            => $this->input->post('id'),
+        'tmp_quantity'  => $this->input->post('tmp_quantity'),
+        'tmp_price'     => $this->input->post('tmp_price'),
+        'tmp_srp'       => $this->input->post('tmp_srp'),
+        'tmp_expiry'    => $this->input->post('tmp_expiry'),
+      );
+
+      $result = $this->Model_Orders_Temp->tmp_update( $data );
+      if( is_array( $result ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( $result ) );
+      }
+    }
+  }
+
+
 }
 
 /* End of file Orders.php */
