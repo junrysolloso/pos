@@ -323,7 +323,6 @@
                         <div class="col-5">
                           <input type="submit" name="submit[]" value="Save Product Details" class="btn btn-success submit-btn" />
                         </div>
-<<<<<<< Updated upstream
                         <!-- <div class="col-5">
                           <div class="form-group">
                             <input type="button" name="view_product" data-target="#view_product" value="View Products" class="btn btn-danger submit-btn" data-toggle="modal" />
@@ -332,60 +331,6 @@
                       </div>
                     </div>
                   </div>
-=======
-                        <div class="col-5">
-                          <input type="button" name="view_product" data-target="#view_product" value="View Products" class="btn btn-danger submit-btn" data-toggle="modal" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-              <?php if( ! empty( $view_products ) && $view_products ): ?>
-                <?php foreach ( $view_products as $row ): ?>
-                  <div class="tab-pane fade mt-4" id="add-item" role="tabpanel">
-                <form action="#" method="post">
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="form-group">
-                        <label for="item_id">Barcode Number</label>
-                        <div class="input-group">
-                          <input type="text" name="item_id" value="<?php echo $row->barcode; ?>" onmouseover="this.focus();" class="form-control"
-                            id="item_id" required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="item_name">Product Name</label>
-                        <div class="input-group">
-                          <input type="text" name="item_name" value="<?php echo $row->name; ?>" class="form-control" id="item_name" required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="item_description">Product Description</label>
-                        <div class="input-group">
-                          <input type="text" name="item_description" value="<?php echo $row->item_des; ?>" class="form-control" id="item_description"
-                            required />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-check-circle-outline"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
->>>>>>> Stashed changes
 
                   <!--Edit Product Details-->
                   <?php if( ! empty( $view_products ) && $view_products ): ?>
