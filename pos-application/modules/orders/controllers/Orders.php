@@ -141,25 +141,23 @@ class Orders extends MY_Controller
   public function update_product() {
     if( $this->input->post( 'id' ) ) {
 
-      $this->load->model( 'Model_Orders_Temp' );
-
       $data = array( 
-        'id'                    => $this->input->post('id'),
-        'orderdetails_quantity' => $this->input->post('quantity'),
-        'price_per_unit'        => $this->input->post('price'),
-        'inv_item_srp'          => $this->input->post('srp'),
-        'expiry_date'           => $this->input->post('expiry'),
-        'no_of_stocks'          => $this->input->post('stocks'),
-        'ordinv_unit_price'     => $this->input->post('unit_p'),
+        'id'                    => $this->input->post( 'id' ),
+        'order_id'              => $this->input->post( 'order_id' ),
+        'orderdetails_quantity' => $this->input->post( 'quantity' ),
+        'price_per_unit'        => $this->input->post( 'price' ) ,
+        'inv_item_srp'          => $this->input->post( 'srp' ),
+        'expiry_date'           => $this->input->post( 'expiry' ),
+        'no_of_stocks'          => $this->input->post( 'stocks' ),
+        'ordinv_unit_price'     => $this->input->post( 'unit_p' ),
       );
 
-      // $result = $this->Model_Orders_Temp->tmp_update( $data );
-      if( is_array( $data ) ) {
+      if( $this->Model_Orders->product_update( $data ) ) {
         /**
          * Return json data
          */
         header( 'content-type: application/json' );
-        exit( json_encode( $data ) );
+        exit( json_encode( array( 'msg' => 'success' ) ) );
       }
     }
   }
@@ -169,8 +167,6 @@ class Orders extends MY_Controller
    */
   public function order_items() {
     if( $this->input->post( 'id' ) ) {
-
-      $this->load->model( 'Model_Orders_Temp' );
 
       $result = $this->Model_Order_Inventory->order_items_get( $this->input->post( 'id' ) );
       if( is_array( $result ) ) {

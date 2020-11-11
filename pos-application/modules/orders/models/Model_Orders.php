@@ -53,6 +53,8 @@ class Model_Orders extends MY_Model
   protected $_relate_category       = 'tbl_category';
   protected $_relate_subcategory    = 'tbl_subcategory';
 
+  protected $_relate_orderdetails_expiry = 'tbl_orderdetails_expiry';
+
   function __construct() {
     parent:: __construct();
   }
@@ -280,7 +282,7 @@ class Model_Orders extends MY_Model
             /**
              * Add item to Order Details Expiry
              */
-            if( $this->db->insert( 'tbl_orderdetails_expiry', $expiry_data ) ) {
+            if( $this->db->insert( $this->_relate_orderdetails_expiry, $expiry_data ) ) {
               $flag = true;
             }
           }
@@ -306,6 +308,45 @@ class Model_Orders extends MY_Model
      */
     if( $this->db->truncate( 'tbl_temp_orderdetails' ) ) {
       return true;
+    }
+  }
+
+  /**
+   * 
+   */
+  public function product_update( $data = [] ) {
+    if( is_array( $data ) ) {
+      $orderdetails = array (
+        'orderdetails_quantity' => $data['orderdetails_quantity'],
+        'price_per_unit'        => $data['price_per_unit'],
+      );
+
+      $expiry = array (
+        'expiry_date' => $data['expiry_date'],
+        'rem_stocks'  => $data['no_of_stocks'],
+      );
+
+      $order_inv = array (
+        'ordinv_unit_price' => $data['ordinv_unit_price'],
+        'no_of_stocks'      => $data['no_of_stocks'],
+        'inv_item_srp'      => $data['inv_item_srp'],
+      );
+
+      $this->db->where( $this->_orderdetails_id, $data['id'] );
+      if( $this->db->update( $this->_relate_orddetails, $orderdetails ) ) {
+
+        $this->db->where( $this->_orderdetails_id, $data['id'] );
+        if( $this->db->update( $this->_relate_orderdetails_expiry, $expiry ) ) {
+
+          $this->db->where( $this->_orderdetails_id, $data['id'] );
+          if( $this->db->update( $this->_relate_ordinventory, $order_inv ) ) {
+          
+            if( $this->db->simple_query( 'UPDATE `tbl_orders` SET `order_total`= (SELECT SUM((`orderdetails_quantity` * `price_per_unit`)) FROM `tbl_orderdetails` WHERE `order_id`='.$data['order_id'].' ) WHERE `order_id`='.$data['order_id'].'' ) ) {
+              return true;
+            }
+          }
+        }
+      }
     }
   }
 

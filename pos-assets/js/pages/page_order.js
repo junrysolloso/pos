@@ -1,15 +1,17 @@
 (function($){
   'use strict';
+
+  var baseUrl = $('#base_url').val();
+
   $(document).ready(function() {
 
-    var baseUrl = $('#base_url').val();
     var table   = $('#ord-added-table').DataTable();
 
     /**
      * Prepend buttons
      */
     $('#ord-added-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div class="mt-2" id="btn-orders" style="display: none;"><form action="#" method="post"><input type="button" name="discard_orders" value="Reset Orders" class="btn btn-danger submit-btn" />&nbsp;&nbsp;<input type="button" name="save_orders" value="Save Orders" class="btn btn-success submit-btn" /></form></div>');
-    $('#ord-items-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div id="btn-orders"><input type="button" value="Close" class="btn btn-danger submit-btn" data-dismiss="modal" style="margin-bottom: -60px;" /></div>');
+    $('#ord-items-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div id="btn-orders"><input type="button" id="item-table-close" value="Close" class="btn btn-danger submit-btn" data-dismiss="modal" style="margin-bottom: -60px;" /></div>');
 
     /**
      * Generate suggested SRP
@@ -107,7 +109,7 @@
              */
             $('#form_add_order').trigger('reset');
             input_icon_reset();
-            
+
           } else {
             showWarningToast( 'Request successfully executed but with errors.' );
           }
@@ -292,6 +294,7 @@
 
       var data = {
         id      : $('input[name="pro_id"]').val(),
+        order_id: $('input[name="pro_oid"]').val(),
         quantity: $('input[name="pro_orderdetails_quantity"]').val(),
         price   : $('input[name="pro_price_per_unit"]').val(),
         srp     : $('input[name="pro_inv_item_srp"]').val(),
@@ -352,7 +355,7 @@
             showSuccessToast('Product successfully updated.');
             break;
           default:
-            showSuccessToast('Process successful.');
+            
             break;
         }
       },
@@ -415,12 +418,19 @@
         case 'pro':
 
           /**
+           * Updated items table
+           */
+          var url = baseUrl + 'orders/order-items';
+          var data = {
+            id: $('input[name="pro_oid"]').val(),
+          }
+          data_sender( data, url, 'items' );
+
+          /**
            * Hide the modal
            */
           $('#view_order_item').modal('hide');
           $('#view_order_items').modal('show');
-
-          console.log(data);
 
           break;
         default:
@@ -458,7 +468,7 @@
       result.push(item.tmp_price);
       result.push(item.tmp_srp);
       result.push(item.tmp_expiry);
-      result.push('<a id="'+ item.id +'" p-name="'+ capitalize( item.item_name ) + ' ' + capitalize( item.item_description ) +'" c-name="'+ capitalize( item.category_name ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.tmp_quantity +'" p-price="'+ item.tmp_price +'"  s-price="'+ item.tmp_srp +'" t-date="'+ item.tmp_date +'" t-expire="'+ item.tmp_expiry +'" u-equiv="'+ item.equivalent +'" data-target="#view_order" class="btn btn-edit" data-toggle="modal"><i class="mdi mdi-pencil-outline mdi-18px"></i> Edit</a>');
+      result.push('<a id="'+ item.id +'" p-name="'+ capitalize( item.item_name ) + ' ' + capitalize( item.item_description ) +'" c-name="'+ capitalize( item.category_name ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.tmp_quantity +'" p-price="'+ item.tmp_price +'"  s-price="'+ item.tmp_srp +'" t-date="'+ item.tmp_date +'" t-expire="'+ item.tmp_expiry +'" u-equiv="'+ item.equivalent +'" data-target="#view_order" class="btn-edit" data-toggle="modal"><i class="mdi mdi-pencil-outline mdi-18px"></i> Edit</a>');
 
       return result;
     });
@@ -498,7 +508,7 @@
       result.push( capitalize( item.name ) + ' ' + capitalize( item.desc ) );
       result.push( '₱ '+ item.price );
       result.push( item.stocks + ' ' + capitalize( item.udesc )  );
-      result.push('<a id="'+ item.id +'" p-name="'+ capitalize( item.name ) + ' ' + capitalize( item.desc ) +'" c-name="'+ capitalize( item.catname ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.quantt +'" p-price="'+ item.price +'"  s-price="'+ item.srp +'" t-date="'+ item.odate +'" t-expire="'+ item.exdate +'" u-equiv="'+ item.equiv +'" class="btn item-edit"><i class="mdi mdi-pencil-outline mdi-18px"></i> Edit</a>');
+      result.push('<a id="'+ item.id +'" o-id="'+ item.oid +'" p-name="'+ capitalize( item.name ) + ' ' + capitalize( item.desc ) +'" c-name="'+ capitalize( item.catname ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.quantt +'" p-price="'+ item.price +'"  s-price="'+ item.srp +'" t-date="'+ item.odate +'" t-expire="'+ item.exdate +'" u-equiv="'+ item.equiv +'" class="item-edit"><i class="mdi mdi-pencil-outline mdi-18px"></i> Edit</a>');
 
       count++;
 
@@ -570,6 +580,7 @@
      * Get values from object attribute
      */
     $('input[name="pro_id"]').val(obj.attr('id'));
+    $('input[name="pro_oid"]').val(obj.attr('o-id'));
     $('input[name="pro_item_id"]').val(obj.attr('p-name'));
     $('input[name="pro_category_name"]').val(obj.attr('c-name'));
     $('input[name="pro_order_unit"]').val(obj.attr('o-unit'));

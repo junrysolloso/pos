@@ -60,7 +60,7 @@ class Model_Order_Inventory extends MY_Model
     /**
      * Join all table connected to orders
      */
-    $this->db->select( '`tbl_orderdetails`.`orderdetails_id` AS `id`, `item_name` AS `name`, `item_description` AS `desc`, `tbl_items`.`item_id` AS `barcode`, `order_date` AS `odate`, `no_of_stocks` AS `stocks`, `orderdetails_quantity` AS `quantt`, `price_per_unit` AS `price`, `inv_item_srp` AS `srp`, `expiry_date` AS `exdate`, `category_name` AS `catname`, `uc_number` AS `equiv`, `unit_desc` AS `udesc`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
+    $this->db->select( '`tbl_orderdetails`.`orderdetails_id` AS `id`, `tbl_orders`.`order_id` AS `oid`, `item_name` AS `name`, `item_description` AS `desc`, `tbl_items`.`item_id` AS `barcode`, `order_date` AS `odate`, `no_of_stocks` AS `stocks`, `orderdetails_quantity` AS `quantt`, `price_per_unit` AS `price`, `inv_item_srp` AS `srp`, `expiry_date` AS `exdate`, `category_name` AS `catname`, `uc_number` AS `equiv`, `unit_desc` AS `udesc`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
     $this->db->join( $this->_relate_orddetails, '`tbl_orderdetails`.`orderdetails_id`=`tbl_orderinventory`.`orderdetails_id`' );
     $this->db->join( $this->_relate_orddet_ex, '`tbl_orderdetails_expiry`.`orderdetails_id`=`tbl_orderdetails`.`orderdetails_id`' );
     $this->db->join( $this->_relate_orders, '`tbl_orderdetails`.`order_id`=`tbl_orders`.`order_id`' );

@@ -16,10 +16,10 @@
 
             <ul class="nav nav-tabs tab-solid tab-solid-success" role="tablist">
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#order-history" aria-selected="false">Order History</a>
+                <a class="nav-link active" data-toggle="tab" href="#order-history" aria-selected="true">Order History</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#add-order" aria-selected="true">Add Order</a>
+                <a class="nav-link" data-toggle="tab" href="#add-order" aria-selected="false">Add Order</a>
               </li>
             </ul>
 
@@ -34,7 +34,7 @@
               <?php endif; ?>
 
               <!-- Order History -->
-              <div class="tab-pane fade" id="order-history" role="tabpanel">
+              <div class="tab-pane fade show active" id="order-history" role="tabpanel">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -78,7 +78,7 @@
               </div>
 
               <!-- Add Orders -->
-              <div class="tab-pane active fade show mt-4" id="add-order" role="tabpanel">
+              <div class="tab-pane fade mt-4" id="add-order" role="tabpanel">
                 <form action="#" method="post" id="form_add_order" name="frm_add_order" class="pb-3">
                   <div class="row">
                     <div class="col-6">
@@ -420,6 +420,7 @@
                       <label for="pro_item_id">Product Name</label>
                       <div class="input-group">
                         <input type="hidden" name="pro_id">
+                        <input type="hidden" name="pro_oid">
                         <input type="text" name="pro_item_id" class="form-control" id="pro_item_id" readonly />
                         <div class="input-group-append">
                           <span class="input-group-text">
@@ -473,7 +474,7 @@
                     <div class="form-group">
                       <label for="pro_orderdetails_quantity">Quantity</label>
                       <div class="input-group">
-                        <input type="number" name="pro_orderdetails_quantity" min="1" class="form-control" id="pro_orderdetails_quantity" required />
+                        <input type="number" name="pro_orderdetails_quantity" min="1" class="form-control" id="pro_orderdetails_quantity" readonly />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-check-circle-outline"></i>
