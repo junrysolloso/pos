@@ -404,6 +404,138 @@
       </div>
     </div>
   </div>
+
+  <!-- View Order Item -->
+  <div id="view_order_item" class="modal fade auth theme-one" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="card auto-form-wrapper rounded">
+            <div class="card-body">
+              <h4 class="card-title">PRODUCT DETAILS</h4>
+              <form action="#" method="post" id="form_pro_details">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="pro_item_id">Product Name</label>
+                      <div class="input-group">
+                        <input type="hidden" name="pro_id">
+                        <input type="text" name="pro_item_id" class="form-control" id="pro_item_id" readonly />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="pro_category_name">Category</label>
+                      <div class="input-group">
+                        <input type="text" name="pro_category_name" class="form-control" id="pro_category_name" readonly />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="pro_order_unit">Order Unit</label>
+                          <div class="input-group">
+                            <input type="text" name="pro_order_unit" class="form-control" id="pro_order_unit" readonly />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="pro_price_per_unit">Price Per Unit</label>
+                          <div class="input-group">
+                            <input type="number" step="0.01" name="pro_price_per_unit" class="form-control" id="pro_price_per_unit" required />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="pro_orderdetails_quantity">Quantity</label>
+                      <div class="input-group">
+                        <input type="number" name="pro_orderdetails_quantity" min="1" class="form-control" id="pro_orderdetails_quantity" required />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="pro_selling_unit">Selling Unit</label>
+                          <div class="input-group">
+                            <input type="text" name="pro_selling_unit" class="form-control" id="pro_selling_unit" readonly />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="pro_inv_item_srp">Suggested Retail Price (SRP)</label>
+                          <div class="input-group">
+                            <input type="number" step="0.01" name="pro_inv_item_srp" class="form-control" id="pro_inv_item_srp" required />
+                            <div class="input-group-append">
+                              <span class="input-group-text">
+                                <i class="mdi mdi-check-circle-outline"></i>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="pro_expiration_date">Expiration Date</label>
+                      <div class="input-group">
+                        <input type="text" name="pro_expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required />
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="mdi mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-2">
+                    <input type="button" id="back_pro_btn" value="Back" class="btn btn-danger submit-btn" data-dismiss="modal" />
+                      &nbsp;&nbsp;
+                    <input type="submit" name="save_pro_details" value="Update Product" class="btn btn-success submit-btn" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <!-- View Order Info Modal-->
   <div id="view_order_items" class="modal fade auth theme-one" role="dialog">
@@ -432,11 +564,11 @@
                   <thead>
                     <tr>
                       <th>NO.</th>
-                      <th>ORDER DATE</th>
                       <th>ITEM NUMBER</th> 
                       <th>ITEM NAME</th>     
                       <th>PRICE/UNIT</th>                 
                       <th>QUANTITY</th>
+                      <th>EDIT</th>
                     </tr>
                   </thead>
                   <tbody></tbody>

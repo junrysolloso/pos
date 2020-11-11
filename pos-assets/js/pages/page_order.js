@@ -25,6 +25,17 @@
       }
     });
 
+    $('input[name="pro_price_per_unit"]').on('keyup', function(){
+      var u_equiv = parseInt( $(this).attr('u-equiv') );
+
+      if ( $(this).val().length >= 1 && u_equiv != 0 ) {
+        var t_value = parseFloat( $(this).val() );
+        var suggest = t_value / u_equiv;
+
+        $('input[name="pro_inv_item_srp"]').val(suggest.toFixed(2));
+      }
+    });
+
     /**
      * Add order
      */
@@ -96,6 +107,7 @@
              */
             $('#form_add_order').trigger('reset');
             input_icon_reset();
+            
           } else {
             showWarningToast( 'Request successfully executed but with errors.' );
           }
@@ -183,7 +195,7 @@
        * Check if SRP is greater than the default value
        */
       var srp     = parseFloat($('input[name="edit_inv_item_srp"]').val());
-      var e_unit  = parseFloat($('input[name="edit_price_per_unit"]').attr('u-equiv'));
+      var e_unit  = parseInt($('input[name="edit_price_per_unit"]').attr('u-equiv'));
       var def     = parseFloat($('input[name="edit_price_per_unit"]').val())/e_unit;
       if( srp <= def.toFixed(2) ) {
         showWarningToast( 'SRP must be greater than ₱' + srp );
@@ -238,6 +250,75 @@
 
     });
 
+    /**
+     * Item Details
+     */
+    $('.item-edit').on('click', function(){
+      /**
+       * Set values on the fields
+       */
+      product_values($(this));
+
+      /**
+       * Hide main modal
+       */
+      $('#view_order_items').modal('hide');
+
+      /**
+       * Show order details modal
+       */
+      $('#view_order_item').modal('show');
+
+    });
+
+    /**
+     * Back button click
+     */
+    $('#back_pro_btn').on('click', function(){
+      $('#view_order_item').modal('hide');
+      $('#view_order_items').modal('show');
+    });
+
+    /**
+     * Submit Product info
+     */
+    $('#form_pro_details').submit(function(event){
+      event.preventDefault();
+
+      var url  = baseUrl + 'orders/update-product'
+
+      var stocks = parseInt( $('input[name="pro_orderdetails_quantity"]').val() ) * parseInt($('input[name="pro_price_per_unit"]').attr('u-equiv'));
+      var unit_p = parseFloat( $('input[name="pro_price_per_unit"]').val() ) / parseInt($('input[name="pro_price_per_unit"]').attr('u-equiv'));
+
+      var data = {
+        id      : $('input[name="pro_id"]').val(),
+        quantity: $('input[name="pro_orderdetails_quantity"]').val(),
+        price   : $('input[name="pro_price_per_unit"]').val(),
+        srp     : $('input[name="pro_inv_item_srp"]').val(),
+        expiry  : $('input[name="pro_expiration_date"]').val(),
+        stocks  : stocks,
+        unit_p  : unit_p,
+      }
+      
+      /**
+       * Check if SRP is greater than the default value
+       */
+      var srp     = parseFloat($('input[name="pro_inv_item_srp"]').val());
+      var e_unit  = parseInt($('input[name="pro_price_per_unit"]').attr('u-equiv'));
+      var def     = parseFloat($('input[name="pro_price_per_unit"]').val())/e_unit;
+      if( srp <= def.toFixed(2) ) {
+        showWarningToast( 'SRP must be greater than ₱' + srp );
+      } else {
+        if( data_checker(data) ) {
+
+          /**
+           * Send data to the server
+           */
+          data_sender( data, url, 'pro' );
+        }
+      }
+    });
+
   });
 
   /**
@@ -266,6 +347,9 @@
             break;
           case 'update':
             showSuccessToast('Order successfully updated.');
+            break;
+          case 'pro':
+            showSuccessToast('Product successfully updated.');
             break;
           default:
             showSuccessToast('Process successful.');
@@ -328,9 +412,20 @@
           items_show($('#ord-items-table').DataTable(), data);
 
           break;
+        case 'pro':
+
+          /**
+           * Hide the modal
+           */
+          $('#view_order_item').modal('hide');
+          $('#view_order_items').modal('show');
+
+          console.log(data);
+
+          break;
         default:
 
-          showWarningToast('Cannot reset form.');
+          showWarningToast('Request is done.');
 
           break;
       }
@@ -399,11 +494,11 @@
        * Map json value
        */
       result.push( count );
-      result.push( item.order_date );
       result.push( item.barcode );
       result.push( capitalize( item.name ) + ' ' + capitalize( item.desc ) );
       result.push( '₱ '+ item.price );
-      result.push( item.stocks + ' ' + capitalize( item.unit_desc )  );
+      result.push( item.stocks + ' ' + capitalize( item.udesc )  );
+      result.push('<a id="'+ item.id +'" p-name="'+ capitalize( item.name ) + ' ' + capitalize( item.desc ) +'" c-name="'+ capitalize( item.catname ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.quantt +'" p-price="'+ item.price +'"  s-price="'+ item.srp +'" t-date="'+ item.odate +'" t-expire="'+ item.exdate +'" u-equiv="'+ item.equiv +'" class="btn item-edit"><i class="mdi mdi-pencil-outline mdi-18px"></i> Edit</a>');
 
       count++;
 
@@ -415,6 +510,26 @@
      */
     table.rows.add(result);
     table.draw();
+
+    /**
+     * Added orders
+     */
+    $('body').delegate('.item-edit', 'click', function () {
+      /**
+       * Set values on the fields
+       */
+      product_values($(this));
+
+      /**
+       * Hide main modal
+       */
+      $('#view_order_items').modal('hide');
+      
+      /**
+       * Show order details modal
+       */
+      $('#view_order_item').modal('show');
+    });
   }
 
   /**
@@ -443,7 +558,34 @@
      * Reset input icons
      */
     input_icon_reset();
+  }
 
+  /**
+   * Get object values and assign to edit inputs
+   * @param {object} obj 
+   */
+  function product_values( obj ) {
+
+    /**
+     * Get values from object attribute
+     */
+    $('input[name="pro_id"]').val(obj.attr('id'));
+    $('input[name="pro_item_id"]').val(obj.attr('p-name'));
+    $('input[name="pro_category_name"]').val(obj.attr('c-name'));
+    $('input[name="pro_order_unit"]').val(obj.attr('o-unit'));
+    
+    $('input[name="pro_price_per_unit"]').attr('u-equiv', obj.attr('u-equiv'));
+
+    $('input[name="pro_price_per_unit"]').val(obj.attr('p-price'));
+    $('input[name="pro_orderdetails_quantity"]').val(obj.attr('t-quan'));
+    $('input[name="pro_selling_unit"]').val(obj.attr('s-unit'));
+    $('input[name="pro_inv_item_srp"]').val(obj.attr('s-price'));
+    $('input[name="pro_expiration_date"]').val(obj.attr('t-expire'));
+
+    /**
+     * Reset input icons
+     */
+    input_icon_reset();
   }
 
 })(jQuery);

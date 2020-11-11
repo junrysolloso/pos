@@ -136,6 +136,35 @@ class Orders extends MY_Controller
   }
   
   /**
+   * Update temporary table
+   */
+  public function update_product() {
+    if( $this->input->post( 'id' ) ) {
+
+      $this->load->model( 'Model_Orders_Temp' );
+
+      $data = array( 
+        'id'                    => $this->input->post('id'),
+        'orderdetails_quantity' => $this->input->post('quantity'),
+        'price_per_unit'        => $this->input->post('price'),
+        'inv_item_srp'          => $this->input->post('srp'),
+        'expiry_date'           => $this->input->post('expiry'),
+        'no_of_stocks'          => $this->input->post('stocks'),
+        'ordinv_unit_price'     => $this->input->post('unit_p'),
+      );
+
+      // $result = $this->Model_Orders_Temp->tmp_update( $data );
+      if( is_array( $data ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( $data ) );
+      }
+    }
+  }
+
+  /**
    * Get order items
    */
   public function order_items() {

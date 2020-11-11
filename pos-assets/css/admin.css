@@ -85,11 +85,13 @@ div.dataTables_wrapper div.dataTables_filter {
   padding: 7px 10px;
 }
 
-.btn-edit {
+.btn-edit,
+.item-edit {
   cursor: pointer;
 }
 
-.btn-edit:hover {
+.btn-edit:hover,
+.item-edit:hover {
   color: #14d2b8 !important;
 }
 
