@@ -57,12 +57,13 @@ class Model_Order_Inventory extends MY_Model
     /**
      * Join all table connected to orders
      */
-    $this->db->select( '`tbl_orderdetails`.`item_id` AS `barcode`, `tbl_items.item_name` AS `name`, `item_description` AS `desc`, `order_date`, `no_of_stocks` AS `stocks`' );
+    $this->db->select( '`tbl_orderdetails`.`item_id` AS `barcode`, `tbl_items.item_name` AS `name`, `item_description` AS `desc`, `unit_desc`, `order_date`, `orderdetails_quantity` AS `stocks`, `price_per_unit` AS `price`' );
     $this->db->join( $this->_relate_orddetails, '`tbl_orderdetails`.`orderdetails_id`=`tbl_orderinventory`.`orderdetails_id`' );
     $this->db->join( $this->_relate_orders, '`tbl_orderdetails`.`order_id`=`tbl_orders`.`order_id`' );
     $this->db->join( $this->_relate_items, '`tbl_orderdetails`.`item_id`=`tbl_items`.`item_id`' );
     $this->db->join( $this->_relate_ucjunc, '`tbl_items`.`item_id`=`tbl_ucjunc`.`item_id`' );
-    $this->db->join( $this->_relate_unit, '`tbl_unit`.`unit_id`=`tbl_items`.`unit_id`' );
+    $this->db->join( $this->_relate_unitconvert, '`tbl_ucjunc`.`uc_id`=`tbl_unitconvert`.`uc_id`' );
+    $this->db->join( $this->_relate_unit, '`tbl_unit`.`unit_id`=`tbl_unitconvert`.`unit_id1`' );
     $this->db->where( '`tbl_orders`.`order_id`', $order_id );
     $this->db->order_by( '`tbl_orderdetails`.`orderdetails_id`', 'ASC' );
 

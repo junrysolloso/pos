@@ -402,7 +402,8 @@
       result.push( item.order_date );
       result.push( item.barcode );
       result.push( capitalize( item.name ) + ' ' + capitalize( item.desc ) );
-      result.push( item.stocks );
+      result.push( '₱ '+ item.price );
+      result.push( item.stocks + ' ' + capitalize( item.unit_desc )  );
 
       count++;
 

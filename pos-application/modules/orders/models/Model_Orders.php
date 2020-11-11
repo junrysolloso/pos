@@ -311,5 +311,5 @@ class Model_Orders extends MY_Model
 
 }
 
-/* End of file Model_Orderdetails.php */
-/* Location: ./application/modules/orders/models/Model_Orderdetails.php */
+/* End of file Model_Orders.php */
+/* Location: ./application/modules/orders/models/Model_Orders.php */

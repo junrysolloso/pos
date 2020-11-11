@@ -433,8 +433,9 @@
                     <tr>
                       <th>NO.</th>
                       <th>ORDER DATE</th>
-                      <th>ITEM NUMBER</th>
-                      <th>ITEM NAME</th>                      
+                      <th>ITEM NUMBER</th> 
+                      <th>ITEM NAME</th>     
+                      <th>PRICE/UNIT</th>                 
                       <th>QUANTITY</th>
                     </tr>
                   </thead>
