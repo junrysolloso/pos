@@ -36,7 +36,8 @@ class Model_View_Products extends MY_Model
     `tbl_inventory`.`inv_rem_stocks` AS  `remaining`, `tbl_inventory`.`inv_item_srp` AS `srp`, 
     `tbl_items`.`item_critlimit` AS `critlimit`, `tbl_inventory`.`inv_rem_stocks` AS `qty`,
     `tbl_category`.`category_name` AS `c_name`, `tbl_unit`.`unit_desc` AS `unit_desc`, `tbl_orderdetails`.`price_per_unit` AS `unit_price`,
-    `tbl_orderdetails_expiry`.`expiry_date` AS `exp_date`, `tbl_subcategory`.`subcat_name` AS `subcat_name`');
+    `tbl_orderdetails_expiry`.`expiry_date` AS `exp_date`, `tbl_subcategory`.`subcat_name` AS `subcat_name`,
+    `tbl_unitconvert`.`unit_id2` AS `selling_unit`');
     $this->db->join( $this->_relate_inventory, '`tbl_items`.`item_id` = `tbl_inventory`.`item_id`');
     $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
     $this->db->join( $this->_relate_category, '`tbl_subcategory`.`category_id`=`tbl_category`.`category_id`' );
@@ -60,7 +61,8 @@ class Model_View_Products extends MY_Model
   public function item_update( $data = [] ) {
     if( isset( $data ) && ! empty( $data ) && is_array( $data ) ) {
       $this->_remove_empty_key( $data );
-      $this->db->where( $this->_id, $data['item_id'] );
+      $this->db->where( $this->id, $data['edit_id'] );
+      //$this->db->where->();
       if ( $this->db->update( $this->_table, $data ) ) {
         return true;
       } else {

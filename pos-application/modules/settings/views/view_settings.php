@@ -372,7 +372,7 @@
                               echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
                               echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
                               echo'<td>'. $row->srp .'</td>';
-                              echo'<td><a data-target="#form_edit_products" data-toggle="modal" class="btn-btn-edit"><i class="mdi mdi-square-edit-outline mdi-18px"></i></td>';
+                              echo'<td><a href="#" data-target="#form_edit_products" data-toggle="modal" class="btn-btn-edit"><i class="mdi mdi-square-edit-outline mdi-18px" >Update</i></td>';
                               // echo '<td><a href="'">Update</a>';
                               echo'</tr>';
                               $count++;
@@ -857,7 +857,7 @@
                         <div class="form-group">
                           <label for="edit_selling_unit">Selling Unit</label>
                           <div class="input-group">
-                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" value="<?php echo $row->unit_desc; ?>" >
+                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" value="<?php echo $row->selling_unit; ?>" >
                             <div class="input-group-append">
                               <span class="input-group-text text-success">
                                 <i class="mdi mdi-18px mdi-check-circle-outline"></i>
