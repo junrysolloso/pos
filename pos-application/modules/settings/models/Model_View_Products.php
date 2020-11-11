@@ -17,6 +17,8 @@ class Model_View_Products extends MY_Model
   protected $_relate_ucjunc       = 'tbl_ucjunc';
   protected $_relate_unitconvert  = 'tbl_unitconvert';
   protected $_relate_unit         = 'tbl_unit';
+  protected $_relate_ord_details  = 'tbl_orderdetails';
+  protected $_relate_ord_expiry   = 'tbl_orderdetails_expiry';
 
   protected $_category_name       = 'category_name';
 
@@ -30,16 +32,19 @@ class Model_View_Products extends MY_Model
    */
   public function view_products() {
 
-    $this->db->select(' `id`,`tbl_items`.`item_id` AS `barcode` , `tbl_items`.`item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, 
-    `tbl_inventory`.`inv_rem_stocks` AS  `remaining`, `unit_desc`, `tbl_inventory`.`inv_item_srp` AS `srp`, 
+    $this->db->select(' `tbl_items`.`id`,`tbl_items`.`item_id` AS `barcode` , `tbl_items`.`item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, 
+    `tbl_inventory`.`inv_rem_stocks` AS  `remaining`, `tbl_inventory`.`inv_item_srp` AS `srp`, 
     `tbl_items`.`item_critlimit` AS `critlimit`, `tbl_inventory`.`inv_rem_stocks` AS `qty`,
-    `tbl_category`.`category_name` AS `c_name`, `tbl_unit`.`unit_desc` AS `unit_desc`');
+    `tbl_category`.`category_name` AS `c_name`, `tbl_unit`.`unit_desc` AS `unit_desc`, `tbl_orderdetails`.`price_per_unit` AS `unit_price`,
+    `tbl_orderdetails_expiry`.`expiry_date` AS `exp_date`, `tbl_subcategory`.`subcat_name` AS `subcat_name`');
     $this->db->join( $this->_relate_inventory, '`tbl_items`.`item_id` = `tbl_inventory`.`item_id`');
     $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
     $this->db->join( $this->_relate_category, '`tbl_subcategory`.`category_id`=`tbl_category`.`category_id`' );
     $this->db->join( $this->_relate_ucjunc, '`tbl_items`.`item_id`=`tbl_ucjunc`.`item_id`' );
     $this->db->join( $this->_relate_unitconvert, '`tbl_ucjunc`.`uc_id`=`tbl_unitconvert`.`uc_id`' );
     $this->db->join( $this->_relate_unit, '`tbl_unit`.`unit_id`=`tbl_unitconvert`.`unit_id2`' );
+    $this->db->join( $this->_relate_ord_details, '`tbl_orderdetails`.`item_id`=`tbl_items`.`item_id`' );
+    $this->db->join( $this->_relate_ord_expiry, '`tbl_orderdetails_expiry`.`orderdetails_id`=`tbl_orderdetails`.`orderdetails_id`' );
 
     $query = $this->db->get( $this->_table );
     if( $query ) {

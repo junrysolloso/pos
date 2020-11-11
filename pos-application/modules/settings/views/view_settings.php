@@ -766,7 +766,19 @@
                     <div class="form-group">
                       <label for="edit_category_name">Description</label>
                       <div class="input-group">
-                        <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" value="<?php echo $row->item_des; ?>">
+                        <input type="text" name="edit_description" class="form-control" id="edit_description" value="<?php echo $row->item_des; ?>">
+                        <div class="input-group-append">
+                          <span class="input-group-text text-success">
+                            <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="edit_category_name">Product Limit</label>
+                      <div class="input-group">
+                        <input type="text" name="edit_product_limit" class="form-control" id="edit_product_limit" value="<?php echo $row->critlimit; ?>">
                         <div class="input-group-append">
                           <span class="input-group-text text-success">
                             <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -779,6 +791,18 @@
                       <label for="edit_category_name">Category</label>
                       <div class="input-group">
                         <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" value="<?php echo $row->c_name; ?>">
+                        <div class="input-group-append">
+                          <span class="input-group-text text-success">
+                            <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="edit_category_name">Sub-Category</label>
+                      <div class="input-group">
+                        <input type="text" name="edit_subcategory" class="form-control" id="edit_subcategory" value="<?php echo $row->subcat_name; ?>">
                         <div class="input-group-append">
                           <span class="input-group-text text-success">
                             <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -805,7 +829,7 @@
                         <div class="form-group">
                           <label for="edit_price_per_unit">Price Per Unit</label>
                           <div class="input-group">
-                            <input type="number" step="0.01" name="edit_price_per_unit" class="form-control" id="edit_price_per_unit" >
+                            <input type="number" step="0.01" name="edit_price_per_unit" class="form-control" id="edit_price_per_unit" value="<?php echo $row->unit_price; ?>" >
                             <div class="input-group-append">
                               <span class="input-group-text text-success">
                                 <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -833,7 +857,7 @@
                         <div class="form-group">
                           <label for="edit_selling_unit">Selling Unit</label>
                           <div class="input-group">
-                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" readonly="">
+                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" value="<?php echo $row->unit_desc; ?>" >
                             <div class="input-group-append">
                               <span class="input-group-text text-success">
                                 <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -860,7 +884,7 @@
                     <div class="form-group">
                       <label for="edit_expiration_date">Expiration Date</label>
                       <div class="input-group">
-                        <input type="text" name="edit_expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required="" im-insert="false">
+                        <input type="text" name="edit_expiration_date" class="form-control" data-inputmask="'alias': 'datetime'" data-inputmask-inputformat="yyyy-mm-dd" required="" im-insert="false" value="<?php echo $row->exp_date; ?>">
                         <div class="input-group-append">
                           <span class="input-group-text text-success">
                             <i class="mdi mdi-18px mdi-check-circle-outline"></i>
@@ -871,7 +895,7 @@
                   </div>
                   <div class="col-12">
                     <div class="form-group pt-2">
-                      <input type="submit" name="save_edit_order" value="Update Product" class="btn btn-success submit-btn">
+                      <input type="submit" name="update" value="Update Product" class="btn btn-success submit-btn">
                         &nbsp;&nbsp;
                       <input type="button" name="close_edit_order" value="Close" class="btn btn-danger submit-btn" data-dismiss="modal">
                     </div>
