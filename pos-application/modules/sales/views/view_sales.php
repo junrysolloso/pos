@@ -8,7 +8,6 @@
                   <thead>
                     <tr>
                       <th>ITEM NAME</th>
-                      <th>OR NUMBER</th>
                       <th>QUANTITY</th>
                       <th>TOTAL</th>
                     </tr>
@@ -20,7 +19,6 @@
                         foreach ( $sales_grocery as $row ){
                           echo '<tr>';
                           echo '<td>'. ucwords( $row->name ) .'</td>';
-                          echo '<td>'. $row->sales_or .'</td>';
                           echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
                           echo '<td>₱ '. $row->sales_total .'</td>';
                           echo '</tr>';
@@ -68,7 +66,6 @@
                   <thead>
                     <tr>
                       <th>ITEM NAME</th>
-                      <th>OR NUMBER</th>
                       <th>QUANTITY</th>
                       <th>TOTAL</th>
                     </tr>
@@ -80,7 +77,6 @@
                         foreach ( $sales_pharmacy as $row ){
                           echo '<tr>';
                           echo '<td>'. ucwords( $row->name ) .'</td>';
-                          echo '<td>'. $row->sales_or .'</td>';
                           echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
                           echo '<td>₱ '. $row->sales_total .'</td>';
                           echo '</tr>';
@@ -128,7 +124,6 @@
                   <thead>
                     <tr>
                       <th>ITEM NAME</th>
-                      <th>OR NUMBER</th>
                       <th>QUANTITY</th>
                       <th>TOTAL</th>
                     </tr>
@@ -140,7 +135,6 @@
                         foreach ( $sales_beauty as $row ){
                           echo '<tr>';
                           echo '<td>'. ucwords( $row->name ) .'</td>';
-                          echo '<td>'. $row->sales_or .'</td>';
                           echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
                           echo '<td>₱ '. $row->sales_total .'</td>';
                           echo '</tr>';

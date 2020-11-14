@@ -31,12 +31,19 @@ class Model_Unit_Convert extends MY_Model
         $this->_uc_number => intval( $data['uc_number'] ),
       );
 
+      /**
+       * Get max id on unit then assign to  $_relate_uc
+       */
       if ( $this->db->insert( $this->_table, $uc_data ) ) {        
         $this->db->select( 'MAX(uc_id) AS id' );
         $junc_data = array(
           $this->_relate_uc => $this->db->get( $this->_table )->row()->id,
           $this->_relate_item => $data['item_id'],
         );
+
+        /**
+         * Insert data on junction table
+         */
         if ( $this->db->insert( $this->_relate_table, $junc_data ) ) {
           $this->Model_Log->log_add( log_lang( 'unit_convert' )['add'] );
           return true;

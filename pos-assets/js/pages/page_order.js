@@ -295,6 +295,7 @@
       var data = {
         id      : $('input[name="pro_id"]').val(),
         order_id: $('input[name="pro_oid"]').val(),
+        item_id : $('input[name="pro_iid"]').val(),
         quantity: $('input[name="pro_orderdetails_quantity"]').val(),
         price   : $('input[name="pro_price_per_unit"]').val(),
         srp     : $('input[name="pro_inv_item_srp"]').val(),
@@ -508,7 +509,7 @@
       result.push( capitalize( item.name ) + ' ' + capitalize( item.desc ) );
       result.push( '₱ '+ item.price );
       result.push( item.stocks + ' ' + capitalize( item.udesc )  );
-      result.push('<a id="'+ item.id +'" o-id="'+ item.oid +'" p-name="'+ capitalize( item.name ) + ' ' + capitalize( item.desc ) +'" c-name="'+ capitalize( item.catname ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.quantt +'" p-price="'+ item.price +'"  s-price="'+ item.srp +'" t-date="'+ item.odate +'" t-expire="'+ item.exdate +'" u-equiv="'+ item.equiv +'" class="item-edit"><i class="mdi mdi-pencil-outline mdi-18px"></i> Edit</a>');
+      result.push('<a id="'+ item.id +'" i-id="'+ item.barcode +'" o-id="'+ item.oid +'" p-name="'+ capitalize( item.name ) + ' ' + capitalize( item.desc ) +'" c-name="'+ capitalize( item.catname ) +'" o-unit="'+ capitalize( item.order_unit ) +'" s-unit="'+ capitalize( item.selling_unit ) +'" t-quan="'+ item.quantt +'" p-price="'+ item.price +'"  s-price="'+ item.srp +'" t-date="'+ item.odate +'" t-expire="'+ item.exdate +'" u-equiv="'+ item.equiv +'" class="item-edit"><i class="mdi mdi-pencil-outline mdi-18px"></i> Edit</a>');
 
       count++;
 
@@ -581,6 +582,7 @@
      */
     $('input[name="pro_id"]').val(obj.attr('id'));
     $('input[name="pro_oid"]').val(obj.attr('o-id'));
+    $('input[name="pro_iid"]').val(obj.attr('i-id'));
     $('input[name="pro_item_id"]').val(obj.attr('p-name'));
     $('input[name="pro_category_name"]').val(obj.attr('c-name'));
     $('input[name="pro_order_unit"]').val(obj.attr('o-unit'));

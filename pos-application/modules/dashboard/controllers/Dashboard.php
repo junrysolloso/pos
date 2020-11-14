@@ -76,11 +76,11 @@ class Dashboard extends MY_Controller
         }
 
         if( array_key_exists( 1, $data[1] ) ) {
-          $daily['gTotal'] = array_reverse( $data[1][1] );
+          $daily['gTotal'] = array_reverse( $data[1][2] );
         }
 
         if( array_key_exists( 2, $data[1] ) ) {
-          $daily['pTotal'] = array_reverse( $data[1][2] );
+          $daily['pTotal'] = array_reverse( $data[1][1] );
         }
 
         if( array_key_exists( 3, $data[1] ) ) {

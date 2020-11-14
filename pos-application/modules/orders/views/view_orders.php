@@ -421,6 +421,7 @@
                       <div class="input-group">
                         <input type="hidden" name="pro_id">
                         <input type="hidden" name="pro_oid">
+                        <input type="hidden" name="pro_iid">
                         <input type="text" name="pro_item_id" class="form-control" id="pro_item_id" readonly />
                         <div class="input-group-append">
                           <span class="input-group-text">

@@ -334,7 +334,7 @@
                 </form>
 
                 <!--Edit Product Details-->
-                <?php if( ! empty( $view_products ) && $view_products ): ?>
+                <!-- <?php if( ! empty( $view_products ) && $view_products ): ?>
                   <div class="pt-5">
                     <div class="row">
                       <div class="col-md-12">
@@ -382,7 +382,7 @@
                       </table>
                     </div>
                   </div>
-                <?php endif;?>
+                <?php endif;?> -->
               </div>
 
               <!-- Company Info -->
@@ -738,7 +738,7 @@
   </div>
 
   <!--Update Product Information-->
-  <div id="form_edit_products" class="modal fade auth theme-one" role="dialog">
+  <!-- <div id="form_edit_products" class="modal fade auth theme-one" role="dialog">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-body">
@@ -909,5 +909,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

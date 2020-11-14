@@ -332,17 +332,40 @@ class Model_Orders extends MY_Model
         'inv_item_srp'      => $data['inv_item_srp'],
       );
 
+      $inventory = array (
+        'inv_item_srp'  => $data['inv_item_srp'],
+      );
+
+      /**
+       * Updated order details
+       */
       $this->db->where( $this->_orderdetails_id, $data['id'] );
       if( $this->db->update( $this->_relate_orddetails, $orderdetails ) ) {
 
+        /**
+         * Updated oder details
+         */
         $this->db->where( $this->_orderdetails_id, $data['id'] );
         if( $this->db->update( $this->_relate_orderdetails_expiry, $expiry ) ) {
 
+          /**
+           * Updated order inventory
+           */
           $this->db->where( $this->_orderdetails_id, $data['id'] );
           if( $this->db->update( $this->_relate_ordinventory, $order_inv ) ) {
-          
+            
+            /**
+             * Update orders
+             */
             if( $this->db->simple_query( 'UPDATE `tbl_orders` SET `order_total`= (SELECT SUM((`orderdetails_quantity` * `price_per_unit`)) FROM `tbl_orderdetails` WHERE `order_id`='.$data['order_id'].' ) WHERE `order_id`='.$data['order_id'].'' ) ) {
-              return true;
+              
+              /**
+               * Update inventory
+               */
+              $this->db->where( $this->_item_id, $data['item_id'] );
+              if( $this->db->update( $this->_relate_inventory, $inventory ) ) {
+                return true;
+              }
             }
           }
         }

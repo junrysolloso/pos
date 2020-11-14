@@ -144,6 +144,7 @@ class Orders extends MY_Controller
       $data = array( 
         'id'                    => $this->input->post( 'id' ),
         'order_id'              => $this->input->post( 'order_id' ),
+        'item_id'               => $this->input->post( 'item_id' ),
         'orderdetails_quantity' => $this->input->post( 'quantity' ),
         'price_per_unit'        => $this->input->post( 'price' ) ,
         'inv_item_srp'          => $this->input->post( 'srp' ),
