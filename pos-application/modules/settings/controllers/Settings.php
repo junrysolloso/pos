@@ -204,7 +204,63 @@ class Settings extends MY_Controller
     $this->template->write_view( 'content', 'templates/template_sidebar', $data );
     $this->template->write_view( 'content', 'view_settings', $data );
     $this->template->write_view( 'content', 'templates/template_footer' );
+    $this->template->add_js( 'pos-assets/js/pages/page_update.js' );
     $this->template->render();
+  }
+
+  /**
+   * Update temporary table
+   */
+  public function update_order() {
+    if( $this->input->post( 'id' ) ) {
+
+      $this->load->model( 'Model_Orders_Temp' );
+
+      $data = array( 
+        'id'            => $this->input->post('id'),
+        'tmp_quantity'  => $this->input->post('tmp_quantity'),
+        'tmp_price'     => $this->input->post('tmp_price'),
+        'tmp_srp'       => $this->input->post('tmp_srp'),
+        'tmp_expiry'    => $this->input->post('tmp_expiry'),
+      );
+
+      $result = $this->Model_Orders_Temp->tmp_update( $data );
+      if( is_array( $result ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( $result ) );
+      }
+    }
+  }
+  
+  /**
+   * Update temporary table
+   */
+  public function update_product() {
+    if( $this->input->post( 'id' ) ) {
+
+      $data = array( 
+        'id'                    => $this->input->post( 'id' ),
+        'order_id'              => $this->input->post( 'order_id' ),
+        'item_id'               => $this->input->post( 'item_id' ),
+        'orderdetails_quantity' => $this->input->post( 'quantity' ),
+        'price_per_unit'        => $this->input->post( 'price' ) ,
+        'inv_item_srp'          => $this->input->post( 'srp' ),
+        'expiry_date'           => $this->input->post( 'expiry' ),
+        'no_of_stocks'          => $this->input->post( 'stocks' ),
+        'ordinv_unit_price'     => $this->input->post( 'unit_p' ),
+      );
+
+      if( $this->Model_Settings->product_update( $data ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( array( 'msg' => 'success' ) ) );
+      }
+    }
   }
 
 }
