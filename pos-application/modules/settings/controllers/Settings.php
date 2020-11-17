@@ -204,7 +204,6 @@ class Settings extends MY_Controller
     $this->template->write_view( 'content', 'templates/template_sidebar', $data );
     $this->template->write_view( 'content', 'view_settings', $data );
     $this->template->write_view( 'content', 'templates/template_footer' );
-    $this->template->add_js( 'pos-assets/js/pages/page_update.js' );
     $this->template->render();
   }
 
@@ -262,6 +261,30 @@ class Settings extends MY_Controller
       }
     }
   }
+  
+  public function dispdata()
+	{
+	$result['data']=$this->Model_View_Products->displayrecords();
+	$this->load->view('update_prd_info',$result);
+	}
+  
+
+  public function updatedata()
+	{
+	$id=$this->input->get('id');
+	$result['data']=$this->Model_View_Products->displayrecordsById($id);
+	$this->load->view('update_prd_info',$result);	
+	
+		if($this->input->post('save_edit_order'))
+		{
+		$item_id=$this->input->post('item_id');
+		$item_name=$this->input->post('item_name');
+    $item_desc=$this->input->post('item_description');
+    $item_crit=$this->input->post('item_critlimit');
+		$this->Model_View_Products->updaterecords($item_id,$item_name,$item_desc,$item_crit,$id);
+		redirect("Settings/dispdata");
+		}
+	}
 
 }
 

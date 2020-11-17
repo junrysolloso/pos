@@ -372,8 +372,9 @@
                               echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
                               echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
                               echo'<td>'. $row->srp .'</td>';
-                              echo'<td><a href="#" data-target="#update_prd_info" data-toggle="modal" class="btn-btn-edit"><i class="mdi mdi-square-edit-outline mdi-18px" >Update</i></td>';
-                              // echo '<td><a href="'">Update</a>';
+                              echo'<td><a href="Settings/updatedata?id='.$row->id.'" data-target="#update_prd_info"  data-toggle="modal" class="btn-btn-edit"><i class="mdi mdi-square-edit-outline mdi-18px" >Update</i></td>';
+                              // echo '<td><a href="">Update</a>';
+                              //
                               echo'</tr>';
                               $count++;
                             } 
@@ -744,15 +745,18 @@
         <div class="modal-body">
           <div class="card auto-form-wrapper rounded">
             <div class="card-body">
-              <h4 class="card-title">EDIT ORDER DETAILS</h4>
+              <h4 class="card-title">EDIT PRODUCT INFORMATION</h4>
               <form action="#" method="post" id="form_update">
+              <?php 
+              foreach($view_products as $row)
+              { ?>
                 <div class="row">
                   <div class="col-12">
                     <div class="form-group">
-                      <label for="edit_item_id">Product Name</label>
+                      <label for="edit_item_id">Barcode</label>
                       <div class="input-group">
                         <input type="hidden" name="edit_id">
-                        <input type="text" name="edit_item_id" class="form-control" id="edit_item_id" readonly />
+                        <input type="text" name="item_id" class="form-control" id="item_id"value="<?php echo $row->barcode; ?>"  required />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-check-circle-outline"></i>
@@ -762,9 +766,9 @@
                     </div>
                 
                     <div class="form-group">
-                      <label for="edit_category_name">Category</label>
+                      <label for="edit_category_name">Product Name</label>
                       <div class="input-group">
-                        <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" readonly />
+                        <input type="text" name="product_name" class="form-control" id="product_name" required />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-check-circle-outline"></i>
@@ -776,9 +780,9 @@
                     <div class="row">
                       <div class="col-6">
                         <div class="form-group">
-                          <label for="edit_order_unit">Order Unit</label>
+                          <label for="edit_order_unit">Product Critlimit</label>
                           <div class="input-group">
-                            <input type="text" name="edit_order_unit" class="form-control" id="edit_order_unit" readonly />
+                            <input type="text" name="critlimit" class="form-control" id="critlimit" required />
                             <div class="input-group-append">
                               <span class="input-group-text">
                                 <i class="mdi mdi-check-circle-outline"></i>
@@ -802,7 +806,7 @@
                       </div>
                     </div>
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="edit_orderdetails_quantity">Quantity</label>
                       <div class="input-group">
                         <input type="number" name="edit_orderdetails_quantity" min="1" class="form-control" id="edit_orderdetails_quantity" required />
@@ -812,14 +816,14 @@
                           </span>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-6">
                         <div class="form-group">
                           <label for="edit_selling_unit">Selling Unit</label>
                           <div class="input-group">
-                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" readonly />
+                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" required />
                             <div class="input-group-append">
                               <span class="input-group-text">
                                 <i class="mdi mdi-check-circle-outline"></i>
@@ -827,7 +831,8 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
+                    <div class="row">
                       <div class="col-6">
                         <div class="form-group">
                           <label for="edit_inv_item_srp">Suggested Retail Price (SRP)</label>
@@ -841,8 +846,9 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    
 
+                   <div class="col-6">
                     <div class="form-group">
                       <label for="edit_expiration_date">Expiration Date</label>
                       <div class="input-group">
@@ -855,12 +861,15 @@
                       </div>
                     </div>
                   </div>
+                  </div>
+                </div>
                   <div class="col-12 mt-2">
                     <input type="button" name="close_edit_order" value="Cancel" class="btn btn-danger submit-btn" data-dismiss="modal" />
                       &nbsp;&nbsp;
                     <input type="submit" name="save_edit_order" value="Update Order" class="btn btn-success submit-btn" />
                   </div>
                 </div>
+              <?php } ?>
               </form>
             </div>
           </div>

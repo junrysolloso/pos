@@ -182,7 +182,7 @@
     $('#form_update').submit(function(event){
       event.preventDefault();
 
-      var url  = baseUrl + 'orders/update-order'
+      var url  = baseUrl + 'settings/update-order'
       var data = {
 
         id          : $('input[name="edit_id"]').val(),
