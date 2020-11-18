@@ -62,7 +62,9 @@ class Settings extends MY_Controller
           );
 
           $this->Model_Unit_Convert->uc_add( $data );
-          $this->Model_Product_Info->product_add( $data );
+          
+            $this->Model_Product_Info->product_add( $data );
+         
 
           break;
         case 'Save Category Details':

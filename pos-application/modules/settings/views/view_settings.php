@@ -214,6 +214,24 @@
                           </div>
                         </div>
                       </div>
+                          <!-- <div class="form-group">
+                            <label for="item_name">Product Name</label>
+                            <div class="input-group">
+                              <select name="item_name" id="item_name" class="form-control select2-md" >
+                                <option value="" data-select2-md-id="0">Select</option>
+                                <?php
+                                  foreach ( $view_products as $row ) {
+                                    echo '<option value="'. $row->item_id .'" e-unit="'. $row->equivalent .'" s-unit="'. ucfirst( $row->selling_unit ) .'" o-unit="'. ucfirst( $row->order_unit ) .'" c-name="'. ucwords( $row->category_name ) .'" data-select2-md-id="'. $row->id .'">'. ucwords( $row->item_name ) .' '. ucwords( $row->desc ) .'</option>';
+                                  }
+                                ?>
+                              </select>
+                              <div class="input-group-append">
+                                <span class="input-group-text">
+                                  <i class="mdi mdi-check-circle-outline"></i>
+                                </span>
+                              </div>
+                            </div>
+                          </div> -->
 
                       <div class="form-group">
                         <label for="item_description">Product Description</label>
@@ -323,67 +341,89 @@
                         <div class="col-5">
                           <input type="submit" name="submit[]" value="Save Product Details" class="btn btn-success submit-btn" />
                         </div>
-                        <!-- <div class="col-5">
+                        <div class="col-5">
                           <div class="form-group">
-                            <input type="button" name="view_product" data-target="#view_product" value="View Products" class="btn btn-danger submit-btn" data-toggle="modal" />
+                            <input type="button" name="view_product" data-target="#view_prd_info" value="View Products" class="btn btn-danger submit-btn" data-toggle="modal" />
                           </div>
-                        </div> -->
+                        </div>
                       </div>
                     </div>
                   </div>
                 </form>
 
                 <!--Edit Product Details-->
-                  <?php if( ! empty( $view_products ) && $view_products ): ?>
-                   <div class="pt-5">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <div class="input-group">
-                            <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="view-products" placeholder="Search anything from the table..." />
-                            <div class="input-group-append">
-                              <span class="input-group-text">
-                                <i class="mdi mdi-magnify-plus"></i>
-                              </span>
+                  
+                <div id="view_prd_info" class="modal fade auth theme-one" role="dialog">
+                
+                <div class="modal-dialog modal-md">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <div class="card auto-form-wrapper rounded">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-11">
+                              <h4 class="card-title">EDIT PRODUCT INFORMATION</h4>
+                            </div>
+                            <div class="col-1">
+                              <input type="button" name="close_edit_order" value="X" class="btn btn-danger submit-btn" data-dismiss="modal" />
                             </div>
                           </div>
+                          <?php if( ! empty( $view_products ) && $view_products ): ?>
+                          <div class="pt-5">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="view-products" placeholder="Search anything from the table..." />
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">
+                                        <i class="mdi mdi-magnify-plus"></i>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive" lnk="add-item">
+                              <table class="table" id="view-prod-table">
+                                <thead>
+                                  <tr>
+                                    <th>NO</th>
+                                    <th>BARCODE</th>
+                                    <th>PRODUCT NAME</th>
+                                    <th>REMAINING</th>
+                                    <th>SRP</th>
+                                    <th>ACTION</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <?php
+                                    $count=1;
+                                    foreach ( $view_products as $row ){
+                                      echo '<tr>';
+                                      echo'<td>'. $count .'</td>';
+                                      echo'<td>'. $row->barcode .'</td>';
+                                      echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                                      echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
+                                      echo'<td>'. $row->srp .'</td>';
+                                      echo'<td><a href="#" data-target="#update_prd_info"  data-toggle="modal" class="btn-btn-edit"><i class="mdi mdi-square-edit-outline mdi-18px" >Update</i></td>';
+                                      // echo '<td><a href="">Update</a>';
+                                      //
+                                      echo'</tr>';
+                                      $count++;
+                                    } 
+                                    ?>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <?php endif;?>  
                         </div>
                       </div>
                     </div>
-                    <div class="table-responsive" lnk="add-item">
-                      <table class="table" id="view-prod-table">
-                        <thead>
-                          <tr>
-                            <th>NO</th>
-                            <th>BARCODE</th>
-                            <th>PRODUCT NAME</th>
-                            <th>REMAINING</th>
-                            <th>SRP</th>
-                            <th>ACTION</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php
-                            $count=1;
-                            foreach ( $view_products as $row ){
-                              echo '<tr>';
-                              echo'<td>'. $count .'</td>';
-                              echo'<td>'. $row->barcode .'</td>';
-                              echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
-                              echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
-                              echo'<td>'. $row->srp .'</td>';
-                              echo'<td><a href="Settings/updatedata?id='.$row->id.'" data-target="#update_prd_info"  data-toggle="modal" class="btn-btn-edit"><i class="mdi mdi-square-edit-outline mdi-18px" >Update</i></td>';
-                              // echo '<td><a href="">Update</a>';
-                              //
-                              echo'</tr>';
-                              $count++;
-                            } 
-                            ?>
-                        </tbody>
-                      </table>
-                    </div>
                   </div>
-                <?php endif;?>  
+                </div>
+          
               </div>
 
               <!-- Company Info -->

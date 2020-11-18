@@ -31,23 +31,27 @@ class Model_Product_Info extends MY_Model
    */
   public function product_add( $data = [] ) {
     if( is_array( $data ) ) {
+     
       $data = clean_array( $data );
       $item_data = array(
         $this->_item_id          => $data['item_id'],
         $this->_subcat_id        => intval( $data['subcat_id'] ),
-        $this->_item_name        => strtolower( $data['item_name'] ),
-        $this->_item_description => strtolower( $data['item_description'] ),
+        $this->_item_name        => strtolower($data['item_name']) ,/*strtolower()*/
+        $this->_item_description => strtolower($data['item_description']) ,/*strtolower()*/
         $this->_item_critlimit   => intval( $data['item_critlimit'] ),
         $this->_unit_id          => intval( $data['unit_id1'] ),
       );
-      if ( $this->db->insert( $this->_table, $item_data ) ) {
-        $this->Model_Log->log_add( log_lang( 'item' )['add'] );
-        $this->session->set_tempdata( array(
-          'msg' 	=> 'Item successfully added.',
-          'class' => 'alert-success',
-        ), NULL, 5 );
-        return true;
-      }
+    
+        if ( $this->db->insert ($this->_table, $item_data ) ) {
+          $this->Model_Log->log_add( log_lang( 'item' )['add'] );
+          $this->session->set_tempdata( array(
+            'msg' 	=> 'Item successfully added.',
+            'class' => 'alert-success',
+          ), NULL, 5 );
+          return true;
+        }
+      
+      
     }
   }
 
@@ -56,7 +60,7 @@ class Model_Product_Info extends MY_Model
    * @return array
    */
   public function items_id_get() {
-    $this->db->select( '`id`, `tbl_items`.`item_id`, `item_name`, `item_description` AS `desc`, `category_name`, `uc_number` AS `equivalent`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
+    $this->db->select( '`id`, `tbl_items`.`item_id` AS `item_id` ,`item_name`, `item_description` AS `desc`, `category_name`, `uc_number` AS `equivalent`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id1` ) AS `order_unit`, (SELECT `unit_desc` FROM `tbl_unit` WHERE `unit_id` = `unit_id2`) AS `selling_unit`' );
     $this->db->join( $this->_relate_subcategory, '`tbl_subcategory`.`subcat_id`=`tbl_items`.`subcat_id`' );
     $this->db->join( $this->_relate_category, '`tbl_category`.`category_id`=`tbl_subcategory`.`category_id`' );
     $this->db->join( $this->_relate_ucjunc, '`tbl_items`.`item_id`=`tbl_ucjunc`.`item_id`' );
