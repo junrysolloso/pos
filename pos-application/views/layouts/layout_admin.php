@@ -35,7 +35,6 @@
     <?php echo $content; ?>
 
     <!-- Plugins JS -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_loader.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_nav.js"></script>
 
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_form_validation.js"></script>

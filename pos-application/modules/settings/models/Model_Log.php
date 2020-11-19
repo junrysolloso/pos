@@ -51,7 +51,7 @@ class Model_Log extends MY_Model
     }
 
     $this->join( $this->_relate_table, 'tbl_users.user_id=tbl_log.user_id' );
-    $this->order_by( 'log_id', 'DESC' );
+    $this->order_by( 'log_id', 'DESC' )->limit( 100 );
     $query = $this->db->get( $this->_table );
 
     if ( $query ) {

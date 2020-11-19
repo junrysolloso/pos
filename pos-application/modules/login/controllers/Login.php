@@ -128,7 +128,32 @@ class Login extends MY_Controller
 				unset( $_SESSION[ $key ] ); 
 			}
 			if ( session_destroy() ) {
-				redirect( base_url( 'login' ) );
+
+				// Load the DB utility
+				$this->load->dbutil();
+    
+				// Name of the backup
+				$name_non = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.sql';
+				$name_com = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.zip';
+		
+				// Configs
+				$config = array(
+					'format'      => 'zip',
+					'filename'    => $name_non,
+					'add_drop'    => TRUE,
+					'add_insert'  => TRUE,
+					'newline'     => "\n"
+				);
+		
+				// Backup your entire database
+				$backup = $this->dbutil->backup( $config );
+		
+				// Load the file helper and write the file 
+				if ( $this->load->helper( 'file' ) ) {
+					if ( write_file( FCPATH . 'pos-backup/'. $name_com, $backup ) ) {
+						redirect( base_url( 'login' ) );
+					}
+				}
 			} 
 		}
 	}
