@@ -6,11 +6,9 @@ class Settings extends MY_Controller
   function __construct() {
     parent:: __construct(); 
 
-    // Check if the is already login
-    // otherwise redirect the user to login page.
-    // if ( ! $this->session->userdata( 'user_id' ) ) {
-    //   redirect( base_url( 'login' ) );
-    // }
+    if ( $this->session->userdata( 'user_rule' ) != 'administrator' ) {
+      redirect( base_url( 'login' ) );
+    }
 
     // Load models
     $this->load->model( 'Model_Unit' );
@@ -21,6 +19,10 @@ class Settings extends MY_Controller
     $this->load->model( 'Model_Subcategory' );
     $this->load->model( 'Model_Product_Info' );
     $this->load->model( 'Model_Unit_Convert' );
+    $this->load->model( 'Model_View_Products' );
+    $this->load->model( 'orders/Model_Orders_Temp' );
+      
+    
   }
 
 	/**
@@ -60,7 +62,9 @@ class Settings extends MY_Controller
           );
 
           $this->Model_Unit_Convert->uc_add( $data );
-          $this->Model_Product_Info->product_add( $data );
+          
+            $this->Model_Product_Info->product_add( $data );
+         
 
           break;
         case 'Save Category Details':
@@ -106,6 +110,7 @@ class Settings extends MY_Controller
         case 'Save Company Details':
           
           $data = array(
+            'com_id'          => $this->input->post( 'com_id' ),
             'com_name'        => $this->input->post( 'com_name' ),
             'com_proprietor'  => $this->input->post( 'com_proprietor' ),
             'com_tin'         => $this->input->post( 'com_tin' ),
@@ -122,7 +127,7 @@ class Settings extends MY_Controller
           $createDate = date_create($ds_date);
           $data = array (
             'ds_id'       => $ds_id,
-            'item_id'     => $this->input->post( 'item_id' ),
+            'item_id'     => $this->input->post( 'dmg_item_id' ),
             'ds_quantity' => $this->input->post( 'ds_quantity' ),
             'ds_remarks'  => $this->input->post( 'ds_remarks' ),
             'ds_date'     => date_format($createDate,"Y-m-d"),
@@ -141,7 +146,7 @@ class Settings extends MY_Controller
         case 'Save User Details':
           
           $data = array(
-            'user_id'           => $this->input->post( 'user_id' ),
+            'userinfo_id'       => $this->input->post( 'userinfo_id' ),
             'username'          => $this->input->post( 'username' ),
             'user_pass'         => $this->input->post( 'user_pass' ),
             'user_level'        => $this->input->post( 'user_level' ),
@@ -160,18 +165,30 @@ class Settings extends MY_Controller
           ), NULL, 5 );
 
           break;
+
+          if( $this->input->post( 'update' ) && ! empty( $this->input->post( 'update' ) ) ) {
+            if ( $this->Model_View_Products->item_update( $data ) ) {
+              unset( $_POST );
+              $this->session->set_tempdata( array(
+                'msg' 	=> 'Product successfully updated.',
+                'class' => 'alert-success',
+              ), NULL, 5 );
+            }
+          }
       }
     }
 
-    $data['title'] = 'Settings';
-    $data['class'] = 'settings';
-    $data['logs'] = $this->Model_Log->log_get( 0, NULL );
-    $data['sales_total'] = $this->Model_Sales->sales_total_get();
-    $data['category_all'] = $this->Model_Category->category_get();
-    $data['subcategory_all'] = $this->Model_Subcategory->subcat_get();
-    $data['damage_all'] = $this->Model_Damage->damage_get();
-    $data['unit_all'] = $this->Model_Unit->unit_get();
-    $data['user_all'] = $this->Model_User->user_get();
+    $data['title']            = 'Settings';
+    $data['class']            = 'settings';
+    $data['logs']             = $this->Model_Log->log_get( 0, NULL );
+    $data['sales_total']      = $this->Model_Sales->sales_total_get();
+    $data['category_all']     = $this->Model_Category->category_get();
+    $data['subcategory_all']  = $this->Model_Subcategory->subcat_get();
+    $data['damage_all']       = $this->Model_Damage->damage_get();
+    $data['unit_all']         = $this->Model_Unit->unit_get();
+    $data['user_all']         = $this->Model_User->user_get();
+    $data['view_products']    = $this->Model_View_Products->view_products();
+    $data['com_info']         = $this->Model_Company->com_info_get();
 
     /**
      * Load template parts
@@ -191,6 +208,85 @@ class Settings extends MY_Controller
     $this->template->write_view( 'content', 'templates/template_footer' );
     $this->template->render();
   }
+
+  /**
+   * Update temporary table
+   */
+  public function update_order() {
+    if( $this->input->post( 'id' ) ) {
+
+      $this->load->model( 'Model_Orders_Temp' );
+
+      $data = array( 
+        'id'            => $this->input->post('id'),
+        'tmp_quantity'  => $this->input->post('tmp_quantity'),
+        'tmp_price'     => $this->input->post('tmp_price'),
+        'tmp_srp'       => $this->input->post('tmp_srp'),
+        'tmp_expiry'    => $this->input->post('tmp_expiry'),
+      );
+
+      $result = $this->Model_Orders_Temp->tmp_update( $data );
+      if( is_array( $result ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( $result ) );
+      }
+    }
+  }
+  
+  /**
+   * Update temporary table
+   */
+  public function update_product() {
+    if( $this->input->post( 'id' ) ) {
+
+      $data = array( 
+        'id'                    => $this->input->post( 'id' ),
+        'order_id'              => $this->input->post( 'order_id' ),
+        'item_id'               => $this->input->post( 'item_id' ),
+        'orderdetails_quantity' => $this->input->post( 'quantity' ),
+        'price_per_unit'        => $this->input->post( 'price' ) ,
+        'inv_item_srp'          => $this->input->post( 'srp' ),
+        'expiry_date'           => $this->input->post( 'expiry' ),
+        'no_of_stocks'          => $this->input->post( 'stocks' ),
+        'ordinv_unit_price'     => $this->input->post( 'unit_p' ),
+      );
+
+      if( $this->Model_Settings->product_update( $data ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( array( 'msg' => 'success' ) ) );
+      }
+    }
+  }
+  
+  public function dispdata()
+	{
+	$result['data']=$this->Model_View_Products->displayrecords();
+	$this->load->view('update_prd_info',$result);
+	}
+  
+
+  public function updatedata()
+	{
+	$id=$this->input->get('id');
+	$result['data']=$this->Model_View_Products->displayrecordsById($id);
+	$this->load->view('update_prd_info',$result);	
+	
+		if($this->input->post('save_edit_order'))
+		{
+		$item_id=$this->input->post('item_id');
+		$item_name=$this->input->post('item_name');
+    $item_desc=$this->input->post('item_description');
+    $item_crit=$this->input->post('item_critlimit');
+		$this->Model_View_Products->updaterecords($item_id,$item_name,$item_desc,$item_crit,$id);
+		redirect("Settings/dispdata");
+		}
+	}
 
 }
 

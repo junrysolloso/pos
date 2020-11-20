@@ -1,5 +1,5 @@
 (function ($) {
-
+  'use strict';
   // Initialize tables
   // Settings Table
   $(function () {
@@ -38,7 +38,7 @@
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 50,
+      "iDisplayLength": 25,
       "bLengthChange": false,
     });
   });
@@ -52,7 +52,7 @@
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 10,
+      "iDisplayLength": 5,
       "bLengthChange": false,
     });
   });
@@ -66,7 +66,7 @@
       ],
       bFilter: false,
       bInfo: false,
-      "iDisplayLength": 15,
+      "iDisplayLength": 5,
       "bLengthChange": false,
     });
   });
@@ -80,7 +80,7 @@
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 5,
+      "iDisplayLength": 15,
       "bLengthChange": false,
     });
   });
@@ -94,36 +94,36 @@
       bFilter: true,
       bInfo: false,
       paging: false,
-      "iDisplayLength": 10,
+      "iDisplayLength": 20,
       "bLengthChange": false,
     });
   });
 
   // Inventory Table
   $(function () {
-    $('#inv-grocs-table, #inv-pharm-table, #inv-beaut-table, #inv-damag-table').DataTable({
+    $('#inv-grocs-table, #inv-pharm-table, #inv-beaut-table, #inv-damag-table, #view-prod-table').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
       ],
       bFilter: true,
       bInfo: false,
-      "iDisplayLength": 50,
+      "iDisplayLength": 30,
       "bLengthChange": false,
     });
   });
 
   // Category & Sub Table
   $(function () {
-    $('#cat-table').DataTable({
+    $('#cat-table, #unit-table').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
-      ],
+      ], 
       paging: false,
       bFilter: false,
       bInfo: false,
-      "iDisplayLength": 50,
+      "iDisplayLength": 10,
       "bLengthChange": false,
     });
   });
@@ -138,11 +138,11 @@
         paging: true,
         bFilter: false,
         bInfo: false,
+        paging: false,
         "iDisplayLength": 5,
         "bLengthChange": false,
       });
     });
-
 
   // Use DataTable in searching tables
   $('input[name="data_search"]').on('keyup', function () {
@@ -162,7 +162,7 @@
         $('#inv-beaut-table').DataTable().search($(this).val()).draw();
         break;
 
-        // Orders
+      // Orders
       case 'ord-history':
         $('#ord-histo-table').DataTable().search($(this).val()).draw();
         break;
@@ -170,17 +170,21 @@
         $('#ord-items-table').DataTable().search($(this).val()).draw();
         break;
 
-        // Settings
+      // Settings
       case 'set-users':
         $('#set-users-table').DataTable().search($(this).val()).draw();
         break;
       case 'set-logss':
         $('#set-logss-table').DataTable().search($(this).val()).draw();
         break;
+
+      // View Products
+      case 'view-products':
+        $('#view-prod-table').DataTable().search($(this).val()).draw();
+        break;
       default:
         console.log('Error seaching data!');
         break;
     }
   });
-
 })(jQuery);

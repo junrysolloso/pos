@@ -24,8 +24,6 @@
                     <p class="mb-1 mt-3 font-weight-semibold"><?php if( $this->session->userdata( 'userinfo_name' )  ) echo $this->session->userdata( 'userinfo_name' ); ?></p>
                     <p class="font-weight-light text-muted mb-0"><?php if( $this->session->userdata( 'user_rule' )  ) echo strtolower( $this->session->userdata( 'user_rule' ) ); ?></p>
                   </div>
-                  <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-                  <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary"></i> Activity</a>
                   <a href="<?php echo base_url( 'login/signout' ); ?>" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary"></i>Sign Out</a>
                 </div>
               </li>

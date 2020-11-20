@@ -32,13 +32,12 @@
 
             <div class="tab-content tab-content-solid">
               <!-- Grocery -->
-              <div class="tab-pane  mb-5 fade show active" id="grocery" role="tabpanel">
-                <!-- Filter -->
+              <div class="tab-pane fade show active" id="grocery" role="tabpanel">
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="data_search" class="form-control" id="inv-grocery" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="inv-grocery" placeholder="Search anything from the table..." />                        
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -53,56 +52,41 @@
                     </form>
                   </div>
                 </div>
-
-                <!-- Table -->
-                <div class="table-responsive" lnk="Grocery">
+                <div class="table-responsive" lnk="Pharmacy">
                   <table class="table" id="inv-grocs-table">
                     <thead>
                       <tr>
+                        <th>NO</th>
                         <th>ITEM NUMBER</th>
                         <th>ITEM NAME</th>
-                        <th>SUB-CATEGORY</th>
                         <th>REMAINING</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
+                      <?php
+                        $count=1;
+                        foreach ( $inv_grocery as $row ) {
+                          echo '<tr>';
+                          echo'<td>'. $count .'</td>';
+                          echo'<td>'. $row->barcode .'</td>';
+                          echo'<td>'.ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                          echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
+                          echo'</tr>';
+                          $count++;
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
               </div>
 
               <!-- Pharmacy -->
-              <div class="tab-pane mb-5 fade" id="pharmacy" role="tabpanel">
-                <!-- Filter -->
+              <div class="tab-pane fade" id="pharmacy" role="tabpanel">
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="data_search" class="form-control" id="inv-pharmacy" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="inv-pharmacy" placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -117,56 +101,41 @@
                     </form>
                   </div>
                 </div>
-
-                <!-- Table -->
                 <div class="table-responsive" lnk="Pharmacy">
                   <table class="table" id="inv-pharm-table">
                     <thead>
                       <tr>
+                        <th>NO</th>
                         <th>ITEM NUMBER</th>
                         <th>ITEM NAME</th>
-                        <th>SUB-CATEGORY</th>
                         <th>REMAINING</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
+                      <?php
+                        $count=1;
+                        foreach ( $inv_pharmacy as $row){
+                          echo '<tr>';
+                          echo'<td>'. $count .'</td>';
+                          echo'<td>'. $row->barcode .'</td>';
+                          echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                          echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
+                          echo'</tr>';
+                          $count++;
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
               </div>
 
               <!--Beauty Products-->
-              <div class="tab-pane fade mb-5" id="beauty" role="tabpanel">
-                <!-- Filter -->
+              <div class="tab-pane fade" id="beauty" role="tabpanel">
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="data_search" class="form-control" id="inv-beauty" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="inv-beauty" placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -181,57 +150,41 @@
                     </form>
                   </div>
                 </div>
-
-                <!-- Table -->
-                <div class="table-responsive" lnk="Beauty Products">
+                <div class="table-responsive" lnk="Pharmacy">
                   <table class="table" id="inv-beaut-table">
                     <thead>
                       <tr>
+                        <th>NO</th>
                         <th>ITEM NUMBER</th>
                         <th>ITEM NAME</th>
-                        <th>SUB-CATEGORY</th>
                         <th>REMAINING</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>134 (1.51%)</td>
-                        <td>33.58%</td>
-                        <td>15.47%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>144 (5.67%) </td>
-                        <td>45.99%</td>
-                        <td>34.70%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>114 (6.21%)</td>
-                        <td>23.80%</td>
-                        <td>54.45%</td>
-                      </tr>
-                      <tr>
-                        <td>Allen Sham</td>
-                        <td>324 (9.10%)</td>
-                        <td>12.89%</td>
-                        <td>18.89%</td>
-                      </tr>
+                      <?php
+                        $count=1;
+                        foreach ( $inv_beauty as $row){
+                          echo '<tr>';
+                          echo'<td>'. $count .'</td>';
+                          echo'<td>'. $row->barcode .'</td>';
+                          echo'<td>'. ucwords( $row->name.' '. $row->item_des ) .'</td>';
+                          echo'<td>'. ucwords( $row->remaining .' '. $row->unit_desc ) .'</td>';
+                          echo'</tr>';
+                          $count++;
+                        }
+                      ?>
                     </tbody>
                   </table>
                 </div>
               </div>
 
               <!--Damage-->
-              
-              <div class="tab-pane  mb-5 fade" id="damage" role="tabpanel">
-                <!-- Filter -->
+              <div class="tab-pane fade" id="damage" role="tabpanel">
                 <div class="row">
                   <div class="col-md-9">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" name="data_search" class="form-control" id="inv-damage" placeholder="Search anything from the table..." />
+                        <input type="text" name="data_search" onmouseover="this.focus();" class="form-control" id="inv-damage" placeholder="Search anything from the table..." />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-magnify-plus"></i>
@@ -246,34 +199,36 @@
                     </form>
                   </div>
                 </div>
-
-                <!-- Table -->
-                <?php if( $damage_all && $damage_all ): ?>
-                  <div class="table-responsive" lnk="Damage Items">
-                    <table class="table" id="inv-damag-table">
-                      <thead>
-                        <tr>
-                          <th>ITEM NUMBER</th>
-                          <th>QUANTITY</th>
-                          <th>REMARKS</th>
-                          <th>DATE REPORTED</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                           foreach ( $damage_all as $row ) {
+                <div class="table-responsive" lnk="Damage Items">
+                  <table class="table" id="inv-damag-table">
+                    <thead>
+                      <tr>
+                        <th>NO</th>
+                        <th>BARCODE</th>
+                        <th>ITEM NAME</th>
+                        <th>QUANTITY</th>
+                        <th>REMARKS</th>
+                        <th>DATE REPORTED</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $count=1;
+                        foreach ( $damage_all as $row ) {
                           echo '<tr>';
+                          echo '<td>'. $count .'</td>';
                           echo '<td>'. $row->item_id .'</td>';
+                          echo '<td>'. $row->name.'</td>';
                           echo '<td>'. $row->ds_quantity .'</td>';
                           echo '<td>'. $row->ds_remarks .'</td>';
                           echo '<td>'. $row->ds_date .'</td>';
                           echo '</tr>';
-                          }
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
-                <?php endif; ?>
+                          $count++;
+                        }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

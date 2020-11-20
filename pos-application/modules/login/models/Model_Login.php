@@ -10,6 +10,8 @@ class Model_Login extends MY_Model
 
   function __construct() {
     parent:: __construct();
+
+    $this->load->model( 'Model_Authattempts' );
   }
 
   /**
@@ -26,18 +28,24 @@ class Model_Login extends MY_Model
       $query = $this->db->get( $this->_table );
       if( $query ) {
         if ( $query->num_rows() > 0 ) {
+
           // Set user data to a session
           $data = array(
             'user_id'       => $query->row()->user_id,
-            'userinfo_name' => $query->row()->userinfo_name,
-            'user_rule'     => $query->row()->user_level,
+            'userinfo_name' => ucwords( $query->row()->userinfo_name ),
+            'user_rule'     => strtolower( $query->row()->user_level ),
           );
 
-          $this->session->set_userdata( $data );
-          if ( $this->session->userdata( 'user_id' ) ) {
-            // Record log when logging in
-            $this->Model_Log->log_add( log_lang( 'login' )['in'] );
-            return true;
+          if ( strtolower( $query->row()->user_level ) == 'administrator' ) {
+            if ( $this->Model_Authattempts->_attempt_clear() ) {
+              $this->session->set_userdata( $data );
+              if ( $this->session->userdata( 'user_id' ) ) {
+                
+                // Record log when logging in
+                $this->Model_Log->log_add( log_lang( 'login' )['in'] );
+                return true;
+              }
+            }
           }
         }
       }

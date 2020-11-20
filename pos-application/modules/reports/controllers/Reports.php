@@ -5,6 +5,10 @@ class Reports extends MY_Controller
 
   function __construct() {
     parent:: __construct(); 
+
+    if ( $this->session->userdata( 'user_rule' ) != 'administrator' ) {
+      redirect( base_url( 'login' ) );
+    }
   }
 
 	/**
@@ -27,8 +31,9 @@ class Reports extends MY_Controller
     $this->template->write_view( 'content', 'templates/template_footer' );
 
     // Add CSS and JS for this page
-    $this->template->add_js( 'pos-assets/vendors/chart.js/Chart.min.js' );
-    $this->template->add_js( 'pos-assets/js/dashboard.js' );   
+    $this->template->add_css( 'pos-assets/vendors/daterangepicker/daterangepicker.css' );   
+    $this->template->add_css( 'pos-assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css' );   
+    $this->template->add_js( 'pos-assets/js/helper_datepicker.js' );   
 		$this->template->render();
   }
 

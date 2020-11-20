@@ -17,9 +17,30 @@ class Login extends MY_Controller
 	 * Index page for the login page
 	 */
 	public function index() {
-		if ( $this->session->userdata( 'user_id' ) ) {
+
+		/**
+		 * Check if the user reach the maximum allowed login attempts.
+		 * Otherwise user will be redirected to block page.
+		 */
+		intval( $attempt_count = $this->Model_Authattempts->_attempt_check() ); 
+		if( $attempt_count > 3 ) {
+			redirect( base_url( 'login/blocked' ) ); 
+		}
+
+		/**
+		 * Add attempts if someone trying to login without administrator level
+		 */
+		if ( $this->session->userdata( 'user_rule' ) != 'administrator' ) {
+			$this->Model_Authattempts->_attempt_insert( $this->session->userdata( 'user_id' ) );
+		}
+
+		/**
+		 * Check if there is existing session.
+		 */
+		if ( $this->session->userdata( 'user_rule' ) && $this->session->userdata( 'user_rule' ) == 'administrator' ) {
       redirect( base_url( 'dashboard' ) );
 		}
+
 		/**
 		 * This are the fields used in login form.
 		 * Set in an array.
@@ -52,23 +73,17 @@ class Login extends MY_Controller
 					 * Check if user data exist in the databse
 					 */
 					if ( $this->Model_Login->user_check( $data ) ) {
-						if ( $this->Model_Authattempts->_attempt_clear() ) {
-							redirect( base_url( 'dashboard' ) );
-						}
+						redirect( base_url( 'dashboard' ) );
 					} else {
 						/**
-						 * Check if the user reach the maximum allowed login attempts.
-						 * Otherwise user will be block.
+						 * Add login attempts.
 						 */
-						intval( $attempt_count = $this->Model_Authattempts->_attempt_check() ); 
-						if( $attempt_count < 4 ) {
-							$this->Model_Authattempts->_attempt_insert( $this->input->post( 'user_name' ) ); 
+						$attempt_count = intval( $this->Model_Authattempts->_attempt_check() ); 
+						if ( $this->Model_Authattempts->_attempt_insert( $this->input->post( 'user_name' ) ) ) {
 							$this->session->set_tempdata( array(
 								'alert' => '<strong>Sorry!</strong> login failed. You have <strong>' . ( 4 - $attempt_count ) . '</strong> attempt(s) remaining.',
 								'class' => 'danger',
 							), NULL, 5 );
-						} else {
-							redirect( base_url( 'login/blocked' ) ); 
 						}
 					}
 				}
@@ -113,7 +128,32 @@ class Login extends MY_Controller
 				unset( $_SESSION[ $key ] ); 
 			}
 			if ( session_destroy() ) {
-				redirect( base_url( 'login' ) );
+
+				// Load the DB utility
+				$this->load->dbutil();
+    
+				// Name of the backup
+				$name_non = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.sql';
+				$name_com = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.zip';
+		
+				// Configs
+				$config = array(
+					'format'      => 'zip',
+					'filename'    => $name_non,
+					'add_drop'    => TRUE,
+					'add_insert'  => TRUE,
+					'newline'     => "\n"
+				);
+		
+				// Backup your entire database
+				$backup = $this->dbutil->backup( $config );
+		
+				// Load the file helper and write the file 
+				if ( $this->load->helper( 'file' ) ) {
+					if ( write_file( FCPATH . 'pos-backup/'. $name_com, $backup ) ) {
+						redirect( base_url( 'login' ) );
+					}
+				}
 			} 
 		}
 	}

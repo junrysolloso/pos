@@ -1,42 +1,32 @@
         <div class="col-md-8 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">SALES PER CASHIER</h4>
+              <h4 class="card-title">TODAY'S SALES</h4>
               <div class="table-responsive">
                 <table class="table" id="das-cahie-table">
                   <thead>
                     <tr>
-                      <th>CASHIER</th>
-                      <th>ITEM NUMBER</th>
+                      <th>NO.</th>
+                      <th>ITEM NAME</th>
                       <th>AMOUNT</th>
                       <th>QUANTITY</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Allen Sham</td>
-                      <td>134 (1.51%)</td>
-                      <td>33.58%</td>
-                      <td>15.47%</td>
-                    </tr>
-                    <tr>
-                      <td>Allen Sham</td>
-                      <td>144 (5.67%) </td>
-                      <td>45.99%</td>
-                      <td>34.70%</td>
-                    </tr>
-                    <tr>
-                      <td>Allen Sham</td>
-                      <td>114 (6.21%)</td>
-                      <td>23.80%</td>
-                      <td>54.45%</td>
-                    </tr>
-                    <tr>
-                      <td>Allen Sham</td>
-                      <td>324 (9.10%)</td>
-                      <td>12.89%</td>
-                      <td>18.89%</td>
-                    </tr>
+                    <?php
+                      if( $today_sales ) {
+                        $count = 1;
+                        foreach ( $today_sales as $row ){
+                          echo '<tr>';
+                          echo '<td>'. $count .'</td>';
+                          echo '<td>'. ucwords( $row->item_name .' '. $row->desc ) .'</td>';
+                          echo '<td>₱ '. number_format( $row->sales_total, 2 ) .'</td>';
+                          echo '<td>'. $row->no_of_items .' '. ucfirst( $row->unit_desc ) .'</td>';
+                          echo '</tr>';
+                          $count++;
+                        }
+                      }
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -47,52 +37,21 @@
         <div class="col-md-4 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">ALMOST OUT OF STOCKS</h4>
+              <h4 class="card-title">PRODUCT STOCK STATUS</h4>
               <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card card-no-shadow border px-2 py-4">
-                    <small class="text-muted mb-0 font-weight-medium">Product 1</small>
-                    <h3 class="font-weight-semibold">10%</h3>
-                    <div class="progress progress-sm mb-2">
-                      <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                <?php foreach ( $almost_out as $row ): ?>
+                  <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card card-no-shadow border px-2 py-4">
+                      <small class="text-muted mb-0 font-weight-medium"><?php echo ucwords( $row->item_name ); ?></small>
+                      <h3 class="font-weight-semibold"><?php echo $row->inv_rem_stocks; ?></h3>
+                      <div class="progress progress-sm mb-2">
+                        <div class="progress-bar bg-<?php intval( intval( $row->inv_rem_stocks ) / intval( $row->item_critlimit ) * 100 ) > 50 ? print('success') : print('danger'); ?>" role="progressbar" style="width: <?php echo ( intval( $row->inv_rem_stocks ) / intval( $row->item_critlimit ) ) * 100; ?>%" aria-valuenow="25"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <small class="text-dark font-weight-medium">Rremainings</small>
                     </div>
-                    <small class="text-dark font-weight-medium">12 Rremainings</small>
                   </div>
-                </div>
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card card-no-shadow border px-2 py-4">
-                    <small class="text-muted mb-0 font-weight-medium">Product 2</small>
-                    <h3 class="font-weight-semibold">9%</h3>
-                    <div class="progress progress-sm mb-2">
-                      <div class="progress-bar bg-danger" role="progressbar" style="width: 49%" aria-valuenow="49"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-dark font-weight-medium">14 Rremainings</small>
-                  </div>
-                </div>
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card card-no-shadow border px-2 py-4">
-                    <small class="text-muted mb-0 font-weight-medium">Product 3</small>
-                    <h3 class="font-weight-semibold">12%</h3>
-                    <div class="progress progress-sm mb-2">
-                      <div class="progress-bar bg-warning" role="progressbar" style="width: 49%" aria-valuenow="49"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-dark font-weight-medium">16 Rremainings</small>
-                  </div>
-                </div>
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card card-no-shadow border px-2 py-4">
-                    <small class="text-muted mb-0 font-weight-medium">Product 4</small>
-                    <h3 class="font-weight-semibold">15%</h3>
-                    <div class="progress progress-sm mb-2">
-                      <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small class="text-dark font-weight-medium">10 Rremainings</small>
-                  </div>
-                </div>
+                <?php endforeach; ?>
               </div>
             </div>
           </div>

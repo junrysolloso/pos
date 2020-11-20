@@ -25,11 +25,17 @@ $(document).ready(function () {
     });
   });
 
+  // Remove whitespace
+  $('input[name="item_id"]').on('mouseleave', function(){
+    $(this).val( trim_whitespace($(this).val()) );
+  });
+
   // Generate suggested SRP
   $('input[name="price_per_unit"]').on('keyup', function(){
-    if(e_unit != 0) {
-      var suggest = parseFloat($(this).val())/e_unit;
-      $('input[name="inv_item_srp"]').val(suggest.toFixed(2));
+    if( $(this).val().length >= 1 && e_unit != 0 ) {
+      var t_value = parseFloat($(this).val());
+      var suggest = t_value / e_unit;
+      $('input[name="inv_item_srp"]').val( suggest.toFixed( 2 ) );
     }
   });
 
@@ -53,25 +59,6 @@ $(document).ready(function () {
   $('input').closest('.input-group').find('.mdi').addClass('mdi-18px');
   $('select').closest('.input-group').find('.mdi').addClass('mdi-18px');
 
-  // Set icon color and size on event change
-  function input_icon(obj) {
-    obj.each(function () {
-      if (obj.val().length > 0) {
-        obj.closest('.input-group').find('.mdi').removeClass('mdi-close-circle-outline');
-        obj.closest('.input-group').find('.input-group-text').removeClass('text-danger');
-
-        obj.closest('.input-group').find('.input-group-text').addClass('text-success');
-        obj.closest('.input-group').find('.mdi').addClass('mdi-check-circle-outline');
-      } else {
-        obj.closest('.input-group').find('.input-group-text').removeClass('text-success');
-        obj.closest('.input-group').find('.mdi').removeClass('mdi-check-circle-outline');
-
-        obj.closest('.input-group').find('.mdi').addClass('mdi-close-circle-outline');
-        obj.closest('.input-group').find('.input-group-text').addClass('text-danger');
-      }
-    });
-  }
-
   // Input events
   $('input').on('keyup', function () {
     input_icon($(this));
@@ -89,19 +76,34 @@ $(document).ready(function () {
   $('.select2-lg').select2({width: '93.6%'});
   $('.select2-md').select2({width: '86.8%'});
 
-  // Show alert
-  showSwal = function(type) {
-    swal({
-      title: 'Congratulations!',
-      text: 'Backup done.',
-      icon: 'success',
-      button: {
-        text: "Ok",
-        value: true,
-        visible: true,
-        className: "btn btn-success"
-      }
+
+  /**
+   * User edit
+   */
+  $('.user-edit').on( 'click', function(){
+
+    $('input[name="userinfo_id"]').val( $(this).attr('id') );
+    $('input[name="userinfo_name"]').val( $(this).attr('f-name') );
+    $('input[name="userinfo_nickname"]').val( $(this).attr('n-name') );
+    $('input[name="username"]').val( $(this).attr('u-name') );
+    $('input[name="userinfo_address"]').val( $(this).attr('address') );
+
+    $('input').each(function(){
+      input_icon($(this));
     });
-  }
+
+  } );
+
+  $('#user-submit').on( 'mouseover', function(){
+    var f_pass = $('input[name="user_pass"]').val();
+    var s_pass = $('input[name="con_pass"]').val();
+
+    if ( f_pass != "" && s_pass != "" ) {
+      if ( f_pass != s_pass ) {
+        showWarningToast( 'Password does not match.' );
+        $('input[name="con_pass"]').val("");
+      }
+    }
+  });
 
 });

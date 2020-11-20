@@ -6,6 +6,10 @@ class Orders extends MY_Controller
   function __construct() {
     parent:: __construct();
 
+    if ( $this->session->userdata( 'user_rule' ) != 'administrator' ) {
+      redirect( base_url( 'login' ) );
+    }
+    
     $this->load->model( 'Model_Orders' );
     $this->load->model( 'Model_Orderdetails' );
     $this->load->model( 'Model_Order_Inventory' );
@@ -19,12 +23,15 @@ class Orders extends MY_Controller
    */
   public function index() {
 
-    $data['order_details']       = '';
+    /**
+     * Order details variables
+     */
+    $data['order_details']       = array();
     $data['order_details_total'] = '0.00';
     $data['order_details_date']  = '';
 
     if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-      if( $this->input->post( 'submit_order' ) ) {
+      if( $this->input->post( 'item_id' ) ) {
 
         $expiration_date = $this->input->post( 'expiry_date' );
         $order_id        = $this->input->post( 'order_id' );
@@ -40,18 +47,29 @@ class Orders extends MY_Controller
         
         $tmp_data = $this->Model_Orders->order_add( $data );
         if ( is_array( $tmp_data ) ) {
-          $data['order_details']       = $tmp_data[0];
-          $data['order_details_total'] = number_format( $tmp_data[1], 2 );
-          $data['order_details_date']  = date_format( date_create( $tmp_data[2]  ), 'Y-m-d' );
+          /**
+           * Return json data
+           */
+          header('content-type: application/json');
+          exit( json_encode( $tmp_data ) );
         }
       }
 
       if ( $this->input->post( 'save_orders' ) ) {
-        $this->Model_Orders->order_details_save();
+        if ( $this->Model_Orders->order_details_save() ) {
+          /**
+           * Return json data
+           */
+          header( 'content-type: application/json' );
+          exit( json_encode( array( 'msg' => 'success' ) ) );
+        }
       }
     }
 
-    $ord_history = $this->Model_Order_Inventory->order_inv_get();
+    /**
+     * Reset temporary table
+     */
+    $this->Model_Orders->reset_orders_table();
 
     $data['title']          = 'Orders';
     $data['class']          = 'orders';
@@ -59,20 +77,107 @@ class Orders extends MY_Controller
     $data['items_id_all']   = $this->Model_Product_Info->items_id_get();
     $data['categories_all'] = $this->Model_Category->category_get();
     $data['unit_all']       = $this->Model_Unit->unit_get();
-    $data['order_history']  = $ord_history[0];
-    $data['order_items']    = $ord_history[1];
+    $data['order_history']  = $this->Model_Order_Inventory->orders_get();
 
      // Load template parts
     $this->template->set_master_template( 'layouts/layout_admin' );
     $this->template->write( 'title', $data['title'] );
     $this->template->write( 'body_class', $data['class'] );
 
-    $this->template->write_view( 'content', 'templates/template_topbar' );
-    $this->template->write_view( 'content', 'templates/template_sidebar', $data );
-    $this->template->write_view( 'content', 'view_orders', $data );
+    $this->template->write_view( 'content', 'templates/template_topbar', $data );
+    $this->template->write_view( 'content', 'templates/template_sidebar' );
+    $this->template->write_view( 'content', 'view_orders' );
     $this->template->write_view( 'content', 'templates/template_footer' );
+    $this->template->add_js( 'pos-assets/js/pages/page_order.js' );
     $this->template->render();
 
+  }
+
+  /**
+   * Reset temporary table
+   */
+  public function reset_orders() {
+    if( $this->input->post( 'reset_orders' ) ) {
+      if( $this->Model_Orders->reset_orders_table() ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( array( 'msg' => 'success' ) ) );
+      }
+    }
+  }
+
+  /**
+   * Update temporary table
+   */
+  public function update_order() {
+    if( $this->input->post( 'id' ) ) {
+
+      $this->load->model( 'Model_Orders_Temp' );
+
+      $data = array( 
+        'id'            => $this->input->post('id'),
+        'tmp_quantity'  => $this->input->post('tmp_quantity'),
+        'tmp_price'     => $this->input->post('tmp_price'),
+        'tmp_srp'       => $this->input->post('tmp_srp'),
+        'tmp_expiry'    => $this->input->post('tmp_expiry'),
+      );
+
+      $result = $this->Model_Orders_Temp->tmp_update( $data );
+      if( is_array( $result ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( $result ) );
+      }
+    }
+  }
+  
+  /**
+   * Update temporary table
+   */
+  public function update_product() {
+    if( $this->input->post( 'id' ) ) {
+
+      $data = array( 
+        'id'                    => $this->input->post( 'id' ),
+        'order_id'              => $this->input->post( 'order_id' ),
+        'item_id'               => $this->input->post( 'item_id' ),
+        'orderdetails_quantity' => $this->input->post( 'quantity' ),
+        'price_per_unit'        => $this->input->post( 'price' ) ,
+        'inv_item_srp'          => $this->input->post( 'srp' ),
+        'expiry_date'           => $this->input->post( 'expiry' ),
+        'no_of_stocks'          => $this->input->post( 'stocks' ),
+        'ordinv_unit_price'     => $this->input->post( 'unit_p' ),
+      );
+
+      if( $this->Model_Orders->product_update( $data ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( array( 'msg' => 'success' ) ) );
+      }
+    }
+  }
+
+  /**
+   * Get order items
+   */
+  public function order_items() {
+    if( $this->input->post( 'id' ) ) {
+
+      $result = $this->Model_Order_Inventory->order_items_get( $this->input->post( 'id' ) );
+      if( is_array( $result ) ) {
+        /**
+         * Return json data
+         */
+        header( 'content-type: application/json' );
+        exit( json_encode( $result ) );
+      }
+    }
   }
 
 }

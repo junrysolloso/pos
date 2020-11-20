@@ -33,10 +33,10 @@ if( ! function_exists( 'log_lang' ) ) {
         'view'    => 'Viewed Damage Stocks',
       ),
       'inventory' => array(
-        'delete'  => 'Deleted Inventory',
-        'updated' => 'Updated Inventory',
-        'add'     => 'Added Inventory',
-        'view'    => 'Viewed Inventory',
+        'delete'  => 'Deleted Item In Inventory',
+        'updated' => 'Updated Item In Inventory',
+        'add'     => 'Added Item In Inventory',
+        'view'    => 'Viewed Item In Inventory',
       ),
       'item' => array(
         'delete'  => 'Deleted Item',
