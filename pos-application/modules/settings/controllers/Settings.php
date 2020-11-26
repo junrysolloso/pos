@@ -22,7 +22,6 @@ class Settings extends MY_Controller
     $this->load->model( 'Model_View_Products' );
     $this->load->model( 'orders/Model_Orders_Temp' );
       
-    
   }
 
 	/**
@@ -63,7 +62,7 @@ class Settings extends MY_Controller
 
           $this->Model_Unit_Convert->uc_add( $data );
           
-            $this->Model_Product_Info->product_add( $data );
+          $this->Model_Product_Info->product_add( $data );
          
 
           break;
@@ -202,11 +201,20 @@ class Settings extends MY_Controller
     $this->template->write( 'title', $data['title'] );
     $this->template->write( 'body_class', $data['class'] );
     
-    $this->template->write_view( 'content', 'templates/template_topbar' );
-    $this->template->write_view( 'content', 'templates/template_sidebar', $data );
-    $this->template->write_view( 'content', 'view_settings', $data );
+    $this->template->write_view( 'content', 'templates/template_topbar', $data );
+    $this->template->write_view( 'content', 'templates/template_sidebar' );
+    $this->template->write_view( 'content', 'view_settings_head' );
+    $this->template->write_view( 'content', 'view_category' );
+    $this->template->write_view( 'content', 'view_unit' );
+    $this->template->write_view( 'content', 'view_product' );
+    $this->template->write_view( 'content', 'view_damage' );
+    $this->template->write_view( 'content', 'view_company' );
+    $this->template->write_view( 'content', 'view_user' );
+    $this->template->write_view( 'content', 'view_logs' );
+    $this->template->write_view( 'content', 'view_settings_footer' );
     $this->template->write_view( 'content', 'templates/template_footer' );
     $this->template->render();
+    
   }
 
   /**

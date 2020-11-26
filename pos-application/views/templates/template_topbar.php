@@ -1,6 +1,10 @@
+<!-- start container-scroller -->
 <div class="container-scroller">
+  <!-- start container-fluid -->
   <div class="container-fluid page-body-wrapper">
+    <!-- start main-panel -->
     <div class="main-panel">
+      <!-- start hero-banner -->
       <div class="hero-banner">
         <div class="navbar">
           <div class="navbar-menu-wrapper">
@@ -34,5 +38,8 @@
           </div>
         </div>
       </div>
+      <!-- end hero-banner -->
+
+      <!-- start content-wrapper -->
       <div class="content-wrapper container-wrapper-width">
       

@@ -100,7 +100,7 @@
                       <div class="form-group">
                         <label for="order_total">Total Amount</label>
                         <div class="input-group">
-                          <input type="text" name="order_total" value="<?php echo $order_details_total; ?>" class="form-control" id="order_total" readonly required />
+                          <input type="text" name="order_total" value="<?php echo $order_details_total; ?>" class="form-control" id="order_total" disabled required />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -136,7 +136,7 @@
                           <div class="form-group">
                             <label for="item_id">Barcode Number</label>
                             <div class="input-group">
-                              <input type="text" name="item_id" class="form-control" id="item_id" readonly />
+                              <input type="text" name="item_id" class="form-control" id="item_id" disabled />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -150,7 +150,7 @@
                       <div class="form-group">
                         <label for="category_name">Category</label>
                         <div class="input-group">
-                          <input type="text" name="category_name" class="form-control" id="category_name" readonly />
+                          <input type="text" name="category_name" class="form-control" id="category_name" disabled />
                           <div class="input-group-append">
                             <span class="input-group-text">
                               <i class="mdi mdi-check-circle-outline"></i>
@@ -164,7 +164,7 @@
                           <div class="form-group">
                             <label for="order_unit">Order Unit</label>
                             <div class="input-group">
-                              <input type="text" name="order_unit" class="form-control" id="order_unit" readonly />
+                              <input type="text" name="order_unit" class="form-control" id="order_unit" disabled />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -205,7 +205,7 @@
                           <div class="form-group">
                             <label for="selling_unit">Selling Unit</label>
                             <div class="input-group">
-                              <input type="text" name="selling_unit" class="form-control" id="selling_unit" readonly />
+                              <input type="text" name="selling_unit" class="form-control" id="selling_unit" disabled />
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="mdi mdi-check-circle-outline"></i>
@@ -278,6 +278,7 @@
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-body">
+          <span><i class="mdi mdi-close-circle icon-lg modal-close-btn" data-dismiss="modal"></i><span>
           <div class="card auto-form-wrapper rounded">
             <div class="card-body">
               <h4 class="card-title">EDIT ORDER DETAILS</h4>
@@ -288,7 +289,7 @@
                       <label for="edit_item_id">Product Name</label>
                       <div class="input-group">
                         <input type="hidden" name="edit_id">
-                        <input type="text" name="edit_item_id" class="form-control" id="edit_item_id" readonly />
+                        <input type="text" name="edit_item_id" class="form-control" id="edit_item_id" disabled />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-check-circle-outline"></i>
@@ -300,7 +301,7 @@
                     <div class="form-group">
                       <label for="edit_category_name">Category</label>
                       <div class="input-group">
-                        <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" readonly />
+                        <input type="text" name="edit_category_name" class="form-control" id="edit_category_name" disabled />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-check-circle-outline"></i>
@@ -314,7 +315,7 @@
                         <div class="form-group">
                           <label for="edit_order_unit">Order Unit</label>
                           <div class="input-group">
-                            <input type="text" name="edit_order_unit" class="form-control" id="edit_order_unit" readonly />
+                            <input type="text" name="edit_order_unit" class="form-control" id="edit_order_unit" disabled />
                             <div class="input-group-append">
                               <span class="input-group-text">
                                 <i class="mdi mdi-check-circle-outline"></i>
@@ -355,7 +356,7 @@
                         <div class="form-group">
                           <label for="edit_selling_unit">Selling Unit</label>
                           <div class="input-group">
-                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" readonly />
+                            <input type="text" name="edit_selling_unit" class="form-control" id="edit_selling_unit" disabled />
                             <div class="input-group-append">
                               <span class="input-group-text">
                                 <i class="mdi mdi-check-circle-outline"></i>
@@ -392,8 +393,6 @@
                     </div>
                   </div>
                   <div class="col-12 mt-2">
-                    <input type="button" name="close_edit_order" value="Cancel" class="btn btn-danger submit-btn" data-dismiss="modal" />
-                      &nbsp;&nbsp;
                     <input type="submit" name="save_edit_order" value="Update Order" class="btn btn-success submit-btn" />
                   </div>
                 </div>
@@ -410,6 +409,7 @@
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-body">
+          <span><i class="mdi mdi-close-circle icon-lg modal-close-btn" data-dismiss="modal"></i><span>
           <div class="card auto-form-wrapper rounded">
             <div class="card-body">
               <h4 class="card-title">PRODUCT DETAILS</h4>
@@ -422,7 +422,7 @@
                         <input type="hidden" name="pro_id">
                         <input type="hidden" name="pro_oid">
                         <input type="hidden" name="pro_iid">
-                        <input type="text" name="pro_item_id" class="form-control" id="pro_item_id" readonly />
+                        <input type="text" name="pro_item_id" class="form-control" id="pro_item_id" disabled />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-check-circle-outline"></i>
@@ -434,7 +434,7 @@
                     <div class="form-group">
                       <label for="pro_category_name">Category</label>
                       <div class="input-group">
-                        <input type="text" name="pro_category_name" class="form-control" id="pro_category_name" readonly />
+                        <input type="text" name="pro_category_name" class="form-control" id="pro_category_name" disabled />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-check-circle-outline"></i>
@@ -448,7 +448,7 @@
                         <div class="form-group">
                           <label for="pro_order_unit">Order Unit</label>
                           <div class="input-group">
-                            <input type="text" name="pro_order_unit" class="form-control" id="pro_order_unit" readonly />
+                            <input type="text" name="pro_order_unit" class="form-control" id="pro_order_unit" disabled />
                             <div class="input-group-append">
                               <span class="input-group-text">
                                 <i class="mdi mdi-check-circle-outline"></i>
@@ -475,7 +475,7 @@
                     <div class="form-group">
                       <label for="pro_orderdetails_quantity">Quantity</label>
                       <div class="input-group">
-                        <input type="number" name="pro_orderdetails_quantity" min="1" class="form-control" id="pro_orderdetails_quantity" readonly />
+                        <input type="number" name="pro_orderdetails_quantity" min="1" class="form-control" id="pro_orderdetails_quantity" disabled />
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="mdi mdi-check-circle-outline"></i>
@@ -489,7 +489,7 @@
                         <div class="form-group">
                           <label for="pro_selling_unit">Selling Unit</label>
                           <div class="input-group">
-                            <input type="text" name="pro_selling_unit" class="form-control" id="pro_selling_unit" readonly />
+                            <input type="text" name="pro_selling_unit" class="form-control" id="pro_selling_unit" disabled />
                             <div class="input-group-append">
                               <span class="input-group-text">
                                 <i class="mdi mdi-check-circle-outline"></i>
@@ -526,8 +526,6 @@
                     </div>
                   </div>
                   <div class="col-12 mt-2">
-                    <input type="button" id="back_pro_btn" value="Back" class="btn btn-danger submit-btn" data-dismiss="modal" />
-                      &nbsp;&nbsp;
                     <input type="submit" name="save_pro_details" value="Update Product" class="btn btn-success submit-btn" />
                   </div>
                 </div>
@@ -544,6 +542,7 @@
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-body">
+          <span><i class="mdi mdi-close-circle icon-lg modal-close-btn" data-dismiss="modal"></i><span>
           <div class="card auto-form-wrapper rounded">
             <div class="card-body">
               <h4 class="card-title">ORDERED ITEMS</h4>

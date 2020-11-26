@@ -36,22 +36,20 @@ class Model_Product_Info extends MY_Model
       $item_data = array(
         $this->_item_id          => $data['item_id'],
         $this->_subcat_id        => intval( $data['subcat_id'] ),
-        $this->_item_name        => strtolower($data['item_name']) ,/*strtolower()*/
-        $this->_item_description => strtolower($data['item_description']) ,/*strtolower()*/
+        $this->_item_name        => strtolower( $data['item_name'] ) ,
+        $this->_item_description => strtolower( $data['item_description'] ) ,
         $this->_item_critlimit   => intval( $data['item_critlimit'] ),
         $this->_unit_id          => intval( $data['unit_id1'] ),
       );
     
-        if ( $this->db->insert ($this->_table, $item_data ) ) {
-          $this->Model_Log->log_add( log_lang( 'item' )['add'] );
-          $this->session->set_tempdata( array(
-            'msg' 	=> 'Item successfully added.',
-            'class' => 'alert-success',
-          ), NULL, 5 );
-          return true;
-        }
-      
-      
+      if ( $this->db->insert ($this->_table, $item_data ) ) {
+        $this->Model_Log->log_add( log_lang( 'item' )['add'] );
+        $this->session->set_tempdata( array(
+          'msg' 	=> 'Item successfully added.',
+          'class' => 'alert-success',
+        ), NULL, 5 );
+        return true;
+      }
     }
   }
 

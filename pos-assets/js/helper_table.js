@@ -113,9 +113,9 @@
     });
   });
 
-  // Category & Sub Table
+  // Category Table
   $(function () {
-    $('#cat-table, #unit-table').DataTable({
+    $('#cat-table').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
@@ -123,7 +123,22 @@
       paging: false,
       bFilter: false,
       bInfo: false,
-      "iDisplayLength": 10,
+      "iDisplayLength": 5,
+      "bLengthChange": false,
+    });
+  });
+
+  // Unit Table
+  $(function () {
+    $('#unit-table').DataTable({
+      "aLengthMenu": [
+        [5, 10, 15, -1],
+        [5, 10, 15, "All"]
+      ], 
+      paging: true,
+      bFilter: false,
+      bInfo: false,
+      "iDisplayLength": 5,
       "bLengthChange": false,
     });
   });
@@ -138,7 +153,6 @@
         paging: true,
         bFilter: false,
         bInfo: false,
-        paging: false,
         "iDisplayLength": 5,
         "bLengthChange": false,
       });
