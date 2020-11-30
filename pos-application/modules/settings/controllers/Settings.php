@@ -191,10 +191,6 @@ class Settings extends MY_Controller
 
     /**
      * Load template parts
-     * 
-     * Loading template parts should be place at the bottom  
-     * part of the function in order to avoid error in saving data
-     * specially when rendering a view.
      */
 
     $this->template->set_master_template( 'layouts/layout_admin' );
@@ -213,8 +209,51 @@ class Settings extends MY_Controller
     $this->template->write_view( 'content', 'view_logs' );
     $this->template->write_view( 'content', 'view_settings_footer' );
     $this->template->write_view( 'content', 'templates/template_footer' );
+
+    // Addtional scripts
+    $this->template->add_js( 'pos-assets/js/pages/settings/category.js' );
+    $this->template->add_js( 'pos-assets/js/pages/settings/company.js' );
+    $this->template->add_js( 'pos-assets/js/pages/settings/damage.js' );
+    $this->template->add_js( 'pos-assets/js/pages/settings/product.js' );
+    $this->template->add_js( 'pos-assets/js/pages/settings/unit.js' );
+    $this->template->add_js( 'pos-assets/js/pages/settings/user.js' );
+
     $this->template->render();
     
+  }
+
+  /**
+   * Category
+   */
+  public function cateogry() {
+
+    // Check server request if post
+    if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+      
+      // Add category
+      if ( $this->input->post( 'add_submit' ) ) {
+    
+        $subcat_nm = $this->input->post( 'sub_name' );
+
+        // Save category / sub-category information
+        $this->Model_Category->category_add( $this->input->post( 'cat_name' ) );
+        foreach ( $subcat_nm as $key ) {
+          $this->Model_Subcategory->subcat_add( $cat_data['category_name'], $key );
+        }
+      }
+    }
+  }
+
+  /**
+   * Server response
+   */
+  private function _response( $data = NULL ) {
+
+    // Send server response
+    header( 'content-type: application/json' );
+    if ( $data ) {
+      die( json_encode( $data ) );
+    }
   }
 
   /**

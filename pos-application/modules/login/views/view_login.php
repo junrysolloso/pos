@@ -7,7 +7,7 @@
         </div>
         <div class="col-12 col-md-8 h-100 bg-white">
           <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
-            <form action="#" method="post">
+            <form action="" method="post">
               <h3 class="mr-auto">Hello! let's get started.</h3>
               <p class="mb-5 mr-auto">Enter your details below.</p>
 
