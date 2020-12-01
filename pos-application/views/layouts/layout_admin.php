@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/style.min.css" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/admin.css?v=1.0.01" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/admin.css" />
     
     <!-- Additional CSS -->
     <?php echo $_styles; ?>
@@ -37,7 +37,6 @@
     <!-- Plugins JS -->
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_nav.js"></script>
 
-    <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/js/helper_form_validation.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net/jquery.dataTables.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>pos-assets/vendors/inputmask/jquery.inputmask.bundle.min.js"></script>

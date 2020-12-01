@@ -1,18 +1,16 @@
 (function($){
   'use strict';
 
-  var baseUrl = $('#base_url').val();
-
   $(document).ready(function() {
 
     var table   = $('#ord-added-table').DataTable();
+    var e_unit  = 0;
 
     /**
      * Prepend buttons
      */
     $('#ord-added-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div class="mt-2" id="btn-orders" style="display: none;"><form action="#" method="post"><input type="button" name="discard_orders" value="Reset Orders" class="btn btn-danger submit-btn" />&nbsp;&nbsp;<input type="button" name="save_orders" value="Save Orders" class="btn btn-success submit-btn" /></form></div>');
-    $('#ord-items-table_wrapper .row').closest('.row').find('.col-sm-12.col-md-5').prepend('<div id="btn-orders"><input type="button" id="item-table-close" value="Close" class="btn btn-danger submit-btn" data-dismiss="modal" style="margin-bottom: -60px;" /></div>');
-
+    
     /**
      * Generate suggested SRP
      */
@@ -46,7 +44,7 @@
        * Prevent the form being submitted
        */
       event.preventDefault();
-      var url = baseUrl + 'orders';
+      var url = base_url + 'orders';
 
       /**
        * Assing input data
@@ -85,7 +83,7 @@
       if ( table.data().any() ) {
         $.ajax({
           type    : 'POST',
-          url     : baseUrl + 'orders/reset-orders',
+          url     : base_url + 'orders/reset-orders',
           async   : true,
           data    : {
             reset_orders: 'Reset Orders'
@@ -131,7 +129,7 @@
       if ( table.data().any() ) {
         $.ajax({
           type    : 'POST',
-          url     : baseUrl + 'orders',
+          url     : base_url + 'orders',
           async   : true,
           data    : {
             save_orders: 'Save Orders',
@@ -182,7 +180,7 @@
     $('#form_edit_order').submit(function(event){
       event.preventDefault();
 
-      var url  = baseUrl + 'orders/update-order'
+      var url  = base_url + 'orders/update-order'
       var data = {
 
         id          : $('input[name="edit_id"]').val(),
@@ -223,7 +221,7 @@
      * View items
      */
     $('.view-order-items').on('click', function(){
-      var url = baseUrl + 'orders/order-items';
+      var url = base_url + 'orders/order-items';
       var data = {
         id: $(this).attr('o-id'),
       }
@@ -241,7 +239,7 @@
        * Order items
        */
       $('body').delegate('.view-order-items', 'click', function(){
-        var url = baseUrl + 'orders/order-items';
+        var url = base_url + 'orders/order-items';
         var data = {
           id: $(this).attr('o-id'),
         }
@@ -287,7 +285,7 @@
     $('#form_pro_details').submit(function(event){
       event.preventDefault();
 
-      var url  = baseUrl + 'orders/update-product'
+      var url  = base_url + 'orders/update-product'
 
       var stocks = parseInt( $('input[name="pro_orderdetails_quantity"]').val() ) * parseInt($('input[name="pro_price_per_unit"]').attr('u-equiv'));
       var unit_p = parseFloat( $('input[name="pro_price_per_unit"]').val() ) / parseInt($('input[name="pro_price_per_unit"]').attr('u-equiv'));
@@ -320,6 +318,30 @@
            */
           data_sender( data, url, 'pro' );
         }
+      }
+    });
+
+    // Set barcode when item name is selected
+    $('select[name="select_code"]').on('change', function(){
+
+      e_unit = parseFloat($(this).children(':selected').attr('e-unit'));
+
+      $('input[name="item_id"]').val($(this).val());
+      $('input[name="category_name"]').val($(this).children(':selected').attr('c-name'));
+      $('input[name="order_unit"]').val($(this).children(':selected').attr('o-unit'));
+      $('input[name="selling_unit"]').val($(this).children(':selected').attr('s-unit'));
+
+      $('input').each(function(){
+        input_icon($(this));
+      });
+    });
+
+    // Generate suggested SRP
+    $('input[name="price_per_unit"]').on('keyup', function(){
+      if( $(this).val().length >= 1 && e_unit != 0 ) {
+        var t_value = parseFloat($(this).val());
+        var suggest = t_value / e_unit;
+        $('input[name="inv_item_srp"]').val( suggest.toFixed( 2 ) );
       }
     });
 
@@ -421,7 +443,7 @@
           /**
            * Updated items table
            */
-          var url = baseUrl + 'orders/order-items';
+          var url = base_url + 'orders/order-items';
           var data = {
             id: $('input[name="pro_oid"]').val(),
           }

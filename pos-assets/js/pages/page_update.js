@@ -1,8 +1,6 @@
 (function($){
   'use strict';
 
-  var baseUrl = $('#base_url').val();
-
   $(document).ready(function() {
 
     var table   = $('#ord-added-table').DataTable();
@@ -46,7 +44,7 @@
        * Prevent the form being submitted
        */
       event.preventDefault();
-      var url = baseUrl + 'orders';
+      var url = base_url + 'orders';
 
       /**
        * Assing input data
@@ -85,7 +83,7 @@
       if ( table.data().any() ) {
         $.ajax({
           type    : 'POST',
-          url     : baseUrl + 'orders/reset-orders',
+          url     : base_url + 'orders/reset-orders',
           async   : true,
           data    : {
             reset_orders: 'Reset Orders'
@@ -131,7 +129,7 @@
       if ( table.data().any() ) {
         $.ajax({
           type    : 'POST',
-          url     : baseUrl + 'orders',
+          url     : base_url + 'orders',
           async   : true,
           data    : {
             save_orders: 'Save Orders',
@@ -182,7 +180,7 @@
     $('#form_update').submit(function(event){
       event.preventDefault();
 
-      var url  = baseUrl + 'settings/update-order'
+      var url  = base_url + 'settings/update-order'
       var data = {
 
         id          : $('input[name="edit_id"]').val(),
@@ -223,7 +221,7 @@
      * View items
      */
     $('.view-order-items').on('click', function(){
-      var url = baseUrl + 'orders/order-items';
+      var url = base_url + 'orders/order-items';
       var data = {
         id: $(this).attr('o-id'),
       }
@@ -241,7 +239,7 @@
        * Order items
        */
       $('body').delegate('.view-order-items', 'click', function(){
-        var url = baseUrl + 'orders/order-items';
+        var url = base_url + 'orders/order-items';
         var data = {
           id: $(this).attr('o-id'),
         }
@@ -287,7 +285,7 @@
     $('#form_pro_details').submit(function(event){
       event.preventDefault();
 
-      var url  = baseUrl + 'orders/update-product'
+      var url  = base_url + 'orders/update-product'
 
       var stocks = parseInt( $('input[name="pro_orderdetails_quantity"]').val() ) * parseInt($('input[name="pro_price_per_unit"]').attr('u-equiv'));
       var unit_p = parseFloat( $('input[name="pro_price_per_unit"]').val() ) / parseInt($('input[name="pro_price_per_unit"]').attr('u-equiv'));
@@ -421,7 +419,7 @@
           /**
            * Updated items table
            */
-          var url = baseUrl + 'orders/order-items';
+          var url = base_url + 'orders/order-items';
           var data = {
             id: $('input[name="pro_oid"]').val(),
           }

@@ -2,14 +2,13 @@
   'use strict';
   $(document).ready(function() {
 
-    var baseUrl   = $('#base_url').val();
     $('#add_cat_form').submit(function(event){
       /**
        * Prevent the form being submitted
        */
       event.preventDefault();
       var subcat = {};
-      var url    = baseUrl + 'settings';
+      var url    = base_url + 'settings';
 
       /**
        * Get all value from subcategory input array

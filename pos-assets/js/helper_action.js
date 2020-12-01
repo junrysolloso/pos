@@ -10,33 +10,9 @@ $(document).ready(function () {
     }, 5000);
   }
 
-  // Set barcode when item name is selected
-  $('select[name="select_code"]').on('change', function(){
-
-    e_unit = parseFloat($(this).children(':selected').attr('e-unit'));
-
-    $('input[name="item_id"]').val($(this).val());
-    $('input[name="category_name"]').val($(this).children(':selected').attr('c-name'));
-    $('input[name="order_unit"]').val($(this).children(':selected').attr('o-unit'));
-    $('input[name="selling_unit"]').val($(this).children(':selected').attr('s-unit'));
-
-    $('input').each(function(){
-      input_icon($(this));
-    });
-  });
-
   // Remove whitespace
   $('input[name="item_id"]').on('mouseleave', function(){
     $(this).val( trim_whitespace($(this).val()) );
-  });
-
-  // Generate suggested SRP
-  $('input[name="price_per_unit"]').on('keyup', function(){
-    if( $(this).val().length >= 1 && e_unit != 0 ) {
-      var t_value = parseFloat($(this).val());
-      var suggest = t_value / e_unit;
-      $('input[name="inv_item_srp"]').val( suggest.toFixed( 2 ) );
-    }
   });
 
   // Get values from an array input
@@ -75,7 +51,6 @@ $(document).ready(function () {
   //Initialize Select2 Elements
   $('.select2-lg').select2({width: '93.6%'});
   $('.select2-md').select2({width: '86.8%'});
-
 
   /**
    * User edit
