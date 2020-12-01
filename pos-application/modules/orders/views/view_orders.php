@@ -120,7 +120,7 @@
                                 <option value="" data-select2-md-id="0">Select</option>
                                 <?php
                                   foreach ( $items_id_all as $row ) {
-                                    echo '<option value="'. $row->item_id .'" e-unit="'. $row->equivalent .'" s-unit="'. ucfirst( $row->selling_unit ) .'" o-unit="'. ucfirst( $row->order_unit ) .'" c-name="'. ucwords( $row->category_name ) .'" data-select2-md-id="'. $row->id .'">'. ucwords( $row->item_name ) .' '. ucwords( $row->desc ) .'</option>';
+                                    echo '<option value="'. $row->item_id .'" e-unit="'. $row->equivalent .'" s-unit="'. ucfirst( $row->selling_unit ) .'" o-unit="'. ucfirst( $row->order_unit ) .'" c-name="'. ucwords( $row->category_name ) .'" data-select2-md-id="'. $row->id .'">'. $row->item_id .' - '. ucwords( $row->item_name ) .' '. ucwords( $row->desc ) .'</option>';
                                   }
                                 ?>
                               </select>

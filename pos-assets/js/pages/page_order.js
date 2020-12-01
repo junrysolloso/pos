@@ -4,6 +4,7 @@
   $(document).ready(function() {
 
     var table   = $('#ord-added-table').DataTable();
+    var e_unit  = 0;
 
     /**
      * Prepend buttons

@@ -46,8 +46,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-success submit-btn"
-                  style="background-image: linear-gradient(112deg, #2dc9eb, #14d2b8)">LOGIN</button>
+                <button type="submit" class="btn btn-success submit-btn" style="background-image: linear-gradient(112deg, #2dc9eb, #14d2b8)">LOGIN</button>
               </div>
               <div class="wrapper mt-5 text-gray">
                 <p class="footer-text"><?php credits( 'co' ); ?></p>

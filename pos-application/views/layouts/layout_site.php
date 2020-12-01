@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/style-main.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>pos-assets/css/admin.css" />
 
     <?php echo $_styles; ?>
   </head>
