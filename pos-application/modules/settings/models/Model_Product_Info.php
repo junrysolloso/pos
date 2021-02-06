@@ -102,7 +102,7 @@ class Model_Product_Info extends MY_Model
   }
   
   /**
-   * Almost out of stocks products
+   * Top products
    */
   public function top_products( $category ) {
 

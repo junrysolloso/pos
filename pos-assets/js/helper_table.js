@@ -123,6 +123,7 @@
       paging: false,
       bFilter: false,
       bInfo: false,
+      bSort: false,
       "iDisplayLength": 5,
       "bLengthChange": false,
     });
@@ -153,6 +154,7 @@
         paging: true,
         bFilter: false,
         bInfo: false,
+        bSort: false,
         "iDisplayLength": 5,
         "bLengthChange": false,
       });

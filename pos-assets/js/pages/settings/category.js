@@ -18,12 +18,12 @@
       });
 
       /**
-       * Assing input data
-       */
+       * Assign input data
+       */ 
       var data = {
-        cat_name : $('input[name="category_name"]').val(),
-        sub_name : subcat,
-        cat_add  : 'Add',
+        cat_name  : $('input[name="category_name"]').val(),
+        sub_name  : subcat,
+        add_submit: 'Add',
       }
       
       /**
@@ -32,6 +32,57 @@
       if(data_checker(data)) {
         data_sender(data, url);
       }
+    });
+
+    /**
+     * Edit category
+     */
+    $('.in-edit').on('click', function(){
+
+      set_category_values($(this));
+
+    });
+
+    /**
+     * Submit category edit form
+     */
+    $('#edit_category_modal').submit(function(event){
+      event.preventDefault();
+
+      var id =  $('input[name="edit_category_id"]').val();
+      var cat_name =  $('input[name="edit_category_name"]').val();
+
+    });
+
+    /**
+     * Assign values to the
+     * @param {*} obj 
+     */
+    function set_category_values(obj) {
+
+      var cat = obj.attr('c-id');
+
+      $('input[name="edit_category_cat"]').val(obj.attr('c-id'));
+      $('input[name="edit_category_id"]').val(obj.attr('e-id'));
+      $('input[name="edit_category_name"]').val(obj.attr('n-cat'));
+
+      if ( cat === 'cat' ) {
+        $('label[for="edit_category_name"]').text('Category Name');
+      } else {
+        $('label[for="edit_category_name"]').text('Sub-category Name');
+      }
+
+      $('#edit_category_modal').modal('show');
+
+    }
+
+    /**
+     * Delegat event
+     */
+    $('.paginate_button').on('click', function(){
+      $('body').delegate('.in-edit', 'click', function () {
+        set_category_values($(this));
+      });
     });
 
     /**
@@ -44,24 +95,27 @@
      */
     function data_sender(data, url) {
       $.post(url, data).done(function(data){
-        /**
-         * Populate table
-         */
+        if ( data.msg == 'success' ) {
+          /**
+           * Populate table
+           */
+          cat_data_show($('#cat-table').DataTable(), data.cat );
+          sub_data_show($('#cat-sub-table').DataTable(), data.sub );
 
-        cat_data_show($('#cat-table').DataTable(), data.category );
-        sub_data_show($('#cat-sub-table').DataTable(), data.subcategory );
+          /**
+           * Reset form inputs
+           */
+          $('#add_cat_form').trigger('reset');
 
-        console.log(data);
+          /**
+           * Reset input icon status
+           */
+          input_icon_reset();
 
-        /**
-         * Reset form inputs
-         */
-        $('#add_cat_form').trigger('reset');
-
-        /**
-         * Reset input icon status
-         */
-        input_icon_reset();
+          showSuccessToast('Data successfully Added');
+        } else {
+          showWarningToast( 'Please check for duplicate inputs.' );
+        }
       });
     }
 
@@ -79,7 +133,8 @@
         /**
          * Map json value
          */
-        result.push(item.category_name);
+        result.push( capitalize( item.category_name) );
+        result.push( '<a class="in-edit" e-id="'+ item.category_id +'" n-cat="'+ item.category_name +'" c-id="cat"><i class="mdi mdi-pencil-outline mdi-18px"></i></a>' );
 
         return result;
       });
@@ -88,7 +143,7 @@
        * Add to table
        */
       table.rows.add(result);
-      table.draw()
+      table.draw();
     }
 
     /**
@@ -105,7 +160,8 @@
         /**
          * Map json value
          */
-        result.push(item.subcat_name);
+        result.push( capitalize( item.subcat_name) );
+        result.push( '<a class="in-edit" e-id="'+ item.subcat_id +'" n-cat="'+ item.subcat_name +'" c-id="sub"><i class="mdi mdi-pencil-outline mdi-18px"></i></a>' );
 
         return result;
       });
@@ -114,7 +170,7 @@
        * Add to table
        */
       table.rows.add(result);
-      table.draw()
+      table.draw();
     }
 
   });

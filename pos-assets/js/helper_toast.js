@@ -4,7 +4,7 @@
 showSuccessToast = function(msg) {
   'use strict';
   $.toast({
-    heading: 'Success!',
+    heading: 'Success',
     text: msg,
     showHideTransition: 'fade',
     icon: 'success',
@@ -18,7 +18,7 @@ showSuccessToast = function(msg) {
 showWarningToast = function(msg) {
   'use strict';
   $.toast({
-    heading: 'Warning!',
+    heading: 'Warning',
     text: msg,
     showHideTransition: 'fade',
     icon: 'warning',
@@ -32,7 +32,7 @@ showWarningToast = function(msg) {
 showErrorToast = function(msg) {
   'use strict';
   $.toast({
-    heading: 'Error!',
+    heading: 'Error',
     text: msg,
     showHideTransition: 'fade',
     icon: 'error',

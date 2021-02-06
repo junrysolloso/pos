@@ -23,42 +23,35 @@ class Model_Category extends MY_Model
 
   /**
    * Add category
-   * @param string $category - add only the category
+   * 
+   * @param string $category
    * @return bool
    */
   public function category_add( $category ) {
 
     $this->db->select( 'category_id as id' );
-    $this->db->where( $this->_cat_name, strtolower( $category['category_name'] ) );
+    $this->db->where( $this->_cat_name, strtolower( $category ) );
     $query = $this->db->get( $this->_table );
 
     // Check if the given category is present
-    // and return the id.
-    if ( $query->num_rows() > 0 ) {
-      $this->session->set_tempdata( array(
-        'msg' 	=> 'Category already exist.',
-        'class' => 'alert-danger',
-      ), NULL, 5 );
-    } else {
+    if ( $query->num_rows() === 0 ) {
 
-      // Insert the given category which is not present
-      // in the databse and return the id.
-      $data = array( $this->_cat_name => strtolower( $category['category_name'] ) );
+      // Insert category
+      $data = array( $this->_cat_name => strtolower( $category ) );
       if ( $this->db->insert( $this->_table, $data ) ) {
         $this->Model_Log->log_add( log_lang( 'category' )['add'] );
-        $this->session->set_tempdata( array(
-          'msg' 	=> 'Category successfully added.',
-          'class' => 'alert-success',
-        ), NULL, 5 );
+        return true;
       }
     }
   }
 
   /**
    * Get all categories
+   * 
    * @return array $result
    */
   public function category_get() {
+    $this->db->order_by( $this->_cat_id, 'DESC' );
     $query = $this->db->get( $this->_table );
     if( $query ) {
       $this->Model_Log->log_add( log_lang( 'category' )['view'] );

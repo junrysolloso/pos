@@ -223,22 +223,40 @@ class Settings extends MY_Controller
   }
 
   /**
-   * Category
+   * Category 
    */
-  public function cateogry() {
+  public function category() {
 
     // Check server request if post
     if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
       
       // Add category
       if ( $this->input->post( 'add_submit' ) ) {
-    
+
+        $count = 0;
         $subcat_nm = $this->input->post( 'sub_name' );
+        $cat_name  = $this->input->post( 'cat_name' );
 
         // Save category / sub-category information
-        $this->Model_Category->category_add( $this->input->post( 'cat_name' ) );
+        $this->Model_Category->category_add( $cat_name );
         foreach ( $subcat_nm as $key ) {
-          $this->Model_Subcategory->subcat_add( $cat_data['category_name'], $key );
+          if ( $this->Model_Subcategory->subcat_add( $cat_name, $key ) ) {
+            $count++;
+          }
+        }
+
+        // Check if $count is equal to the array length
+        if ( $count == count( $subcat_nm ) ) {
+
+          $data = array(
+            'cat' => $this->Model_Category->category_get(),
+            'sub' => $this->Model_Subcategory->subcat_get(),
+            'msg' => 'success',
+          );
+
+          $this->_response( $data );
+        } else {
+          $this->_response( array( 'msg' => 'error' ) );
         }
       }
     }
@@ -337,5 +355,5 @@ class Settings extends MY_Controller
 
 }
 
-/* End of file Dashboard.php */
-/* Location: ./application/modules/dashboard/controllers/Dashboard.php */
+/* End of file Settings.php */
+/* Location: ./application/modules/settings/controllers/Settings.php */

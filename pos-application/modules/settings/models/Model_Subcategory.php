@@ -18,8 +18,7 @@ class Model_Subcategory extends MY_Model
   protected $_relate_name  = 'category_name';
 
   /**
-   * Initialize an object properties
-   * upon creation of the object.
+   * Construct parent
    */
   function __construct() {
     parent:: __construct();
@@ -37,13 +36,8 @@ class Model_Subcategory extends MY_Model
     $query = $this->db->get( $this->_table );
 
     // Check sub-category if exist
-    if ( $query->num_rows() > 0 ) {
-      $this->session->set_tempdata( array(
-        'msg' 	=> 'Sub-category already exist.',
-        'class' => 'alert-danger',
-      ), NULL, 5 );
-    } else {
-
+    if ( $query->num_rows() === 0 ) {
+    
       $this->db->select( 'category_id as id' );
       $this->db->where( $this->_relate_name, strtolower( $category ) );
       $query = $this->db->get( $this->_relate_table );
@@ -62,10 +56,7 @@ class Model_Subcategory extends MY_Model
 
       if( $this->db->insert( $this->_table, $data ) ) {
         $this->Model_Log->log_add( log_lang( 'sub_category' )['add'] );
-        $this->session->set_tempdata( array(
-          'msg' 	=> 'Data successfully added.',
-          'class' => 'alert-success',
-        ), NULL, 5 );
+        return true;
       }
     }
   }
@@ -75,6 +66,7 @@ class Model_Subcategory extends MY_Model
    * @return array $result
    */
   public function subcat_get() {
+    $this->db->order_by( $this->_subcat_id, 'DESC' );
     $query = $this->db->get( $this->_table );
     if( $query ) {
       return $query->result();
