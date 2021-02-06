@@ -103,23 +103,30 @@ div.dataTables_wrapper div.dataTables_filter {
 .item-edit,
 .in-edit,
 .cancel-edit,
-.update-edit {
+.update-edit,
+.unit-edit-btn {
   cursor: pointer;
 }
 
 .btn-edit:hover,
 .item-edit:hover,
 .in-edit:hover,
-.update-edit:hover {
+.update-edit:hover,
+.unit-edit-btn:hover {
   color: #14d2b8 !important;
 }
 
-.in-edit {
+.in-edit,
+.unit-edit-btn {
   text-align: center;
 }
 
 .cancel-edit:hover {
   color: #f32436 !important;
+}
+
+.row-edit-btn {
+  width: 5% !important;
 }
 
 /* Modal*/

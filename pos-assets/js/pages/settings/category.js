@@ -1,5 +1,8 @@
 (function($){
   'use strict';
+
+  var url    = base_url + 'settings/category';
+
   $(document).ready(function(){
 
     $('#add_cat_form').submit(function(event){
@@ -8,7 +11,6 @@
        */
       event.preventDefault();
       var subcat = {};
-      var url    = base_url + 'settings/category';
 
       /**
        * Get all value from subcategory input array
@@ -27,7 +29,7 @@
       }
       
       /**
-       * Check and save temporary orders
+       * Check and save category
        */
       if(data_checker(data)) {
         data_sender(data, url);
@@ -51,6 +53,39 @@
 
       var id =  $('input[name="edit_category_id"]').val();
       var cat_name =  $('input[name="edit_category_name"]').val();
+      var cat = $('input[name="edit_category_cat"]').val();
+
+      var data = {
+        cat_id: id,
+        cat_name: cat_name
+      }
+
+      if ( cat === 'cat' ) {
+        data.update_cat = 'update';
+
+        $.post(url, data).done(function(data){
+          if ( data.msg === 'success' ) {
+
+            $('#edit_category_modal').modal('hide');
+            showSuccessToast('Category successfully updated.');
+            cat_data_show($('#cat-table').DataTable(), data.cat );
+
+          }
+        });
+
+      } else {
+        data.update_sub = 'update';
+        
+        $.post(url, data).done(function(data){
+          if ( data.msg === 'success' ) {
+
+            $('#edit_category_modal').modal('hide');
+            showSuccessToast('Sub-category successfully updated.');
+            sub_data_show($('#cat-sub-table').DataTable(), data.sub );
+
+          }
+        });
+      }
 
     });
 
@@ -95,7 +130,7 @@
      */
     function data_sender(data, url) {
       $.post(url, data).done(function(data){
-        if ( data.msg == 'success' ) {
+        if ( data.msg === 'success' ) {
           /**
            * Populate table
            */
@@ -135,7 +170,7 @@
          */
         result.push( capitalize( item.category_name) );
         result.push( '<a class="in-edit" e-id="'+ item.category_id +'" n-cat="'+ item.category_name +'" c-id="cat"><i class="mdi mdi-pencil-outline mdi-18px"></i></a>' );
-
+        
         return result;
       });
 
@@ -144,6 +179,10 @@
        */
       table.rows.add(result);
       table.draw();
+
+      $('body').delegate('.in-edit', 'click', function () {
+        set_category_values($(this));
+      });
     }
 
     /**
@@ -171,6 +210,10 @@
        */
       table.rows.add(result);
       table.draw();
+
+      $('body').delegate('.in-edit', 'click', function () {
+        set_category_values($(this));
+      });
     }
 
   });

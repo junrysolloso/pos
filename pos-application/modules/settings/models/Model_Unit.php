@@ -25,10 +25,7 @@ class Model_Unit extends MY_Model
 
     // Check if the given unit is present
     if ( $query->num_rows() > 0 ) {
-      $this->session->set_tempdata( array(
-        'msg' 	=> 'Unit already exist.',
-        'class' => 'alert-danger',
-      ), NULL, 5 );
+      return 'exist';
     } else {
 
       // Insert the given unit which is not present
@@ -40,11 +37,7 @@ class Model_Unit extends MY_Model
 
       if ( $this->db->insert( $this->_table, $data ) ) {
         $this->Model_Log->log_add( log_lang( 'unit' )['add'] );
-        $this->session->set_tempdata( array(
-          'msg' 	=> 'Unit successfully added.',
-          'class' => 'alert-success',
-        ), NULL, 5 );
-        return true;
+        return $this->unit_get();
       }
     }
   }
@@ -58,6 +51,22 @@ class Model_Unit extends MY_Model
     $query = $this->db->get( $this->_table );
     if( $query ) {
       return $query->result();
+    }
+  }
+
+  /**
+   * Update unit
+   * @param array $data
+   * @return bool
+   */
+  public function unit_update( $data ) {
+    if( is_array( $data ) && ! empty( $data ) ) {
+      $this->db->where( $this->_unit_id, $data['unit_id'] );
+      if( $this->db->update( $this->_table, $data ) ) {
+        $this->Model_Log->log_add( log_lang( 'unit' )['updated'] );
+        
+        return $this->unit_get();
+      }
     }
   }
 

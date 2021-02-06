@@ -139,7 +139,8 @@
       paging: true,
       bFilter: false,
       bInfo: false,
-      "iDisplayLength": 5,
+      bSort: false,
+      "iDisplayLength": 10,
       "bLengthChange": false,
     });
   });
@@ -155,7 +156,7 @@
         bFilter: false,
         bInfo: false,
         bSort: false,
-        "iDisplayLength": 5,
+        "iDisplayLength": 10,
         "bLengthChange": false,
       });
     });

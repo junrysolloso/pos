@@ -87,25 +87,6 @@ class Settings extends MY_Controller
           }
       
           break;
-        case 'Save Unit Details':
-          
-          // Save setting unit information
-          $unit_id = $this->input->post( 'unit_id' ) ? $this->input->post( 'unit_id' ) : NULL; 
-          $data = array (
-            'unit_id'   => $unit_id,
-            'unit_desc' => $this->input->post( 'unit_desc' ),
-            'unit_sh'   => $this->input->post( 'unit_sh' ),
-          );
-
-          if ( $this->Model_Unit->item_insert( $data ) ) {
-            unset( $_POST );
-            $this->session->set_tempdata( array(
-              'msg' 	=> 'Unit successfully added.',
-              'class' => 'alert-success',
-            ), NULL, 5 );
-          }
-
-          break;
         case 'Save Company Details':
           
           $data = array(
@@ -258,6 +239,81 @@ class Settings extends MY_Controller
         } else {
           $this->_response( array( 'msg' => 'error' ) );
         }
+      } 
+
+      if ( $this->input->post( 'update_cat' ) ) {
+        
+        $data = array(
+          'category_id' => $this->input->post( 'cat_id' ),
+          'category_name' => $this->input->post( 'cat_name' )
+        );
+
+        if ( $this->Model_Category->category_update($data) ) {
+          $data = array(
+            'cat' => $this->Model_Category->category_get(),
+            'msg' => 'success'
+          );
+
+          $this->_response( $data );
+        }
+      }
+
+      if ( $this->input->post( 'update_sub' ) ) {
+        
+        $data = array(
+          'subcat_id' => $this->input->post( 'cat_id' ),
+          'subcat_name' => $this->input->post( 'cat_name' )
+        );
+
+        if ( $this->Model_Subcategory->subcat_update($data) ) {
+          $data = array(
+            'sub' => $this->Model_Subcategory->subcat_get(),
+            'msg' => 'success'
+          );
+
+          $this->_response( $data );
+        }
+      }
+    }
+  }
+
+  /**
+   * Unit
+   */
+  public function unit() {
+    
+    if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+      if ( $this->input->post( 'add' ) ) {
+        
+        // Save setting unit information
+        $data = array (
+          'unit_desc' => $this->input->post( 'unit_lg' ),
+          'unit_sh'   => $this->input->post( 'unit_sh' ),
+        );
+
+        $units = $this->Model_Unit->item_insert( $data );
+
+        if ( $units != 'exist' ) {
+          $this->_response( array( 'msg' => 'success', 'unit' => $units ) );
+        } else {
+          $this->_response( array( 'msg' => 'exist' ) );
+        }
+
+      }
+
+      if ( $this->input->post( 'update' ) ) {
+
+        $data = array (
+          'unit_id' => $this->input->post( 'unit_id' ),
+          'unit_desc' => $this->input->post( 'unit_desc' ),
+          'unit_sh'   => $this->input->post( 'unit_sh' ),
+        );
+
+        $units = $this->Model_Unit->unit_update( $data );
+        if ( count($units) > 0 ) {
+          $this->_response( array( 'msg' => 'success', 'unit' => $units ) );
+        }
+        
       }
     }
   }

@@ -42,8 +42,8 @@
         <table class="table editable-inline" id="cat-table">
           <thead>
             <tr>
-              <th width="95%">CATEGORY</th>
-              <th>Edit</th>
+              <th>CATEGORY</th>
+              <th class="row-edit-btn">Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -63,8 +63,8 @@
       <table class="table" id="cat-sub-table">
         <thead>
           <tr>
-            <th width="95%"s>SUB CATEGORY</th>
-            <th>Edit</th>
+            <th>SUB CATEGORY</th>
+            <th class="row-edit-btn">Edit</th>
           </tr>
         </thead>
         <tbody>
