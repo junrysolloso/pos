@@ -119,6 +119,22 @@ class Model_Product_Info extends MY_Model
     }
   }
 
+  /**
+   * Check product
+   */
+  public function check_product( $code ) {
+    if ( ! empty($code) && $code ) {
+
+      $this->db->select('*');
+      $this->db->where( $this->_item_id, $code );
+      $query = $this->db->get( $this->_table );
+
+      if ( $query->num_rows() > 0) {
+        return true;
+      }
+    }
+  }
+
 }
 
 /* End of file Model_Product_Info.php */

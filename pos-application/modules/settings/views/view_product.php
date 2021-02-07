@@ -146,61 +146,61 @@
  <!--View Product Details-->
       
  <div id="view_prd_info" class="modal fade auth theme-one" role="dialog">
-        <div class="modal-dialog modal-md">
-          <div class="modal-content">
-            <div class="modal-body">
-              <span><i class="mdi mdi-close-circle icon-lg modal-close-btn" data-dismiss="modal"></i><span>
-              <div class="card auto-form-wrapper rounded">
-                <div class="card-body">
-                  <h4 class="card-title">PRODUCT INFORMATION</h4>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <div class="input-group">
-                          <input type="text" name="data_search" class="form-control" id="ord-items"placeholder="Search anything from the table..." />
-                          <div class="input-group-append">
-                            <span class="input-group-text">
-                              <i class="mdi mdi-magnify-plus"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-body">
+        <span><i class="mdi mdi-close-circle icon-lg modal-close-btn" data-dismiss="modal"></i><span>
+        <div class="card auto-form-wrapper rounded">
+          <div class="card-body">
+            <h4 class="card-title">PRODUCT INFORMATION</h4>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="text" name="data_search" class="form-control" id="ord-items"placeholder="Search anything from the table..." />
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-magnify-plus"></i>
+                      </span>
                     </div>
-                  </div>
-                  <div class="table-responsive">
-                    <table class="table" id="ord-items-table">
-                      <thead>
-                        <tr>
-                          <th>NO.</th>
-                          <th>BARCODE</th> 
-                          <th>ITEM NAME</th>     
-                          <th>PRICE/UNIT</th>                 
-                          <th>QUANTITY</th>
-                          <th>EDIT</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php
-                        $count=1;
-                        foreach ( $view_products as $row ) {
-                          echo '<tr>';
-                          echo '<td>'. $count .'</td>';
-                          echo '<td>'. $row->barcode .'</td>';
-                          echo '<td>'. $row->name.'</td>';
-                          echo '<td>'. $row->srp .'</td>';
-                          echo '<td>'. $row->qty .'</td>';
-                          echo '<td>Edit</td>';
-                          echo '</tr>';
-                          $count++;
-                        }
-                      ?> 
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="table-responsive">
+              <table class="table" id="ord-items-table">
+                <thead>
+                  <tr>
+                    <th>NO.</th>
+                    <th>BARCODE</th> 
+                    <th>ITEM NAME</th>     
+                    <th>PRICE/UNIT</th>                 
+                    <th>QUANTITY</th>
+                    <th>EDIT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php
+                  $count=1;
+                  foreach ( $view_products as $row ) {
+                    echo '<tr>';
+                    echo '<td>'. $count .'</td>';
+                    echo '<td>'. $row->barcode .'</td>';
+                    echo '<td>'. $row->name.'</td>';
+                    echo '<td>'. $row->srp .'</td>';
+                    echo '<td>'. $row->qty .'</td>';
+                    echo '<td>Edit</td>';
+                    echo '</tr>';
+                    $count++;
+                  }
+                ?> 
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 <!-- end product -->

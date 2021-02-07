@@ -319,6 +319,22 @@ class Settings extends MY_Controller
   }
 
   /**
+   * Product
+   */
+  public function product() {
+    if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+      if ( $this->input->post( 'check' ) ) {
+
+        if ( ! empty( $this->input->post( 'item_code' ) ) ) {
+          if ( $this->Model_Product_Info->check_product( $this->input->post( 'item_code' ) ) ) {
+            $this->_response( array( 'msg' => 'exist' ) );
+          }
+        }
+      }
+    }
+  }
+
+  /**
    * Server response
    */
   private function _response( $data = NULL ) {

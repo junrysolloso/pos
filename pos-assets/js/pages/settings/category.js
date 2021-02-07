@@ -1,7 +1,7 @@
 (function($){
   'use strict';
 
-  var url    = base_url + 'settings/category';
+  var url = base_url + 'settings/category';
 
   $(document).ready(function(){
 
