@@ -1,0 +1,276 @@
+.auth.theme-two .banner-section .slide-content.bg-1 {
+  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+  background-size: cover
+}
+
+.auth.register-bg-2 {
+  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+  background-size: cover
+}
+
+.auth.theme-two .banner-section .slide-content.bg-2 {
+  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+  background-size: cover
+}
+
+.auth.multi-step-login .step-form {
+  width: 100% !important;
+}
+
+.auth.multi-step-login .step-form .step-progress li.active:before {
+  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+  color: #fff;
+}
+
+.content-aside-right {
+  height: 100% !important;
+}
+
+.user-photo {
+  border: 6px solid #fff; 
+  border-radius: 50%; 
+  margin-top: -100px; 
+  height: 140px; 
+  width: 140px; 
+  object-fit: cover;
+  background: #ffffff;
+}
+
+.chapter-photo {
+  border-radius: 6px;
+  height: 500px; 
+  width: 100%;
+  object-position: center;
+  object-fit: cover;
+  background: #ffffff;
+}
+
+.member-photo {
+  border-radius: 6px;
+  height: 300px; 
+  width: 100%;
+  object-position: center;
+  object-fit: cover;
+  background: #ffffff;
+}
+
+.img-sm {
+  object-fit: cover;
+}
+
+.card-img-top {
+  height: 300px;  
+  object-fit: cover;
+}
+
+.submit-btn,
+.user-delete-btn,
+.user-settings {
+  cursor: pointer !important;
+}
+
+.user-settings:hover {
+  color: #18bef1 !important;
+}
+
+.table tr th {
+  vertical-align: middle;
+  height: 65px;
+} 
+
+.table th {
+  text-transform: uppercase;
+}
+
+a.btn {
+  color: #ffffff;
+}
+
+.btn,
+.alert {
+  border-radius: 6px;
+}
+
+.btn,
+.pagination .page-item.active .page-link,
+.pagination .page-item:hover .page-link,
+.pagination .page-item .page-link{
+  padding: 14px 18px !important;
+}
+
+.btn-export:hover {
+  text-decoration: none;
+}
+
+.sidebar .nav .nav-item.active {
+  background: #FAFBFC;
+}
+
+.form-text {
+  margin-top: 0;
+  margin-bottom: .25rem;
+}
+
+.auth.theme-two .auto-form-wrapper form {
+  width: 100%;
+}
+
+/* Body */
+
+.pending .card,
+.cancelled .card,
+.settings .card,
+.dashboard .card,
+.backup .card,
+.boarder .card {
+  border-radius: 10px;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(0,0,0,.1);
+  box-shadow: 0 10px 30px 0 rgba(0,0,0,.1);
+}
+
+/* Data Tables */
+
+div.dataTables_wrapper div.dataTables_length label {
+  display: none !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+  display: none !important;
+}
+
+.dataTables_wrapper .dataTable thead th {
+  font-weight: 600;
+}
+
+.pagination .paginate_button.page-item.previous a {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.table.table-striped tbody tr:nth-child(odd):hover,
+.table.table-striped tbody tr:nth-child(even):hover {
+  /* background-image: linear-gradient(to bottom, #FDDBE2, #f8ced7); */
+  background-image: linear-gradient(to bottom, #eee, #ddd);
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single,
+.form-control:disabled,
+.form-control:read-only {
+  background-color: #ffffff;
+  cursor: not-allowed;
+}
+
+/* Settings */
+
+.btn-edit,
+.item-edit {
+  cursor: pointer;
+}
+
+.modal-close-btn {
+  float: right;
+  margin-top: -20px;
+  margin-left: -30px;
+  position: relative;
+  z-index: 9999;
+  color: #128bfc;
+  cursor: pointer;
+}
+
+.user-details:hover,
+.room-details:hover,
+.confirm-booking:hover,
+.cancel-booking:hover,
+.remove-pay-btn:hover {
+  cursor: pointer;
+  color: #8862e0 !important;
+}
+
+.remove-pay-btn {
+  cursor: pointer;
+}
+
+/* Modal*/
+
+.modal .modal-dialog .modal-content {
+  background: transparent !important;
+}
+
+.modal-content {
+  border: 0px !important;
+}
+
+@media (min-width: 576px)  {
+  .modal-dialog {
+    max-width: 60vw; 
+  }
+}
+
+/* Tab */
+
+.nav-tabs .nav-item {
+  padding-right: 10px;
+}
+
+/* Custom scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(120deg, #556cdc, #128bfc, #18bef1);
+}
+
+/* Custom */
+
+.footer,
+.content-wrapper {
+  background: #FAFBFC;
+}
+
+#data-table_wrapper {
+  width: 100% !important;
+}
+
+.ctm-table td {
+  padding: 5px 0px;
+}
+
+.ctm-table {
+  border-radius: 6px;
+  width: 100% !important;
+}
+
+.ctm-table thead {
+  font-weight: 700 !important;
+  font-size: 30px;
+}
+
+.ctm-table tr:first-child td {
+  border-top: 0px !important;
+}
+
+.ctm-tr {
+  display: inline-block !important; 
+  width: 33.33333333333333% !important;
+  position: relative;
+}
+
+.table thead th i {
+  margin-left: 0px !important;
+}
