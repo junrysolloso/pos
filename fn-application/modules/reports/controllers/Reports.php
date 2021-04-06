@@ -73,8 +73,8 @@ class Reports extends MY_Controller
           $joins = array_merge( $joins, $common );
           $fields = '`tbl_items`.`item_id` AS `barcode` , `tbl_items`.`item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, `tbl_inventory`.`inv_rem_stocks` AS  `remaining`, `unit_desc`, `tbl_inventory`.`inv_item_srp` AS `srp`, `expiry_date`, `price_per_unit`';
           $config['inventory'] = $this->dbdelta->get_all( 'tbl_items', [ 'name' => 'ASC' ], 0, $joins, $filter, 0, $fields );
-          $config['subtitle'] = $data['category'];
-          $title =  ucwords( 'Inventory' );
+          $config['subtitle'] = date_format( date_create( date('Y-m-d') ), 'M j, Y' );
+          $title =  $data['category'];
           break;
 
         case 'sales':

@@ -57,6 +57,7 @@
 <body>
   <div class="table-responsive">
     <h1>INVENTORY</h1>
+    <p><?php echo strtoupper( $title ); ?></p>
     <p><?php echo strtoupper( $subtitle ); ?></p><br />
     <table class="table shadow-sm ctm-table bg-white data-table">
       <thead>
