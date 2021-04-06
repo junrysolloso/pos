@@ -22,7 +22,7 @@ date_default_timezone_set( 'Asia/Manila' );
 | environments.
 |
 */
-$config['base_url'] = '//localhost/botica/';
+$config['base_url'] = '//localhost/pos/';
 
 /*
 |--------------------------------------------------------------------------
