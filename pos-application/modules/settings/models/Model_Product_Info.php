@@ -39,6 +39,8 @@ class Model_Product_Info extends MY_Model
         $this->_item_name        => strtolower( $data['item_name'] ) ,
         $this->_item_description => strtolower( $data['item_description'] ) ,
         $this->_item_critlimit   => intval( $data['item_critlimit'] ),
+        'brand_name'             => strtolower( $data['brand_name'] ) ,
+        'generic_name'           => strtolower( $data['generic_name'] ) ,
         $this->_unit_id          => intval( $data['unit_id1'] ),
       );
     

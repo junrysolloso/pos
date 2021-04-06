@@ -26,7 +26,7 @@ class Model_View_Products extends MY_Model
     parent:: __construct();
   }
 
-    /**
+  /**
    * Get Inventory reports
    * @return array $result
    */
@@ -92,6 +92,3 @@ class Model_View_Products extends MY_Model
 	}
 
 }
-
-/* End of file Model_View_Product.php */
-/* Location: ./application/modules/settings/models/Model_View_Product.php */

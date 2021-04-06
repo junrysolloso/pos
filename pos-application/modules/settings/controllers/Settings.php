@@ -54,6 +54,8 @@ class Settings extends MY_Controller
             'item_name'        => $this->input->post( 'item_name' ),
             'item_description' => $this->input->post( 'item_description' ),
             'item_critlimit'   => $this->input->post( 'item_critlimit' ),
+            'brand_name'       => $this->input->post( 'brand_name' ),
+            'generic_name'     => $this->input->post( 'generic_name' ),
             'subcat_id'        => $this->input->post( 'subcat_id' ),
             'unit_id1'         => $this->input->post( 'unit_id1' ),
             'unit_id2'         => $this->input->post( 'unit_id2' ),
@@ -427,5 +429,3 @@ class Settings extends MY_Controller
 
 }
 
-/* End of file Settings.php */
-/* Location: ./application/modules/settings/controllers/Settings.php */

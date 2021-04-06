@@ -73,8 +73,7 @@
         <div class="form-group">
           <label for="unit_id1">Order Unit</label>
           <div class="input-group">
-            <select type="text" name="unit_id1" class="form-control select2-lg" id="unit_id1" data-select2-lg-id="1"
-              tabindex="-1" aria-hidden="true" required>
+            <select type="text" name="unit_id1" class="form-control select2-lg" id="unit_id1" required>
               <option value="" data-select2-lg-id="0">Select</option>
               <?php 
                 foreach ( $unit_all as $row ) {
@@ -82,6 +81,30 @@
                 }
               ?>
             </select>
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="mdi mdi-check-circle-outline"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="brand_name">Brand Name</label>
+          <div class="input-group">
+            <input type="text" name="brand_name" class="form-control" id="brand_name" required />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="mdi mdi-check-circle-outline"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="generic_name">Generic Name</label>
+          <div class="input-group">
+            <input type="text" name="generic_name" class="form-control" id="generic_name" required />
             <div class="input-group-append">
               <span class="input-group-text">
                 <i class="mdi mdi-check-circle-outline"></i>

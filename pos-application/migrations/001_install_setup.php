@@ -6,7 +6,7 @@ class Migration_Install_Setup extends CI_Migration
 	 * Upgrade database
 	 */
 	public function up() {
-		$attributes = array( 'ENGINE' => 'MyISAM', 'DEFAULT CHARSET' => 'utf8' );
+		$attributes = array( 'ENGINE' => 'InnoDB', 'DEFAULT CHARSET' => 'utf8' );
 		$tables = array(
 			'category' => array(
 				"`category_id` smallint(6) NOT NULL PRIMARY KEY AUTO_INCREMENT",
@@ -47,6 +47,8 @@ class Migration_Install_Setup extends CI_Migration
 				"`item_id` varchar(20) DEFAULT NULL",
 				"`subcat_id` smallint(6) DEFAULT NULL",
 				"`item_name` varchar(50) DEFAULT NULL",
+				"`generic_name` varchar(100) NOT NULL",
+				"`brand_name` varchar(100) NOT NULL",
 				"`item_description` varchar(100) DEFAULT NULL",
 				"`item_critlimit` smallint(6) DEFAULT NULL",
 				"`unit_id` tinyint(4) DEFAULT NULL",
