@@ -8,7 +8,7 @@ class Model_Authattempts extends MY_Model
    */
   protected $table      = 'tbl_auth_attempts';
   protected $attempts   = 'auth_attempts';
-  protected $blocked    = 'auth_date';
+  protected $blocked    = 'auth_blocked';
   protected $auth_user  = 'auth_user';
 
   /**
