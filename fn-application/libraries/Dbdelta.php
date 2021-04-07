@@ -76,15 +76,22 @@ class Dbdelta
    * Check specific value if exist
    * @param string $table database table
    * @param array  $arg key and value pair for where clause
+   * @param array  $joins table to join
    * @return boolean
    */
-  public function check( $table = NULL, $arg = [] ) {
+  public function check( $table = NULL, $arg = [], $joins = [] ) {
     if ( $table ) {
       if ( is_array( $arg ) && count( $arg ) > 0 ) {
         $this->db->select( '*' );
 
         foreach ( $arg as $key => $value) {
           $this->db->where( $key, $value );
+        }
+
+        if ( is_array( $joins ) && ! empty( $joins ) ) {
+          foreach ( $joins as $key => $value ) {
+            $this->db->join( $key, $value );
+          }
         }
 
         $query = $this->db->get( $table );
