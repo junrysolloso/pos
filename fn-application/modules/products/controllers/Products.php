@@ -98,7 +98,7 @@ class Products extends MY_Controller
           'tbl_unitconvert' => 'tbl_unitconvert.uc_id=tbl_ucjunc.uc_id',
           'tbl_inventory' => 'tbl_inventory.item_id=tbl_items.item_id'
         ];
-        $data = $this->dbdelta->get_by_id( 'tbl_items', [ 'id' => $this->input->get( 'id' ) ], $joins );
+        $data = $this->dbdelta->get_by_id( 'tbl_items', [ 'id' => intval( $this->input->get( 'id' ) ) ], $joins );
       }
     } else {
       if ( $this->input->post( 'id' ) ) {

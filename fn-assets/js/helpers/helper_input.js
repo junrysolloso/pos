@@ -35,10 +35,8 @@ addInputIcon = function (obj) {
  * Check input values
  */
 checkData = function (data) {
-  
   var flag = true, j, i;
 
-  // Check for empty value
   for (i=0; i < data.length; i++) {
     if ( ! data[i].value ) {
       flag = false;
@@ -51,7 +49,6 @@ checkData = function (data) {
     }
   }
 
-  // Check if flag is true or false
   if ( ! flag ) {
     showWarningSwal('Please provide a valid data.')
     resetInputIcon();

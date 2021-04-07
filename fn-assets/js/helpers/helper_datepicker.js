@@ -1,5 +1,4 @@
-jQuery(function () {
-
+$(document).ready(function () {
   if ($('#rangedate').length) {
     var start = moment().subtract(29, 'days');
     var end = moment();
@@ -20,5 +19,4 @@ jQuery(function () {
       }
     });
   }
-
 });

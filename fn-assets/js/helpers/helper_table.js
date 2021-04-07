@@ -19,7 +19,7 @@ $(document).ready(function() {
   var ar_info   = [false];
   var ar_dlen   = [len];
 
-  // Populate DataTable if table id is present
+  // Initialize datatable
   for (let i = 0; i < ar_tables.length; i++) {
     if ( $( ar_tables[i] ).length ) {
       $( ar_tables[i] ).DataTable({
@@ -37,11 +37,6 @@ $(document).ready(function() {
     }
   }
 
-  // Remove padding in table parent element when on chapter page
-  if ( page == 'chapters' ) {
-    $('.ctm-table').parent().addClass('p-0');
-  }
-
   // Search table
   if ( $('input[name="search-field"]').length ) {
     $('input[name="search-field"]').on('keyup', function () {
@@ -49,4 +44,3 @@ $(document).ready(function() {
     });
   }
 });
-
