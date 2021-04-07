@@ -7,7 +7,7 @@ class Categories extends MY_Controller
 
   function __construct() {
     parent:: __construct(); 
-    $this->sess->restricted();
+    $this->sess->unrestricted();
   }
 
 	/**

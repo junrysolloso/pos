@@ -23,10 +23,12 @@
               </td>
               <td class="text-right">
                 <a href="<?php echo base_url(); ?>categories/edit/?id=<?php echo $row->category_id; ?>" class="btn" style="color: #000;"><i class="mdi mdi-grease-pencil "></i></a>
-                <form action="<?php echo base_url(); ?>categories/delete" method="post" class="deleteForm" style="display: inline-block;">
-                  <input type="hidden" name="id" value="<?php echo $row->category_id; ?>" />
-                  <button type="submit" class="btn"><i class="mdi mdi-trash-can-outline text-danger"></i></button>
-                </form>
+                <?php if ( $this->session->userdata( 'user_role' ) == 'administrator' ): ?>
+                  <form action="<?php echo base_url(); ?>categories/delete" method="post" class="deleteForm" style="display: inline-block;">
+                    <input type="hidden" name="id" value="<?php echo $row->category_id; ?>" />
+                    <button type="submit" class="btn"><i class="mdi mdi-trash-can-outline text-danger"></i></button>
+                  </form>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -58,10 +60,12 @@
               </td>
               <td class="text-right">
                 <a href="<?php echo base_url(); ?>subcategories/edit/?id=<?php echo $row->subcat_id; ?>" class="btn" style="color: #000;"><i class="mdi mdi-grease-pencil "></i></a>
-                <form action="<?php echo base_url(); ?>subcategories/delete" method="post" class="deleteForm" style="display: inline-block;">
-                  <input type="hidden" name="id" value="<?php echo $row->subcat_id; ?>" />
-                  <button type="submit" class="btn"><i class="mdi mdi-trash-can-outline text-danger"></i></button>
-                </form>
+                <?php if ( $this->session->userdata( 'user_role' ) == 'administrator' ): ?>
+                  <form action="<?php echo base_url(); ?>subcategories/delete" method="post" class="deleteForm" style="display: inline-block;">
+                    <input type="hidden" name="id" value="<?php echo $row->subcat_id; ?>" />
+                    <button type="submit" class="btn"><i class="mdi mdi-trash-can-outline text-danger"></i></button>
+                  </form>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endforeach; ?>

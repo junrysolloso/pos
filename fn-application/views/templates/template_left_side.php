@@ -94,10 +94,21 @@
       </a>
     </li>
     <li class="nav-item" id="users">
-      <a class="nav-link" href="<?php echo base_url(); ?>users">
+      <a class="nav-link" data-toggle="collapse" href="#users-dropdown" aria-expanded="false" aria-controls="users-dropdown">
         <i class="menu-icon mdi mdi-account-key-outline"></i>
         <span class="menu-title">Users</span>
+        <i class="menu-arrow"></i>
       </a>
+      <div class="collapse" id="users-dropdown">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link"  href="<?php echo base_url(); ?>users">Users List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="<?php echo base_url(); ?>users/add">Add User</a>
+          </li>
+        </ul>
+      </div>
     </li>
     <li class="nav-item" id="settings">
       <a class="nav-link" data-toggle="collapse" href="#settings-dropdown" aria-expanded="false" aria-controls="settings-dropdown">

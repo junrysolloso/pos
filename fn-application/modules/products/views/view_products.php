@@ -38,11 +38,13 @@
           </td>
           <td class="text-right">
             <a href="<?php echo base_url(); ?>products/edit/?id=<?php echo $row->id; ?>" class="btn" style="color: #000;"><i class="mdi mdi-grease-pencil"></i></a>
-            <form action="<?php echo base_url(); ?>products/delete" method="post" class="deleteForm" style="display: inline-block;">
-              <input type="hidden" name="id" value="<?php echo $row->id; ?>" />
-              <input type="hidden" name="uc_id" value="<?php echo $row->uc_id; ?>" />
-              <button type="submit" class="btn"><i class="mdi mdi-trash-can-outline text-danger"></i></button>
-            </form>
+            <?php if ( $this->session->userdata( 'user_role' ) == 'administrator' ): ?>
+              <form action="<?php echo base_url(); ?>products/delete" method="post" class="deleteForm" style="display: inline-block;">
+                <input type="hidden" name="id" value="<?php echo $row->id; ?>" />
+                <input type="hidden" name="uc_id" value="<?php echo $row->uc_id; ?>" />
+                <button type="submit" class="btn"><i class="mdi mdi-trash-can-outline text-danger"></i></button>
+              </form>
+            <?php endif; ?>
           </td>
         </tr>
       <?php endforeach; ?>

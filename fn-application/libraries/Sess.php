@@ -19,7 +19,6 @@ class Sess
   function __construct() {
     $this->CI =& get_instance();
     $this->session = $this->CI->session;
-
     $this->role  = $this->session->userdata( 'user_role' );
   }
 
@@ -40,7 +39,7 @@ class Sess
       redirect( base_url() . 'login' );
     } else {
       if ( $this->role != 'administrator' ) {
-        redirect( base_url() . 'dashboard' );
+        redirect( base_url() . 'access/denied' );
       }
     }
   }

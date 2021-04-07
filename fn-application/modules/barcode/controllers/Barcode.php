@@ -16,8 +16,6 @@ class Barcode extends MY_Controller
    */
   public function index() {
     $html = '';
-
-		// Generate barcode number
     $code = $this->check_barcode();
     $element = $this->barcode_generate( $code );
   
@@ -31,7 +29,6 @@ class Barcode extends MY_Controller
     $config['barcode'] = $html;
     $config['title']   = 'Generate Barcode';
     $config['class']   = 'barcode';
-
     $this->content->view( $config );
 	}
   
@@ -39,7 +36,6 @@ class Barcode extends MY_Controller
    * View barccode
    */
 	private function barcode_generate( $code ) {
-		//load library
 		$this->load->library( 'zend' );
     $this->zend->load( 'Zend/Barcode' );
     

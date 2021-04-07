@@ -4,8 +4,8 @@ class Damage extends MY_Controller
 {
 
   function __construct() {
-    parent:: __construct(); 
-    $this->sess->unrestricted();
+    parent:: __construct();
+    $this->sess->unrestricted(); 
   }
 
 	/**
@@ -19,7 +19,6 @@ class Damage extends MY_Controller
     $config['view'] = 'view_damage';
     $config['title'] = 'Damage Products';
     $config['damage'] = $this->dbdelta->get_all( 'tbl_damagestocks', [], 0, $joins );
-
     $this->content->view( $config );
   }
 
