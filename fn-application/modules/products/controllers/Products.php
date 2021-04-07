@@ -70,7 +70,9 @@ class Products extends MY_Controller
             $junc = clean_array( $junc );
             if ( $this->dbdelta->insert( 'tbl_ucjunc', $junc ) ) {
               if ( $this->dbdelta->insert( 'tbl_items', $data ) ) {
-                response( [ 'msg' => 'success', 'data' => 'added.' ] );
+                if ( $this->model_log->add( task( 'product' )['add'] ) ) {
+                  response( [ 'msg' => 'success', 'data' => 'added.' ] );
+                }
               }
             }
           }
@@ -146,7 +148,9 @@ class Products extends MY_Controller
           if ( $this->dbdelta->update( 'tbl_unitconvert', $unit, [ 'uc_id' => $uc_id ] ) ) {
             if ( $this->dbdelta->update( 'tbl_ucjunc', $junc, [ 'ucjunc_id' => $ucjunc_id ] ) ) {
               if ( $this->dbdelta->update( 'tbl_inventory', $inventory, [ 'item_id' => $item_id ] ) ) {
-                response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+                if ( $this->model_log->add( task( 'product' )['update'] ) ) {
+                  response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+                }
               }
             }
           }
@@ -174,7 +178,9 @@ class Products extends MY_Controller
         if ( $this->dbdelta->delete( 'tbl_items', 'id', $id ) ) {
           if ( $this->dbdelta->delete( 'tbl_unitconvert', 'uc_id', $uc_id ) ) {
             if ( $this->dbdelta->delete( 'tbl_ucjunc', 'uc_id', $uc_id ) ) {
-              response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+              if ( $this->model_log->add( task( 'product' )['delete'] ) ) {
+                response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+              }
             }
           }
         }

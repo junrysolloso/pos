@@ -35,7 +35,9 @@ class Units extends MY_Controller
         $unit = clean_array( $unit );
         if ( ! $this->dbdelta->check( 'tbl_unit', [ 'unit_desc' => trim( $desc ) ] ) ) {
           if ( $this->dbdelta->insert( 'tbl_unit', $unit ) ) {
-            response( [ 'msg' => 'success', 'data' => 'added.' ] );
+            if ( $this->model_log->add( task( 'unit' )['add'] ) ) {
+              response( [ 'msg' => 'success', 'data' => 'added.' ] );
+            }
           }
         } else {
           response( [ 'msg' => 'exist', 'data' => 'Unit' ] );
@@ -67,7 +69,9 @@ class Units extends MY_Controller
 
         $unit = clean_array( $unit );
         if ( $this->dbdelta->update( 'tbl_unit', $unit, [ 'unit_id' => $id ] ) ) {
-          response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+          if ( $this->model_log->add( task( 'unit' )['update'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+          }
         }
       }
     }
@@ -89,7 +93,9 @@ class Units extends MY_Controller
         $id = $this->input->post( 'id' );
 
         if ( $this->dbdelta->delete( 'tbl_unit', 'unit_id', $id ) ) {
-          response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          if ( $this->model_log->add( task( 'unit' )['delete'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          }
         }
       }
     }

@@ -25,7 +25,9 @@ class Subcategories extends MY_Controller
         $data = clean_array( $data );
         if ( ! $this->dbdelta->check( 'tbl_subcategory', [ 'subcat_name' => trim( $name ) ] ) ) {
           if ( $this->dbdelta->insert( 'tbl_subcategory', $data ) ) {
-            response( [ 'msg' => 'success', 'data' => 'added.' ] );
+            if ( $this->model_log->add( task( 'subcategory' )['add'] ) ) {
+              response( [ 'msg' => 'success', 'data' => 'added.' ] );
+            }
           }
         } else {
           response( [ 'msg' => 'exist', 'data' => 'Sub-category' ] );
@@ -58,7 +60,9 @@ class Subcategories extends MY_Controller
 
         $data = clean_array( $data );
         if ( $this->dbdelta->update( 'tbl_subcategory', $data, [ 'subcat_id' => $id ] ) ) {
-          response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+          if ( $this->model_log->add( task( 'subcategory' )['update'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+          }
         }
       }
     }
@@ -79,7 +83,9 @@ class Subcategories extends MY_Controller
         $id = $this->input->post( 'id' );
 
         if ( $this->dbdelta->delete( 'tbl_subcategory', 'subcat_id', $id ) ) {
-          response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          if ( $this->model_log->add( task( 'subcategory' )['delete'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          }
         }
       }
     }

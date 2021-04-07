@@ -18,7 +18,6 @@ class Categories extends MY_Controller
     $config['title'] = 'Categories';
     $config['categories'] = $this->dbdelta->get_all( 'tbl_category' );
     $config['subcategories'] = $this->dbdelta->get_all( 'tbl_subcategory' );
-
     $this->content->view( $config );
   }
 
@@ -36,7 +35,9 @@ class Categories extends MY_Controller
         $data = clean_array( $data );
         if ( ! $this->dbdelta->check( 'tbl_category', [ 'category_name' => trim( $name ) ] ) ) {
           if ( $this->dbdelta->insert( 'tbl_category', $data ) ) {
-            response( [ 'msg' => 'success', 'data' => 'added.' ] );
+            if ( $this->model_log->add( task( 'category' )['add'] ) ) {
+              response( [ 'msg' => 'success', 'data' => 'added.' ] );
+            }
           }
         } else {
           response( [ 'msg' => 'exist', 'data' => 'Category' ] );
@@ -66,7 +67,9 @@ class Categories extends MY_Controller
 
         $data = clean_array( $data );
         if ( $this->dbdelta->update( 'tbl_category', $data, [ 'category_id' => $id ] ) ) {
-          response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+          if ( $this->model_log->add( task( 'category' )['update'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+          }
         }
       }
     }
@@ -86,7 +89,9 @@ class Categories extends MY_Controller
         $id = $this->input->post( 'id' );
 
         if ( $this->dbdelta->delete( 'tbl_category', 'category_id', $id ) ) {
-          response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          if ( $this->model_log->add( task( 'category' )['delete'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          }
         }
       }
     }

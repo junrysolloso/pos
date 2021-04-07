@@ -38,7 +38,9 @@ class Damage extends MY_Controller
 
         $data = clean_array( $data );
         if ( $this->dbdelta->insert( 'tbl_damagestocks', $data ) ) {
-          response( [ 'msg' => 'success', 'data' => 'added.' ] );
+          if ( $this->model_log->add( task( 'damage' )['add'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'added.' ] );
+          }
         }
       }
     }
@@ -68,7 +70,9 @@ class Damage extends MY_Controller
 
         $data = clean_array( $data );
         if ( $this->dbdelta->update( 'tbl_damagestocks', $data, [ 'ds_id' => $id ] ) ) {
-          response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+          if ( $this->model_log->add( task( 'damage' )['update'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+          }
         }
       }
     }
@@ -88,7 +92,9 @@ class Damage extends MY_Controller
         $id = $this->input->post( 'id' );
 
         if ( $this->dbdelta->delete( 'tbl_damagestocks', 'ds_id', $id ) ) {
-          response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          if ( $this->model_log->add( task( 'damage' )['delete'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          }
         }
       }
     }

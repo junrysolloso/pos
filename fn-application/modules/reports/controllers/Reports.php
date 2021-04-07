@@ -136,7 +136,11 @@ class Reports extends MY_Controller
       }
       
       $content = $this->template->render( NULL, TRUE );
-      $this->pdf->create_pdf( $content, ucwords( $title ), false );
+      if ( isset( $content ) ) {
+        if ( $this->model_log->add( 'Generated ' . $data['mode'] . ' report' ) ) {
+          $this->pdf->create_pdf( $content, ucwords( $title ), false );
+        }
+      }
     }
   }
 

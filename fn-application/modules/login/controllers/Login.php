@@ -5,8 +5,8 @@ class Login extends MY_Controller
 
 	function __construct() {
 		parent::__construct();
-		$this->load->model( array( 'model_login', 'model_authattempts' ) );
-		$this->load->library( array( 'form_validation' ) );
+		$this->load->model( [ 'model_login', 'model_authattempts' ] );
+		$this->load->library( [ 'form_validation' ] );
 	}
 
 	/**
@@ -34,18 +34,18 @@ class Login extends MY_Controller
 		}
 
 		// Login form fields
-		$fields = array(
-			array(
+		$fields = [
+			[
 				'field' => 'user_name',
 				'label' => 'username',
 				'rules'	=> 'required|trim',
-			),
-			array(
+			],
+			[
 				'field' => 'user_pass',
 				'label' => 'password',
 				'rules'	=> 'required|trim',
-			),
-		);
+			]
+		];
 
 		$this->form_validation->set_rules( $fields );
 
@@ -56,22 +56,22 @@ class Login extends MY_Controller
 
 				// Assign values
 				if ( $this->input->post( 'user_name' ) && $this->input->post( 'user_pass' ) ) {
-					$data = array(
+					$data = [
 						'username' 	=> $this->input->post( 'user_name' ),
 						'user_pass' => $this->input->post( 'user_pass' ),
-					);
+					];
 					
 					// Check user if exist in the database
 					if ( $this->model_login->user_check( $data ) ) {
 
-						$joins = array(
+						$joins = [
 							'tbl_user_login' => '`tbl_user_login`.`user_id`=`tbl_logs`.`user_id`',
 							'tbl_user_meta' => '`tbl_user_meta`.`user_id`=`tbl_logs`.`user_id`'
-						);
+						];
 
 						$id = intval( $this->dbdelta->get_max_id( 'tbl_logs', 'log_id' ) ) - 3;
 						$fields = '`tbl_logs`.`user_id` AS user_id, `login_level`, `user_fname`, `user_photo`, `log_date`';
-						$recents = $this->dbdelta->get_all( 'tbl_logs', array(), 0, $joins, array( 'log_id' => $id ), 0, $fields );
+						$recents = $this->dbdelta->get_all( 'tbl_logs', [], 0, $joins, [ 'log_id' => $id ], 0, $fields );
 
 						$this->session->set_userdata( 'recents', $recents );
 						if ( $this->session->has_userdata( 'recents' ) ) {
@@ -83,17 +83,17 @@ class Login extends MY_Controller
 						// Add login attempts
 						$attempt_count = intval( $this->model_authattempts->_attempt_check() ); 
 						if ( $this->model_authattempts->_attempt_insert( $this->input->post( 'user_name' ) ) ) {
-							$this->session->set_tempdata( array(
+							$this->session->set_tempdata( [
 								'alert' => '<strong>Sorry!</strong> login failed. You have <strong>' . ( 4 - $attempt_count ) . '</strong> attempt(s) remaining.',
 								'class' => 'danger',
-							), NULL, 5 );
+							], NULL, 5 );
 						}
 					}
 				}
 			}
 		}
 
-		$data['title']  = 'Admin Login';
+		$data['title'] = 'Admin Login';
 
 		// Page templates
 		$this->template->set_master_template( 'layouts/layout_site' );
@@ -123,7 +123,7 @@ class Login extends MY_Controller
 	public function signout() {
 		if ( $this->model_log->add( task( 'login' )['out'] ) ) {
 
-			$sname  = array( 'user_id', 'user_name', 'user_role', 'user_photo', 'recents' );
+			$sname  = [ 'user_id', 'user_name', 'user_role', 'user_photo', 'recents' ];
 			foreach ( $sname as $key ) {
 				unset( $_SESSION[ $key ] ); 
 			}
@@ -133,13 +133,13 @@ class Login extends MY_Controller
 				// $name_non = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.sql';
 				// $name_com = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.zip';
 		
-				// $config = array(
+				// $config = [
 				// 	'format'      => 'zip',
 				// 	'filename'    => $name_non,
 				// 	'add_drop'    => TRUE,
 				// 	'add_insert'  => TRUE,
 				// 	'newline'     => "\n"
-				// );
+				// ];
 		
 				// $backup = $this->dbutil->backup( $config );
 				// if ( $this->load->helper( 'file' ) ) {

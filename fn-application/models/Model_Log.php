@@ -20,11 +20,11 @@ class Model_Log extends MY_Model
    */
   public function add( $activity = NULL ) {
     if ( $activity ) {
-      $data = array(
+      $data = [
         $this->log_date => date( 'Y-m-d H:i:s' ),
         $this->log_task => $activity,
         $this->user_id  => intval( $this->session->userdata( 'user_id' ) ),
-      );
+      ];
       if ( $this->db->insert( $this->table, $data ) ) {
         return true;
       }

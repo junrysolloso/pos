@@ -113,7 +113,9 @@ class Orders extends MY_Controller
             if ( $this->dbdelta->update( 'tbl_orderinventory', $order_inv, [ 'orderdetails_id' => $details_id ] ) ) {
               if ( $this->dbdelta->update( 'tbl_inventory', $inventory, [ 'item_id' => $item_id ] ) ) {
                 if ( $this->db->simple_query( 'UPDATE `tbl_orders` SET `order_total`= (SELECT SUM((`orderdetails_quantity` * `price_per_unit`)) FROM `tbl_orderdetails` WHERE `order_id`='.$order_id.' ) WHERE `order_id`='.$order_id.'' ) ) {
-                  response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+                  if ( $this->model_log->add( task( 'order' )['update'] ) ) {
+                    response( [ 'msg' => 'success', 'data' => 'updated.' ] );
+                  }
                 }
               }
             }
@@ -226,7 +228,9 @@ class Orders extends MY_Controller
 
     if ( $flag ) {
       if ( $this->dbdelta->reset_table( 'tbl_temp_orderdetails' ) ) {
-        response( [ 'msg' => 'success', 'data' => 'save.' ] );
+        if ( $this->model_log->add( task( 'order' )['add'] ) ) {
+          response( [ 'msg' => 'success', 'data' => 'saved.' ] );
+        }
       }
     }
   }
@@ -240,7 +244,9 @@ class Orders extends MY_Controller
         $id = $this->input->post( 'id' );
 
         if ( $this->dbdelta->delete( 'tbl_orders', 'order_id', $id ) ) {
-          response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          if ( $this->model_log->add( task( 'order' )['delete'] ) ) {
+            response( [ 'msg' => 'success', 'data' => 'deleted.' ] );
+          }
         }
       }
     }

@@ -40,7 +40,7 @@
             <div class="media">
               <i class="mdi mdi-file-alert-outline icon-sm align-self-center text-warning mr-3"></i>
               <div class="media-body my-auto">
-                <p class="mb-0"><?php echo ucwords( $row->log_task ); ?></p>
+                <p class="mb-0"><?php echo ucfirst( $row->log_task ); ?></p>
               </div>
             </div>
           </td>
