@@ -42,6 +42,7 @@
                 <small class="form-text text-muted">Please damage product quantity</small>
                 <div class="input-group">
                   <input type="number" name="quantity" value="<?php echo $damage[0]->ds_quantity; ?>" class="form-control" id="quantity" required />
+                  <input type="hidden" name="old_quantity" value="<?php echo $damage[0]->ds_quantity; ?>" />
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i class="mdi mdi-check-circle-outline mdi-18px"></i>
