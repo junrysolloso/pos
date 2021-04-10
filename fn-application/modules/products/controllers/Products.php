@@ -45,8 +45,8 @@ class Products extends MY_Controller
           'item_name' => strtolower( $this->input->post( 'prod_name' ) ),
           'item_description' => strtolower( $this->input->post( 'prod_desc' ) ),
           'item_critlimit' => intval( $this->input->post( 'prod_limit' ) ),
-          'brand_name' => $this->input->post( 'brand_name' ),
-          'generic_name' => $this->input->post( 'generic_name' ),
+          'brand_name' => strtolower( $this->input->post( 'brand_name' ) ),
+          'generic_name' => strtolower( $this->input->post( 'generic_name' ) ),
           'unit_id' => intval( $this->input->post( 'order_unit' ) )
         ];
 

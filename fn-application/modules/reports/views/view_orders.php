@@ -67,18 +67,26 @@
           <th>DATE</th>
           <th>Price Per Unit</th>
           <th>Quantity</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach( $orders as $row ): ?>
+        <?php $total = 0; foreach( $orders as $row ): ?>
           <tr>
             <td><?php echo ucfirst( $row->name ) .' '. $row->desc; ?></td>
             <td><?php echo $row->odate; ?></td>
             <td><?php echo $row->price; ?></td>
             <td><?php echo $row->quantt .' '. $row->udesc; ?></td>
+            <td><?php echo number_format( $row->price * $row->quantt, 2 ); ?></td>
           </tr>
-        <?php endforeach; ?>
+        <?php $total += ( intval( $row->price ) * intval( $row->quantt ) ); endforeach; ?>
       </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">TOTAL AMOUNT</td>
+          <td><?php echo number_format( $total, 2 ); ?></td>
+        </tr>
+      </tfoot>
     </table>
   </div>
   <p style="letter-spacing: 1px; padding-top: 20px;"><?php credits( 'co' ); ?></p>

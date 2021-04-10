@@ -111,26 +111,24 @@ class Login extends MY_Controller
 
 			if ( session_destroy() ) {
 
-				// $this->load->dbutil();
-				// $name_non = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.sql';
-				// $name_com = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.zip';
+				$this->load->dbutil();
+				$name_non = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.sql';
+				$name_com = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.zip';
 		
-				// $config = [
-				// 	'format'      => 'zip',
-				// 	'filename'    => $name_non,
-				// 	'add_drop'    => TRUE,
-				// 	'add_insert'  => TRUE,
-				// 	'newline'     => "\n"
-				// ];
+				$config = [
+					'format'      => 'zip',
+					'filename'    => $name_non,
+					'add_drop'    => TRUE,
+					'add_insert'  => TRUE,
+					'newline'     => "\n"
+				];
 		
-				// $backup = $this->dbutil->backup( $config );
-				// if ( $this->load->helper( 'file' ) ) {
-				// 	if ( write_file( FCPATH . 'fn-backup/'. $name_com, $backup ) ) {
-				// 		redirect( base_url( 'login' ) );
-				// 	}
-				// }
-
-				redirect( base_url( 'login' ) );
+				$backup = $this->dbutil->backup( $config );
+				if ( $this->load->helper( 'file' ) ) {
+					if ( write_file( FCPATH . 'fn-backup/'. $name_com, $backup ) ) {
+						redirect( base_url( 'login' ) );
+					}
+				}
 			} 
 		}
 	}

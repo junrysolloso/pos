@@ -10,7 +10,7 @@
                 <label for="item_id">Barcode</label>
                 <small class="form-text text-muted">Please enter barcode number</small>
                 <div class="input-group">
-                  <input type="text" name="item_id" class="form-control" id="item_id" onmouseover="this.focus()" required />
+                  <input type="number" name="item_id" class="form-control" id="item_id" onmouseover="this.focus()" required />
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i class="mdi mdi-check-circle-outline mdi-18px"></i>
