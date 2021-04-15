@@ -43,8 +43,8 @@ class Fileuploader
         $config['source_image'] = 'fn-uploads/'. $folder .'/'. $photo_name;
         $config['create_thumb'] = false;
         $config['maintain_ratio'] = true;
-        $config['width'] = 800;
-        $config['height'] = 800;
+        $config['width'] = 200;
+        $config['height'] = 200;
 
         $this->image_lib->initialize( $config );
         $this->image_lib->resize();
