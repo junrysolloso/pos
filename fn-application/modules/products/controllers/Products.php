@@ -19,6 +19,7 @@ class Products extends MY_Controller
       'tbl_unitconvert' => 'tbl_unitconvert.uc_id=tbl_ucjunc.uc_id'
     ];
     
+    $limit = 50;
     $page = intval( $this->input->get( 'page' ) );
     $link = base_url() . 'products';
     $rows = $this->dbdelta->get_count( 'tbl_items', 'id' );
@@ -26,8 +27,8 @@ class Products extends MY_Controller
 
     $config['view'] = 'view_products';
     $config['title'] = 'Products';
-    $config['products'] = $this->dbdelta->get_all( 'tbl_items', [], 50, $joins, [], $offset );
-    $config['pagination'] = $this->paginate->links( $link, 50, $rows );
+    $config['products'] = $this->dbdelta->get_all( 'tbl_items', [], $limit, $joins, [], $offset );
+    $config['pagination'] = $this->paginate->links( $link, $limit, $rows );
 
     $this->content->view( $config );
   }

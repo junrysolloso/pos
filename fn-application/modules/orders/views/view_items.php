@@ -3,16 +3,25 @@
   <table class="table shadow-sm ctm-table bg-white data-table">
     <thead>
       <tr>
+        <th><i class="mdi mdi-contain icon-sm align-self-center text-info mr-3"></i>No</th>
         <th><i class="mdi mdi-code-brackets icon-sm align-self-center text-info mr-3"></i>Barcode</th>
         <th><i class="mdi mdi-cart-arrow-down icon-sm align-self-center text-primary mr-3"></i>Product Name</th>
-        <th><i class="mdi mdi-tag-text-outline icon-sm align-self-center text-info mr-3"></i>Price Per Unit</th>
+        <th><i class="mdi mdi-tag-text-outline icon-sm align-self-center text-warning mr-3"></i>Price Per Unit</th>
         <th><i class="mdi mdi-package-variant-closed icon-sm align-self-center text-success mr-3"></i>Quantity</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach( $orders as $row ): ?>
+      <?php $i = 1; foreach( $orders as $row ): ?>
         <tr>
+          <td>
+            <div class="media">
+              <i class="mdi mdi-contain icon-sm align-self-center text-info mr-3"></i>
+              <div class="media-body my-auto">
+                <p class="mb-0"><?php echo $i; ?></p>
+              </div>
+            </div>
+          </td>
           <td>
             <div class="media">
               <i class="mdi mdi-code-brackets icon-sm align-self-center text-info mr-3"></i>
@@ -31,7 +40,7 @@
           </td>
           <td>
             <div class="media">
-              <i class="mdi mdi-tag-text-outline icon-sm align-self-center text-info mr-3"></i>
+              <i class="mdi mdi-tag-text-outline icon-sm align-self-center text-warning mr-3"></i>
               <div class="media-body my-auto">
                 <p class="mb-0">₱ <?php echo $row->price; ?></p>
               </div>
@@ -49,7 +58,7 @@
             <a href="<?php echo base_url(); ?>orders/edit/?id=<?php echo $row->id; ?>" class="btn" style="color: #000;"><i class="mdi mdi-grease-pencil"></i></a>
           </td>
         </tr>
-      <?php endforeach; ?>
+      <?php $i++; endforeach; ?>
     </tbody>
   </table>
 </div>

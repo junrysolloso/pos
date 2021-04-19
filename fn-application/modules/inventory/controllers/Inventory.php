@@ -61,8 +61,21 @@ class Inventory extends MY_Controller
 
     $config['view'] = 'view_inventory';
     $config['title'] = ucwords( $category ) . ' Inventory';
-    $config['sales'] = $data;
-    $config['pagination'] = $this->paginate->links( $link, 50, $rows );
+    $config['inventory'] = $data;
+    $config['pagination'] = $this->paginate->links( $link, $limit, $rows );
+    $this->content->view( $config );
+  }
+
+  /**
+   * Almost out of stocks
+   */
+  public function out_of_stocks() {
+    $config['view'] = 'view_stocks';
+    $config['title'] = 'Almost Out Of Stocks';
+
+    $fields = '`tbl_items`.`item_id` AS `barcode` , `tbl_items`.`item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, `tbl_inventory`.`inv_rem_stocks` AS  `remaining`, `unit_desc`, `tbl_inventory`.`inv_item_srp` AS `srp`, `expiry_date`, `price_per_unit`, `item_critlimit`';
+    $filter = [ '`inv_rem_stocks` < `item_critlimit`' => NULL ];
+    $config['stocks'] = $this->dbdelta->get_all( 'tbl_items',  [ 'inv_rem_stocks' => 'ASC' ], 0, $this->joins, $filter,[], $fields );
     $this->content->view( $config );
   }
 

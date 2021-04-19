@@ -14,6 +14,7 @@ class Orders extends MY_Controller
 	 * Index page
 	 */
   public function index() {
+    $limit = 50;
     $fields = '`order_id` AS `order_id`, `order_date`, `order_total`';
     $page = intval( $this->input->get( 'page' ) );
     $link = base_url() . 'orders';
@@ -22,8 +23,8 @@ class Orders extends MY_Controller
 
     $config['view'] = 'view_orders';
     $config['title'] = 'Orders';
-    $config['orders'] = $this->dbdelta->get_all( 'tbl_orders', [ '`order_date`' => 'DESC' ], 50, [], [], $offset, $fields );
-    $config['pagination'] = $this->paginate->links( $link, 50, $rows );
+    $config['orders'] = $this->dbdelta->get_all( 'tbl_orders', [ '`order_date`' => 'DESC' ], $limit, [], [], $offset, $fields );
+    $config['pagination'] = $this->paginate->links( $link, $limit, $rows );
     $this->content->view( $config );
   }
 

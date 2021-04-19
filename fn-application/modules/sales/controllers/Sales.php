@@ -19,6 +19,15 @@ class Sales extends MY_Controller
   }
 
   /**
+   * Overall
+   */
+  public function index() {
+    $page = intval( $this->input->get( 'page' ) );
+    $link = 'sales';
+    $this->data( 'pharmacy', $page, $link );
+  }
+
+  /**
    * Pharmacy
    */
   public function pharmacy() {
@@ -53,15 +62,24 @@ class Sales extends MY_Controller
     $link = base_url() . $link;
     $rows = $this->dbdelta->get_count( 'tbl_sales', '`tbl_sales`.`sales_id`', NULL, [ 'category_name' => $category ], $this->joins );
     $offset = $page && is_numeric( $page ) ? $page : 0;
-
     $fields = '`tbl_salesinfo`.item_id` AS `barcode`, `tbl_items`.item_name` AS `name`, `item_description` AS desc, `sales_or`, (`no_of_items` * `unit_price`) AS `sales_total`, `no_of_items`, `unit_desc`';
-    $filter = [ 'category_name' => $category ];
-    $data = $this->dbdelta->get_all( 'tbl_sales', [ 'sales_date' => 'DESC' ], $limit, $this->joins, $filter, $offset, $fields );
+    
+    switch ( $category ) {
+      case 'pharmacy':
+      case 'grocery':
+      case 'beauty products':
+        $filter = [ 'category_name' => $category ];
+        break;
+      default:
+        $filter = [];
+        break;
+    }
 
+    $data = $this->dbdelta->get_all( 'tbl_sales', [ 'sales_date' => 'DESC' ], $limit, $this->joins, $filter, $offset, $fields );
     $config['view'] = 'view_sales';
     $config['title'] = ucwords( $category ) . ' Sales';
     $config['sales'] = $data;
-    $config['pagination'] = $this->paginate->links( $link, 50, $rows );
+    $config['pagination'] = $this->paginate->links( $link, $limit, $rows );
     $this->content->view( $config );
   }
 

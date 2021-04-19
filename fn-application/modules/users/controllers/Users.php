@@ -7,7 +7,6 @@ class Users extends MY_Controller
 
   function __construct() {
     parent:: __construct(); 
-    $this->sess->restricted();
     $this->js = [ 'fn-assets/js/pages/page_users.js' ];
   }
 
@@ -15,6 +14,7 @@ class Users extends MY_Controller
 	 * Index page
 	 */
   public function index() {
+    $this->sess->restricted();
     $logins[] = [];
 
     $config['view'] = 'view_users';
@@ -42,6 +42,7 @@ class Users extends MY_Controller
    * Add
    */
   public function add() {
+    $this->sess->restricted();
     if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
       if ( $this->input->post( 'user_fname' ) ) {
 

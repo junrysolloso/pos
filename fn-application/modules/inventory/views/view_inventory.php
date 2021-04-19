@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach( $sales as $row ): ?>
+      <?php foreach( $inventory as $row ): ?>
         <tr>
           <td>
             <div class="media">

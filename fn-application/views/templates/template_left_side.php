@@ -28,6 +28,9 @@
       <div class="collapse" id="sales-dropdown">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>sales">Overall</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>sales/pharmacy">Pharmacy</a>
           </li>
           <li class="nav-item">
@@ -55,6 +58,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>inventory/beauty-products">Beauty Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>inventory/out-of-stocks">Almost Out Of Stocks</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>damage">Damage Products</a>
@@ -147,13 +153,15 @@
           $f_segment = $url[4];
           if ( $f_segment == 'temp' ) {
             $f_segment = 'orders';
-          }
+          } 
         }
 
         if ( isset( $url[5] ) ) {
           $s_segment = $url[5];
           if ( $s_segment == 'beauty-products' ) {
             $s_segment = 'Beauty Products';
+          } else if ( $s_segment == 'out-of-stocks' ) {
+            $s_segment = 'Almost Out Of Stocks';
           }
         }
       ?>
