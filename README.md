@@ -1,4 +1,4 @@
-# Point of Sale (POS) administration dashboard
+# Point of Sale (POS) Administration Dashboard
 Point of Sale system for Grocery and Pharmacy.
 
 ## Requirements
