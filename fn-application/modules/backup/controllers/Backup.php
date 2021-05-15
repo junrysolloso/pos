@@ -5,17 +5,17 @@ class Backup extends MY_Controller
 
   function __construct() {
     parent:: __construct();
-    $this->sess->unrestricted();
+    $this->sess->restricted();
   }
 
-	/**
-	 * Index for the backup page
-	 */
+  /**
+   * Index for the backup page
+   */
   public function index() {
     $this->load->dbutil();
     
-    $name_non = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.sql';
-    $name_com = 'DB_' . strval( date("Ymd") .'_'. date("his") ) . '.zip';
+    $name_non = TEXT_DOMAIN . '_DB_' . strval( date("Ymd") .'_'. date("his") ) . '.sql';
+    $name_com = TEXT_DOMAIN . '_DB_' . strval( date("Ymd") .'_'. date("his") ) . '.zip';
 
     $config = array(
       'format'      => 'zip',

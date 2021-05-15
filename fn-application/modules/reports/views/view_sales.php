@@ -71,7 +71,7 @@
       <tbody>
         <?php $total = 0; foreach( $sales as $row ): ?>
           <tr>
-            <td><?php echo ucfirst( $row->name ); ?></td>
+            <td><?php echo ucfirst( $row->name ) .' '. $row->item_des ; ?></td>
             <td><?php echo $row->sales_date; ?></td>
             <td><?php echo $row->no_of_items .' '. ucfirst( $row->unit_desc ); ?></td>
             <td><?php echo $row->sales_total; ?></td>

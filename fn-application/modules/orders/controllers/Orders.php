@@ -202,7 +202,9 @@ class Orders extends MY_Controller
         $inv_items = $this->dbdelta->get_all( 'tbl_inventory', [], 0, [], [ 'item_id' => $row->tmp_barcode ] );
         if ( ! empty( $inv_items ) ) {
           $inv_rem_stocks = intval( $inv_items[0]->inv_rem_stocks ) + $stocks;
-          $inv_flag = true;
+          if ( isset( $inv_rem_stocks ) ) {
+            $inv_flag = true;
+          }
         } else {
           $inv_rem_stocks = $stocks;
         }
@@ -214,7 +216,9 @@ class Orders extends MY_Controller
         ];
 
         if ( $inv_flag ) {
-          $this->dbdelta->update( 'tbl_inventory', $inventory_data, [ 'item_id' => $row->tmp_barcode ] );
+          if ( $this->dbdelta->update( 'tbl_inventory', $inventory_data, [ 'item_id' => $row->tmp_barcode ] ) ) {
+            $inv_flag = false;
+          }
         } else {
           $this->dbdelta->insert( 'tbl_inventory', $inventory_data );
         }

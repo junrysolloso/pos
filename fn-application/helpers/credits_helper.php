@@ -7,10 +7,10 @@ if( ! function_exists( 'credits' ) ) {
   function credits( $request ) {
     switch ( $request ) {
       case 'co':
-        echo '© '. date( 'Y' ) .' BOTICA JARIPPRE';
+        echo '© '. date( 'Y' ) .' '. TEXT_DOMAIN;
         break;
       case 'cr':
-        echo 'Program by Dinagat Coders v1.1.0';
+        echo 'Program by ' . TEXT_CREDIT . ' ' . TEXT_VERSION;
         break;
       default:
         return false;

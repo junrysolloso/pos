@@ -75,7 +75,7 @@ class Sales extends MY_Controller
         break;
     }
 
-    $data = $this->dbdelta->get_all( 'tbl_sales', [ 'sales_date' => 'DESC' ], $limit, $this->joins, $filter, $offset, $fields );
+    $data = $this->dbdelta->get_all( 'tbl_sales', [ 'tbl_sales.sales_id' => 'DESC' ], $limit, $this->joins, $filter, $offset, $fields );
     $config['view'] = 'view_sales';
     $config['title'] = ucwords( $category ) . ' Sales';
     $config['sales'] = $data;

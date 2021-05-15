@@ -82,7 +82,7 @@
                 <label for="brand_name">Brand Name</label>
                 <small class="form-text text-muted">Please enter product brand name NA if none</small>
                 <div class="input-group">
-                  <input type="text" name="brand_name" class="form-control" id="brand_name" required />
+                  <input type="text" name="brand_name" class="form-control" id="brand_name" />
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i class="mdi mdi-check-circle-outline mdi-18px"></i>
@@ -95,7 +95,7 @@
                 <label for="generic_name">Generic Name</label>
                 <small class="form-text text-muted">Please enter product generic name NA if none</small>
                 <div class="input-group">
-                  <input type="text" name="generic_name" class="form-control" id="generic_name" required />
+                  <input type="text" name="generic_name" class="form-control" id="generic_name" />
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i class="mdi mdi-check-circle-outline mdi-18px"></i>

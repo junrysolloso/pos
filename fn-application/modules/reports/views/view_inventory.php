@@ -63,7 +63,6 @@
       <thead>
         <tr>
           <th>PRODUCT NAME</th>
-          <th>EXPIRY</th>
           <th>PPU</th>
           <th>SRP</th>
           <th>STOCKS</th>
@@ -73,8 +72,7 @@
       <tbody>
         <?php $total = 0; foreach( $inventory as $row ): ?>
           <tr>
-            <td><?php echo ucfirst( $row->name ); ?></td>
-            <td><?php echo $row->expiry_date; ?></td>
+            <td><?php echo ucfirst( $row->name ) .' '. $row->item_des ; ?></td>
             <td><?php echo $row->price_per_unit; ?></td>
             <td><?php echo $row->srp; ?></td>
             <td><?php echo ucwords( $row->remaining .' '. $row->unit_desc ); ?></td>

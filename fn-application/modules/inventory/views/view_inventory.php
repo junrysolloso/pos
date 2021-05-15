@@ -5,7 +5,6 @@
       <tr>
         <th><i class="mdi mdi-code-brackets icon-sm align-self-center text-info mr-3"></i>BARCODE</th>
         <th><i class="mdi mdi-cart-arrow-down icon-sm align-self-center text-primary mr-3"></i>PRODUCT NAME</th>
-        <th><i class="mdi mdi-calendar-alert icon-sm align-self-center text-warning mr-3"></i>EXPIRY</th>
         <th><i class="mdi mdi-tag-outline icon-sm align-self-center text-info mr-3"></i>PPU</th>
         <th><i class="mdi mdi-tag-text-outline icon-sm align-self-center text-info mr-3"></i>SRP</th>
         <th><i class="mdi mdi-package-variant-closed icon-sm align-self-center text-success mr-3"></i>STOCKS</th>
@@ -28,14 +27,6 @@
               <i class="mdi mdi-cart-arrow-down icon-sm align-self-center text-primary mr-3"></i>
               <div class="media-body my-auto">
                 <p class="mb-0"><?php echo ucfirst( $row->name ); ?></p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="media">
-              <i class="mdi mdi-calendar-alert icon-sm align-self-center text-warning mr-3"></i>
-              <div class="media-body my-auto">
-                <p class="mb-0"><?php echo $row->expiry_date; ?></p>
               </div>
             </div>
           </td>

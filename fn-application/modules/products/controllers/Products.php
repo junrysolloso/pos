@@ -108,7 +108,7 @@ class Products extends MY_Controller
         $prod_id = $this->input->post( 'id' );
         $uc_id = $this->input->post( 'uc_id' );
         $ucjunc_id = $this->input->post( 'ucjunc_id' );
-        $item_id = intval( $this->input->post( 'item_id' ) );
+        $item_id = $this->input->post( 'item_id' );
 
         $o_order_unit = intval( $this->input->post( 'o_order_unit' ) );
         $o_selling_unit = intval( $this->input->post( 'o_selling_unit' ) );
@@ -137,7 +137,7 @@ class Products extends MY_Controller
         ];
 
         $inventory = array (
-          'inv_item_srp' => $this->input->post( 'prod_srp' ),
+          'inv_item_srp' => floatval( $this->input->post( 'prod_srp' ) ),
         );
 
         $junc = clean_array( $junc );

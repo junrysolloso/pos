@@ -61,17 +61,17 @@ class Reports extends MY_Controller
           foreach ( $data as $key => $value ) {
             if ( $key == 'category' ) {
               $filter['category_name'] = $value;
+	      $filter['tbl_orderdetails.orderdetails_id IN (SELECT MAX(orderdetails_id) as id FROM tbl_orderdetails GROUP BY item_id)'] = NULL;
             }
           }
 
           $joins = [
             'tbl_inventory' => '`tbl_items`.`item_id` = `tbl_inventory`.`item_id`',
-            'tbl_orderdetails' => '`tbl_items`.`item_id` = `tbl_orderdetails`.`item_id`',
-            'tbl_orderdetails_expiry' => '`tbl_orderdetails`.`orderdetails_id` = `tbl_orderdetails_expiry`.`orderdetails_id`'
+            'tbl_orderdetails' => '`tbl_items`.`item_id` = `tbl_orderdetails`.`item_id`'
           ];
 
           $joins = array_merge( $joins, $common );
-          $fields = '`tbl_items`.`item_id` AS `barcode` , `tbl_items`.`item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, `tbl_inventory`.`inv_rem_stocks` AS  `remaining`, `unit_desc`, `tbl_inventory`.`inv_item_srp` AS `srp`, `expiry_date`, `price_per_unit`';
+          $fields = 'DISTINCT(`tbl_items`.`item_id`) AS `barcode` , `tbl_items`.`item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, `tbl_inventory`.`inv_rem_stocks` AS  `remaining`, `unit_desc`, `tbl_inventory`.`inv_item_srp` AS `srp`, `price_per_unit`';
           $config['inventory'] = $this->dbdelta->get_all( 'tbl_items', [ 'name' => 'ASC' ], 0, $joins, $filter, 0, $fields );
           $config['subtitle'] = date_format( date_create( date('Y-m-d') ), 'M j, Y' );
           $title =  $data['category'];
@@ -92,8 +92,8 @@ class Reports extends MY_Controller
           ];
 
           $joins = array_merge( $joins, $common );
-          $fields = '`tbl_salesinfo`.item_id` AS `barcode`, `tbl_items`.item_name` AS `name`, `sales_or`, (`no_of_items` * `unit_price`) AS `sales_total`, `no_of_items`, `unit_desc`, `sales_date`';
-          $config['sales'] = $this->dbdelta->get_all( 'tbl_sales', [ 'sales_date' => 'ASC' ], 0, $joins, $filter, 0, $fields );
+          $fields = '`tbl_salesinfo`.item_id` AS `barcode`, `tbl_items`.item_name` AS `name`, `tbl_items`.`item_description` AS `item_des`, `sales_or`, (`no_of_items` * `unit_price`) AS `sales_total`, `no_of_items`, `unit_desc`, `sales_date`';
+          $config['sales'] = $this->dbdelta->get_all( 'tbl_sales', [ 'tbl_sales.sales_id' => 'DESC' ], 0, $joins, $filter, 0, $fields );
           $config['subtitle'] = date_format( date_create( $data['from'] ), 'M j, Y' ) .' - '. date_format( date_create( $data['to'] ), 'M j, Y' );
           $title =  ucwords( $data['category'] );
           break;
