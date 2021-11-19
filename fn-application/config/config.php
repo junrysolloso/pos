@@ -22,7 +22,7 @@ date_default_timezone_set( 'Asia/Manila' );
 | environments.
 |
 */
-$config['base_url'] = '//localhost/pos/';
+$config['base_url'] = '//local.dev/pos/';
 
 /*
 |--------------------------------------------------------------------------
